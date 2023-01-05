@@ -38,6 +38,7 @@ with c2:
     try:
         new_dict = output
         new_dict["features"] = new_dict.pop("all_drawings")
+        st.write(new_dict)
 
         if len(new_dict["features"]) > 1:
             st.error("You cannot upload more than one survey at time!")
@@ -64,6 +65,6 @@ with c2:
         
 db_content = db_2.fetch().items
 df_point = pd.DataFrame(db_content)
-gdf = geopandas.GeoDataFrame(df_point, geometry=df_point.geometry)
+# gdf = geopandas.GeoDataFrame(df_point, geometry=df_point.geometry)
 st.dataframe(df_point)
-st_folium(gdf.explore())
+# st_folium(gdf.explore())
