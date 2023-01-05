@@ -71,6 +71,7 @@ elif add_radio == "🗺️":
     gpf = geopandas.GeoDataFrame(db_content)
     
     gpf = gpf.from_features(df_point["geometry"])
+    st.write(gpf)
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     folium.GeoJson(gpf.to_json(),
                   tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n_specimens", "comment"],
