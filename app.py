@@ -68,7 +68,7 @@ if add_radio == "📝":
 elif add_radio == "🗺️":
     db_content = db_2.fetch().items
     df_point = pd.DataFrame(db_content)
-    gpf = geopandas.GeoDataFrame(db_content)
+    gpf = geopandas.GeoDataFrame(df_point)
     
     gpf = gpf.from_features(df_point["geometry"])
     st.write(gpf.to_json())
