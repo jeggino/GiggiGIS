@@ -1,6 +1,8 @@
 import folium
 import streamlit as st
-from folium.plugins import Draw
+from folium.plugins import Draw, Fullscreen
+
+from streamlit_js_eval import get_geolocation
 
 import geopandas
 import pandas as pd
@@ -29,13 +31,20 @@ with st.sidebar:
     )
 
 if add_radio == "📝":
-    m = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+    loc = get_geolocation()
+    lat = loc['coords']['latitude']
+    lon = loc['coords']['longitude']
+    
+    m = folium.Map(location=[lat, lon], zoom_start=10)
     Draw().add_to(m)
+    Fullscreen().add_to(m)
+    
 
     c1, c2 = st.columns([3,2])
 
 
     with c1:
+        
         output = st_folium(m,width=500, height=700, returned_objects=["all_drawings"])
 
     with c2:
