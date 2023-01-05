@@ -28,7 +28,7 @@ with st.sidebar:
         ("Pagina 1", "Pagina 2")
     )
 
-if "Pagina 1":
+if add_radio == "Pagina 1":
     m = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     Draw().add_to(m)
 
@@ -64,7 +64,7 @@ if "Pagina 1":
 
         except:
             st.info("mark an observation")
-elif "Pagina 2":
+elif add_radio == "Pagina 2":
     db_content = db_2.fetch().items
     df_point = pd.DataFrame(db_content)
     gpf = geopandas.GeoDataFrame.from_features(df_point["geometry"])
