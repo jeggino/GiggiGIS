@@ -17,7 +17,7 @@ db_2 = deta.Base("project_2")
 
 def insert_period(date, sp, n, comment, lat, lon, geometry=None):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "lat": lat, "lon": lon, "geometry":geometry})
+    return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "geometry":geometry})
 
 
 
@@ -46,8 +46,6 @@ with c2:
             sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
             n = st.number_input("Number of specimens:", min_value=0)
             comment = st.text_input("", placeholder="Enter a comment here ...")
-            lat = new_dict["features"][0]["geometry"]["coordinates"][0]
-            lon = new_dict["features"][0]["geometry"]["coordinates"][1]
             geometry = new_dict["features"][0]["geometry"]
             
             
