@@ -65,7 +65,7 @@ with c2:
         
 db_content = db_2.fetch().items
 df_point = pd.DataFrame(db_content)
-# gpf = geopandas.GeoDataFrame.from_features(df_point["geometry"])
+gpf = geopandas.GeoDataFrame.from_features(df_point["geometry"])
 st.dataframe(df_point)
 st.warning("Qui é il casino!", icon="💀")
-# st_folium(gdf.explore())
+st_folium(gdf.explore())
