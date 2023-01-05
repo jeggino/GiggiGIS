@@ -25,7 +25,7 @@ def insert_period(date, sp, n, comment, geometry_type, geometry):
 with st.sidebar:
     add_radio = st.radio(
         "pagina",
-        ("Pagina 1", "Pagina 2")
+        ("📝", "🗺️")
     )
 
 if add_radio == "Pagina 1":
