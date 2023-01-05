@@ -32,6 +32,7 @@ with st.sidebar:
 
 if add_radio == "📝":
     with st.form("entry_form", clear_on_submit=True):
+         st.warning("Qui é il casino!", icon="💀")
         loc = get_geolocation()
         lat = loc['coords']['latitude']
         lon = loc['coords']['longitude']
@@ -89,5 +90,5 @@ elif add_radio == "🗺️":
                   ).add_to(map)
     st_folium(map)
     st.dataframe(df_point)
-    st.warning("Qui é il casino!", icon="💀")
+   
 
