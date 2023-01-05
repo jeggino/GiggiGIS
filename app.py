@@ -44,7 +44,7 @@ with c2:
         option_selectbox = st.selectbox('How would you like to be contacted?', ('Email', 'Home phone', 'Mobile phone'))
         options_multiselect = st.multiselect( 'What are your favorite colors',['Green', 'Yellow', 'Red', 'Blue','Orange','Black','White','Purple'],['Yellow', 'Red'])
         age = st.slider('How old are you?', 0, 130, 25)
-        number = st.number_input('Insert a number')
+        number = st.number_input('Number')
         date = st.date_input("When\'s your birthday",datetime.date(2019, 7, 6))
         lat = new_dict["features"][0]["geometry"]["coordinates"][0]
         lon = new_dict["features"][0]["geometry"]["coordinates"][1]
