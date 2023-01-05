@@ -32,7 +32,7 @@ with st.sidebar:
 
 if add_radio == "📝":
     with st.form("entry_form", clear_on_submit=True):
-         st.warning("Qui é il casino!", icon="💀")
+        st.warning("Qui é il casino!", icon="💀")
         loc = get_geolocation()
         lat = loc['coords']['latitude']
         lon = loc['coords']['longitude']
