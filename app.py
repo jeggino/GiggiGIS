@@ -70,7 +70,7 @@ elif add_radio == "🗺️":
     df_point = pd.DataFrame(db_content)
     gpf = geopandas.GeoDataFrame(db_content)
     
-    gpf = gpf.from_features(df_point["geometry"])
+#     gpf = gpf.from_features(df_point["geometry"])
     st.write(gpf)
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     folium.GeoJson(gpf.to_json(),
