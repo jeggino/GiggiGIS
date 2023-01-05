@@ -51,7 +51,7 @@ with c2:
             n = st.number_input("Number of specimens:", min_value=0)
             comment = st.text_input("", placeholder="Enter a comment here ...")
             geometry_type = new_dict["features"][0]["geometry"]["type"]
-            geometry = new_dict["features"][0]["geometry"]
+            geometry = new_dict["features"][0]
             
             
 
