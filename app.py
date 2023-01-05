@@ -26,7 +26,7 @@ Draw().add_to(m)
 
 c1, c2 = st.columns([3,2])
 
-with st.form("entry_form_2", clear_on_submit=False):
+with st.form("entry_form_2", clear_on_submit=True):
     with c1:
         output = st_folium(m, width=700, height=500,returned_objects=["all_drawings"])
 
