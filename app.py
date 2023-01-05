@@ -15,9 +15,9 @@ db_2 = deta.Base("project_2")
 
 # -------------- FUNCTIONS --------------
 
-def insert_period(date, sp, n, comment, lat, lon, geometry==None):
+def insert_period(date, sp, n, comment, lat, lon, geometry=None):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "lat": lat, "lon": lon, "geometry"=geometry})
+    return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "lat": lat, "lon": lon, "geometry":geometry})
 
 
 
