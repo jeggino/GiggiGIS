@@ -25,10 +25,10 @@ def insert_period(date, sp, n, comment, geometry_type, geometry):
 with st.sidebar:
     add_radio = st.radio(
         "pagina",
-        ("pagina 1", "Pagina 2")
+        ("Pagina 1", "Pagina 2")
     )
 
-if "pagina 1":
+if "Pagina 1":
     m = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     Draw().add_to(m)
 
@@ -64,7 +64,7 @@ if "pagina 1":
 
         except:
             st.info("mark an observation")
-elif "pagina 2":
+elif "Pagina 2":
     db_content = db_2.fetch().items
     df_point = pd.DataFrame(db_content)
     gpf = geopandas.GeoDataFrame.from_features(df_point["geometry"])
