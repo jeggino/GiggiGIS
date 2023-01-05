@@ -26,31 +26,31 @@ Draw().add_to(m)
 
 c1, c2 = st.columns([3,2])
 
+with st.form("entry_form_2", clear_on_submit=False):
+    with c1:
+        output = st_folium(m, width=700, height=500,returned_objects=["all_drawings"])
 
-with c1:
-    output = st_folium(m, width=700, height=500,returned_objects=["all_drawings"])
+    with c2:
 
-with c2:
+        try:
+            new_dict = output
+            new_dict["features"] = new_dict.pop("all_drawings")
 
-    try:
-        new_dict = output
-        new_dict["features"] = new_dict.pop("all_drawings")
-        
-        if len(new_dict["features"]) > 1:
-            st.error("You cannot upload more than one survey at time!")
-            st.stop()
-      
-        # error_empty = st.empty()
-        option_selectbox = st.selectbox('How would you like to be contacted?', ('Email', 'Home phone', 'Mobile phone'))
-        options_multiselect = st.multiselect( 'What are your favorite colors',['Green', 'Yellow', 'Red', 'Blue','Orange','Black','White','Purple'],['Yellow', 'Red'])
-        age = st.slider('How old are you?', 0, 130, 25)
-        number = st.number_input('Number')
-        date = st.date_input("When\'s your birthday",datetime.date(2019, 7, 6))
-        lat = new_dict["features"][0]["geometry"]["coordinates"][0]
-        lon = new_dict["features"][0]["geometry"]["coordinates"][1]
+            if len(new_dict["features"]) > 1:
+                st.error("You cannot upload more than one survey at time!")
+                st.stop()
 
-        
-        with st.form("entry_form_2", clear_on_submit=False):
+            # error_empty = st.empty()
+            option_selectbox = st.selectbox('How would you like to be contacted?', ('Email', 'Home phone', 'Mobile phone'))
+            options_multiselect = st.multiselect( 'What are your favorite colors',['Green', 'Yellow', 'Red', 'Blue','Orange','Black','White','Purple'],['Yellow', 'Red'])
+            age = st.slider('How old are you?', 0, 130, 25)
+            number = st.number_input('Number')
+            date = st.date_input("When\'s your birthday",datetime.date(2019, 7, 6))
+            lat = new_dict["features"][0]["geometry"]["coordinates"][0]
+            lon = new_dict["features"][0]["geometry"]["coordinates"][1]
+
+
+
             submitted = st.form_submit_button("Save Data")
             if submitted:
                 insert_period(option_selectbox, options_multiselect, age, number, lat, lon, date)
@@ -60,5 +60,5 @@ with c2:
 
 
 
-    except:
-        st.info("mark an observation")
+        except:
+            st.info("mark an observation")
