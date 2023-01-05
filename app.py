@@ -49,13 +49,12 @@ with c2:
             geometry_type = new_dict["features"][0]["geometry"]["type"]
             geometry = new_dict["features"][0]["geometry"]
             
-            #st.warning("Qui é il casino!", icon="💀")
+            st.warning("Qui é il casino!", icon="💀")
 
             submitted = st.form_submit_button("Save Data")
             if submitted:
                 insert_period(date, sp, n, comment, geometry_type, geometry)
                 st.success('Data saved!', icon="✅")
-
 
     except:
         st.info("mark an observation")
