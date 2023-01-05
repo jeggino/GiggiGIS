@@ -35,7 +35,7 @@ if add_radio == "📝":
     lat = loc['coords']['latitude']
     lon = loc['coords']['longitude']
     
-    m = folium.Map(location=[lat, lon], zoom_start=10)
+    m = folium.Map(location=[lat, lon], zoom_start=4)
     Draw().add_to(m)
     Fullscreen().add_to(m)
     
