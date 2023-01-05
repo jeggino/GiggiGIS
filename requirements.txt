@@ -1,0 +1,11 @@
+streamlit>=0.81.0
+deta
+pandas
+streamlit_option_menu
+folium
+streamlit_js_eval
+altair
+streamlit-folium
+geopandas
+mapclassify
+pydeck 
