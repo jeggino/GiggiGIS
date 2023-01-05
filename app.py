@@ -46,8 +46,8 @@ with c2:
             sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
             n = st.number_input("Number of specimens:", min_value=0)
             comment = st.text_input("", placeholder="Enter a comment here ...")
-            geometry_type = new_dict["all_drawings"][0]["geometry"]["type"]
-            geometry = new_dict["all_drawings"][0]["geometry"]
+            geometry_type = output["all_drawings"][0]["geometry"]["type"]
+            geometry = output["all_drawings"][0]["geometry"]
             
             #st.warning("Qui é il casino!", icon="💀")
 
