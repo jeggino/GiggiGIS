@@ -15,9 +15,9 @@ db_2 = deta.Base("project_2")
 
 # -------------- FUNCTIONS --------------
 
-def insert_period(option_selectbox, options_multiselect, age, number, lat, lon, date):
+def insert_period((date, sp, n, comment, lat, lon, geometry=None):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db_2.put({"option_selectbox": option_selectbox, "options_multiselect": options_multiselect, "age": age, "number": number, "lat": lat, "lon": lon, "date":str(date)})
+    return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "lat": lat, "lon": lon, "geometry"=geometry})
 
 
 
@@ -26,7 +26,7 @@ Draw().add_to(m)
 
 c1, c2 = st.columns([3,2])
 
-with st.form("entry_form_2", clear_on_submit=True):
+
     with c1:
         output = st_folium(m, width=700, height=500,returned_objects=["all_drawings"])
 
@@ -41,23 +41,19 @@ with st.form("entry_form_2", clear_on_submit=True):
                 st.stop()
 
             # error_empty = st.empty()
-            option_selectbox = st.selectbox('How would you like to be contacted?', ('Email', 'Home phone', 'Mobile phone'))
-            options_multiselect = st.multiselect( 'What are your favorite colors',['Green', 'Yellow', 'Red', 'Blue','Orange','Black','White','Purple'],['Yellow', 'Red'])
-            age = st.slider('How old are you?', 0, 130, 25)
-            number = st.number_input('Number')
-            date = st.date_input("When\'s your birthday",datetime.date(2019, 7, 6))
-            lat = new_dict["features"][0]["geometry"]["coordinates"][0]
-            lon = new_dict["features"][0]["geometry"]["coordinates"][1]
-            st.warning("Qui é il casino!", icon="💀")
+            with st.form("entry_form_2", clear_on_submit=True):
+                date = st.date_input("Date")
+                sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
+                n = st.number_input("Number of specimens:", min_value=0)
+                comment = st.text_input("", placeholder="Enter a comment here ...")
+                lat = new_dict["features"][0]["geometry"]["coordinates"][0]
+                lon = new_dict["features"][0]["geometry"]["coordinates"][1]
+                #st.warning("Qui é il casino!", icon="💀")
 
-
-
-            submitted = st.form_submit_button("Save Data")
-            
-            if submitted:
-                insert_period(option_selectbox, options_multiselect, age, number, lat, lon, date)
-                
-                st.success('Data saved!', icon="✅")
+                submitted = st.form_submit_button("Save Data")
+                if submitted:
+                    insert_period(date, sp, n, comment, lat, lon)
+                    st.success('Data saved!', icon="✅")
 
 
 
