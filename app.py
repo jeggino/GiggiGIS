@@ -3,7 +3,7 @@ import streamlit as st
 from folium.plugins import Draw
 
 import geopandas
-import pandas
+import pandas as pd
 
 from streamlit_folium import st_folium
 
