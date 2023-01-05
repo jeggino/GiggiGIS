@@ -54,6 +54,8 @@ with c2:
         if len(new_dict["features"]) > 1:
             st.error("You cannot upload more than one survey at time!")
             st.stop()
+            
+        st.write(new_dict)
 
         with st.form("entry_form_2", clear_on_submit=False):
             submitted = st.form_submit_button("Save Data")
