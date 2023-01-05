@@ -48,11 +48,12 @@ with st.form("entry_form_2", clear_on_submit=True):
             date = st.date_input("When\'s your birthday",datetime.date(2019, 7, 6))
             lat = new_dict["features"][0]["geometry"]["coordinates"][0]
             lon = new_dict["features"][0]["geometry"]["coordinates"][1]
+            st.warning("Qui é il casino!", icon="💀")
 
 
 
             submitted = st.form_submit_button("Save Data")
-            st.warning("Qui é il casino!", icon="💀")
+            
             if submitted:
                 insert_period(option_selectbox, options_multiselect, age, number, lat, lon, date)
                 
