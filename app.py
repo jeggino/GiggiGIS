@@ -48,6 +48,7 @@ with c2:
             comment = st.text_input("", placeholder="Enter a comment here ...")
             lat = new_dict["features"][0]["geometry"]["coordinates"][0]
             lon = new_dict["features"][0]["geometry"]["coordinates"][1]
+            geometry = new_dict["features"][0]["geometry"]
             
             
             st.write(new_dict)
@@ -55,7 +56,7 @@ with c2:
 
             submitted = st.form_submit_button("Save Data")
             if submitted:
-                insert_period(date, sp, n, comment, lat, lon)
+                insert_period(date, sp, n, comment, lat, lon, geometry)
                 st.success('Data saved!', icon="✅")
 
 
