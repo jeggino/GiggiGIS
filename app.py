@@ -52,9 +52,10 @@ with st.form("entry_form_2", clear_on_submit=True):
 
 
             submitted = st.form_submit_button("Save Data")
+            st.warning("Qui é il casino!", icon="💀")
             if submitted:
                 insert_period(option_selectbox, options_multiselect, age, number, lat, lon, date)
-                # st.warning("Ti stanno prendendo per il culo!", icon="💀")
+                
                 st.success('Data saved!', icon="✅")
 
 
