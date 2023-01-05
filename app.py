@@ -64,7 +64,7 @@ if "pagina 1":
 
         except:
             st.info("mark an observation")
-if "pagina 2":
+elif "pagina 2":
     db_content = db_2.fetch().items
     df_point = pd.DataFrame(db_content)
     gpf = geopandas.GeoDataFrame.from_features(df_point["geometry"])
