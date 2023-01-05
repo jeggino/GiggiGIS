@@ -36,7 +36,7 @@ with c2:
         new_dict = output
         new_dict["features"] = new_dict.pop("all_drawings")
 
-        if len(output["all_drawings"]) > 1:
+        if len(new_dict["features"]) > 1:
             st.error("You cannot upload more than one survey at time!")
             st.stop()
 
@@ -46,8 +46,8 @@ with c2:
             sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
             n = st.number_input("Number of specimens:", min_value=0)
             comment = st.text_input("", placeholder="Enter a comment here ...")
-            geometry_type = output["all_drawings"][0]["geometry"]["type"]
-            geometry = output["all_drawings"][0]["geometry"]
+            geometry_type = new_dict["features"][0]["geometry"]["type"]
+            geometry = new_dict["features"][0]["geometry"]
             
             #st.warning("Qui é il casino!", icon="💀")
 
