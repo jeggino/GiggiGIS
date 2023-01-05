@@ -3,6 +3,7 @@ import streamlit as st
 from folium.plugins import Draw
 
 import geopandas
+import pandas
 
 from streamlit_folium import st_folium
 
@@ -62,5 +63,6 @@ with c2:
         st.info("mark an observation")
         
 db_content = db_2 .fetch().items
-# df_point = pd.DataFrame(db_content)
-gdf = geopandas.GeoDataFrame(db_content, geometry=db_content.geometry)
+df_point = pd.DataFrame(db_content)
+# gdf = geopandas.GeoDataFrame(db_content, geometry=db_content.geometry)
+st.dataframe(df_point)
