@@ -17,7 +17,7 @@ db_2 = deta.Base("project_2")
 
 def insert_period(option_selectbox, options_multiselect, age, number, lat, lon, date):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db_2.put({"option_selectbox": option_selectbox, "options_multiselect": options_multiselect, "age": age, "number": number, "lat": lat, "lon": lon, "date":date})
+    return db_2.put({"option_selectbox": option_selectbox, "options_multiselect": options_multiselect, "age": age, "number": number, "lat": lat, "lon": lon, "date":str(date)})
 
 
 
