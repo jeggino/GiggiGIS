@@ -66,7 +66,8 @@ with c2:
 db_content = db_2.fetch().items
 df_point = pd.DataFrame(db_content)
 gpf = geopandas.GeoDataFrame.from_features(df_point["geometry"])
-map = folium.GeoJson(gpf.to_json())
+map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+folium.GeoJson(gpf.to_json()).add_to(map)
 st_folium(map)
 st.dataframe(df_point)
 st.warning("Qui é il casino!", icon="💀")
