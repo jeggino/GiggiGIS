@@ -21,7 +21,7 @@ def insert_period(date, sp, n, comment, geometry_type, geometry):
 
 
 
-m = folium.Map(location=[39.949610, -75.150282], zoom_start=5)
+m = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
 Draw().add_to(m)
 
 c1, c2 = st.columns([3,2])
@@ -41,7 +41,7 @@ with c2:
             st.stop()
 
         # error_empty = st.empty()
-        with st.form("entry_form_2", clear_on_submit=True):
+        with st.form("entry_form", clear_on_submit=True):
             date = st.date_input("Date")
             sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
             n = st.number_input("Number of specimens:", min_value=0)
