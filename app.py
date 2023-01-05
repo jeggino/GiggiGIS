@@ -76,7 +76,7 @@ elif add_radio == "🗺️":
     folium.GeoJson(gpf.to_json(),
 #                   tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n_specimens", "comment"],
 #                                                 aliases=["Date", "Species", "Number of specimens", "Comment"],
-                                                labels=True)
+#                                                 labels=True)
                   ).add_to(map)
     st_folium(map)
     st.dataframe(df_point)
