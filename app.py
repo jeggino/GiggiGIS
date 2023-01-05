@@ -2,6 +2,8 @@ import folium
 import streamlit as st
 from folium.plugins import Draw
 
+import geopandas
+
 from streamlit_folium import st_folium
 
 import datetime
