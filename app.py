@@ -48,6 +48,9 @@ with c2:
             comment = st.text_input("", placeholder="Enter a comment here ...")
             lat = new_dict["features"][0]["geometry"]["coordinates"][0]
             lon = new_dict["features"][0]["geometry"]["coordinates"][1]
+            
+            
+            st.write(new_dict)
             #st.warning("Qui é il casino!", icon="💀")
 
             submitted = st.form_submit_button("Save Data")
