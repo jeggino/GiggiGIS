@@ -28,7 +28,7 @@ c1, c2 = st.columns([3,2])
 
 
 with c1:
-    output = st_folium(m, width=700, height=500,returned_objects=["all_drawings"])
+    output = st_folium(m,width=500, height=700, returned_objects=["all_drawings"])
 
 with c2:
 
