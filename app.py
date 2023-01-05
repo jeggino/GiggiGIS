@@ -65,6 +65,6 @@ with c2:
         
 db_content = db_2.fetch().items
 df_point = pd.DataFrame(db_content)
-# gdf = geopandas.GeoDataFrame(df_point, geometry=df_point.geometry)
+gpf = geopandas.GeoDataFrame.from_features(df_point["geometry"])
 st.dataframe(df_point)
-# st_folium(gdf.explore())
+st_folium(gdf.explore())
