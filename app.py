@@ -62,7 +62,7 @@ with c2:
     except:
         st.info("mark an observation")
         
-db_content = db_2 .fetch().items
+db_content = db_2.fetch().items
 df_point = pd.DataFrame(db_content)
 # gdf = geopandas.GeoDataFrame(db_content, geometry=db_content.geometry)
 st.dataframe(df_point)
