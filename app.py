@@ -15,9 +15,9 @@ db_2 = deta.Base("project_2")
 
 # -------------- FUNCTIONS --------------
 
-def insert_period(date, sp, n, comment, lat, lon, geometry=None):
+def insert_period(date, sp, n, comment, geometry_type, geometry=None):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "geometry":geometry})
+    return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "geometry_type":geometry_type, "geometry":geometry})
 
 
 
@@ -46,6 +46,7 @@ with c2:
             sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
             n = st.number_input("Number of specimens:", min_value=0)
             comment = st.text_input("", placeholder="Enter a comment here ...")
+            geometry_type = new_dict["features"][0]["geometry"]["type"]
             geometry = new_dict["features"][0]["geometry"]
             
             
@@ -54,7 +55,7 @@ with c2:
 
             submitted = st.form_submit_button("Save Data")
             if submitted:
-                insert_period(date, sp, n, comment, lat, lon, geometry)
+                insert_period(date, sp, n, comment, geometry_typen geometry)
                 st.success('Data saved!', icon="✅")
 
 
