@@ -49,7 +49,6 @@ if add_radio == "📝":
         Draw().add_to(m)
         Fullscreen().add_to(m)
         output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
-        st.write(output)
         
                    
     with c2:
@@ -69,6 +68,10 @@ if add_radio == "📝":
                 comment = st.text_input("", placeholder="Enter a comment here ...")
                 geometry_type = new_dict["features"][0]["geometry"]["type"]
                 geometry = new_dict["features"][0]   
+                
+                new_dict["features"][0]["properties"]["date"] = date
+                
+                st.write(new_dict)
 
                 submitted = st.form_submit_button("Save Data")
                 if submitted:
