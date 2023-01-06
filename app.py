@@ -13,7 +13,11 @@ import datetime
 
 from deta import Deta
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="GiggiGIS",
+    page_icon="🍕",
+    layout="wide",
+)
 
 
 # Connect to Deta Base with your Project Key
@@ -44,7 +48,7 @@ if add_radio == "📝":
         m = folium.Map(location=[lat, lon], zoom_start=18)
         Draw().add_to(m)
         Fullscreen().add_to(m)
-        output = st_folium(m, width=500, height=700, "all_drawings")
+        output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
         st.write(output)
         
                    
