@@ -34,7 +34,7 @@ if add_radio == "📝":
     st.warning("Qui é il casino!", icon="💀")   
     c1, c2 = st.columns([3,2])
     with c1:
-        with st.form("entry_form_1", clear_on_submit=True):
+        with st.form("entry_form_1", clear_on_submit=False):
             submitted = st.form_submit_button("New observation")
             if submitted:
                 loc = get_geolocation()
