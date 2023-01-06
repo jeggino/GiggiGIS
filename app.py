@@ -34,14 +34,16 @@ if add_radio == "📝":
     loc = get_geolocation()
     lat = loc['coords']['latitude']
     lon = loc['coords']['longitude']
-    st.warning("Qui é il casino!", icon="💀")   
+#     st.warning("Qui é il casino!", icon="💀")   
     c1, c2 = st.columns([3,2])
     with c1:
                 
         m = folium.Map(location=[lat, lon], zoom_start=18)
         Draw().add_to(m)
         Fullscreen().add_to(m)
-        output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
+        output = st_folium(m, width=500, height=700)
+        st.write(output)
+        
                    
     with c2:
 
