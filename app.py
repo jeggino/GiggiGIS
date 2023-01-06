@@ -42,11 +42,13 @@ if add_radio == "📝":
     c1, c2 = st.columns([3,2])
     with c1:
         with st.form("entry_form_1", clear_on_submit=True):
-            m = folium.Map(location=[lat, lon], zoom_start=18)
-            Draw().add_to(m)
-            Fullscreen().add_to(m)
-            output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
             submitted = st.form_submit_button("New observation")
+            if submitted
+                m = folium.Map(location=[lat, lon], zoom_start=18)
+                Draw().add_to(m)
+                Fullscreen().add_to(m)
+                output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
+            
 
         
 
