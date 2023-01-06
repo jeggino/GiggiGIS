@@ -43,8 +43,11 @@ if add_radio == "📝":
 
     c1, c2 = st.columns([3,2])
     with c1:
+        st.form("entry_form_1", clear_on_submit=True):
+            output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
+            submitted = st.form_submit_button("New observation")
 
-        output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
+        
 
     with c2:
 
