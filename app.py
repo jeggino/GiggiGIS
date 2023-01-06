@@ -69,7 +69,7 @@ if add_radio == "📝":
                 geometry_type = new_dict["features"][0]["geometry"]["type"]
                 geometry = new_dict["features"][0]   
                 
-                new_dict["features"][0]["properties"]["date"] = date
+                new_dict["features"][0]["properties"]["date"] = str(date)
                 
                 st.write(new_dict)
 
