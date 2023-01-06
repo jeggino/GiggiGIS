@@ -13,6 +13,9 @@ import datetime
 
 from deta import Deta
 
+st.set_page_config(layout="wide")
+
+
 # Connect to Deta Base with your Project Key
 deta = Deta(st.secrets["deta_key"])
 # Create a new database "example-db"
