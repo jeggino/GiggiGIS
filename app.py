@@ -31,35 +31,32 @@ with st.sidebar:
     )
 
 if add_radio == "📝":
-    with st.form("entry_form", clear_on_submit=True):
-        st.warning("Qui é il casino!", icon="💀")
-        loc = get_geolocation()
-        lat = loc['coords']['latitude']
-        lon = loc['coords']['longitude']
+    
+    st.warning("Qui é il casino!", icon="💀")
+    loc = get_geolocation()
+    lat = loc['coords']['latitude']
+    lon = loc['coords']['longitude']
 
-        m = folium.Map(location=[lat, lon], zoom_start=18)
-        Draw().add_to(m)
-        Fullscreen().add_to(m)
+    m = folium.Map(location=[lat, lon], zoom_start=18)
+    Draw().add_to(m)
+    Fullscreen().add_to(m)
 
+    c1, c2 = st.columns([3,2])
+    with c1:
 
-        c1, c2 = st.columns([3,2])
+        output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
 
+    with c2:
 
-        with c1:
+        try:
+            new_dict = output
+            new_dict["features"] = new_dict.pop("all_drawings")
 
-            output = st_folium(m,width=500, height=700, returned_objects=["all_drawings"])
+            if len(new_dict["features"]) > 1:
+                st.error("You cannot upload more than one survey at time!")
+                st.stop()
 
-        with c2:
-
-            try:
-                new_dict = output
-                new_dict["features"] = new_dict.pop("all_drawings")
-
-                if len(new_dict["features"]) > 1:
-                    st.error("You cannot upload more than one survey at time!")
-                    st.stop()
-
-
+            with st.form("entry_form", clear_on_submit=True):
                 date = st.date_input("Date")
                 sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
                 n = st.number_input("Number of specimens:", min_value=0)
@@ -72,8 +69,8 @@ if add_radio == "📝":
                     insert_period(date, sp, n, comment, geometry_type, geometry)
                     st.success('Data saved!', icon="✅")
 
-            except:
-                st.info("mark an observation")
+        except:
+            st.info("mark an observation")
             
 elif add_radio == "🗺️":
     db_content = db_2.fetch().items
