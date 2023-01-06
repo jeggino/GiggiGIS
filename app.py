@@ -31,15 +31,16 @@ with st.sidebar:
     )
 
 if add_radio == "📝":   
+    loc = get_geolocation()
+    lat = loc['coords']['latitude']
+    lon = loc['coords']['longitude']
     st.warning("Qui é il casino!", icon="💀")   
     c1, c2 = st.columns([3,2])
     with c1:
         with st.form("entry_form_1", clear_on_submit=False):
             submitted = st.form_submit_button("New observation")
             if submitted:
-                loc = get_geolocation()
-                lat = loc['coords']['latitude']
-                lon = loc['coords']['longitude']
+                
                 m = folium.Map(location=[lat, lon], zoom_start=18)
                 Draw().add_to(m)
                 Fullscreen().add_to(m)
