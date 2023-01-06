@@ -41,7 +41,7 @@ if add_radio == "📝":
         m = folium.Map(location=[lat, lon], zoom_start=18)
         Draw().add_to(m)
         Fullscreen().add_to(m)
-        output = st_folium(m, width=500, height=700)
+        output = st_folium(m, width=500, height=700, "all_drawings")
         st.write(output)
         
                    
