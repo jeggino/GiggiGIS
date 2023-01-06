@@ -43,7 +43,7 @@ if add_radio == "📝":
     with c1:
         with st.form("entry_form_1", clear_on_submit=True):
             submitted = st.form_submit_button("New observation")
-            if submitted
+            if submitted:
                 m = folium.Map(location=[lat, lon], zoom_start=18)
                 Draw().add_to(m)
                 Fullscreen().add_to(m)
