@@ -9,3 +9,4 @@ streamlit-folium
 geopandas
 mapclassify
 pydeck 
+PIL
