@@ -36,8 +36,8 @@ def insert_period(date, sp, n, comment, geometry_type, geometry):
     return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "geometry_type":geometry_type, "geometry":geometry})
 
 with st.sidebar:
-    logo = Image.open("C:\Users\Luigi\OneDrive\Desktop\IMG_0433_edited.jpg", "rb")
-    st.image(logo)
+    logo = Image.open("IMG_0433_edited.jpg", "rb")
+    st.image(logo, output_format='JPEG')
     add_radio = st.radio(
         "pagina",
         ("📝", "🗺️")
