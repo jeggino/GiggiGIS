@@ -91,9 +91,9 @@ if add_radio == "📝":
             st.info("mark an observation")
             
 elif add_radio == "🗺️":
-    db_content = db_2.fetch().items
+    db_content = db_3.fetch().items
     df_point = pd.DataFrame(db_content)
-    gpf = geopandas.GeoDataFrame.from_features(df_point["geometry"])
+    gpf = geopandas.GeoDataFrame(df_point["json"])
     
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     folium.GeoJson(gpf.to_json(),
