@@ -13,8 +13,6 @@ import datetime
 
 from deta import Deta
 
-from PIL import Image
-
 
 st.set_page_config(
     page_title="GiggiGIS",
@@ -36,8 +34,7 @@ def insert_period(date, sp, n, comment, geometry_type, geometry):
     return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "geometry_type":geometry_type, "geometry":geometry})
 
 with st.sidebar:
-    logo = Image.open("292366152_369803905279628_8461882568456452789_n.jpg")
-    st.image(logo, output_format='JPEG')
+    
     add_radio = st.radio(
         "pagina",
         ("📝", "🗺️")
