@@ -13,6 +13,8 @@ import datetime
 
 from deta import Deta
 
+from PIL import Image
+
 st.set_page_config(
     page_title="GiggiGIS",
     page_icon="🍕",
@@ -24,6 +26,7 @@ st.set_page_config(
 deta = Deta(st.secrets["deta_key"])
 # Create a new database "example-db"
 db_2 = deta.Base("project_2")
+db_3 = deta.Base("project_2")
 
 # -------------- FUNCTIONS --------------
 
@@ -32,6 +35,8 @@ def insert_period(date, sp, n, comment, geometry_type, geometry):
     return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "geometry_type":geometry_type, "geometry":geometry})
 
 with st.sidebar:
+    logo = Image.open("C:\Users\Luigi\OneDrive\Desktop\IMG_0433_edited.jpg")
+    st.image(logo)
     add_radio = st.radio(
         "pagina",
         ("📝", "🗺️")
