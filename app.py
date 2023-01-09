@@ -25,13 +25,18 @@ st.set_page_config(
 deta = Deta(st.secrets["deta_key"])
 # Create a new database "example-db"
 db_2 = deta.Base("project_2")
-db_3 = deta.Base("project_2")
+db_3 = deta.Base("project_3")
+
 
 # -------------- FUNCTIONS --------------
 
 def insert_period(date, sp, n, comment, geometry_type, geometry):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db_2.put({ "date":str(date), "sp": sp, "n_specimens":n, "comment": comment, "geometry_type":geometry_type, "geometry":geometry})
+
+def insert_json(json):
+    """Returns the user on a successful user creation, otherwise raises and error"""
+    return db_3.put({ "json":json})
 
 with st.sidebar:
     
@@ -79,6 +84,7 @@ if add_radio == "📝":
                 submitted = st.form_submit_button("Save Data")
                 if submitted:
                     insert_period(date, sp, n, comment, geometry_type, geometry)
+                    insert_json(new_dict)
                     st.success('Data saved!', icon="✅")
 
         except:
