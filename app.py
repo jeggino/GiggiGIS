@@ -113,7 +113,7 @@ elif add_radio == "🗺️":
                                                         labels=True,
                                                         style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
                                                       )
-                          ).add_to(map)
+                          ).add_to(map_2)
         output_2 = st_folium(map_2, width=500, height=700, returned_objects=["all_drawings"]["properties"]["image_name"])
         
     with c2:
