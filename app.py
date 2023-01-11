@@ -36,8 +36,9 @@ lon = loc['coords']['longitude']
 def insert_json(json):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db_3.put({"json":json})
-    
-add_radio = st.radio("", horizontal=True, options = ["📝", "🗺️"])
+
+with st.sidebar:
+    add_radio = st.radio("", horizontal=False, options = ["📝", "🗺️"])
 
 if add_radio == "📝":   
     
