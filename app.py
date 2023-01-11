@@ -97,7 +97,7 @@ elif add_radio == "🗺️":
     db_content = db_3.fetch().items
     df_point = pd.DataFrame(db_content)
     gpf = geopandas.GeoDataFrame(df_point["json"])
-    st.dataframe(gpf)
+    st.dataframe(df_point)
     
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     for i in gpf["json"].to_list():
