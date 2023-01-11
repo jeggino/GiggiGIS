@@ -118,8 +118,11 @@ elif add_radio == "🗺️":
                             )
         
     with c2:
+        try:
         output_2
-        st.write(output_2["last_active_drawing"]["properties"]["image_name"])
+            st.write(output_2["last_active_drawing"]["properties"]["image_name"])
+        except:
+            st.info("No image")
         
    
 
