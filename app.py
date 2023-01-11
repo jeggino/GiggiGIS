@@ -84,13 +84,14 @@ if add_radio == "📝":
                         
                         drive.put(image_name, data=bytes_data)            
                         new_dict["features"][0]["properties"]["image_name"] = image_name
-                        
                         insert_json(new_dict)
+                        st.success('Data saved!', icon="✅")
                     else:
                         new_dict["features"][0]["properties"]["image_name"] = None
                         insert_json(new_dict)
+                        st.success('Data saved!', icon="✅")
                     st.warning("Qui é il casino!", icon="💀")
-                    st.success('Data saved!', icon="✅")
+                    
 
         except:
             st.info("mark an observation")
