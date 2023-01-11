@@ -117,7 +117,7 @@ elif add_radio == "🗺️":
         output_2 = st_folium(map_2, width=500, height=700, returned_objects=["all_drawings"]["properties"]["image_name"])
         
     with c2:
-        output_@
+        output_2
         
    
 
