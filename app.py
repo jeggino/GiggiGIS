@@ -8,7 +8,6 @@ from streamlit_js_eval import get_geolocation
 import pandas as pd
 
 import datetime
-import random
 
 from deta import Deta
 
@@ -89,14 +88,7 @@ if add_radio == "📝":
                         # Upload the image to deta using put with filename and data.
                         drive.put(uploaded_file.name, data=bytes_data)
                         
-                        # Generate random image name
-                        image_name = ''
-                        length = 12
-                        for _ in range(length):
-                            bits = random.getrandbits(8)
-                            num = (int('{0:b}'.format(bits),2) + 33) % 127
-                            image_name+= chr(num)
-                            
+                        image_name = uploaded_file.name
                         new_dict["features"][0]["properties"]["image_name"] = image_name
                         
                         insert_json(new_dict)
