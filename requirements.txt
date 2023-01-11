@@ -6,6 +6,4 @@ folium
 streamlit_js_eval
 altair
 streamlit-folium
-geopandas
-mapclassify
-pydeck 
+random 
