@@ -121,7 +121,11 @@ elif add_radio == "🗺️":
         try:
             name = st.write(output_2["last_active_drawing"]["properties"]["image_name"])
             image = drive.get(name)
-            st.image(image.read(), caption='Sunrise by the mountains')
+            from PIL import Image
+            ima = Image.open(image.read())
+
+            st.image(ima, caption='Sunrise by the mountains')
+#             st.image(image.read(), caption='Sunrise by the mountains')
         except:
             st.info("No image")
         
