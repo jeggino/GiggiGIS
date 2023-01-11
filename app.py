@@ -82,8 +82,6 @@ if add_radio == "📝":
                 new_dict["features"][0]["properties"]["n"] = n
                 new_dict["features"][0]["properties"]["comment"] = comment
                 
-                st.write(new_dict)
-
                 submitted = st.form_submit_button("Save Data")
                 if submitted:
                     insert_period(date, sp, n, comment, geometry_type, geometry)
@@ -97,7 +95,6 @@ elif add_radio == "🗺️":
     db_content = db_3.fetch().items
     df_point = pd.DataFrame(db_content)
     gpf = geopandas.GeoDataFrame(df_point["json"])
-    st.dataframe(df_point)
     
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     for i in gpf["json"].to_list():
