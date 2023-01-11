@@ -36,7 +36,6 @@ def insert_json(json):
 add_radio = st.radio(
     "pagina",
     ("📝", "🗺️"), 
-    label_visibility = "collapsed"
 )
 
 if add_radio == "📝":   
