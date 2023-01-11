@@ -99,7 +99,7 @@ elif add_radio == "🗺️":
         folium.GeoJson(i,
                       tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
                                                     aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
-                                                    labels=False,
+                                                    labels=True,
                                                     style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")
                                                   )
                       ).add_to(map)
