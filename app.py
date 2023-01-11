@@ -4,7 +4,6 @@ from folium.plugins import Draw, Fullscreen
 
 from streamlit_js_eval import get_geolocation
 
-import geopandas
 import pandas as pd
 
 from streamlit_folium import st_folium
@@ -25,7 +24,7 @@ st.set_page_config(
 deta = Deta(st.secrets["deta_key"])
 # Create a new database "example-db"
 db_3 = deta.Base("GiggiGIS_data")
-# db_drive = deta.Drive("GiggiGIS_data")
+db_drive = deta.Drive("GiggiGIS_data")
 
 
 # -------------- FUNCTIONS --------------
@@ -71,8 +70,10 @@ if add_radio == "📝":
                 sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
                 n = st.number_input("Number of specimens:", min_value=0)
                 comment = st.text_input("", placeholder="Enter a comment here ...")
-                geometry_type = new_dict["features"][0]["geometry"]["type"]
-                geometry = new_dict["features"][0]   
+                picture = st.camera_input("Take a picture")
+                
+#                 geometry_type = new_dict["features"][0]["geometry"]["type"]
+#                 geometry = new_dict["features"][0]   
                 
                 new_dict["features"][0]["properties"]["date"] = str(date)
                 new_dict["features"][0]["properties"]["sp"] = sp
@@ -91,8 +92,6 @@ if add_radio == "📝":
 elif add_radio == "🗺️":
     db_content = db_3.fetch().items
     df_point = pd.DataFrame(db_content)
-#     st.dataframe(df_point)
-#     gpf = geopandas.GeoDataFrame(df_point["json"])
     
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     for i in df_point["json"].to_list():
