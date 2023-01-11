@@ -37,7 +37,7 @@ add_radio = st.radio(
     "pagina",
     ("📝", "🗺️"), 
     horizontal = True,
-    label_visibility = "hidden"
+    label_visibility = "collapsed"
 )
 
 if add_radio == "📝":   
