@@ -1,8 +1,8 @@
-streamlit>=0.81.0
 deta
 pandas
 streamlit_option_menu
 folium
 streamlit_js_eval
 altair
-streamlit-folium
+streamlit==1.11.1
+streamlit-folium>=0.8.1
