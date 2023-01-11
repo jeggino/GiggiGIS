@@ -40,9 +40,7 @@ def insert_json(json):
 with st.sidebar:
     add_radio = st.radio("", horizontal=False, options = ["📝", "🗺️"])
 
-if add_radio == "📝":   
-    
-#     st.warning("Qui é il casino!", icon="💀")   
+if add_radio == "📝":      
 
     c1, c2 = st.columns([3,2])
     with c1:
@@ -91,7 +89,7 @@ if add_radio == "📝":
                     else:
                         new_dict["features"][0]["properties"]["image_name"] = None
                         insert_json(new_dict)
-                    
+                    st.warning("Qui é il casino!", icon="💀")
                     st.success('Data saved!', icon="✅")
 
         except:
