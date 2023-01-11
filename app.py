@@ -33,10 +33,7 @@ def insert_json(json):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db_3.put({"json":json})
     
-add_radio = st.radio(
-    "pagina", horizontal=True,
-    ("📝", "🗺️"), 
-)
+add_radio = st.radio("pagina", horizontal=True, ("📝", "🗺️"))
 
 if add_radio == "📝":   
     loc = get_geolocation()
