@@ -6,4 +6,3 @@ folium
 streamlit_js_eval
 altair
 streamlit-folium
-random 
