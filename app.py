@@ -114,7 +114,7 @@ elif add_radio == "🗺️":
                                                         style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
                                                       )
                           ).add_to(map)
-        output = st_folium(m, width=500, height=700)
+        output = st_folium(map, width=500, height=700)
         
     with c2:
         st.write(output)
