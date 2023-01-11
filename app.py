@@ -32,13 +32,13 @@ drive = deta.Drive("GiggiGIS_pictures")
 def insert_json(json):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db_3.put({"json":json})
-
-with st.sidebar:
     
-    add_radio = st.radio(
-        "pagina",
-        ("📝", "🗺️")
-    )
+add_radio = st.radio(
+    "pagina",
+    ("📝", "🗺️"), 
+    horizontal = True,
+    label_visibility = "hidden"
+)
 
 if add_radio == "📝":   
     loc = get_geolocation()
