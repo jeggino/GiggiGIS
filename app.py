@@ -72,9 +72,7 @@ if add_radio == "📝":
                 comment = st.text_input("", placeholder="Enter a comment here ...")
                 with st.expander("Upload a picture"):
                     uploaded_file = st.camera_input("")
-                
-#                 geometry_type = new_dict["features"][0]["geometry"]["type"]
-#                 geometry = new_dict["features"][0]   
+                   
                 
                 new_dict["features"][0]["properties"]["date"] = str(date)
                 new_dict["features"][0]["properties"]["sp"] = sp
