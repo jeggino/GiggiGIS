@@ -86,10 +86,12 @@ if add_radio == "📝":
                         new_dict["features"][0]["properties"]["image_name"] = image_name
                         insert_json(new_dict)
                         st.success('Data saved!', icon="✅")
+                        st.stop()
                     else:
                         new_dict["features"][0]["properties"]["image_name"] = None
                         insert_json(new_dict)
                         st.success('Data saved!', icon="✅")
+                        st.stop()
                     st.warning("Qui é il casino!", icon="💀")
                     
 
