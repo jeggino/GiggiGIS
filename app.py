@@ -47,7 +47,7 @@ if add_radio == "📝":
     with c1:
                 
         m = folium.Map(location=[lat, lon], zoom_start=18)
-        Draw().add_to(m)
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
         Fullscreen().add_to(m)
         output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
         
