@@ -25,7 +25,7 @@ st.set_page_config(
 deta = Deta(st.secrets["deta_key"])
 # Create a new database "example-db"
 db_3 = deta.Base("GiggiGIS_data")
-db_drive = deta.Drive("GiggiGIS_data")
+# db_drive = deta.Drive("GiggiGIS_data")
 
 
 # -------------- FUNCTIONS --------------
