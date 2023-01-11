@@ -25,6 +25,10 @@ deta = Deta(st.secrets["deta_key"])
 db_3 = deta.Base("GiggiGIS_data")
 drive = deta.Drive("GiggiGIS_pictures")
 
+loc = get_geolocation()
+lat = loc['coords']['latitude']
+lon = loc['coords']['longitude']
+
 
 # -------------- FUNCTIONS --------------
 
@@ -36,9 +40,7 @@ def insert_json(json):
 add_radio = st.radio("", horizontal=True, options = ["📝", "🗺️"])
 
 if add_radio == "📝":   
-    loc = get_geolocation()
-    lat = loc['coords']['latitude']
-    lon = loc['coords']['longitude']
+    
 #     st.warning("Qui é il casino!", icon="💀")   
 
     c1, c2 = st.columns([3,2])
