@@ -96,9 +96,11 @@ elif add_radio == "🗺️":
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     for i in gpf["json"].to_list():
         folium.GeoJson(i,
-                      tooltip=folium.GeoJsonPopup(fields= ["date", "sp", "n", "comment"],
+                      tooltip=folium.GeoJsonTootip(fields= ["date", "sp", "n", "comment"],
                                                     aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
-                                                    labels=True)
+                                                    labels=False,
+                                                    style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")
+                                                  )
                       ).add_to(map)
     st_folium(map)
    
