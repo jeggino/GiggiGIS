@@ -119,7 +119,9 @@ elif add_radio == "🗺️":
         
     with c2:
         try:
-            st.write(output_2["last_active_drawing"]["properties"]["image_name"])
+            name = st.write(output_2["last_active_drawing"]["properties"]["image_name"])
+            image = drive.get(name)
+            st.image(image, caption='Sunrise by the mountains')
         except:
             st.info("No image")
         
