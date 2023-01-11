@@ -1,12 +1,11 @@
 import folium
 import streamlit as st
-from folium.plugins import Draw, Fullscreen
 
+from folium.plugins import Draw, Fullscreen
+from streamlit_folium import st_folium
 from streamlit_js_eval import get_geolocation
 
 import pandas as pd
-
-from streamlit_folium import st_folium
 
 import datetime
 
@@ -24,7 +23,7 @@ st.set_page_config(
 deta = Deta(st.secrets["deta_key"])
 # Create a new database "example-db"
 db_3 = deta.Base("GiggiGIS_data")
-db_drive = deta.Drive("GiggiGIS_data")
+drive = deta.Drive("GiggiGIS_pictures")
 
 
 # -------------- FUNCTIONS --------------
@@ -70,7 +69,8 @@ if add_radio == "📝":
                 sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
                 n = st.number_input("Number of specimens:", min_value=0)
                 comment = st.text_input("", placeholder="Enter a comment here ...")
-                picture = st.camera_input("Take a picture")
+                with st.expander("Upload a picture"):
+                    uploaded_file = st.camera_input("")
                 
 #                 geometry_type = new_dict["features"][0]["geometry"]["type"]
 #                 geometry = new_dict["features"][0]   
@@ -82,8 +82,18 @@ if add_radio == "📝":
                 
                 submitted = st.form_submit_button("Save Data")
                 if submitted:
+                    # If user attempts to upload a file.
+                    if uploaded_file is not None:
+                        bytes_data = uploaded_file.getvalue()
+                        # Upload the image to deta using put with filename and data.
+                        drive.put(uploaded_file.name, data=bytes_data)
+                        image_name = uploaded_file.name
+                        new_dict["features"][0]["properties"]["image_name"] = image_name
+                        insert_json(new_dict)
+                    else:
+                        new_dict["features"][0]["properties"]["image_name"] = None
+                        insert_json(new_dict)
                     
-                    insert_json(new_dict)
                     st.success('Data saved!', icon="✅")
 
         except:
@@ -99,7 +109,7 @@ elif add_radio == "🗺️":
                       tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
                                                     aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
                                                     labels=True,
-                                                    style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")
+                                                    style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
                                                   )
                       ).add_to(map)
     st_folium(map)
