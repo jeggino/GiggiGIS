@@ -87,8 +87,17 @@ if add_radio == "📝":
                         bytes_data = uploaded_file.getvalue()
                         # Upload the image to deta using put with filename and data.
                         drive.put(uploaded_file.name, data=bytes_data)
-                        image_name = uploaded_file.name
+                        
+                        # Generate random image name
+                        image_name = ''
+                        length = 12
+                        for _ in range(length):
+                            bits = random.getrandbits(8)
+                            num = (int('{0:b}'.format(bits),2) + 33) % 127
+                            image_name+= chr(num)
+                            
                         new_dict["features"][0]["properties"]["image_name"] = image_name
+                        
                         insert_json(new_dict)
                     else:
                         new_dict["features"][0]["properties"]["image_name"] = None
