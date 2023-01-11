@@ -120,7 +120,6 @@ elif add_radio == "🗺️":
     with c2:
         try:
             name = output_2["last_active_drawing"]["properties"]["image_name"]
-            nst.write(name)
             image = drive.get(name).read()
             st.image(image, caption='Sunrise by the mountains')
         except:
