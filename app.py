@@ -95,8 +95,8 @@ if add_radio == "📝":
                     st.warning("Qui é il casino!", icon="💀")
                     
 
-#         except:
-#             st.info("mark an observation")
+        except:
+            st.info("mark an observation")
             
 elif add_radio == "🗺️":
     c1, c2 = st.columns([3,2])
