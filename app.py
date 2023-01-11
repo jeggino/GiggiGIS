@@ -105,7 +105,7 @@ elif add_radio == "🗺️":
         db_content = db_3.fetch().items
         df_point = pd.DataFrame(db_content)
 
-        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+        map_2 = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
         for i in df_point["json"].to_list():
             folium.GeoJson(i,
                           tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
@@ -114,10 +114,10 @@ elif add_radio == "🗺️":
                                                         style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
                                                       )
                           ).add_to(map)
-        output = st_folium(map, width=500, height=700)
+        output_2 = st_folium(map_2, width=500, height=700, returned_objects=["all_drawings"]["properties"]["image_name"])
         
     with c2:
-        st.write(output)
+        output_@
         
    
 
