@@ -34,7 +34,7 @@ def insert_json(json):
     return db_3.put({"json":json})
     
 add_radio = st.radio(
-    "pagina",
+    "pagina", horizontal=True,
     ("📝", "🗺️"), 
 )
 
