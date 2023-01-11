@@ -119,7 +119,7 @@ elif add_radio == "🗺️":
         
     with c2:
         output_2
-        st.write(output_2[last_active_drawing"]["properties"]["image_name"])
+        st.write(output_2["last_active_drawing"]["properties"]["image_name"])
         
    
 
