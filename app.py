@@ -81,7 +81,7 @@ if add_radio == "📝":
                 
                 submitted = st.form_submit_button("Save Data")
                 if submitted:
-                    insert_period(date, sp, n, comment, geometry_type, geometry)
+                    
                     insert_json(new_dict)
                     st.success('Data saved!', icon="✅")
 
