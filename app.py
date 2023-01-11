@@ -45,6 +45,7 @@ if add_radio == "📝":
     lat = loc['coords']['latitude']
     lon = loc['coords']['longitude']
 #     st.warning("Qui é il casino!", icon="💀")   
+
     c1, c2 = st.columns([3,2])
     with c1:
                 
@@ -85,10 +86,9 @@ if add_radio == "📝":
                     # If user attempts to upload a file.
                     if uploaded_file is not None:
                         bytes_data = uploaded_file.getvalue()
-                        # Upload the image to deta using put with filename and data.
-                        drive.put(uploaded_file.name, data=bytes_data)
-                        
                         image_name = uploaded_file.name
+                        
+                        drive.put(image_name, data=bytes_data)            
                         new_dict["features"][0]["properties"]["image_name"] = image_name
                         
                         insert_json(new_dict)
@@ -102,18 +102,24 @@ if add_radio == "📝":
             st.info("mark an observation")
             
 elif add_radio == "🗺️":
-    db_content = db_3.fetch().items
-    df_point = pd.DataFrame(db_content)
-    
-    map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-    for i in df_point["json"].to_list():
-        folium.GeoJson(i,
-                      tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
-                                                    aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
-                                                    labels=True,
-                                                    style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-                                                  )
-                      ).add_to(map)
-    st_folium(map)
+    c1, c2 = st.columns([3,2])
+    with c1:
+        db_content = db_3.fetch().items
+        df_point = pd.DataFrame(db_content)
+
+        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+        for i in df_point["json"].to_list():
+            folium.GeoJson(i,
+                          tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
+                                                        aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
+                                                        labels=True,
+                                                        style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+                                                      )
+                          ).add_to(map)
+        output = st_folium(m, width=500, height=700)
+        
+    with c2:
+        st.write(output)
+        
    
 
