@@ -149,7 +149,7 @@ elif add_radio == "🗺️":
             
             uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
             df = pd.read_csv(uploaded_file)
-            st.dataframe(df)
+            st.write(df)
             magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
 
 
