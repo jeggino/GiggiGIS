@@ -173,7 +173,7 @@ elif add_radio == "🗺️":
                     st.write("You didn\'t select comedy.")
                     
             with c1:
-                
+                st.write("error")
                 filter = df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
                 st,dataframe(filter)
                 gdf = gpd.GeoDataFrame(filter, geometry=geopandas.points_from_xy(filter.Latitudine, filter.Longitudine))
