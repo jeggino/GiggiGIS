@@ -175,6 +175,7 @@ elif add_radio == "🗺️":
             with c1:
                 
                 filter = df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
+                st,dataframe(filter)
                 gdf = gpd.GeoDataFrame(filter, geometry=geopandas.points_from_xy(filter.Latitudine, filter.Longitudine))
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
                 folium.GeoJson(gdf.to_json(),
