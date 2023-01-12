@@ -146,7 +146,7 @@ elif add_radio == "🗺️":
                 
     elif option == 'updtae dataset':
         with c2:
-            st.warning("Qui é il casino!", icon="💀")
+            
             uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
             df = pd.read_csv(uploaded_file)
             magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
