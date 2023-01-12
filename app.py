@@ -110,8 +110,10 @@ if add_radio == "📝":
             st.info("mark an observation")
             
 elif add_radio == "🗺️":
-    c1, c2 = st.columns([3,2])
+    
     option = st.selectbox('',('Chose a way', 'Cloud', 'updtae dataset'))
+    
+    c1, c2 = st.columns([3,2])
     
     if option == 'Chose a way':
         with c1:
