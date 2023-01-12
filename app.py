@@ -159,13 +159,15 @@ elif add_radio == "🗺️":
             df = pd.read_csv(uploaded_file)
             with c2:
                 
-                deep = st.slider("Deep", min_value=0, max_value=40, value=(1,2), step=1, label_visibility="visible")
+                city = st.multiselect("", df["stad"].unique(), default=None,label_visibility="collapsed")
+                
                 
             with c1:
                 
-                filter = df[(df.Profondità>=deep[0]) & (df.Profondità<=deep[1])]
-                gdf = gpd.GeoDataFrame(filter, geometry=gpd.points_from_xy(filter.Latitudine, filter.Longitudine))
-                map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+                filter = df[df["stad"].isin(city)]
+                gdf = gpd.GeoDataFrame(filter, geometry=gpd.points_from_xy(filter.lon),filter.lat)
+                
+                map = folium.Map(location=[filter.lat.mean(), filter.lon.mean()], zoom_start=8)
                 folium.GeoJson(gdf.to_json(),
 #                               tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profondità", "magnitudo_score"],
 #                                                             aliases=["Date: ", "Deepness: ", "Magnitudo: "],
