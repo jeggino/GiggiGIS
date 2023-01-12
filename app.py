@@ -116,9 +116,10 @@ elif add_radio == "🗺️":
     c1, c2 = st.columns([3,2])
     
     if option == 'Chose a way':
-        with c1:
-            map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-            st_folium(map, width=500, height=700)
+        st.stop()
+#         with c1:
+#             map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+#             st_folium(map, width=500, height=700)
     
     elif option == 'Cloud':
     
