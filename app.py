@@ -160,9 +160,9 @@ elif add_radio == "🗺️":
         try:
             with c2:
                 
-                magnitudo = st.slider("Magnitudo", min_value=1, max_value=5, value=(3,5), step=1, label_visibility="visible")
-                st.write(magnitudo[0])
-                st.write(magnitudo[1])
+                deep = st.slider("Deep", min_value=0, max_value=40, value=(10,20), step=1, label_visibility="visible")
+                st.write(deep[0])
+                st.write(deep[1])
                 genre = st.radio(
                     "What\'s your favorite movie genre",
                     ('Comedy', 'Drama', 'Documentary'))
@@ -174,7 +174,7 @@ elif add_radio == "🗺️":
                     
             with c1:
                 st.write("error")
-                filter = df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
+                filter = df[(df.profonditá>=deep[0]) & (df.profonditá<=deep[1])]
                 st,dataframe(filter)
                 gdf = gpd.GeoDataFrame(filter, geometry=geopandas.points_from_xy(filter.Latitudine, filter.Longitudine))
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
