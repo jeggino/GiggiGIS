@@ -155,8 +155,7 @@ elif add_radio == "🗺️":
             
         with c2:
             uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
-            bytes_data = uploaded_file.read()
-            df = pd.read_csv(bytes_data)
+            df = pd.read_csv(uploaded_file)
             st.dataset(df)
         
    
