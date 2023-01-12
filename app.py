@@ -144,14 +144,12 @@ elif add_radio == "🗺️":
             except:
                 st.info("No image")
                 
-    if option == 'updtae dataset':
+    elif option == 'updtae dataset':
         c1, c2 = st.columns([3,2])
-#         try:
         with c2:
             st.warning("Qui é il casino!", icon="💀")
             uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
             df = pd.read_csv(uploaded_file)
-#             
             magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
 
 
@@ -172,8 +170,7 @@ elif add_radio == "🗺️":
                           ).add_to(map)
 
             st_folium(map, width=500, height=700)
-#         except:
-#             st.write("wait")
+
             
         
         
