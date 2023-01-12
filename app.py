@@ -151,7 +151,8 @@ elif add_radio == "🗺️":
         try:
             with c2:
                 df = pd.read_csv(uploaded_file)
-                magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
+                magnitudo = st.slider("Magnitudo", min_value=1, max_value=5, value=(3,5), step=1, label_visibility="visible")
+                
 
             with c1:
                 filter = df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
