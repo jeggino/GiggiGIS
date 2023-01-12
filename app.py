@@ -153,7 +153,6 @@ elif add_radio == "🗺️":
         
         uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
         df = pd.read_csv(uploaded_file)
-        st.dataframe(df)
         
         c1, c2 = st.columns([3,2])
         
@@ -161,15 +160,11 @@ elif add_radio == "🗺️":
             with c2:
                 
                 deep = st.slider("Deep", min_value=0, max_value=40, value=(10,20), step=1, label_visibility="visible")
-                st.write(deep[0])
-                st.write(deep[1])
                 
             with c1:
                 
                 filter = df[(df.Profondità>=deep[0]) & (df.Profondità<=deep[1])]
-                st.write("error")
-                st.dataframe(filter)
-                gdf = gpd.GeoDataFrame(filter, geometry=geopandas.points_from_xy(filter.Latitudine, filter.Longitudine))
+                gdf = gpd.GeoDataFrame(filter, geometry=gpd.points_from_xy(filter.Latitudine, filter.Longitudine))
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
                 folium.GeoJson(gdf.to_json(),
                               tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profonditá", "magnitudo_score"],
