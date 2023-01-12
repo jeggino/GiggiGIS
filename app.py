@@ -6,6 +6,7 @@ from streamlit_folium import st_folium
 from streamlit_js_eval import get_geolocation
 
 import pandas as pd
+import geopandas as gpd
 
 import datetime
 
@@ -34,10 +35,10 @@ lon = loc['coords']['longitude']
 st.markdown("""
     <style>
       section[data-testid="stSidebar"][aria-expanded="true"]{
-        height: 10% !important;
+        width: 10% !important;
       }
       section[data-testid="stSidebar"][aria-expanded="false"]{
-        height: 10% !important;
+        width: 10% !important;
       }
     </style>""", unsafe_allow_html=True)
 
@@ -149,7 +150,6 @@ elif add_radio == "🗺️":
             
             uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
             df = pd.read_csv(uploaded_file)
-            st.write(df)
             magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
 
 
@@ -157,7 +157,7 @@ elif add_radio == "🗺️":
         with c1:
             df=df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
 
-            gdf = geopandas.GeoDataFrame(df, geometry=geopandas.points_from_xy(df.Latitudine, df.Longitudine))
+            gdf = gpd.GeoDataFrame(df, geometry=geopandas.points_from_xy(df.Latitudine, df.Longitudine))
 
             map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
 
