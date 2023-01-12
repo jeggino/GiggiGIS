@@ -117,9 +117,6 @@ elif add_radio == "🗺️":
     
     if option == 'Chose a way':
         st.stop()
-#         with c1:
-#             map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-#             st_folium(map, width=500, height=700)
     
     elif option == 'Cloud':
     
@@ -152,7 +149,7 @@ elif add_radio == "🗺️":
             uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
             df = pd.read_csv(uploaded_file)
             magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
-            df=df[(df.magnitudo_score>=magnitudo[0]) & df.magnitudo_score<=magnitudo[1])]
+            df=df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
             
             gdf = geopandas.GeoDataFrame(df, geometry=geopandas.points_from_xy(df.Latitudine, df.Longitudine))
             folium.GeoJson(gdf.to_json(),
