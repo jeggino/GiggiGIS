@@ -182,8 +182,7 @@ elif add_radio == "🗺️":
 
                 output = st_folium(map, width=500, height=700)
                 
-            with c1:
-                output
+            c2.write(output)
 
         except:
             st.stop()
