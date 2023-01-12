@@ -145,7 +145,6 @@ elif add_radio == "🗺️":
                 st.info("No image")
                 
     elif option == 'updtae dataset':
-        c1, c2 = st.columns([3,2])
         with c2:
             st.warning("Qui é il casino!", icon="💀")
             uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
