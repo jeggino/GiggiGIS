@@ -31,16 +31,15 @@ lon = loc['coords']['longitude']
 
 # ---CUSTUMIZE---
 
-st.markdown(
-    f'''
-        <style>
-            .sidebar .sidebar-content {{
-                width: 100px;
-            }}
-        </style>
-    ''',
-    unsafe_allow_html=True
-)
+st.markdown("""
+    <style>
+      section[data-testid="stSidebar"][aria-expanded="true"]{
+        height: 80% !important;
+      }
+      section[data-testid="stSidebar"][aria-expanded="false"]{
+        height: 80% !important;
+      }
+    </style>""", unsafe_allow_html=True)
 
 # -------------- FUNCTIONS --------------
 
