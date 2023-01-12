@@ -2,7 +2,7 @@ import folium
 import streamlit as st
 
 from folium.plugins import Draw, Fullscreen
-from streamlit_folium import st_folium
+from streamlit_folium import st_folium, folium_static
 from streamlit_js_eval import get_geolocation
 
 import pandas as pd
@@ -175,7 +175,7 @@ elif add_radio == "🗺️":
 #                                                           )
                           ).add_to(map)
 
-            output = st_folium(map)
+            output = folium_static(map)
                 
             st.sidebar.write(output)
 
