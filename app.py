@@ -34,10 +34,10 @@ lon = loc['coords']['longitude']
 st.markdown("""
     <style>
       section[data-testid="stSidebar"][aria-expanded="true"]{
-        height: 80% !important;
+        height: 10% !important;
       }
       section[data-testid="stSidebar"][aria-expanded="false"]{
-        height: 80% !important;
+        height: 10% !important;
       }
     </style>""", unsafe_allow_html=True)
 
