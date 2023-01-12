@@ -174,7 +174,7 @@ elif add_radio == "🗺️":
                     
             with c1:
                 st.write("error")
-                filter = df[(df.profonditá>=deep[0]) & (df.profonditá<=deep[1])]
+                filter = df[(df.Profonditá>=deep[0]) & (df.Profonditá<=deep[1])]
                 st,dataframe(filter)
                 gdf = gpd.GeoDataFrame(filter, geometry=geopandas.points_from_xy(filter.Latitudine, filter.Longitudine))
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
