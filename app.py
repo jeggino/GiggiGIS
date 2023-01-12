@@ -167,11 +167,11 @@ elif add_radio == "🗺️":
                 gdf = gpd.GeoDataFrame(filter, geometry=gpd.points_from_xy(filter.Latitudine, filter.Longitudine))
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
                 folium.GeoJson(gdf.to_json(),
-                              tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profondità", "magnitudo_score"],
-                                                            aliases=["Date: ", "Deepness: ", "Magnitudo: "],
-                                                            labels=True,
-                                                            style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-                                                          )
+#                               tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profondità", "magnitudo_score"],
+#                                                             aliases=["Date: ", "Deepness: ", "Magnitudo: "],
+#                                                             labels=True,
+#                                                             style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+#                                                           )
                               ).add_to(map)
 
                 st_folium(map, width=500, height=700)
