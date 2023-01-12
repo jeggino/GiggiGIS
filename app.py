@@ -150,14 +150,10 @@ elif add_radio == "🗺️":
 
                 
     elif option == 'updtae dataset':
-        
-        
-        
-        c1, c2 = st.columns([3,2])
-        
+                
         try:
             
-            with c2:
+            with st.sidebar():
                 uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
                 df = pd.read_csv(uploaded_file)
                 city = st.multiselect("", df["stad"].unique(), default=None,label_visibility="collapsed")
@@ -166,23 +162,22 @@ elif add_radio == "🗺️":
                 
                 
                 
-            with c1:
                 
-                filter = df[(df["stad"].isin(city)) & (df["nlnaam"].isin(nlnaam)) & (df["functie"].isin(functie))]
-                gdf = gpd.GeoDataFrame(filter, geometry=gpd.points_from_xy(filter.lon,filter.lat))
-                
-                map = folium.Map(location=[filter.lat.mean(),filter.lon.mean()], zoom_start=8)
-                folium.GeoJson(gdf.to_json(),
+            filter = df[(df["stad"].isin(city)) & (df["nlnaam"].isin(nlnaam)) & (df["functie"].isin(functie))]
+            gdf = gpd.GeoDataFrame(filter, geometry=gpd.points_from_xy(filter.lon,filter.lat))
+
+            map = folium.Map(location=[filter.lat.mean(),filter.lon.mean()], zoom_start=8)
+            folium.GeoJson(gdf.to_json(),
 #                               tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profondità", "magnitudo_score"],
 #                                                             aliases=["Date: ", "Deepness: ", "Magnitudo: "],
 #                                                             labels=True,
 #                                                             style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
 #                                                           )
-                              ).add_to(map)
+                          ).add_to(map)
 
-                output = st_folium(map, width=500, height=700)
+            output = st_folium(map, width=500, height=700)
                 
-            c2.write(output)
+            st.sidebar().write(output)
 
         except:
             st.stop()
