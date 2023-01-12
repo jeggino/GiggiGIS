@@ -140,8 +140,9 @@ elif add_radio == "🗺️":
             try:
                 name = output_2["last_active_drawing"]["properties"]["image_name"]
                 comment = output_2["last_active_drawing"]["properties"]["comment"]
-                image = drive.get(name).read()
-                st.image(image, caption=comment)
+                with st.container():
+                    image = drive.get(name).read()
+                    st.image(image, caption=comment)
             except:
                 st.info("No image")
                 
@@ -149,19 +150,13 @@ elif add_radio == "🗺️":
         uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
         try:
             with c2:
-
                 df = pd.read_csv(uploaded_file)
                 magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
 
-
-
             with c1:
                 filter = df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
-
                 gdf = gpd.GeoDataFrame(filter, geometry=geopandas.points_from_xy(filter.Latitudine, filter.Longitudine))
-
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-
                 folium.GeoJson(gdf.to_json(),
                               tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profonditá", "magnitudo_score"],
                                                             aliases=["Date: ", "Deepness: ", "Magnitudo: "],
