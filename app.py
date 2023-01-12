@@ -113,7 +113,7 @@ if add_radio == "📝":
 elif add_radio == "🗺️":
     
     with st.sidebar:
-        option = st.selectbox('',('Cloud', 'updtae dataset'))
+        option = st.selectbox('',('Cloud', 'Load dataset'))
 
     
     if option == 'Cloud':
@@ -146,7 +146,7 @@ elif add_radio == "🗺️":
                 st.info("No image")
 
                 
-    elif option == 'updtae dataset':
+    elif option == 'Load dataset':
                 
         try:
             
