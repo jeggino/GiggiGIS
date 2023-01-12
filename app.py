@@ -146,33 +146,33 @@ elif add_radio == "🗺️":
                 
     if option == 'updtae dataset':
         c1, c2 = st.columns([3,2])
-        try:
-            with c2:
-                uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
-                df = pd.read_csv(uploaded_file)
-                st.warning("Qui é il casino!", icon="💀")
-                magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
+#         try:
+        with c2:
+            uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
+            df = pd.read_csv(uploaded_file)
+            st.warning("Qui é il casino!", icon="💀")
+            magnitudo = st.slider('Select a range of magnitudo values',0.0, 5.0, (3, 5))
 
 
 
-            with c1:
-                df=df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
+        with c1:
+            df=df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
 
-                gdf = geopandas.GeoDataFrame(df, geometry=geopandas.points_from_xy(df.Latitudine, df.Longitudine))
+            gdf = geopandas.GeoDataFrame(df, geometry=geopandas.points_from_xy(df.Latitudine, df.Longitudine))
 
-                map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+            map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
 
-                folium.GeoJson(gdf.to_json(),
-                              tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profonditá", "magnitudo_score"],
-                                                            aliases=["Date: ", "Deepness: ", "Magnitudo: "],
-                                                            labels=True,
-                                                            style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-                                                          )
-                              ).add_to(map)
+            folium.GeoJson(gdf.to_json(),
+                          tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profonditá", "magnitudo_score"],
+                                                        aliases=["Date: ", "Deepness: ", "Magnitudo: "],
+                                                        labels=True,
+                                                        style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+                                                      )
+                          ).add_to(map)
 
-                st_folium(map, width=500, height=700)
-        except:
-            st.write("wait")
+            st_folium(map, width=500, height=700)
+#         except:
+#             st.write("wait")
             
         
         
