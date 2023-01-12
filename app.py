@@ -164,6 +164,8 @@ elif add_radio == "🗺️":
                 nlnaam = st.multiselect("", df["nlnaam"].unique(), default=None,label_visibility="collapsed")
                 functie = st.multiselect("", df["functie"].unique(), default=None,label_visibility="collapsed")
                 
+                output
+                
                 
             with c1:
                 
@@ -179,7 +181,7 @@ elif add_radio == "🗺️":
 #                                                           )
                               ).add_to(map)
 
-                st_folium(map, width=500, height=700)
+                output = st_folium(map, width=500, height=700)
         except:
             st.stop()
 
