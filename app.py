@@ -142,7 +142,7 @@ elif add_radio == "🗺️":
                 comment = output_2["last_active_drawing"]["properties"]["comment"]
                 with st.container():
                     image = drive.get(name).read()
-                    st.image(image, caption=comment)
+                    st.image(image, caption=comment, use_column_width='always')
             except:
                 st.info("No image")
                 
