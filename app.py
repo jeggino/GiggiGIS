@@ -152,11 +152,11 @@ elif add_radio == "🗺️":
     elif option == 'updtae dataset':
         
         uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
-        df = pd.read_csv(uploaded_file)
         
         c1, c2 = st.columns([3,2])
         
         try:
+            df = pd.read_csv(uploaded_file)
             with c2:
                 
                 deep = st.slider("Deep", min_value=0, max_value=40, value=(10,20), step=1, label_visibility="visible")
@@ -167,7 +167,7 @@ elif add_radio == "🗺️":
                 gdf = gpd.GeoDataFrame(filter, geometry=gpd.points_from_xy(filter.Latitudine, filter.Longitudine))
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
                 folium.GeoJson(gdf.to_json(),
-                              tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profonditá", "magnitudo_score"],
+                              tooltip=folium.GeoJsonTooltip(fields= ["Data", "Profondità", "magnitudo_score"],
                                                             aliases=["Date: ", "Deepness: ", "Magnitudo: "],
                                                             labels=True,
                                                             style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
