@@ -175,7 +175,7 @@ elif add_radio == "🗺️":
 #                                                           )
                           ).add_to(map)
 
-            output = st_folium(map, width=100%)
+            output = st_folium(map, width=1000)
                 
             st.sidebar.write(output)
 
