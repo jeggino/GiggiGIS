@@ -114,12 +114,14 @@ elif add_radio == "🗺️":
     
     option = st.selectbox('',('Chose a way', 'Cloud', 'updtae dataset'))
     
-    c1, c2 = st.columns([3,2])
+    
     
     if option == 'Chose a way':
         st.stop()
     
     elif option == 'Cloud':
+        
+        c1, c2 = st.columns([3,2])
     
         with c1:
             db_content = db_3.fetch().items
@@ -151,6 +153,10 @@ elif add_radio == "🗺️":
         
         uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
         df = pd.read_csv(uploaded_file)
+        st.dataframe(df)
+        
+        c1, c2 = st.columns([3,2])
+        
         try:
             with c2:
                 
