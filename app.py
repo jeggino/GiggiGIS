@@ -145,16 +145,29 @@ elif add_radio == "🗺️":
                     st.image(image, caption=comment, use_column_width='always')
             except:
                 st.info("No image")
+
                 
     elif option == 'updtae dataset':
+        
         uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
+        df = pd.read_csv(uploaded_file)
         try:
             with c2:
-                df = pd.read_csv(uploaded_file)
-                magnitudo = st.slider("Magnitudo", min_value=1, max_value=5, value=(3,5), step=1, label_visibility="visible")
                 
+                magnitudo = st.slider("Magnitudo", min_value=1, max_value=5, value=(3,5), step=1, label_visibility="visible")
+                st.write(magnitudo[0])
+                st.write(magnitudo[1])
+                genre = st.radio(
+                    "What\'s your favorite movie genre",
+                    ('Comedy', 'Drama', 'Documentary'))
 
+                if genre == 'Comedy':
+                    st.write('You selected comedy.')
+                else:
+                    st.write("You didn\'t select comedy.")
+                    
             with c1:
+                
                 filter = df[(df.magnitudo_score>=magnitudo[0]) & (df.magnitudo_score<=magnitudo[1])]
                 gdf = gpd.GeoDataFrame(filter, geometry=geopandas.points_from_xy(filter.Latitudine, filter.Longitudine))
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
