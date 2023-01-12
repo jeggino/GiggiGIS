@@ -112,7 +112,7 @@ if add_radio == "📝":
             
 elif add_radio == "🗺️":
     
-    st.sidebar:
+    with st.sidebar:
         option = st.selectbox('',('Chose a way', 'Cloud', 'updtae dataset'))
     
     
