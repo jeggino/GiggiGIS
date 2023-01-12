@@ -170,7 +170,7 @@ elif add_radio == "🗺️":
 
                 st_folium(map, width=500, height=700)
         except:
-            st.stop()
+            st.write("wait")
             
         
         
