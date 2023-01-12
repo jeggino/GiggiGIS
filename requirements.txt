@@ -4,5 +4,5 @@ streamlit_option_menu
 folium
 streamlit_js_eval
 altair
-streamlit==1.11.1
+streamlit
 streamlit-folium>=0.8.1
