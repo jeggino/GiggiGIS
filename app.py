@@ -159,7 +159,7 @@ elif add_radio == "🗺️":
             df = pd.read_csv(uploaded_file)
             with c2:
                 
-                deep = st.slider("Deep", min_value=0, max_value=40, value=(10,20), step=1, label_visibility="visible")
+                deep = st.slider("Deep", min_value=0, max_value=40, value=(2), step=1, label_visibility="visible")
                 
             with c1:
                 
