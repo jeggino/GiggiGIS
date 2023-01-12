@@ -111,30 +111,44 @@ if add_radio == "📝":
             
 elif add_radio == "🗺️":
     c1, c2 = st.columns([3,2])
-    with c1:
-        db_content = db_3.fetch().items
-        df_point = pd.DataFrame(db_content)
+    option = st.selectbox('',('Chose a way', 'Cloud', 'updtae dataset'))
+    
+    if option == 'Chose a way':
+        with c1:
+            map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+            st_folium(map, width=500, height=700)
+    
+    elif option == 'Cloud':
+    
+        with c1:
+            db_content = db_3.fetch().items
+            df_point = pd.DataFrame(db_content)
 
-        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-        for i in df_point["json"].to_list():
-            folium.GeoJson(i,
-                          tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
-                                                        aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
-                                                        labels=True,
-                                                        style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-                                                      )
-                          ).add_to(map)
-        output_2 = st_folium(map, width=500, height=700,
-                            )
-        
-    with c2:
-        try:
-            name = output_2["last_active_drawing"]["properties"]["image_name"]
-            comment = output_2["last_active_drawing"]["properties"]["comment"]
-            image = drive.get(name).read()
-            st.image(image, caption=comment)
-        except:
-            st.info("No image")
+            map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+            for i in df_point["json"].to_list():
+                folium.GeoJson(i,
+                              tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
+                                                            aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
+                                                            labels=True,
+                                                            style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+                                                          )
+                              ).add_to(map)
+            output_2 = st_folium(map, width=500, height=700,
+                                )
+
+        with c2:
+            try:
+                name = output_2["last_active_drawing"]["properties"]["image_name"]
+                comment = output_2["last_active_drawing"]["properties"]["comment"]
+                image = drive.get(name).read()
+                st.image(image, caption=comment)
+            except:
+                st.info("No image")
+                
+    if option == 'updtae dataset':
+        with c1:
+            map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+            st_folium(map, width=500, height=700)
         
    
 
