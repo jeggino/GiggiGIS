@@ -145,6 +145,7 @@ elif add_radio == "🗺️":
                 st.info("No image")
                 
     if option == 'updtae dataset':
+        c1, c2 = st.columns([3,2])
         try:
             with c2:
                 uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
