@@ -163,19 +163,11 @@ elif add_radio == "🗺️":
                 deep = st.slider("Deep", min_value=0, max_value=40, value=(10,20), step=1, label_visibility="visible")
                 st.write(deep[0])
                 st.write(deep[1])
-                genre = st.radio(
-                    "What\'s your favorite movie genre",
-                    ('Comedy', 'Drama', 'Documentary'))
-
-                if genre == 'Comedy':
-                    st.write('You selected comedy.')
-                else:
-                    st.write("You didn\'t select comedy.")
-                    
+                
             with c1:
                 st.write("error")
                 filter = df[(df.Profonditá>=deep[0]) & (df.Profonditá<=deep[1])]
-                st,dataframe(filter)
+                st.dataframe(filter)
                 gdf = gpd.GeoDataFrame(filter, geometry=geopandas.points_from_xy(filter.Latitudine, filter.Longitudine))
                 map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
                 folium.GeoJson(gdf.to_json(),
