@@ -153,7 +153,7 @@ elif add_radio == "🗺️":
                 
         try:
             
-            with st.sidebar():
+            with st.sidebar:
                 uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
                 df = pd.read_csv(uploaded_file)
                 city = st.multiselect("", df["stad"].unique(), default=None,label_visibility="collapsed")
@@ -177,7 +177,7 @@ elif add_radio == "🗺️":
 
             output = st_folium(map, width=500, height=700)
                 
-            st.sidebar().write(output)
+            st.sidebar.write(output)
 
         except:
             st.stop()
