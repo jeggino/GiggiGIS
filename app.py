@@ -152,6 +152,13 @@ elif add_radio == "🗺️":
         with c1:
             map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
             st_folium(map, width=500, height=700)
+            
+        with c2:
+            uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
+            for uploaded_file in uploaded_files:
+                bytes_data = uploaded_file.read()
+                st.write("filename:", uploaded_file.name)
+                st.write(bytes_data)
         
    
 
