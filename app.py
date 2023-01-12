@@ -154,8 +154,9 @@ elif add_radio == "🗺️":
             st_folium(map, width=500, height=700)
             
         with c2:
-            uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=True)
-            df = pd.read_csv(uploaded_files)
+            uploaded_files = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
+            bytes_data = uploaded_file.read()
+            df = pd.read_csv(bytes_data)
             st.dataset(df)
         
    
