@@ -29,6 +29,18 @@ loc = get_geolocation()
 lat = loc['coords']['latitude']
 lon = loc['coords']['longitude']
 
+# ---CUSTUMIZE---
+
+st.markdown(
+    f'''
+        <style>
+            .sidebar .sidebar-content {{
+                width: 375px;
+            }}
+        </style>
+    ''',
+    unsafe_allow_html=True
+)
 
 # -------------- FUNCTIONS --------------
 
