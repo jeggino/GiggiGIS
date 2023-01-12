@@ -151,20 +151,23 @@ elif add_radio == "🗺️":
                 
     elif option == 'updtae dataset':
         
-        uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
+        
         
         c1, c2 = st.columns([3,2])
         
         try:
-            df = pd.read_csv(uploaded_file)
+            
             with c2:
-                
+                uploaded_file = st.file_uploader("Choose a CSV file", accept_multiple_files=False)
+                df = pd.read_csv(uploaded_file)
                 city = st.multiselect("", df["stad"].unique(), default=None,label_visibility="collapsed")
+                nlnaam = st.multiselect("", df["nlnaam"].unique(), default=None,label_visibility="collapsed")
+                functie = st.multiselect("", df["functie"].unique(), default=None,label_visibility="collapsed")
                 
                 
             with c1:
                 
-                filter = df[df["stad"].isin(city)]
+                filter = df[(df["stad"].isin(city)) & (df["nlnaam"].isin(nlnaam)) & (df["functie"].isin(functie))]
                 gdf = gpd.GeoDataFrame(filter, geometry=gpd.points_from_xy(filter.lon,filter.lat))
                 
                 map = folium.Map(location=[filter.lat.mean(),filter.lon.mean()], zoom_start=8)
