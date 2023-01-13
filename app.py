@@ -54,11 +54,11 @@ def insert_json(json):
 
 # if add_radio == "📝":      
                 
-m = folium.Map(location=[51.967875, 5.047591], zoom_start=3)
+m = folium.Map(location=[44.266308, 11.719301], zoom_start=3)
 Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
 Fullscreen().add_to(m)
 Geocoder(collapsed=True, position='topright', add_marker=True).add_to(m)
-LocateControl(auto_start=True).add_to(m)
+LocateControl(auto_start=False).add_to(m)
 output = st_folium(m, width=1200, height=500, returned_objects=["all_drawings"])
         
 # with st.form("entry_form", clear_on_submit=True):
