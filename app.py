@@ -68,6 +68,7 @@ with st.sidebar:
         new_dict["features"] = new_dict.pop("all_drawings")
     except:
         st.info("mark an observation")
+        st.stop()
 
     if len(new_dict["features"]) > 1:
         st.error("You cannot upload more than one survey at time!")
