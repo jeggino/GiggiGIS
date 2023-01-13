@@ -59,7 +59,7 @@ Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).ad
 Fullscreen().add_to(m)
 output = st_folium(m, width=1200, height=500, returned_objects=["all_drawings"])
         
-with st.form("entry_form", clear_on_submit=True):
+# with st.form("entry_form", clear_on_submit=True):
     
     with st.sidebar:
 
@@ -71,7 +71,7 @@ with st.form("entry_form", clear_on_submit=True):
                 st.error("You cannot upload more than one survey at time!")
                 st.stop()
 
-#             with st.form("entry_form", clear_on_submit=True):
+            with st.form("entry_form", clear_on_submit=True):
                 date = st.date_input("Date")
                 sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
                 n = st.number_input("Number of specimens:", min_value=0)
