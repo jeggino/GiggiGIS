@@ -54,7 +54,7 @@ def insert_json(json):
 
 # if add_radio == "📝":      
                 
-m = folium.Map(location=[51.967875, 5.047591], zoom_start=10)
+m = folium.Map(location=[51.967875, 5.047591], zoom_start=3)
 Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
 Fullscreen().add_to(m)
 Geocoder(collapsed=True, position='topright', add_marker=True).add_to(m)
