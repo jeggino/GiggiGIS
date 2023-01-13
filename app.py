@@ -35,7 +35,7 @@ lon = loc['coords']['longitude']
 st.markdown("""
     <style>
       section[data-testid="stSidebar"][aria-expanded="true"]{
-        width: 20% !important;
+        width: 100% !important;
       }
       section[data-testid="stSidebar"][aria-expanded="false"]{
         width: 100% !important;
@@ -53,17 +53,14 @@ with st.sidebar:
     add_radio = st.radio("", horizontal=False, options = ["📝", "🗺️"])
 
 if add_radio == "📝":      
-
-    c1, c2 = st.columns([3,2])
-    with c1:
                 
-        m = folium.Map(location=[lat, lon], zoom_start=18)
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-        Fullscreen().add_to(m)
-        output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
+    m = folium.Map(location=[lat, lon], zoom_start=18)
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+    Fullscreen().add_to(m)
+    output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
         
                    
-    with c2:
+    with st,sidebar:
 
         try:
             new_dict = output
