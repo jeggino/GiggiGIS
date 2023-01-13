@@ -66,47 +66,47 @@ with st.sidebar:
     try:
         new_dict = output
         new_dict["features"] = new_dict.pop("all_drawings")
-
-        if len(new_dict["features"]) > 1:
-            st.error("You cannot upload more than one survey at time!")
-            st.stop()
-
-        with st.form("entry_form", clear_on_submit=True):
-            date = st.date_input("Date")
-            sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
-            n = st.number_input("Number of specimens:", min_value=0)
-            comment = st.text_input("", placeholder="Enter a comment here ...")
-            with st.expander("Upload a picture"):
-                uploaded_file = st.camera_input("")
-
-
-            new_dict["features"][0]["properties"]["date"] = str(date)
-            new_dict["features"][0]["properties"]["sp"] = sp
-            new_dict["features"][0]["properties"]["n"] = n
-            new_dict["features"][0]["properties"]["comment"] = comment
-
-            submitted = st.form_submit_button("Save Data")
-            if submitted:
-                # If user attempts to upload a file.
-                if uploaded_file is not None:
-                    bytes_data = uploaded_file.getvalue()
-                    image_name = uploaded_file.name
-
-                    drive.put(image_name, data=bytes_data)            
-                    new_dict["features"][0]["properties"]["image_name"] = image_name
-                    insert_json(new_dict)
-                    st.success('Data saved!', icon="✅")
-                    st.stop()
-                else:
-                    new_dict["features"][0]["properties"]["image_name"] = None
-                    insert_json(new_dict)
-                    st.success('Data saved!', icon="✅")
-                    st.stop()
-
-
-
     except:
         st.info("mark an observation")
+
+    if len(new_dict["features"]) > 1:
+        st.error("You cannot upload more than one survey at time!")
+        st.stop()
+
+    with st.form("entry_form", clear_on_submit=True):
+        date = st.date_input("Date")
+        sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
+        n = st.number_input("Number of specimens:", min_value=0)
+        comment = st.text_input("", placeholder="Enter a comment here ...")
+        with st.expander("Upload a picture"):
+            uploaded_file = st.camera_input("")
+
+
+        new_dict["features"][0]["properties"]["date"] = str(date)
+        new_dict["features"][0]["properties"]["sp"] = sp
+        new_dict["features"][0]["properties"]["n"] = n
+        new_dict["features"][0]["properties"]["comment"] = comment
+
+        submitted = st.form_submit_button("Save Data")
+        if submitted:
+            # If user attempts to upload a file.
+            if uploaded_file is not None:
+                bytes_data = uploaded_file.getvalue()
+                image_name = uploaded_file.name
+
+                drive.put(image_name, data=bytes_data)            
+                new_dict["features"][0]["properties"]["image_name"] = image_name
+                insert_json(new_dict)
+            else:
+                new_dict["features"][0]["properties"]["image_name"] = None
+                insert_json(new_dict)
+                
+            st.success('Data saved!', icon="✅")
+                
+
+
+
+    
             
 # elif add_radio == "🗺️":
     
