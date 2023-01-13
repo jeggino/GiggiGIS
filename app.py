@@ -50,7 +50,7 @@ def insert_json(json):
     return db_3.put({"json":json})
 
 with st.sidebar:
-    add_radio = st.radio("", horizontal=False, options = ["📝", "🗺️"])
+    add_radio = st.radio("", horizontal=False, options = ["📝", "🗺️"], label_visibility="collapsed")
 
 if add_radio == "📝":      
                 
