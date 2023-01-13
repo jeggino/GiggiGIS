@@ -60,7 +60,7 @@ if add_radio == "📝":
     output = st_folium(m, width=500, height=700, returned_objects=["all_drawings"])
         
                    
-    with st,sidebar:
+    with st.sidebar:
 
         try:
             new_dict = output
