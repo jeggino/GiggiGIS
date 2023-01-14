@@ -12,15 +12,18 @@ import datetime
 
 from deta import Deta
 
-
+About = """
+# This is a header. 
+This is an *extremely* cool app!
+ciuhpuhiurhc
+"""
 st.set_page_config(
     page_title="GiggiGIS",
     page_icon="🍕",
     layout="centered",
     menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
+        'About': About,
+        'Flickr': "https://www.flickr.com/photos/67492897@N07"
     }
 )
 
