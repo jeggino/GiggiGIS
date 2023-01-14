@@ -18,7 +18,7 @@ st.set_page_config(
     page_icon="🍕",
     layout="centered",
     menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Get Help': 'https://www.flickr.com/photos/67492897@N07',
 #         'Report a bug': 'jeggino@gmail.com',
         
         'About': "# This is a header. This is an *extremely* cool app!"
