@@ -20,8 +20,8 @@ st.set_page_config(
     menu_items={
         'Get Help': 'https://www.extremelycoolapp.com/help',
         'Report a bug': "jeggino@gmail.com",
-        'mailto':"jeggino@gmail.com"
-#         'About': "# This is a header. This is an *extremely* cool app!"
+        
+        'About': "# This is a header. This is an *extremely* cool app!"
     }
 )
 
