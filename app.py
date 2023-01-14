@@ -72,8 +72,8 @@ with st.sidebar:
         new_dict["features"] = new_dict.pop("all_drawings")
         
         if len(new_dict["features"]) > 1:
-        st.error("You cannot upload more than one survey at time!")
-        st.stop()
+            st.error("You cannot upload more than one survey at time!")
+            st.stop()
 
     with st.form("entry_form", clear_on_submit=True):
         date = st.date_input("Date")
