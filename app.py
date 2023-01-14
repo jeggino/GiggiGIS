@@ -12,17 +12,13 @@ import datetime
 
 from deta import Deta
 
-About = """
-# This is a header. 
-This is an *extremely* cool app!
-ciuhpuhiurhc
-"""
+
 st.set_page_config(
     page_title="GiggiGIS",
     page_icon="🍕",
     layout="centered",
     menu_items={
-         'mailto':'john@example.com',
+        'mailto':'john@example.com',
         'Flickr': "https://www.flickr.com/photos/67492897@N07"
     }
 )
