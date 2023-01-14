@@ -18,8 +18,9 @@ st.set_page_config(
     page_icon="🍕",
     layout="centered",
     menu_items={
-        'mailto':'john@example.com',
-        'Flickr': "https://www.flickr.com/photos/67492897@N07"
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
     }
 )
 
