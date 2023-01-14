@@ -19,7 +19,7 @@ st.set_page_config(
     layout="centered",
     menu_items={
         'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': 'jeggino@gmail.com',
+#         'Report a bug': 'jeggino@gmail.com',
         
         'About': "# This is a header. This is an *extremely* cool app!"
     }
