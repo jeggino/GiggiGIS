@@ -12,16 +12,21 @@ import datetime
 
 from deta import Deta
 
-
+if "center" not in st.session_state:
+    layout = "wide"
+else:
+    layout = "centered" if st.session_state.center else "wide"
+    
+    
 st.set_page_config(
     page_title="GiggiGIS",
     page_icon="🍕",
-    layout="centered",
-    menu_items={      
-        'About': "# This is a header. This is an *extremely* cool app!"
-    }
+    layout=layout
 )
 
+st.checkbox(
+    "Viewing on a mobile?", key="center", value=st.session_state.get("center", False)
+)
 
 # Connect to Deta Base with your Project Key
 deta = Deta(st.secrets["deta_key"])
