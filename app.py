@@ -1,7 +1,7 @@
 import folium
 import streamlit as st
 
-from folium.plugins import Draw, Fullscreen, Geocoder, LocateControl
+from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 # from streamlit_js_eval import get_geolocation
 
@@ -62,7 +62,7 @@ def insert_json(json):
 m = folium.Map(location=[44.266308, 11.719301], zoom_start=3)
 Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
 Fullscreen().add_to(m)
-Geocoder(collapsed=True, position='topright', add_marker=True).add_to(m)
+# Geocoder(collapsed=True, position='topright', add_marker=True).add_to(m)
 LocateControl(auto_start=False).add_to(m)
 
 with st.container():
