@@ -17,10 +17,7 @@ st.set_page_config(
     page_title="GiggiGIS",
     page_icon="🍕",
     layout="centered",
-    menu_items={
-        'Get Help': "# This is a header. This is an *extremely* cool app!",
-#         'Report a bug': 'jeggino@gmail.com',
-        
+    menu_items={      
         'About': "# This is a header. This is an *extremely* cool app!"
     }
 )
