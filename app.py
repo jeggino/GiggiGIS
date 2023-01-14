@@ -3,7 +3,7 @@ import streamlit as st
 
 from folium.plugins import Draw, Fullscreen, Geocoder, LocateControl
 from streamlit_folium import st_folium
-from streamlit_js_eval import get_geolocation
+# from streamlit_js_eval import get_geolocation
 
 import pandas as pd
 import geopandas as gpd
@@ -12,26 +12,16 @@ import datetime
 
 from deta import Deta
 
-# This code is different for each deployed app.
-CURRENT_THEME = "blue"
-IS_DARK_THEME = True
-EXPANDER_TEXT = """
-    This is a custom theme. You can enable it by copying the following code
-    to `.streamlit/config.toml`:
-    ```python
-    [theme]
-    primaryColor = "#E694FF"
-    backgroundColor = "#00172B"
-    secondaryBackgroundColor = "#0083B8"
-    textColor = "#C6CDD4"
-    font = "sans-serif"
-    ```
-    """
 
 st.set_page_config(
     page_title="GiggiGIS",
     page_icon="🍕",
-    layout="wide",
+    layout="centered",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
 )
 
 
@@ -41,9 +31,9 @@ deta = Deta(st.secrets["deta_key"])
 db_3 = deta.Base("GiggiGIS_data")
 drive = deta.Drive("GiggiGIS_pictures")
 
-loc = get_geolocation()
-lat = loc['coords']['latitude']
-lon = loc['coords']['longitude']
+# loc = get_geolocation()
+# lat = loc['coords']['latitude']
+# lon = loc['coords']['longitude']
 
 # ---CUSTUMIZE---
 
