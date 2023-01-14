@@ -35,17 +35,17 @@ drive = deta.Drive("GiggiGIS_pictures")
 # lat = loc['coords']['latitude']
 # lon = loc['coords']['longitude']
 
-# ---CUSTUMIZE---
+# # ---CUSTUMIZE---
 
-st.markdown("""
-    <style>
-      section[data-testid="stSidebar"][aria-expanded="true"]{
-        width: 100% !important;
-      }
-      section[data-testid="stSidebar"][aria-expanded="false"]{
-        width: 100% !important;
-      }
-    </style>""", unsafe_allow_html=True)
+# st.markdown("""
+#     <style>
+#       section[data-testid="stSidebar"][aria-expanded="true"]{
+#         width: 100% !important;
+#       }
+#       section[data-testid="stSidebar"][aria-expanded="false"]{
+#         width: 100% !important;
+#       }
+#     </style>""", unsafe_allow_html=True)
 
 # -------------- FUNCTIONS --------------
 
@@ -64,7 +64,9 @@ Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).ad
 Fullscreen().add_to(m)
 Geocoder(collapsed=True, position='topright', add_marker=True).add_to(m)
 LocateControl(auto_start=False).add_to(m)
-output = st_folium(m, width=1200, height=500, returned_objects=["all_drawings"])
+
+with st.container():
+    output = st_folium(m, width=1200, height=500, returned_objects=["all_drawings"])
         
 # with st.form("entry_form", clear_on_submit=True):
     
