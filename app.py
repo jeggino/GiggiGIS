@@ -33,7 +33,7 @@ def insert_json(json):
     return db_3.put({"json":json})
 
                 
-m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=300, height=500,)
+m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=1200, height=500,)
 Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
 Fullscreen().add_to(m)
 LocateControl(auto_start=False).add_to(m)
