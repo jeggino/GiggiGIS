@@ -9,6 +9,7 @@ import pandas as pd
 import geopandas as gpd
 import datetime
 
+import pyautogui
 from deta import Deta
 
     
@@ -83,7 +84,7 @@ if output:
 
                         st.success('Data saved!', icon="✅")
                         pyautogui.hotkey("ctrl","fn","F5")
-#                         st.stop()
+                        st.stop()
             
         except:
 
