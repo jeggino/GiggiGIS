@@ -80,6 +80,7 @@ with st.sidebar:
                     insert_json(new_dict)
 
                 st.success('Data saved!', icon="✅")
+                st.stop()
             
     except:
         st.info("mark an observation")
