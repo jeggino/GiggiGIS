@@ -38,8 +38,7 @@ Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).ad
 Fullscreen().add_to(m)
 LocateControl(auto_start=False).add_to(m)
 
-with st.container():
-    output = st_folium(m,  returned_objects=["all_drawings"])
+output = st_folium(m,  returned_objects=["all_drawings"])
             
 with st.sidebar:
 
