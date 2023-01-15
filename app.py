@@ -39,7 +39,7 @@ Fullscreen().add_to(m)
 LocateControl(auto_start=False).add_to(m)
 
 with st.container():
-    output = st_folium(m, width=700, height=500, returned_objects=["all_drawings"])
+    output = st_folium(m, width=300, height=300, returned_objects=["all_drawings"])
             
 with st.sidebar:
 
