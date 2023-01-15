@@ -82,7 +82,7 @@ if output:
                             insert_json(new_dict)
 
                         st.success('Data saved!', icon="✅")
-                        pyautogui.hotkey("ctrl","F5")
+                        pyautogui.hotkey("ctrl","fn","F5")
 #                         st.stop()
             
         except:
