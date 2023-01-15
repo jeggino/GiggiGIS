@@ -43,7 +43,9 @@ with st.container():
             
 with st.sidebar:
 
-    try:
+#     try:
+    if output:
+    
         new_dict = output
         new_dict["features"] = new_dict.pop("all_drawings")
         
@@ -82,7 +84,8 @@ with st.sidebar:
                 st.success('Data saved!', icon="✅")
                 st.stop()
             
-    except:
+#     except:
+    else
         st.info("mark an observation")
         st.stop()
 
