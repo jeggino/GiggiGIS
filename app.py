@@ -87,9 +87,10 @@ if output:
             
 #     except:
 else:
-    with st.sidebar:
-        st.info("mark an observation")
-        st.stop()
+    st_folium(m,  returned_objects=["all_drawings"])
+#     with st.sidebar:
+#         st.info("mark an observation")
+#         st.stop()
 
     
               
