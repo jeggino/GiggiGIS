@@ -52,7 +52,6 @@ if output:
 
         try:
 
-
             new_dict = output
             new_dict["features"] = new_dict.pop("all_drawings")
 
@@ -61,11 +60,8 @@ if output:
                 st.stop()
             
             else:
-
                 with st.form("entry_form", clear_on_submit=True):
                     
-
-
                     new_dict["features"][0]["properties"]["date"] = str(date)
                     new_dict["features"][0]["properties"]["sp"] = sp
                     new_dict["features"][0]["properties"]["n"] = n
