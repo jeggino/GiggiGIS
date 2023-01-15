@@ -42,6 +42,13 @@ output = st_folium(m,  returned_objects=["all_drawings"])
 if output:
     
     with st.sidebar:
+        
+        date = st.date_input("Date")
+        sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
+        n = st.number_input("Number of specimens:", min_value=0)
+        comment = st.text_input("", placeholder="Enter a comment here ...")
+        with st.expander("Upload a picture"):
+            uploaded_file = st.camera_input("")
 
         try:
 
@@ -56,12 +63,7 @@ if output:
             else:
 
                 with st.form("entry_form", clear_on_submit=True):
-                    date = st.date_input("Date")
-                    sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
-                    n = st.number_input("Number of specimens:", min_value=0)
-                    comment = st.text_input("", placeholder="Enter a comment here ...")
-                    with st.expander("Upload a picture"):
-                        uploaded_file = st.camera_input("")
+                    
 
 
                     new_dict["features"][0]["properties"]["date"] = str(date)
