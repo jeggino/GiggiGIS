@@ -85,7 +85,7 @@ with st.sidebar:
                 st.stop()
             
 #     except:
-    else
+    else:
         st.info("mark an observation")
         st.stop()
 
