@@ -1,12 +1,12 @@
-import folium
+
 import streamlit as st
 
+import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
 import pandas as pd
 import geopandas as gpd
-
 import datetime
 
 from deta import Deta
@@ -21,8 +21,7 @@ st.set_page_config(
 
 # Connect to Deta Base with your Project Key
 deta = Deta(st.secrets["deta_key"])
-# Create a new database "example-db"
-db_3 = deta.Base("GiggiGIS_data")
+db = deta.Base("GiggiGIS_data")
 drive = deta.Drive("GiggiGIS_pictures")
 
 # -------------- FUNCTIONS --------------
@@ -30,7 +29,7 @@ drive = deta.Drive("GiggiGIS_pictures")
 
 def insert_json(json):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db_3.put({"json":json})
+    return db.put({"json":json})
 
                 
 m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width='100%', height='100%')
@@ -44,7 +43,7 @@ if output:
     
     with st.sidebar:
 
-    #     try:
+        try:
 
 
             new_dict = output
@@ -85,16 +84,14 @@ if output:
                     st.success('Data saved!', icon="✅")
                     st.stop()
             
-#     except:
-else:
-    st_folium(m,  returned_objects=["all_drawings"])
-#     with st.sidebar:
-#         st.info("mark an observation")
-#         st.stop()
+        except:
 
-    
-              
-        
-        
-   
+            st.info("mark an observation")
+            st.stop()
+
+
+
+
+
+
 
