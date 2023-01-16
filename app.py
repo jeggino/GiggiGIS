@@ -11,6 +11,9 @@ import datetime
 
 from deta import Deta
 
+import string
+import random
+
     
 st.set_page_config(
     page_title="GiggiGIS",
@@ -30,6 +33,35 @@ drive = deta.Drive("GiggiGIS_pictures")
 def insert_json(json):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db.put({"json":json})
+
+def password_generator(length):
+    """ Function that generates a password given a length """
+
+    uppercase_loc = random.randint(1,4)  # random location of lowercase
+    symbol_loc = random.randint(5, 6)  # random location of symbols
+    lowercase_loc = random.randint(7,12)  # random location of uppercase
+
+    password = ''  # empty string for password
+
+    pool = string.ascii_letters + string.punctuation  # the selection of characters used
+
+    for i in range(length):
+
+        if i == uppercase_loc:   # this is to ensure there is at least one uppercase
+            password += random.choice(string.ascii_uppercase)
+
+        elif i == lowercase_loc:  # this is to ensure there is at least one uppercase
+            password += random.choice(string.ascii_lowercase)
+
+        elif i == symbol_loc:  # this is to ensure there is at least one symbol
+            password += random.choice(string.punctuation)
+
+        else:  # adds a random character from pool
+            password += random.choice(pool)
+
+    return password  # returns the string
+
+
 
 option = st.selectbox('',('Insert data', 'Data visualizsation'))
 
@@ -71,6 +103,7 @@ if option == 'Insert data':
                     new_dict["features"][0]["properties"]["sp"] = sp
                     new_dict["features"][0]["properties"]["n"] = n
                     new_dict["features"][0]["properties"]["comment"] = comment
+                    new_dict["features"][0]["properties"]["id"] = password_generator(12)
 
                     with st.form("entry_form", clear_on_submit=True):
                         submitted = st.form_submit_button("Save Data")
@@ -110,14 +143,14 @@ elif option == "Data visualizsation":
                                                )
                    ).add_to(map)
 
-    output = st_folium(map, width=500, height=700)
+    output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
     
     
     output
 #     st.dataframe(df_point)
-    key = df_point[df_point.json["features"][0]['geometry'][0]==output["last_object_clicked"]["lat"]]["key"].values[0]
-    st.write(output["last_object_clicked"]["lat"])
-    st.write(key)
+#     key = df_point[df_point.json["features"][0]['geometry'][0]==output["last_object_clicked"]["lat"]]["key"].values[0]
+#     st.write(output["last_object_clicked"]["lat"])
+#     st.write(key)
     
 
 
