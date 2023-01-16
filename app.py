@@ -157,22 +157,31 @@ elif option == "🗺️ Data Visualization":
             try:
                 id = output["last_active_drawing"]["properties"]["id"]
                 name = output["last_active_drawing"]["properties"]["image_name"]
-                res = drive.get(name).read()
-
+                
                 with st.sidebar:
+                
                     try:
+
+                        res = drive.get(name).read()
                         with st.expander("See image"):
                             st.image(res)
+
+                        with st.form("entry_form", clear_on_submit=True):
+                        submitted = st.form_submit_button("Deleted Data")
+                        if submitted:
+                            db.delete(id)
+                            drive.delete(name)
+                            st.success('Data deleted!', icon="✅")
+                            
                     except:
                         st.warning('No picture saved!', icon="⚠️")
+                        with st.form("entry_form", clear_on_submit=True):
+                        submitted = st.form_submit_button("Deleted Data")
+                        if submitted:
+                            db.delete(id)
+                            st.success('Data deleted!', icon="✅")
                         
 
-                with st.form("entry_form", clear_on_submit=True):
-                    submitted = st.form_submit_button("Deleted Data")
-                    if submitted:
-                        db.delete(id)
-                        drive.delete(name)
-                        st.success('Data deleted!', icon="✅")
             except:
                 st.info("Select an observation")
                 
