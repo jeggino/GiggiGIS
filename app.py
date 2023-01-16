@@ -117,7 +117,7 @@ if option == '📝':
                                 
 
                                 drive.put(f"{key}.jpeg", data=bytes_data)            
-                                new_dict["features"][0]["properties"]["image_name"] = key
+                                new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
                                 insert_json(new_dict,key)
                             else:
                                 new_dict["features"][0]["properties"]["image_name"] = None
