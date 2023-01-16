@@ -164,6 +164,7 @@ elif option == "🗺️":
                 submitted = st.form_submit_button("Cancel Data")
                 if submitted:
                     db.delete(id)
+                    drive.delete(name)
         except:
             st.info("Select an observation")
 
