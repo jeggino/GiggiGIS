@@ -149,13 +149,14 @@ elif option == "Data visualizsation":
     
     output
     id = output["properties"]["id"]
-    try:
-        with st.form("entry_form", clear_on_submit=True):
-            submitted = st.form_submit_button("Cancel Data")
-            if submitted:
-                db.delete(if)
-    except:
-        st.write("select an observation")
+    with st.sidebar:
+        try:
+            with st.form("entry_form", clear_on_submit=True):
+                submitted = st.form_submit_button("Cancel Data")
+                if submitted:
+                    db.delete(id)
+        except:
+            st.write("select an observation")
 
 
 
