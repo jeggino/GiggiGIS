@@ -64,6 +64,8 @@ def password_generator(length):
 
 with st.sidebar:
     option = st.selectbox('',('Insert data', 'Data visualizsation'))
+    
+    "---"
 
 
 if option == 'Insert data':
@@ -161,7 +163,7 @@ elif option == "Data visualizsation":
                 if submitted:
                     db.delete(id)
         except:
-            st.write("select an observation")
+            st.write("See picture")
 
 
 
