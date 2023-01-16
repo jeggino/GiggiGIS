@@ -72,7 +72,7 @@ if option == 'Insert data':
     m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width='100%', height='100%')
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
     Fullscreen().add_to(m)
-    LocateControl(auto_start=False).add_to(m)
+    LocateControl(auto_start=True).add_to(m)
 
     output = st_folium(m,  returned_objects=["all_drawings"])
     if output:
@@ -132,7 +132,6 @@ if option == 'Insert data':
 elif option == "Data visualizsation":
     db_content = db.fetch().items
     df_point = pd.DataFrame(db_content)
-    st.dataframe(df_point["json"])
 
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     for i in df_point["json"].to_list():
