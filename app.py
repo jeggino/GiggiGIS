@@ -116,7 +116,7 @@ if option == '📝':
                                 bytes_data = uploaded_file.getvalue()
                                 
 
-                                drive.put(image_name, data=bytes_data)            
+                                drive.put(key, data=bytes_data)            
                                 new_dict["features"][0]["properties"]["image_name"] = key
                                 insert_json(new_dict,key)
                             else:
