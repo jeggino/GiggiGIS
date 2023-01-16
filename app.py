@@ -30,7 +30,7 @@ drive = deta.Drive("GiggiGIS_pictures")
 # -------------- FUNCTIONS --------------
 
 
-def insert_json(json):
+def insert_json(json, key):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db.put({"json":json, "key":key})
 
