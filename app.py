@@ -114,10 +114,10 @@ if option == '📝':
                             # If user attempts to upload a file.
                             if uploaded_file is not None:
                                 bytes_data = uploaded_file.getvalue()
-                                image_name = uploaded_file.name
+                                
 
                                 drive.put(image_name, data=bytes_data)            
-                                new_dict["features"][0]["properties"]["image_name"] = image_name
+                                new_dict["features"][0]["properties"]["image_name"] = key
                                 insert_json(new_dict,key)
                             else:
                                 new_dict["features"][0]["properties"]["image_name"] = None
