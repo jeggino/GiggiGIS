@@ -132,6 +132,7 @@ if option == 'Insert data':
 elif option == "Data visualizsation":
     db_content = db.fetch().items
     df_point = pd.DataFrame(db_content)
+    st.dataframe(df_point["json"])
 
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
     for i in df_point["json"].to_list():
