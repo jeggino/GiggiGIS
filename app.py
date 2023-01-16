@@ -32,7 +32,7 @@ drive = deta.Drive("GiggiGIS_pictures")
 
 def insert_json(json):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"json":json})
+    return db.put({"json":json, "key":key})
 
 def password_generator(length):
     """ Function that generates a password given a length """
@@ -91,6 +91,7 @@ if option == 'Insert data':
 
                 new_dict = output
                 new_dict["features"] = new_dict.pop("all_drawings")
+                key = password_generator(12)
 
                 if len(new_dict["features"]) > 1:
                     st.error("You cannot upload more than one survey at time!")
@@ -103,7 +104,7 @@ if option == 'Insert data':
                     new_dict["features"][0]["properties"]["sp"] = sp
                     new_dict["features"][0]["properties"]["n"] = n
                     new_dict["features"][0]["properties"]["comment"] = comment
-                    new_dict["features"][0]["properties"]["id"] = password_generator(12)
+                    new_dict["features"][0]["properties"]["id"] = key
 
                     with st.form("entry_form", clear_on_submit=True):
                         submitted = st.form_submit_button("Save Data")
@@ -115,10 +116,10 @@ if option == 'Insert data':
 
                                 drive.put(image_name, data=bytes_data)            
                                 new_dict["features"][0]["properties"]["image_name"] = image_name
-                                insert_json(new_dict)
+                                insert_json(new_dict,key)
                             else:
                                 new_dict["features"][0]["properties"]["image_name"] = None
-                                insert_json(new_dict)
+                                insert_json(new_dict,key)
 
                             st.success('Data saved!', icon="✅")
                             st.stop()
