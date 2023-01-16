@@ -114,10 +114,10 @@ elif option == "Data visualizsation":
     
     
     output
-    st.dataframe(df_point)
-#     key = df_point[df_point.json==output["last_object_clicked"]["lat"]]["key"].values[0]
-#     st.write(output["last_object_clicked"]["lat"])
-#     st.write(key)
+#     st.dataframe(df_point)
+    key = df_point[df_point.json["features"][0]['geometry'][0]==output["last_object_clicked"]["lat"]]["key"].values[0]
+    st.write(output["last_object_clicked"]["lat"])
+    st.write(key)
     
 
 
