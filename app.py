@@ -148,11 +148,14 @@ elif option == "Data visualizsation":
     
     
     output
-#     st.dataframe(df_point)
-#     key = df_point[df_point.json["features"][0]['geometry'][0]==output["last_object_clicked"]["lat"]]["key"].values[0]
-#     st.write(output["last_object_clicked"]["lat"])
-#     st.write(key)
-    
+    id = output["properties"]["id"]
+    try:
+        with st.form("entry_form", clear_on_submit=True):
+            submitted = st.form_submit_button("Cancel Data")
+            if submitted:
+                db.delete(if)
+    except:
+        st.write("select an observation")
 
 
 
