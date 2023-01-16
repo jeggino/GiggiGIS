@@ -138,6 +138,8 @@ elif option == "🗺️ Data Visualization":
     df_point = pd.DataFrame(db_content)
 
     map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+    LocateControl(auto_start=True).add_to(map)
+    
     for i in df_point["json"].to_list():
         folium.GeoJson(i,
                    tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
@@ -167,10 +169,3 @@ elif option == "🗺️ Data Visualization":
                     drive.delete(name)
         except:
             st.info("Select an observation")
-
-
-
-
-
-
-
