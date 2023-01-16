@@ -114,7 +114,7 @@ elif option == "Data visualizsation":
     
     
     output
-    st.write(output["last_object_clicked"]["lat"].output["last_object_clicked"]["lon"])
+    st.write(output["last_object_clicked"]["lat"])
     
 
 
