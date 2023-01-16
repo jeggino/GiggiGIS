@@ -97,7 +97,20 @@ if option == 'Insert data':
 
 
 elif option == "Data visualizsation":
-    st.write("ciao")
+    db_content = db_3.fetch().items
+    df_point = pd.DataFrame(db_content)
+
+    map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+    for i in df_point["json"].to_list():
+     folium.GeoJson(i,
+                   tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
+                                                 aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
+                                                 labels=True,
+                                                 style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+                                               )
+                   ).add_to(map)
+    
+    output_2 = st_folium(map, width=500, height=700)
 
 
 
