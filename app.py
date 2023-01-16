@@ -149,6 +149,13 @@ elif option == "Data visualizsation":
         
         try:
             id = output["last_active_drawing"]["properties"]["id"]
+            name = output["last_active_drawing"]["properties"]["image_name"]
+            res = drive.get(name).read()
+            
+            with st.sidebar:
+                with st.expander("See explanation"):
+                    st.image(res)
+            
             with st.form("entry_form", clear_on_submit=True):
                 submitted = st.form_submit_button("Cancel Data")
                 if submitted:
