@@ -62,8 +62,8 @@ def password_generator(length):
     return password  # returns the string
 
 
-
-option = st.selectbox('',('Insert data', 'Data visualizsation'))
+with st.sidebar:
+    option = st.selectbox('',('Insert data', 'Data visualizsation'))
 
 
 if option == 'Insert data':
