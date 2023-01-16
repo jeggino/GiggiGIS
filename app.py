@@ -96,8 +96,8 @@ option = st.selectbox('',('Insert data', 'Data visualizsation'))
                     st.stop()
                     
                     
-        elif option == "Data visualizsation":
-            st.write("ciao")
+    elif option == "Data visualizsation":
+        st.write("ciao")
 
 
 
