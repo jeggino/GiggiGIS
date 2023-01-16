@@ -160,8 +160,12 @@ elif option == "🗺️ Data Visualization":
                 res = drive.get(name).read()
 
                 with st.sidebar:
-                    with st.expander("See image"):
-                        st.image(res)
+                    try:
+                        with st.expander("See image"):
+                            st.image(res)
+                    except:
+                        st.warning('No picture saved!', icon="⚠️")
+                        
 
                 with st.form("entry_form", clear_on_submit=True):
                     submitted = st.form_submit_button("Deleted Data")
