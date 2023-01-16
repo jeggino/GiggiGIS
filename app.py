@@ -112,7 +112,9 @@ elif option == "Data visualizsation":
 
     output = st_folium(map, width=500, height=700)
     
+    
     output
+    st.write(output["last_object_clicked"]["lat"].output["last_object_clicked"]["lon"])
     
 
 
