@@ -128,7 +128,7 @@ if option == '📝':
 
             except:
 
-                st.info("mark an observation")
+                st.info("Mark an observation")
                 st.stop()
 
 
@@ -157,7 +157,7 @@ elif option == "🗺️":
             res = drive.get(name).read()
             
             with st.sidebar:
-                with st.expander("See explanation"):
+                with st.expander("See image"):
                     st.image(res)
             
             with st.form("entry_form", clear_on_submit=True):
@@ -165,7 +165,7 @@ elif option == "🗺️":
                 if submitted:
                     db.delete(id)
         except:
-            st.write("See picture")
+            st.info("Select an observation")
 
 
 
