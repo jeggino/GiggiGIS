@@ -110,7 +110,10 @@ elif option == "Data visualizsation":
                                                )
                    ).add_to(map)
 
-    output_2 = st_folium(map, width=500, height=700)
+    output = st_folium(map, width=500, height=700)
+    
+    output
+    
 
 
 
