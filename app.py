@@ -114,7 +114,9 @@ elif option == "Data visualizsation":
     
     
     output
+    key = df_point[df_point.lat==output["last_object_clicked"]["lat"]].values[0]
     st.write(output["last_object_clicked"]["lat"])
+    st.write(key)
     
 
 
