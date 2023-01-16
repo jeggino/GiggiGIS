@@ -148,7 +148,7 @@ elif option == "Data visualizsation":
     
     
     output
-    id = output["properties"]["id"]
+    id = output["last_active_drawing"]["properties"]["id"]
     with st.sidebar:
         try:
             with st.form("entry_form", clear_on_submit=True):
