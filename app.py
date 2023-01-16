@@ -34,7 +34,7 @@ def insert_json(json):
 option = st.selectbox('',('Insert data', 'Data visualizsation'))
 
 
-if option == 'Cloud':
+if option == 'Insert data':
 
 
     m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width='100%', height='100%')
