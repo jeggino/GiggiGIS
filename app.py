@@ -34,70 +34,70 @@ def insert_json(json):
 option = st.selectbox('',('Insert data', 'Data visualizsation'))
 
 
-    if option == 'Cloud':
-        
-        
-        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width='100%', height='100%')
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-        Fullscreen().add_to(m)
-        LocateControl(auto_start=False).add_to(m)
-
-        output = st_folium(m,  returned_objects=["all_drawings"])
-        st.write(output)
-        if output:
-
-            with st.sidebar:
-
-                date = st.date_input("Date")
-                sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
-                n = st.number_input("Number of specimens:", min_value=0)
-                comment = st.text_input("", placeholder="Enter a comment here ...")
-                with st.expander("Upload a picture"):
-                    uploaded_file = st.camera_input("")
-
-                try:
-
-                    new_dict = output
-                    new_dict["features"] = new_dict.pop("all_drawings")
-
-                    if len(new_dict["features"]) > 1:
-                        st.error("You cannot upload more than one survey at time!")
-                        st.stop()
-
-                    else:
+if option == 'Cloud':
 
 
-                        new_dict["features"][0]["properties"]["date"] = str(date)
-                        new_dict["features"][0]["properties"]["sp"] = sp
-                        new_dict["features"][0]["properties"]["n"] = n
-                        new_dict["features"][0]["properties"]["comment"] = comment
+    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width='100%', height='100%')
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+    Fullscreen().add_to(m)
+    LocateControl(auto_start=False).add_to(m)
 
-                        with st.form("entry_form", clear_on_submit=True):
-                            submitted = st.form_submit_button("Save Data")
-                            if submitted:
-                                # If user attempts to upload a file.
-                                if uploaded_file is not None:
-                                    bytes_data = uploaded_file.getvalue()
-                                    image_name = uploaded_file.name
+    output = st_folium(m,  returned_objects=["all_drawings"])
+    st.write(output)
+    if output:
 
-                                    drive.put(image_name, data=bytes_data)            
-                                    new_dict["features"][0]["properties"]["image_name"] = image_name
-                                    insert_json(new_dict)
-                                else:
-                                    new_dict["features"][0]["properties"]["image_name"] = None
-                                    insert_json(new_dict)
+        with st.sidebar:
 
-                                st.success('Data saved!', icon="✅")
-                                st.stop()
+            date = st.date_input("Date")
+            sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
+            n = st.number_input("Number of specimens:", min_value=0)
+            comment = st.text_input("", placeholder="Enter a comment here ...")
+            with st.expander("Upload a picture"):
+                uploaded_file = st.camera_input("")
 
-                except:
+            try:
 
-                    st.info("mark an observation")
+                new_dict = output
+                new_dict["features"] = new_dict.pop("all_drawings")
+
+                if len(new_dict["features"]) > 1:
+                    st.error("You cannot upload more than one survey at time!")
                     st.stop()
-                    
-                    
-    elif option == "Data visualizsation":
-        st.write("ciao")
+
+                else:
+
+
+                    new_dict["features"][0]["properties"]["date"] = str(date)
+                    new_dict["features"][0]["properties"]["sp"] = sp
+                    new_dict["features"][0]["properties"]["n"] = n
+                    new_dict["features"][0]["properties"]["comment"] = comment
+
+                    with st.form("entry_form", clear_on_submit=True):
+                        submitted = st.form_submit_button("Save Data")
+                        if submitted:
+                            # If user attempts to upload a file.
+                            if uploaded_file is not None:
+                                bytes_data = uploaded_file.getvalue()
+                                image_name = uploaded_file.name
+
+                                drive.put(image_name, data=bytes_data)            
+                                new_dict["features"][0]["properties"]["image_name"] = image_name
+                                insert_json(new_dict)
+                            else:
+                                new_dict["features"][0]["properties"]["image_name"] = None
+                                insert_json(new_dict)
+
+                            st.success('Data saved!', icon="✅")
+                            st.stop()
+
+            except:
+
+                st.info("mark an observation")
+                st.stop()
+
+
+elif option == "Data visualizsation":
+    st.write("ciao")
 
 
 
