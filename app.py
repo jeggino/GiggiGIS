@@ -63,7 +63,8 @@ def password_generator(length):
 
 
 with st.sidebar:
-    option = st.selectbox('',('📝', '🗺️'))
+    option = st.radio("", options=('📝', '🗺️'), horizontal=True, label_visibility="visible")
+#     option = st.selectbox('',('📝', '🗺️'))
     
     "---"
 
