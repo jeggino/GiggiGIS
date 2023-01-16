@@ -75,7 +75,6 @@ if option == 'Insert data':
     LocateControl(auto_start=False).add_to(m)
 
     output = st_folium(m,  returned_objects=["all_drawings"])
-    st.write(output)
     if output:
 
         with st.sidebar:
