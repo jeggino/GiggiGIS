@@ -145,12 +145,11 @@ elif option == "Data visualizsation":
                    ).add_to(map)
 
     output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
-    
-    
-    output
-    id = output["last_active_drawing"]["properties"]["id"]
+        
     with st.sidebar:
+        
         try:
+            id = output["last_active_drawing"]["properties"]["id"]
             with st.form("entry_form", clear_on_submit=True):
                 submitted = st.form_submit_button("Cancel Data")
                 if submitted:
