@@ -134,38 +134,42 @@ if option == '📝 Data Entry':
 
 elif option == "🗺️ Data Visualization":
     
-    db_content = db.fetch().items
-    df_point = pd.DataFrame(db_content)
+    try:
+        db_content = db.fetch().items
+        df_point = pd.DataFrame(db_content)
 
-    map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-    LocateControl(auto_start=True).add_to(map)
-    
-    for i in df_point["json"].to_list():
-        folium.GeoJson(i,
-                   tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
-                                                 aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
-                                                 labels=True,
-                                                 style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-                                               )
-                   ).add_to(map)
+        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+        LocateControl(auto_start=True).add_to(map)
 
-    output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
-        
-    with st.sidebar:
-        
-        try:
-            id = output["last_active_drawing"]["properties"]["id"]
-            name = output["last_active_drawing"]["properties"]["image_name"]
-            res = drive.get(name).read()
-            
-            with st.sidebar:
-                with st.expander("See image"):
-                    st.image(res)
-            
-            with st.form("entry_form", clear_on_submit=True):
-                submitted = st.form_submit_button("Cancel Data")
-                if submitted:
-                    db.delete(id)
-                    drive.delete(name)
-        except:
-            st.info("Select an observation")
+        for i in df_point["json"].to_list():
+            folium.GeoJson(i,
+                       tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
+                                                     aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
+                                                     labels=True,
+                                                     style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+                                                   )
+                       ).add_to(map)
+
+        output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
+
+        with st.sidebar:
+
+            try:
+                id = output["last_active_drawing"]["properties"]["id"]
+                name = output["last_active_drawing"]["properties"]["image_name"]
+                res = drive.get(name).read()
+
+                with st.sidebar:
+                    with st.expander("See image"):
+                        st.image(res)
+
+                with st.form("entry_form", clear_on_submit=True):
+                    submitted = st.form_submit_button("Cancel Data")
+                    if submitted:
+                        db.delete(id)
+                        drive.delete(name)
+            except:
+                st.info("Select an observation")
+                
+    except:
+        st.error('No data yet!', icon="🚨")
