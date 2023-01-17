@@ -179,6 +179,7 @@ if option == '📝 Data Entry':
 
                     st.info("Mark an observation")
                     st.stop()
+    main()
 
 
 elif option == "🗺️ Data Visualization":
