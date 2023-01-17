@@ -117,7 +117,7 @@ with st.sidebar:
 if option == '📝 Data Entry':
 
 
-    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width='80%', height='80%')
+    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=300, height=500')
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
