@@ -167,11 +167,12 @@ if option == '📝 Data Entry':
                                 insert_json(new_dict,key)
 
                             st.success('Data saved!', icon="✅")
+                            main()
 
 
             except:
                 st.info("Mark an observation")
-    main()
+    
 
                             
 
