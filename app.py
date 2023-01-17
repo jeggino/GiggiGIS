@@ -14,6 +14,16 @@ from deta import Deta
 import string
 import random
 
+
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}rem;
+        padding-left: {padding}rem;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
+
     
 st.set_page_config(
     page_title="GiggiGIS",
@@ -21,13 +31,40 @@ st.set_page_config(
     layout="wide"
 )
 
+# --- VARIABLES---
 
-# Connect to Deta Base with your Project Key
-deta = Deta(st.secrets["deta_key"])
+GROUP = ["Vogels", "Vliermuizen"]
+
+BAT_NAMES = ['Laatvlieger', 'Gewone dwergvleermuis', 'Watervleermuis',
+       'Rosse vleermuis', 'Ruige dwergvleermuis', 'Meervleermuis',
+       'Bosvleermuis', 'Franjestaart', 'Vleermuis onbekend',
+       'Myotis spec.', 'Vale vleermuis', 'Gewone grootoorvleermuis',
+       'Ingekorven vleermuis', 'Baardvleermuis', 'Brandts vleermuis',
+       'Kleine dwergvleermuis', 'Grijze grootoorvleermuis',
+       'Bechsteins vleermuis', 'Tweekleurige vleermuis',
+       'Dwergvleermuis spec.', 'Plecotus spec.', 'Mopsvleermuis']
+
+BAT_BEHAVIOURS = ['foeragerend', 'roepend','verplaatsend (vliegroute)', 'sociale roep', 'uitvliegend','invliegend', 'overvliegend', 
+           'nest-indicerend gedrag', 'zwermend', 'sporen', 'balts', 'verkeersslachtoffer','bezet nest']
+
+BAT_FUNCTIE = ['geen / onbekend', 'zomerverblijfplaats in gebouw', 'paarverblijfplaats in gebouw','vliegroute', 'kraamverblijfplaats in gebouw',
+           'vliegroute (bomen)', 'vliegroute (water)', 'zomerverblijfplaats in boom', 'paarverblijfplaats in boom', 
+           'kraamverblijfplaats in boom', 'winterverblijfplaats in gebouw', 'massa winterverblijfplaats', 
+           'essentieel foerageergebied (water)', 'winterverblijfplaats in bloei', 'essentieel foerageergebied (bomen)', 'vastgesteld territorium',
+           'essentieel foerageergebied (grasland)']
+
+BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
+       'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
+       'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
+       'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors']
+
+
+
+# --- CONNECT TO DETA ---
 db = deta.Base("GiggiGIS_data")
 drive = deta.Drive("GiggiGIS_pictures")
 
-# -------------- FUNCTIONS --------------
+# --- FUNCTIONS ---
 
 
 def insert_json(json, key):
@@ -64,7 +101,6 @@ def password_generator(length):
 
 with st.sidebar:
     option = st.radio("", options=('📝 Data Entry', '🗺️ Data Visualization'), horizontal=True, label_visibility="visible")
-#     option = st.selectbox('',('📝', '🗺️'))
     
     "---"
 
@@ -83,7 +119,7 @@ if option == '📝 Data Entry':
         with st.sidebar:
 
             date = st.date_input("Date")
-            sp = st.selectbox("Species", ["Anax imperator", "Ischnura elegans", "Lestes sponsa"])
+            sp = st.selectbox("Soort", BAT_NAMES)
             n = st.number_input("Number of specimens:", min_value=0)
             comment = st.text_input("", placeholder="Enter a comment here ...")
             with st.expander("Upload a picture"):
