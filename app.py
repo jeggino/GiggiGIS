@@ -121,8 +121,10 @@ if option == '📝 Data Entry':
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
-
-    output = st_folium(m,  returned_objects=["all_drawings"])
+    
+    with st.container():
+        output = st_folium(m,  returned_objects=["all_drawings"])
+        
     if output:
 
         with st.sidebar:
