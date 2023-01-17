@@ -175,7 +175,7 @@ def main():
                         except:
 
                             st.info("Mark an observation")
-                            st.stop()
+                            
 
 
 
