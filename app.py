@@ -112,7 +112,7 @@ def password_generator(length):
 
 def main():
     with st.sidebar:
-    option = st.radio("", options=('📝 Data Entry', '🗺️ Data Visualization'), horizontal=True, label_visibility="visible")
+        option = st.radio("", options=('📝 Data Entry', '🗺️ Data Visualization'), horizontal=True, label_visibility="visible")
     
     "---"
     
