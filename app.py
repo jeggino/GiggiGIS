@@ -15,8 +15,6 @@ import string
 import random
 
 
-
-
     
 st.set_page_config(
     page_title="GiggiGIS",
@@ -55,6 +53,7 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
 
 
 # --- CONNECT TO DETA ---
+deta = Deta(st.secrets["deta_key"])
 db = deta.Base("GiggiGIS_data")
 drive = deta.Drive("GiggiGIS_pictures")
 
