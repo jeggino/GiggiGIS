@@ -169,6 +169,7 @@ def main():
                                             insert_json(new_dict,key)
 
                                         st.success('Data saved!', icon="✅")
+                                        break
 
 
                         except:
