@@ -124,54 +124,55 @@ if option == '📝 Data Entry':
         with st.container():
             output = st_folium(m,  returned_objects=["all_drawings"])
 
-        if output:
+#         if output:
 
-            with st.sidebar:
+        with st.sidebar:
 
-                date = st.date_input("Date")
-                sp = st.selectbox("Soort", BAT_NAMES)
-                n = st.number_input("Number of specimens:", min_value=0)
-                comment = st.text_input("", placeholder="Enter a comment here ...")
-                with st.expander("Upload a picture"):
-                    uploaded_file = st.camera_input("")
+            date = st.date_input("Date")
+            sp = st.selectbox("Soort", BAT_NAMES)
+            n = st.number_input("Number of specimens:", min_value=0)
+            comment = st.text_input("", placeholder="Enter a comment here ...")
+            with st.expander("Upload a picture"):
+                uploaded_file = st.camera_input("")
 
-                try:
+            try:
 
-                    new_dict = output
-                    new_dict["features"] = new_dict.pop("all_drawings")
-                    key = password_generator(12)
+                new_dict = output
+                new_dict["features"] = new_dict.pop("all_drawings")
+                key = password_generator(12)
 
-                    if len(new_dict["features"]) > 1:
-                        st.error("You cannot upload more than one survey at time!")
-                        st.stop()
+                if len(new_dict["features"]) > 1:
+                    st.error("You cannot upload more than one survey at time!")
+                    st.stop()
 
-                    else:
-
-
-                        new_dict["features"][0]["properties"]["date"] = str(date)
-                        new_dict["features"][0]["properties"]["sp"] = sp
-                        new_dict["features"][0]["properties"]["n"] = n
-                        new_dict["features"][0]["properties"]["comment"] = comment
-                        new_dict["features"][0]["properties"]["id"] = key
-
-                        with st.form("entry_form", clear_on_submit=True):
-                            submitted = st.form_submit_button("Save Data")
-                            if submitted:
-                                if uploaded_file is not None:
-                                    bytes_data = uploaded_file.getvalue()
-                                    drive.put(f"{key}.jpeg", data=bytes_data)            
-                                    new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
-                                    insert_json(new_dict,key)
-                                else:
-                                    new_dict["features"][0]["properties"]["image_name"] = None
-                                    insert_json(new_dict,key)
-
-                                st.success('Data saved!', icon="✅")
+                else:
 
 
-                except:
+                    new_dict["features"][0]["properties"]["date"] = str(date)
+                    new_dict["features"][0]["properties"]["sp"] = sp
+                    new_dict["features"][0]["properties"]["n"] = n
+                    new_dict["features"][0]["properties"]["comment"] = comment
+                    new_dict["features"][0]["properties"]["id"] = key
 
-                    st.info("Mark an observation")
+                    with st.form("entry_form", clear_on_submit=True):
+                        submitted = st.form_submit_button("Save Data")
+                        if submitted:
+                            if uploaded_file is not None:
+                                bytes_data = uploaded_file.getvalue()
+                                drive.put(f"{key}.jpeg", data=bytes_data)            
+                                new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
+                                insert_json(new_dict,key)
+                            else:
+                                new_dict["features"][0]["properties"]["image_name"] = None
+                                insert_json(new_dict,key)
+
+                            st.success('Data saved!', icon="✅")
+
+
+            except:
+                st.info("Mark an observation")
+    main()
+
                             
 
 
@@ -232,4 +233,3 @@ elif option == "🗺️ Data Visualization":
     except:
         st.error('No data yet!', icon="🚨")
             
-main()
