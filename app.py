@@ -172,6 +172,7 @@ if option == '📝 Data Entry':
 
             except:
                 st.info("Mark an observation")
+    main()
     
 
                             
