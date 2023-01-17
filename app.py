@@ -176,61 +176,63 @@ def main():
 
                         st.info("Mark an observation")
                         st.stop()
+
+
+
+    elif option == "🗺️ Data Visualization":
+
+        try:
+            db_content = db.fetch().items
+            df_point = pd.DataFrame(db_content)
+
+            map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+            LocateControl(auto_start=True).add_to(map)
+
+            for i in df_point["json"].to_list():
+                folium.GeoJson(i,
+                           tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
+                                                         aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
+                                                         labels=True,
+                                                         style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+                                                       )
+                           ).add_to(map)
+
+            output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
+
+            with st.sidebar:
+
+                try:
+                    id = output["last_active_drawing"]["properties"]["id"]
+                    name = output["last_active_drawing"]["properties"]["image_name"]
+
+                    with st.sidebar:
+
+                        try:
+
+                            res = drive.get(name).read()
+                            with st.expander("See image"):
+                                st.image(res)
+
+                            with st.form("entry_form", clear_on_submit=True):
+                                submitted = st.form_submit_button("Deleted Data")
+                                if submitted:
+                                    db.delete(id)
+                                    drive.delete(name)
+                                    st.success('Data deleted!', icon="✅")
+
+                        except:
+                            st.warning('No picture saved!', icon="⚠️")
+                            with st.form("entry_form", clear_on_submit=True):
+                                submitted = st.form_submit_button("Deleted Data")
+                                if submitted:
+                                    db.delete(id)
+                                    st.success('Data deleted!', icon="✅")
+
+
+                except:
+                    st.info("Select an observation")
+
+        except:
+            st.error('No data yet!', icon="🚨")
+            
 main()
-
-
-elif option == "🗺️ Data Visualization":
-    
-    try:
-        db_content = db.fetch().items
-        df_point = pd.DataFrame(db_content)
-
-        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-        LocateControl(auto_start=True).add_to(map)
-
-        for i in df_point["json"].to_list():
-            folium.GeoJson(i,
-                       tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
-                                                     aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
-                                                     labels=True,
-                                                     style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-                                                   )
-                       ).add_to(map)
-
-        output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
-
-        with st.sidebar:
-
-            try:
-                id = output["last_active_drawing"]["properties"]["id"]
-                name = output["last_active_drawing"]["properties"]["image_name"]
-                
-                with st.sidebar:
-                
-                    try:
-
-                        res = drive.get(name).read()
-                        with st.expander("See image"):
-                            st.image(res)
-
-                        with st.form("entry_form", clear_on_submit=True):
-                            submitted = st.form_submit_button("Deleted Data")
-                            if submitted:
-                                db.delete(id)
-                                drive.delete(name)
-                                st.success('Data deleted!', icon="✅")
-
-                    except:
-                        st.warning('No picture saved!', icon="⚠️")
-                        with st.form("entry_form", clear_on_submit=True):
-                            submitted = st.form_submit_button("Deleted Data")
-                            if submitted:
-                                db.delete(id)
-                                st.success('Data deleted!', icon="✅")
-                        
-
-            except:
-                st.info("Select an observation")
-                
-    except:
-        st.error('No data yet!', icon="🚨")
