@@ -15,6 +15,15 @@ import string
 import random
 
 
+
+
+    
+st.set_page_config(
+    page_title="GiggiGIS",
+    page_icon="🍕",
+    layout="wide"
+)
+
 padding = 0
 st.markdown(f""" <style>
     .reportview-container .main .block-container{{
@@ -23,13 +32,6 @@ st.markdown(f""" <style>
         padding-left: {padding}rem;
         padding-bottom: {padding}rem;
     }} </style> """, unsafe_allow_html=True)
-
-    
-st.set_page_config(
-    page_title="GiggiGIS",
-    page_icon="🍕",
-    layout="wide"
-)
 
 # --- VARIABLES---
 
