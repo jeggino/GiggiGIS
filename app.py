@@ -14,12 +14,15 @@ from deta import Deta
 import string
 import random
 
+st.markdown(""" <style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style> """, unsafe_allow_html=True)
 
-    
 st.set_page_config(
     page_title="GiggiGIS",
     page_icon="🍕",
-    layout="wide"
+    
 )
 
 
