@@ -24,14 +24,6 @@ st.set_page_config(
     layout="wide"
 )
 
-padding = 0
-st.markdown(f""" <style>
-    .reportview-container .main .block-container{{
-        padding-top: {padding}rem;
-        padding-right: {padding}rem;
-        padding-left: {padding}rem;
-        padding-bottom: {padding}rem;
-    }} </style> """, unsafe_allow_html=True)
 
 # --- VARIABLES---
 
@@ -99,6 +91,18 @@ def password_generator(length):
             password += random.choice(pool)
 
     return password  # returns the string
+
+
+# --- APP ---
+
+padding = 0
+st.markdown(f""" <style>
+    .reportview-container .main .block-container{{
+        padding-top: {padding}rem;
+        padding-right: {padding}rem;
+        padding-left: {padding}rem;
+        padding-bottom: {padding}rem;
+    }} </style> """, unsafe_allow_html=True)
 
 
 with st.sidebar:
