@@ -254,21 +254,15 @@ elif option == "bla bla":
     import pandas as pd
 
 
-    
+        st.session_state.num = 1
+        st.session_state.data = []
 
 
-    class NewStudent:  
-        
-        def __init__(self,page_id):
-            m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-            Fullscreen().add_to(m)
-            LocateControl(auto_start=True).add_to(m)
-            
-           
+    class NewStudent:
+        def __init__(self, page_id):
+            st.title(f"Student N°{page_id}")
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
-            self.output = st_folium(m,  returned_objects=["all_drawings"])                      
 
 
     def main():
@@ -276,30 +270,25 @@ elif option == "bla bla":
         placeholder2 = st.empty()
 
         while True:    
-            
-            NewStudent(page_id=1)
+            num = st.session_state.num
 
-            if placeholder2.button('end'):
+            if placeholder2.button('end', key=num):
                 placeholder2.empty()
                 df = pd.DataFrame(st.session_state.data)
                 st.dataframe(df)
                 break
-            
-            else:
-                if placeholder.button('load'):     
+            else:        
+                with placeholder.form(key=str(num)):
+                    new_student = NewStudent(page_id=num)        
 
-                    new_student = NewStudent(page_id=1)        
-
-                    st.write(new_student.name)
-                    st.write(new_student.age)
-                    st.write(new_student.output)
-                    
-
-
-                    placeholder.empty()
-                    placeholder2.empty()
-                else:
-                    st.stop()
+                    if st.form_submit_button('register'):                
+                        st.session_state.data.append({
+                            'id': num, 'name': new_student.name, 'age': new_student.age})
+                        st.session_state.num += 1
+                        placeholder.empty()
+                        placeholder2.empty()
+                    else:
+                        st.stop()
 
     main()
 
