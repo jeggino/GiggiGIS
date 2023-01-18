@@ -256,13 +256,12 @@ elif option == "bla bla":
     class NewStudent:
         
         
-        def __init__(self, page_id):
+        def __init__(self):
             m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
             Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
             Fullscreen().add_to(m)
             LocateControl(auto_start=True).add_to(m)
         
-            st.title(f"Student N°{page_id}")
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
             self.output = st_folium(m,  returned_objects=["all_drawings"])
@@ -283,7 +282,7 @@ elif option == "bla bla":
                 break
             else:        
                 with placeholder.form(key=str(num)):
-                    new_student = NewStudent(page_id=num)        
+                    new_student = NewStudent()        
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
