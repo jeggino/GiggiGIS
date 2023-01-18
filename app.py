@@ -249,20 +249,32 @@ def password_generator(length):
         
         
 # elif option == "bla bla":
-    
+import streamlit as st
 
-m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, )
-Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-Fullscreen().add_to(m)
-LocateControl(auto_start=True).add_to(m)
-    
-left,right = st.columns([2,1])
+with st.form("my_form"):
+   st.write("Inside the form")
+   slider_val = st.slider("Form slider")
+   checkbox_val = st.checkbox("Form checkbox")
 
-if st.button('submit'):
-    st.experimental_rerun()
-else:     
-    with left:
-        output = st_folium(m,  returned_objects=["all_drawings"], width=450, height=600)
-    with right:
-        output
+   # Every form must have a submit button.
+   submitted = st.form_submit_button("Submit")
+   if submitted:
+       st.write("slider", slider_val, "checkbox", checkbox_val)
+
+st.write("Outside the form")    
+
+# m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, )
+# Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+# Fullscreen().add_to(m)
+# LocateControl(auto_start=True).add_to(m)
+    
+# left,right = st.columns([2,1])
+
+# if st.button('submit'):
+#     st.experimental_rerun()
+# else:     
+#     with left:
+#         output = st_folium(m,  returned_objects=["all_drawings"], width=450, height=600)
+#     with right:
+#         output
             
