@@ -249,30 +249,24 @@ elif option == "bla bla":
     
 
 
-    import streamlit as st
-    import time
-
-    with st.empty():
-        for seconds in range(10):
-            st.write(f"⏳ {seconds} seconds have passed")
-            time.sleep(1)
-        st.write("✔️ 1 minute over!")
+    def map():
+        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+        Fullscreen().add_to(m)
+        LocateControl(auto_start=True).add_to(m)
+        output = st_folium(m,  returned_objects=["all_drawings"])
+        return output 
+        
             
 
 
     
-#     placeholder = st.empty()
-#     with st.form("my_form",clear_on_submit=True):
-#         genre = st.radio( "What\'s your favorite movie genre",('Comedy', 'Drama', 'Documentary'))
-#         option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
-#         m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-#         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-#         Fullscreen().add_to(m)
-#         LocateControl(auto_start=True).add_to(m)
-#         placeholder.output = st_folium(m,  returned_objects=["all_drawings"])
-        
-#         if st.form_submit_button('register'):                
-#             st.write(genre)
+    with st.form("my_form",clear_on_submit=True):
+        genre = st.radio( "What\'s your favorite movie genre",('Comedy', 'Drama', 'Documentary'))
+        option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
+        map()
+        if st.form_submit_button('register'):                
+            st.write(genre)
 
     
         
