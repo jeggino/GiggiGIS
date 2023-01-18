@@ -287,21 +287,19 @@ elif option == "bla bla":
                 st.dataframe(df)
                 break
                 
-            else:        
-                with placeholder.form(key=str(num)):
+            elif:        
+                with placeholder.button('end', key=num):
                     new_student = NewStudent(page_id=num)        
-#                     NewStudent(page_id=num).output
-
-                    if st.form_submit_button('register'):                
-                        st.session_state.data.append({
-                            'id': num, 'name': new_student.name, 'age': new_student.age, "output": new_student.output
-                        })
-                        st.session_state.num += 1
+              
+                    st.session_state.data.append({
+                        'id': num, 'name': new_student.name, 'age': new_student.age, "output": new_student.output
+                    })
+                    st.session_state.num += 1
                         
-                        placeholder.empty()
-                        placeholder2.empty()
-                    else:
-                        st.stop()
+                    placeholder.empty()
+                    placeholder2.empty()
+                else:
+                    st.stop()
 
     main()
 
