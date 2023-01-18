@@ -270,7 +270,9 @@ elif option == "bla bla":
             output = st_folium(m,  returned_objects=["all_drawings"])
 
             if st.form_submit_button('register'):                
-                output
+                output.empty()
+                output = st_folium(m,  returned_objects=["all_drawings"])
+                
                 
     main()
 
