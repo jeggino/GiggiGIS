@@ -271,10 +271,7 @@ elif option == "bla bla":
            
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
-            self.output = st_folium(m,  returned_objects=["all_drawings"])
-#             self.json = st.json(self.output)
-            
-            
+            self.output = st_folium(m,  returned_objects=["all_drawings"])                      
 
 
     def main():
@@ -297,7 +294,7 @@ elif option == "bla bla":
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
-                            'id': num, 'name': new_student.name, 'age': new_student.age
+                            'id': num, 'name': new_student.name, 'age': new_student.age, "output": new_student.output
                         })
                         st.session_state.num += 1
                         
