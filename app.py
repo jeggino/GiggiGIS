@@ -251,36 +251,30 @@ elif option == "🗺️ Data Visualization":
 elif option == "bla bla":
     
     import streamlit as st
-    import time
-    from helpers import *
     from streamlit.script_runner import RerunException
 
+    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+    Fullscreen().add_to(m)
+    LocateControl(auto_start=True).add_to(m)
 
-    @st.cache(suppress_st_warning=True)  # 👈 Changed this
-    def expensive_computation(a, b):
-        # 👇 Added this
-        st.write("Cache miss: expensive_computation(", a, ",", b, ") ran")
-        time.sleep(2)  # This makes the function take 2s to run
-        return a * b
+    output = st_folium(m,  returned_objects=["all_drawings"])
 
-    a = 2
-    b = 21
-    res = expensive_computation(a, b)
+    with st.form("my_form"):
+        st.write("Inside the form")
+        slider_val = st.slider("Form slider")
+        checkbox_val = st.checkbox("Form checkbox")
 
-    st.write("Result:", res)
+        # Every form must have a submit button.
+        submitted = st.form_submit_button("Submit")
+        if submitted:
+            st.write("slider", slider_val, "checkbox", checkbox_val)
+            raise RerunException
 
-    my_slot0 = st.sidebar.empty()
-    my_slot1 = st.sidebar.empty()
-    my_slot0.info("Clear cache")
-    if my_slot1.button("Clear"):
-        my_slot0.error("Do you really, really, wanna do this?")
-        if my_slot1.button("Yes I'm ready to rumble"):
-            caching.clear_cache()
-            st.balloons()
-            my_slot0.error("Cache is cleared, please reload to scrape new values")
-            time.sleep(10)
-            if my_slot1.button("reload"):
-                raise RerunException
+
+    
+            
+                
             
     
         
