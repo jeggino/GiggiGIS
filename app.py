@@ -285,7 +285,7 @@ elif option == "bla bla":
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
-                            'id': num, 'name': new_student.name, 'age': new_student.age})
+                            'id': num, 'name': new_student.name, 'age': new_student.age, 'output': new_student.output})
                         st.session_state.num += 1
                         placeholder.empty()
                         placeholder2.empty()
