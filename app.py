@@ -286,16 +286,17 @@ elif option == "bla bla":
                 df = pd.DataFrame(st.session_state.data)
                 st.dataframe(df)
                 break
-                
-            elif:        
-                with placeholder.button('end', key=num):
+            
+            else:
+                if placeholder.button('end', key=num):     
+
                     new_student = NewStudent(page_id=num)        
-              
+
                     st.session_state.data.append({
                         'id': num, 'name': new_student.name, 'age': new_student.age, "output": new_student.output
                     })
                     st.session_state.num += 1
-                        
+
                     placeholder.empty()
                     placeholder2.empty()
                 else:
