@@ -247,22 +247,20 @@ elif option == "bla bla":
     import pandas as pd
     
     def fun(input_a,input_b):
-        st.write(input_a)
-        st.write(input_b)
+        return st.write(input_a),st.write(input_b), fun()
         
-    def app():
+    
 
-        input_a = genre = st.radio(
-        "What\'s your favorite movie genre",
-        ('Comedy', 'Drama', 'Documentary'))
+    input_a =  st.radio(
+    "What\'s your favorite movie genre",
+    ('Comedy', 'Drama', 'Documentary'))
 
-        input_b = st.selectbox(
-        'How would you like to be contacted?',
-        ('Email', 'Home phone', 'Mobile phone'))
-    app()
-    if st.button('Say hello'):
-        fun(input_a,input_b)
-        app()
+    input_b = st.selectbox(
+    'How would you like to be contacted?',
+    ('Email', 'Home phone', 'Mobile phone'))
+        
+    fun(input_a,input_b)
+    
         
         
     
