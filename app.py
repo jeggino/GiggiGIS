@@ -256,10 +256,10 @@ Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).ad
 Fullscreen().add_to(m)
 LocateControl(auto_start=True).add_to(m)
     
-    
+left,right = st.columns([2,1])
+
 if st.button('submit'):
     st.experimental_rerun()
-left,right = st.columns([2,1])
 else:     
     with left:
         output = st_folium(m,  returned_objects=["all_drawings"], width=250, height=250)
