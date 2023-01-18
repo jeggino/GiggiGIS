@@ -262,7 +262,7 @@ if st.button('submit'):
     st.experimental_rerun()
 else:     
     with left:
-        output = st_folium(m,  returned_objects=["all_drawings"], width=250, height=250)
+        output = st_folium(m,  returned_objects=["all_drawings"], width=450, height=600)
     with right:
         output
             
