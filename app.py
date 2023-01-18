@@ -293,7 +293,7 @@ elif option == "bla bla":
             else:        
                 with placeholder.form(key=str(num)):
                     new_student = NewStudent(page_id=num)        
-                    NewStudent(page_id=num).output
+#                     NewStudent(page_id=num).output
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
