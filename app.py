@@ -276,7 +276,7 @@ elif option == "bla bla":
                 st.write(genre)
                 placeholder.empty()
                 
-      main()
+    main()
 
     
         
