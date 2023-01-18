@@ -22,10 +22,10 @@ st.set_page_config(
     
 )
 
-# st.markdown(""" <style>
-# #MainMenu {visibility: hidden;}
-# footer {visibility: hidden;}
-# </style> """, unsafe_allow_html=True)
+st.markdown(""" <style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style> """, unsafe_allow_html=True)
 
 padding = 0
 st.markdown(f""" <style>
@@ -256,10 +256,13 @@ Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).ad
 Fullscreen().add_to(m)
 LocateControl(auto_start=True).add_to(m)
     
-if st.button('submit'):
-    st.experimental_rerun()
-
-else:
-    output = st_folium(m,  returned_objects=["all_drawings"], width=150, height=150)
-    output
+    
+left,right = st.columns([2,1])
+with left:
+    if st.button('submit'):
+        st.experimental_rerun()
+with right:
+    else:
+        output = st_folium(m,  returned_objects=["all_drawings"], width=250, height=250)
+        output
             
