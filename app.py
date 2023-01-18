@@ -297,7 +297,7 @@ def main():
                     st.session_state.data.append({
                         'id': num, 'name': new_student.name, 'age': new_student.age, "output": new_student.output})
                     st.session_state.num += 1
-                    placeholder.empty()
+#                     placeholder.empty()
                     placeholder2.empty()
                 else:
                     st.stop()
