@@ -254,10 +254,7 @@ elif option == "bla bla":
     import pandas as pd
 
 
-    if 'num' not in st.session_state:
-        st.session_state.num = 1
-    if 'data' not in st.session_state:
-        st.session_state.data = []
+    
 
 
     class NewStudent:  
@@ -279,23 +276,24 @@ elif option == "bla bla":
         placeholder2 = st.empty()
 
         while True:    
-            num = st.session_state.num
+            
 
-            if placeholder2.button('end', key=num):
+            if placeholder2.button('end'):
                 placeholder2.empty()
                 df = pd.DataFrame(st.session_state.data)
                 st.dataframe(df)
                 break
             
             else:
-                if placeholder.button('end', key=num):     
+                if placeholder.button('end'):     
 
-                    new_student = NewStudent(page_id=num)        
+                    new_student = NewStudent(page_id=1)        
 
-                    st.session_state.data.append({
-                        'id': num, 'name': new_student.name, 'age': new_student.age, "output": new_student.output
-                    })
-                    st.session_state.num += 1
+                    st.write(new_student.name)
+                    st.write(new_student.age)
+                    st.write(new_student.output)
+                    
+
 
                     placeholder.empty()
                     placeholder2.empty()
