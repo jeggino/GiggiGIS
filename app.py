@@ -254,8 +254,10 @@ elif option == "bla bla":
     import pandas as pd
 
 
-    st.session_state.num = 1
-    st.session_state.data = []
+    if 'num' not in st.session_state:
+        st.session_state.num = 1
+    if 'data' not in st.session_state:
+        st.session_state.data = []
 
 
     class NewStudent:
