@@ -251,24 +251,27 @@ elif option == "bla bla":
 
     class NewStudent:
         def __init__(self):
+            self.genre = st.radio( "What\'s your favorite movie genre",('Comedy', 'Drama', 'Documentary'))
+            self.option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
+            
             m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
             Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
             Fullscreen().add_to(m)
             LocateControl(auto_start=True).add_to(m)
             output = st_folium(m,  returned_objects=["all_drawings"])
-            self.genre = st.radio( "What\'s your favorite movie genre",('Comedy', 'Drama', 'Documentary'))
-            self.option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
+            
 
 
     def main():
         placeholder = st.empty()
+        with placeholder.form():
 
-        while True:                  
-            NewStudent()        
-            if st.button('register'):                
-                placeholder.empty()
-            else:
-                st.stop()
+            while True:                  
+                NewStudent()        
+                if st.form_submit_button('register'):                
+                    placeholder.empty()
+                else:
+                    st.stop()
 
     main()
     
