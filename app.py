@@ -259,12 +259,22 @@ if 'num' not in st.session_state:
 if 'data' not in st.session_state:
     st.session_state.data = []
 
+def map():
+    
+    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+    Fullscreen().add_to(m)
+    LocateControl(auto_start=True).add_to(m)
+    output = st_folium(m,  returned_objects=["all_drawings"])
 
+    return output 
+    
 class NewStudent:
     def __init__(self, page_id):
         st.title(f"Student N°{page_id}")
         self.name = st.text_input("Name")
         self.age = st.text_input("Age")
+        self.output = map()
 
 
 def main():
@@ -285,7 +295,7 @@ def main():
 
                 if st.form_submit_button('register'):                
                     st.session_state.data.append({
-                        'id': num, 'name': new_student.name, 'age': new_student.age})
+                        'id': num, 'name': new_student.name, 'age': new_student.age, "output": new_student.output})
                     st.session_state.num += 1
                     placeholder.empty()
                     placeholder2.empty()
