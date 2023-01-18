@@ -264,7 +264,7 @@ def main():
     while True:
 
         if st.button('Say hello'):
-            st.write("ok")
+            st.experimental_rerun()
             
 
         else:
