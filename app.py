@@ -250,83 +250,16 @@ elif option == "🗺️ Data Visualization":
         
 elif option == "bla bla":
     
-#     import streamlit as st
-#     import pandas as pd
-
-
-#     if 'num' not in st.session_state:
-#         st.session_state.num = 1
-#     if 'data' not in st.session_state:
-#         st.session_state.data = []
-#     if 'json' not in st.session_state:
-#         st.session_state.json = []
-
-
-#     class NewStudent:
-#         def __init__(self, page_id):
-#             st.title(f"Student N°{page_id}")
-#             self.name = st.text_input("Name")
-#             self.age = st.text_input("Age")
-            
-#             m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-#             Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-#             Fullscreen().add_to(m)
-#             LocateControl(auto_start=True).add_to(m)
-
-#             self.json = st_folium(m,  returned_objects=["all_drawings"])
-            
-
-
-#     def main():
-#         placeholder = st.empty()
-#         placeholder2 = st.empty()
-
-#         while True:    
-#             num = st.session_state.num
-
-#             if placeholder2.button('end', key=num):
-#                 placeholder2.empty()
-#                 df = pd.DataFrame(st.session_state.data)
-#                 st.dataframe(df)
-#                 break
-#             else:        
-#                 with placeholder.form(key=str(num),clear_on_submit=True):
-#                     new_student = NewStudent(page_id=num)        
-
-#                     if st.form_submit_button('register'):                
-#                         st.session_state.data.append({
-#                             'id': num, 'name': new_student.name, 'age': new_student.age, 'json':new_student.json})
-#                         st.session_state.num += 1
-#                         placeholder.empty()
-#                         placeholder2.empty()
-#                     else:
-#                         st.stop()
-
-#     main()
-    
-    import streamlit as st
-    
-    while True:
-        
-        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-        Fullscreen().add_to(m)
-        LocateControl(auto_start=True).add_to(m)
-        with st.form("my_form"):
-            
-
-            output = st_folium(m,  returned_objects=["all_drawings"])
-            st.write("Inside the form")
-            slider_val = st.slider("Form slider")
-            checkbox_val = st.checkbox("Form checkbox")
-
-            # Every form must have a submit button.
-            submitted = st.form_submit_button("Submit")
-            if submitted:
-                st.write(output)
-            else:
-                
-                st.stop()
+    st.markdown('### Projects')
+            for index, row in self.projects.iterrows():
+                col1, col2 = st.beta_columns([6,1])
+                with col1:
+                    st.markdown(f"**{row['name']}**({row['short_name']})", unsafe_allow_html=True)
+                    st.markdown(row['description'])
+                with col2:
+                    if st.button(label='Open',key=row['id']):
+                        self.current_project = Project(row, self)
+                        self.current_project.info()
             
     
         
