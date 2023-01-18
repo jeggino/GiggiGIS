@@ -252,14 +252,14 @@ def password_generator(length):
     
 import streamlit as st
 import pandas as pd
-from streamlit import caching
+from  streamlit.caching import clear_cache
 
 
 
 
     
 if st.button('Say hello'):
-    caching.clear_cache()
+    clear_cache()
     st.experimental_rerun()
     
 else:
