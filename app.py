@@ -271,7 +271,7 @@ elif option == "bla bla":
            
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
-            self.output = output
+            self.output = st.json(output)
             
             
 
