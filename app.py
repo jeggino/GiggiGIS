@@ -228,8 +228,8 @@ if option == '📝 Data Entry':
         comment = st.text_input("", placeholder="Enter a comment here ...")
         with st.expander("Upload a picture"):
             uploaded_file = st.camera_input("")
-            
-    input_data(date,sp,n,comment,uploaded_file)
+    while True:
+        input_data(date,sp,n,comment,uploaded_file)
             
     
     
