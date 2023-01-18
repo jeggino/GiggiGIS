@@ -266,4 +266,5 @@ while True:
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
         output = st_folium(m,  returned_objects=["all_drawings"])
-        st.write(output)                   
+        st.write(output)
+        st.stop()
