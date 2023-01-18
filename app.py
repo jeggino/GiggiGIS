@@ -260,10 +260,7 @@ elif option == "bla bla":
         st.session_state.data = []
 
 
-    class NewStudent:
-        
-        
-        
+    class NewStudent:  
         
         def __init__(self):
             m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
@@ -290,14 +287,17 @@ elif option == "bla bla":
                 df = pd.DataFrame(st.session_state.data)
                 st.dataframe(df)
                 break
+                
             else:        
                 with placeholder.form(key=str(num)):
                     NewStudent()        
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
-                            'id': num, 'name': NewStudent().name, 'age': NewStudent().age, 'output': NewStudent().output})
+                            'id': num, 'name': NewStudent().name, 'age': NewStudent().age, 'output': NewStudent().output
+                        })
                         st.session_state.num += 1
+                        
                         placeholder.empty()
                         placeholder2.empty()
                     else:
