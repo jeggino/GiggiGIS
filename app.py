@@ -272,7 +272,7 @@ elif option == "bla bla":
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
             self.output = st_folium(m,  returned_objects=["all_drawings"])
-            self.json = st.json(self.output)
+#             self.json = st.json(self.output)
             
             
 
