@@ -257,7 +257,7 @@ Fullscreen().add_to(m)
 LocateControl(auto_start=True).add_to(m)
     
     
-left,right = st.columns([2,1])
+left,right = st.columns(2)
 if st.button('submit'):
     st.experimental_rerun()
 else:     
