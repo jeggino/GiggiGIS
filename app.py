@@ -247,7 +247,9 @@ elif option == "bla bla":
     import pandas as pd
     
     def fun(input_a,input_b):
-        return st.write(input_a),st.write(input_b), fun()
+        st.write(input_a)
+        st.write(input_b)
+        
         
     
 
