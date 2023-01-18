@@ -250,7 +250,6 @@ def password_generator(length):
         
 # elif option == "bla bla":
     
-import streamlit as st
 
 m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
 Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
@@ -263,5 +262,4 @@ if st.button('submit'):
 else:
     output = st_folium(m,  returned_objects=["all_drawings"])
     output
-    st.stop()
             
