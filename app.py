@@ -255,15 +255,15 @@ import pandas as pd
 
 
 
+while True:
+    
+    if st.button('Say hello'):
+        st.write("ok")
 
-    
-if st.button('Say hello'):
-    st.experimental_rerun()
-    
-else:
-    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-    Fullscreen().add_to(m)
-    LocateControl(auto_start=True).add_to(m)
-    output = st_folium(m,  returned_objects=["all_drawings"])
-    st.write(output)                   
+    else:
+        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+        Fullscreen().add_to(m)
+        LocateControl(auto_start=True).add_to(m)
+        output = st_folium(m,  returned_objects=["all_drawings"])
+        st.write(output)                   
