@@ -297,8 +297,9 @@ def main():
                     st.session_state.data.append({
                         'id': num, 'name': new_student.name, "output": new_student.json})
                     st.session_state.num += 1
-                    st.warning('This is a warning', icon="⚠️")
+                    
                     placeholder.empty()
+                    st.warning('This is a warning', icon="⚠️")
                     placeholder2.empty()
                 else:
                     st.stop()
