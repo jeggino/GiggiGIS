@@ -312,7 +312,7 @@ elif option == "bla bla":
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
 
-        output = form.st_folium(m,  returned_objects=["all_drawings"])
+        output = st_folium(m,  returned_objects=["all_drawings"])
         
         with st.form("my_form"):
             st.write("Inside the form")
