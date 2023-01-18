@@ -260,7 +260,6 @@ elif option == "bla bla":
             
 
     def main():
-        placeholder = st.empty()
         with st.form("my_form",clear_on_submit=True):
             genre = st.radio( "What\'s your favorite movie genre",('Comedy', 'Drama', 'Documentary'))
             option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
@@ -270,11 +269,8 @@ elif option == "bla bla":
             LocateControl(auto_start=True).add_to(m)
             output = st_folium(m,  returned_objects=["all_drawings"])
 
-            placeholder.output()
-
             if st.form_submit_button('register'):                
-                st.write(genre)
-                placeholder.empty()
+                output
                 
     main()
 
