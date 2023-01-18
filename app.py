@@ -260,7 +260,7 @@ elif option == "bla bla":
         'How would you like to be contacted?',
         ('Email', 'Home phone', 'Mobile phone'))
     app()
-    if st.botton("botton"):
+    if st.button('Say hello'):
         fun(input_a,input_b)
         app()
         
