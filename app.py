@@ -277,6 +277,7 @@ elif option == "bla bla":
 
         while True:    
             
+            NewStudent(page_id=1)
 
             if placeholder2.button('end'):
                 placeholder2.empty()
