@@ -288,6 +288,7 @@ def main():
             df = pd.DataFrame(st.session_state.data)
             st.dataframe(df)
             break
+            
         else:        
             with placeholder.form(key=str(num)):
                 new_student = NewStudent(page_id=num)        
@@ -298,21 +299,8 @@ def main():
                     st.session_state.num += 1
                     placeholder.empty()
                     placeholder2.empty()
+                    
                 else:
                     st.stop()
 
 main()
-
-
-    
-            
-                
-            
-    
-        
-        
-    
-    
-        
-    
-            
