@@ -267,7 +267,7 @@ elif option == "bla bla":
         with st.form("my_form",clear_on_submit=True):
             NewStudent()        
             if st.form_submit_button('register'):                
-                st.write("ff")
+                NewStudent()  
 
     main()
     
