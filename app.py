@@ -269,3 +269,5 @@ def main():
             output = st_folium(m,  returned_objects=["all_drawings"])
             st.write(output)
             st.stop()
+            
+main()
