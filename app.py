@@ -263,15 +263,13 @@ elif option == "bla bla":
     def main():
         placeholder = st.empty()
 
-        while True:    
-           
-            else:        
-                with placeholder.form(key=str(num)):
-                    NewStudent()        
-                    if st.form_submit_button('register'):                
-                        placeholder.empty()
-                    else:
-                        st.stop()
+        while True:                  
+            with placeholder.form():
+                NewStudent()        
+                if st.form_submit_button('register'):                
+                    placeholder.empty()
+                else:
+                    st.stop()
 
     main()
     
