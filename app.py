@@ -305,9 +305,17 @@ elif option == "bla bla":
 #     main()
     
     import streamlit as st
+    
+    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+    Fullscreen().add_to(m)
+    LocateControl(auto_start=True).add_to(m)
+    
+    
 
-    form = st.form("my_form")
+    form = st.form("my_form",clear_on_submit=True)
     form.slider("Inside the form")
+    output = form.st_folium(m,  returned_objects=["all_drawings"])
     st.slider("Outside the form")
 
     # Now add a submit button to the form:
