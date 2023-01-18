@@ -259,7 +259,7 @@ def main():
 
         if st.button('Say hello'):
             st.write("ok")
-            main()
+            st.experimental_rerun()
 
         else:
             m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
