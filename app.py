@@ -251,15 +251,15 @@ elif option == "🗺️ Data Visualization":
 elif option == "bla bla":
     
     st.markdown('### Projects')
-            for index, row in self.projects.iterrows():
-                col1, col2 = st.beta_columns([6,1])
-                with col1:
-                    st.markdown(f"**{row['name']}**({row['short_name']})", unsafe_allow_html=True)
-                    st.markdown(row['description'])
-                with col2:
-                    if st.button(label='Open',key=row['id']):
-                        self.current_project = Project(row, self)
-                        self.current_project.info()
+    for index, row in self.projects.iterrows():
+        col1, col2 = st.beta_columns([6,1])
+        with col1:
+            st.markdown(f"**{row['name']}**({row['short_name']})", unsafe_allow_html=True)
+            st.markdown(row['description'])
+        with col2:
+            if st.button(label='Open',key=row['id']):
+                self.current_project = Project(row, self)
+                self.current_project.info()
             
     
         
