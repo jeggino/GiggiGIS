@@ -254,8 +254,8 @@ elif option == "bla bla":
     import pandas as pd
 
 
-        st.session_state.num = 1
-        st.session_state.data = []
+    st.session_state.num = 1
+    st.session_state.data = []
 
 
     class NewStudent:
