@@ -251,7 +251,7 @@ def password_generator(length):
 # elif option == "bla bla":
 import streamlit as st
 
-with st.form("my_form"):
+with st.form("my_form",clear_on_submit=True):
    st.write("Inside the form")
    slider_val = st.slider("Form slider")
    checkbox_val = st.checkbox("Form checkbox")
