@@ -269,7 +269,8 @@ elif option == "bla bla":
             LocateControl(auto_start=True).add_to(m)
             output = st_folium(m,  returned_objects=["all_drawings"])
 
-            if st.form_submit_button('register'):                
+            if st.form_submit_button('register'):   
+                st.write(output)
 
                 
                 
