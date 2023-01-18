@@ -267,14 +267,14 @@ def map():
     LocateControl(auto_start=True).add_to(m)
     output = st_folium(m,  returned_objects=["all_drawings"])
 
-    return st.write(output)
+    return output
     
 class NewStudent:
     def __init__(self, page_id):
         st.title(f"Student N°{page_id}")
         self.name = st.text_input("Name")
-        self.age = st.text_input("Age")
-        self.output = map()
+#         self.age = st.text_input("Age")
+        self.json = map()
 
 
 def main():
@@ -295,7 +295,7 @@ def main():
 
                 if st.form_submit_button('register'):                
                     st.session_state.data.append({
-                        'id': num, 'name': new_student.name, 'age': new_student.age, "output": new_student.output})
+                        'id': num, 'name': new_student.name, "output": new_student.json})
                     st.session_state.num += 1
 #                     placeholder.empty()
                     placeholder2.empty()
