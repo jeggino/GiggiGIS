@@ -159,24 +159,24 @@ def password_generator(length):
 
 
 
-# --- APP ---
-with st.sidebar:
-    option = st.radio("", options=('📝 Data Entry', '🗺️ Data Visualization', 'bla bla'), horizontal=True, label_visibility="visible")
+# # --- APP ---
+# with st.sidebar:
+#     option = st.radio("", options=('📝 Data Entry', '🗺️ Data Visualization', 'bla bla'), horizontal=True, label_visibility="visible")
     
-"---"
+# "---"
 
-if option == '📝 Data Entry':
+# if option == '📝 Data Entry':
     
-    with st.sidebar:
+#     with st.sidebar:
 
-        date = st.date_input("Date")
-        sp = st.selectbox("Soort", BAT_NAMES)
-        n = st.number_input("Number of specimens:", min_value=0)
-        comment = st.text_input("", placeholder="Enter a comment here ...")
-        with st.expander("Upload a picture"):
-            uploaded_file = st.camera_input("")
+#         date = st.date_input("Date")
+#         sp = st.selectbox("Soort", BAT_NAMES)
+#         n = st.number_input("Number of specimens:", min_value=0)
+#         comment = st.text_input("", placeholder="Enter a comment here ...")
+#         with st.expander("Upload a picture"):
+#             uploaded_file = st.camera_input("")
             
-    input_data(date,sp,n,comment,uploaded_file)
+#     input_data(date,sp,n,comment,uploaded_file)
             
     
     
@@ -185,61 +185,61 @@ if option == '📝 Data Entry':
 
 
 
-elif option == "🗺️ Data Visualization":
+# elif option == "🗺️ Data Visualization":
 
-    try:
-        db_content = db.fetch().items
-        df_point = pd.DataFrame(db_content)
+#     try:
+#         db_content = db.fetch().items
+#         df_point = pd.DataFrame(db_content)
 
-        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-        LocateControl(auto_start=True).add_to(map)
+#         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+#         LocateControl(auto_start=True).add_to(map)
 
-        for i in df_point["json"].to_list():
-            folium.GeoJson(i,
-                       tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
-                                                     aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
-                                                     labels=True,
-                                                     style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-                                                   )
-                       ).add_to(map)
+#         for i in df_point["json"].to_list():
+#             folium.GeoJson(i,
+#                        tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
+#                                                      aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
+#                                                      labels=True,
+#                                                      style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+#                                                    )
+#                        ).add_to(map)
 
-        output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
+#         output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
 
-        with st.sidebar:
+#         with st.sidebar:
 
-            try:
-                id = output["last_active_drawing"]["properties"]["id"]
-                name = output["last_active_drawing"]["properties"]["image_name"]
+#             try:
+#                 id = output["last_active_drawing"]["properties"]["id"]
+#                 name = output["last_active_drawing"]["properties"]["image_name"]
 
-                with st.sidebar:
+#                 with st.sidebar:
 
-                    try:
+#                     try:
 
-                        res = drive.get(name).read()
-                        with st.expander("See image"):
-                            st.image(res)
+#                         res = drive.get(name).read()
+#                         with st.expander("See image"):
+#                             st.image(res)
 
-                        with st.form("entry_form", clear_on_submit=True):
-                            submitted = st.form_submit_button("Deleted Data")
-                            if submitted:
-                                db.delete(id)
-                                drive.delete(name)
-                                st.success('Data deleted!', icon="✅")
+#                         with st.form("entry_form", clear_on_submit=True):
+#                             submitted = st.form_submit_button("Deleted Data")
+#                             if submitted:
+#                                 db.delete(id)
+#                                 drive.delete(name)
+#                                 st.success('Data deleted!', icon="✅")
 
-                    except:
-                        st.warning('No picture saved!', icon="⚠️")
-                        with st.form("entry_form", clear_on_submit=True):
-                            submitted = st.form_submit_button("Deleted Data")
-                            if submitted:
-                                db.delete(id)
-                                st.success('Data deleted!', icon="✅")
+#                     except:
+#                         st.warning('No picture saved!', icon="⚠️")
+#                         with st.form("entry_form", clear_on_submit=True):
+#                             submitted = st.form_submit_button("Deleted Data")
+#                             if submitted:
+#                                 db.delete(id)
+#                                 st.success('Data deleted!', icon="✅")
 
 
-            except:
-                st.info("Select an observation")
+#             except:
+#                 st.info("Select an observation")
 
-    except:
-        st.error('No data yet!', icon="🚨")
+#     except:
+#         st.error('No data yet!', icon="🚨")
         
         
         
@@ -248,51 +248,51 @@ elif option == "🗺️ Data Visualization":
         
         
         
-elif option == "bla bla":
+# elif option == "bla bla":
     
-    import streamlit as st
-    import pandas as pd
+import streamlit as st
+import pandas as pd
 
 
-    if 'num' not in st.session_state:
-        st.session_state.num = 1
-    if 'data' not in st.session_state:
-        st.session_state.data = []
+if 'num' not in st.session_state:
+    st.session_state.num = 1
+if 'data' not in st.session_state:
+    st.session_state.data = []
 
 
-    class NewStudent:
-        def __init__(self, page_id):
-            st.title(f"Student N°{page_id}")
-            self.name = st.text_input("Name")
-            self.age = st.text_input("Age")
+class NewStudent:
+    def __init__(self, page_id):
+        st.title(f"Student N°{page_id}")
+        self.name = st.text_input("Name")
+        self.age = st.text_input("Age")
 
 
-    def main():
-        placeholder = st.empty()
-        placeholder2 = st.empty()
+def main():
+    placeholder = st.empty()
+    placeholder2 = st.empty()
 
-        while True:    
-            num = st.session_state.num
+    while True:    
+        num = st.session_state.num
 
-            if placeholder2.button('end', key=num):
-                placeholder2.empty()
-                df = pd.DataFrame(st.session_state.data)
-                st.dataframe(df)
-                break
-            else:        
-                with placeholder.form(key=str(num)):
-                    new_student = NewStudent(page_id=num)        
+        if placeholder2.button('end', key=num):
+            placeholder2.empty()
+            df = pd.DataFrame(st.session_state.data)
+            st.dataframe(df)
+            break
+        else:        
+            with placeholder.form(key=str(num)):
+                new_student = NewStudent(page_id=num)        
 
-                    if st.form_submit_button('register'):                
-                        st.session_state.data.append({
-                            'id': num, 'name': new_student.name, 'age': new_student.age})
-                        st.session_state.num += 1
-                        placeholder.empty()
-                        placeholder2.empty()
-                    else:
-                        st.stop()
+                if st.form_submit_button('register'):                
+                    st.session_state.data.append({
+                        'id': num, 'name': new_student.name, 'age': new_student.age})
+                    st.session_state.num += 1
+                    placeholder.empty()
+                    placeholder2.empty()
+                else:
+                    st.stop()
 
-    main()
+main()
 
 
     
