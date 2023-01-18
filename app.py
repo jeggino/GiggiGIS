@@ -254,15 +254,15 @@ elif option == "bla bla":
 
 
     class NewStudent:
+        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+        Fullscreen().add_to(m)
+        LocateControl(auto_start=True).add_to(m)
+        
         def __init__(self, page_id):
             st.title(f"Student N°{page_id}")
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
-            m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-            Fullscreen().add_to(m)
-            LocateControl(auto_start=True).add_to(m)
-
             self.output = st_folium(m,  returned_objects=["all_drawings"])
             
 
