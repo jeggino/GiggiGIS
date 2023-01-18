@@ -260,13 +260,14 @@ elif option == "bla bla":
             
 
 
-    
+    placeholder = st.empty()
     with st.form("my_form",clear_on_submit=True):
         genre = st.radio( "What\'s your favorite movie genre",('Comedy', 'Drama', 'Documentary'))
         option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
-        map()
+        placeholder.map()
         if st.form_submit_button('register'):                
             st.write(genre)
+            placeholder.empty()
 
     
         
