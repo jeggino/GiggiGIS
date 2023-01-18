@@ -263,7 +263,7 @@ elif option == "bla bla":
             Fullscreen().add_to(m)
             LocateControl(auto_start=True).add_to(m)
 
-            output = st_folium(m,  returned_objects=["all_drawings"])
+            self.output = st_folium(m,  returned_objects=["all_drawings"])
             
 
 
