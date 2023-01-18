@@ -299,6 +299,7 @@ def main():
                     st.session_state.num += 1
                     placeholder.empty()
                     placeholder2.empty()
+                    st.experimental_rerun()
                     
                 else:
                     st.stop()
