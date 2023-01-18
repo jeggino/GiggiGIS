@@ -172,7 +172,7 @@ with st.sidebar:
 "---"
 
 if option == '📝 Data Entry':
-    while:
+    while True:
         main()
     
 
