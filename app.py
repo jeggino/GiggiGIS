@@ -245,35 +245,46 @@ elif option == "bla bla":
     
     import streamlit as st
     import pandas as pd
-    
-    
 
 
-    def map():
-        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-        Fullscreen().add_to(m)
-        LocateControl(auto_start=True).add_to(m)
-        output = st_folium(m,  returned_objects=["all_drawings"])
-        return output 
-        
-            
+    if 'num' not in st.session_state:
+        st.session_state.num = 1
+    if 'data' not in st.session_state:
+        st.session_state.data = []
+
+
+    class NewStudent:
+        def __init__(self, page_id):
+            st.title(f"Student N°{page_id}")
+            self.name = st.text_input("Name")
+            self.age = st.text_input("Age")
+
 
     def main():
-        with st.form("my_form",clear_on_submit=True):
-            genre = st.radio( "What\'s your favorite movie genre",('Comedy', 'Drama', 'Documentary'))
-            option = st.selectbox('How would you like to be contacted?',('Email', 'Home phone', 'Mobile phone'))
-            m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-            Fullscreen().add_to(m)
-            LocateControl(auto_start=True).add_to(m)
-            output = st_folium(m,  returned_objects=["all_drawings"])
+        placeholder = st.empty()
+        placeholder2 = st.empty()
 
-            if st.form_submit_button('register'):   
-                st.write(output)
+        while True:    
+            num = st.session_state.num
 
-                
-                
+            if placeholder2.button('end', key=num):
+                placeholder2.empty()
+                df = pd.DataFrame(st.session_state.data)
+                st.dataframe(df)
+                break
+            else:        
+                with placeholder.form(key=str(num)):
+                    new_student = NewStudent(page_id=num)        
+
+                    if st.form_submit_button('register'):                
+                        st.session_state.data.append({
+                            'id': num, 'name': new_student.name, 'age': new_student.age})
+                        st.session_state.num += 1
+                        placeholder.empty()
+                        placeholder2.empty()
+                    else:
+                        st.stop()
+
     main()
 
     
