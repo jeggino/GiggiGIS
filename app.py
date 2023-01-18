@@ -291,7 +291,8 @@ def main():
             break
         else:        
             with placeholder.form(key=str(num)):
-                new_student = NewStudent(page_id=num)        
+                new_student = NewStudent(page_id=num)     
+                st.warning('This is a warning', icon="⚠️")
 
                 if st.form_submit_button('register'):                
                     st.session_state.data.append({
@@ -299,7 +300,7 @@ def main():
                     st.session_state.num += 1
                     
                     placeholder.empty()
-                    st.warning('This is a warning', icon="⚠️")
+                    
                     placeholder2.empty()
                 else:
                     st.stop()
