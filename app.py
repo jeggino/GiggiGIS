@@ -285,7 +285,7 @@ elif option == "bla bla":
                 break
             
             else:
-                if placeholder.button('end'):     
+                if placeholder.button('load'):     
 
                     new_student = NewStudent(page_id=1)        
 
