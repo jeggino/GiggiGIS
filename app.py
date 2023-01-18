@@ -254,34 +254,34 @@ elif option == "bla bla":
 
 
     def main():
-        placeholder = st.empty()
-        placeholder2 = st.empty()
+#         placeholder = st.empty()
+#         placeholder2 = st.empty()
 
-        while True:    
-            num = st.session_state.num
+#         while True:    
+#             num = st.session_state.num
 
-            if placeholder2.button('end', key=num):
-                placeholder2.empty()
-                df = pd.DataFrame(st.session_state.data)
-                st.dataframe(df)
-                break
-            else:        
-                with placeholder.form(key=str(num)):
-                    new_student = NewStudent(page_id=num)        
+#             if placeholder2.button('end', key=num):
+#                 placeholder2.empty()
+#                 df = pd.DataFrame(st.session_state.data)
+#                 st.dataframe(df)
+#                 break
+#             else:        
+#                 with placeholder.form(key=str(num)):
+#                     new_student = NewStudent(page_id=num)        
 
-                    if st.form_submit_button('register'):   
-                        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-                        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-                        Fullscreen().add_to(m)
-                        LocateControl(auto_start=True).add_to(m)
+        if st.form_submit_button('register'):   
+            m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+            Fullscreen().add_to(m)
+            LocateControl(auto_start=True).add_to(m)
 #                         st.session_state.data.append({
 #                             'id': num, 'name': new_student.name, 'age': new_student.age})
 #                         st.session_state.num += 1
 #                         placeholder.empty()
 #                         placeholder2.empty()
 
-                    else:
-                        st.stop()
+        else:
+            st.stop()
 
     main()
             
