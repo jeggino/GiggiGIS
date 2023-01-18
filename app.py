@@ -105,51 +105,55 @@ def password_generator(length):
 
     return password  # returns the string
 
-
-def input_data(date,sp,n,comment,uploaded_file):
+# def map():
     
-    with st.sidebar:
-        submitted = st.button("Save Data")
-        if submitted:
+#     m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+#     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+#     Fullscreen().add_to(m)
+#     LocateControl(auto_start=True).add_to(m)
 
-            m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-            Fullscreen().add_to(m)
-            LocateControl(auto_start=True).add_to(m)
-            
-            output = st_folium(m,  returned_objects=["all_drawings"])
+#     return output = st_folium(m,  returned_objects=["all_drawings"])
+    
 
-            try:
+# def input_data(date,sp,n,comment,uploaded_file):
+    
+#     output = map()
+    
+#     with st.sidebar:
+#         submitted = st.button("Save Data")
+#         if submitted:           
 
-                new_dict = output
-                new_dict["features"] = new_dict.pop("all_drawings")
-                key = password_generator(12)
+#             try:
 
-                if len(new_dict["features"]) > 1:
-                    st.error("You cannot upload more than one survey at time!")
-                    st.stop()
+#                 new_dict = output
+#                 new_dict["features"] = new_dict.pop("all_drawings")
+#                 key = password_generator(12)
 
-                else:
+#                 if len(new_dict["features"]) > 1:
+#                     st.error("You cannot upload more than one survey at time!")
+#                     st.stop()
 
-                    new_dict["features"][0]["properties"]["date"] = str(date)
-                    new_dict["features"][0]["properties"]["sp"] = sp
-                    new_dict["features"][0]["properties"]["n"] = n
-                    new_dict["features"][0]["properties"]["comment"] = comment
-                    new_dict["features"][0]["properties"]["id"] = key
+#                 else:
 
-                    if uploaded_file is not None:
-                        bytes_data = uploaded_file.getvalue()
-                        drive.put(f"{key}.jpeg", data=bytes_data)            
-                        new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
-                        insert_json(new_dict,key)
-                    else:
-                        new_dict["features"][0]["properties"]["image_name"] = None
-                        insert_json(new_dict,key)
+#                     new_dict["features"][0]["properties"]["date"] = str(date)
+#                     new_dict["features"][0]["properties"]["sp"] = sp
+#                     new_dict["features"][0]["properties"]["n"] = n
+#                     new_dict["features"][0]["properties"]["comment"] = comment
+#                     new_dict["features"][0]["properties"]["id"] = key
 
-                    st.success('Data saved!', icon="✅")
+#                     if uploaded_file is not None:
+#                         bytes_data = uploaded_file.getvalue()
+#                         drive.put(f"{key}.jpeg", data=bytes_data)            
+#                         new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
+#                         insert_json(new_dict,key)
+#                     else:
+#                         new_dict["features"][0]["properties"]["image_name"] = None
+#                         insert_json(new_dict,key)
 
-            except:
-                st.info("Mark an observation")
+#                     st.success('Data saved!', icon="✅")
+
+#             except:
+#                 st.info("Mark an observation")
         
         
 
@@ -241,20 +245,28 @@ elif option == "bla bla":
     
     import streamlit as st
     import pandas as pd
+    
+    def fun(input_a,input_b):
+        st.write(input_a)
+        st.write(input_b)
+        
+    def app():
 
+        input_a = genre = st.radio(
+        "What\'s your favorite movie genre",
+        ('Comedy', 'Drama', 'Documentary'))
 
-
-    def main():       
-
-        if st.button('Say hello'):   
-            m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-            Fullscreen().add_to(m)
-            LocateControl(auto_start=True).add_to(m)
-            st_folium(m)
-
-        else:
-            st.stop()
-
-    main()
+        input_b = st.selectbox(
+        'How would you like to be contacted?',
+        ('Email', 'Home phone', 'Mobile phone'))
+    app()
+    if st.botton:
+        fun(input_a,input_b)
+        app()
+        
+        
+    
+    
+        
+    
             
