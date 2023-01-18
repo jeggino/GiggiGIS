@@ -255,16 +255,17 @@ elif option == "bla bla":
 
     class NewStudent:
         
+        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+        Fullscreen().add_to(m)
+        LocateControl(auto_start=True).add_to(m)
+        output = st_folium(m,  returned_objects=["all_drawings"])
         
         def __init__(self):
-            m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-            Fullscreen().add_to(m)
-            LocateControl(auto_start=True).add_to(m)
-        
+           
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
-            self.output = st_folium(m,  returned_objects=["all_drawings"])
+            
             
 
 
@@ -282,11 +283,11 @@ elif option == "bla bla":
                 break
             else:        
                 with placeholder.form(key=str(num)):
-                    new_student = NewStudent()        
+                    NewStudent()        
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
-                            'id': num, 'name': new_student.name, 'age': new_student.age, 'output': new_student.output})
+                            'id': num, 'name': NewStudent().name, 'age': NewStudent().age, 'output': NewStudent().output})
                         st.session_state.num += 1
                         placeholder.empty()
                         placeholder2.empty()
