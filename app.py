@@ -267,7 +267,7 @@ def map():
     LocateControl(auto_start=True).add_to(m)
     output = st_folium(m,  returned_objects=["all_drawings"])
 
-    return output 
+    return st.write(output)
     
 class NewStudent:
     def __init__(self, page_id):
