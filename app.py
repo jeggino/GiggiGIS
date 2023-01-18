@@ -264,8 +264,7 @@ elif option == "bla bla":
 
     def main():
         placeholder = st.empty()
-        st.form("my_form"):
-
+        with st.form("my_form"):
             while True:                  
                 NewStudent()        
                 if st.form_submit_button('register'):                
