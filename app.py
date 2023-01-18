@@ -264,12 +264,11 @@ elif option == "bla bla":
         placeholder = st.empty()
 
         while True:                  
-            with placeholder.form():
-                NewStudent()        
-                if st.form_submit_button('register'):                
-                    placeholder.empty()
-                else:
-                    st.stop()
+            NewStudent()        
+            if st.button('register'):                
+                placeholder.empty()
+            else:
+                st.stop()
 
     main()
     
