@@ -251,21 +251,17 @@ def password_generator(length):
 # elif option == "bla bla":
     
 import streamlit as st
-import pandas as pd
 
-def map():
-    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-    Fullscreen().add_to(m)
-    LocateControl(auto_start=True).add_to(m)
-    return m
+m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+Fullscreen().add_to(m)
+LocateControl(auto_start=True).add_to(m)
     
-if st.button('Say hello'):
+if st.button('submit'):
     st.experimental_rerun()
 
-
 else:
-    output = st_folium(map(),  returned_objects=["all_drawings"])
-    st.write(output)
+    output = st_folium(m,  returned_objects=["all_drawings"])
+    output
     st.stop()
             
