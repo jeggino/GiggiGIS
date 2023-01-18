@@ -290,10 +290,10 @@ elif option == "bla bla":
                 st.dataframe(df)
                 break
             else:        
-                with placeholder.form(key=str(num)):
+                with placeholder.form(key=str(num),clear_on_submit=True):
                     new_student = NewStudent(page_id=num)        
 
-                    if st.form_submit_button('register',clear_on_submit=True):                
+                    if st.form_submit_button('register'):                
                         st.session_state.data.append({
                             'id': num, 'name': new_student.name, 'age': new_student.age, 'json':new_student.json})
                         st.session_state.num += 1
