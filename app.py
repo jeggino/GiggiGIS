@@ -267,11 +267,12 @@ elif option == "bla bla":
             Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
             Fullscreen().add_to(m)
             LocateControl(auto_start=True).add_to(m)
-            output = st_folium(m,  returned_objects=["all_drawings"])
+            
            
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
-            self.output = st.json(output)
+            self.output = st_folium(m,  returned_objects=["all_drawings"])
+            self.json = st.json(self.output)
             
             
 
@@ -292,10 +293,11 @@ elif option == "bla bla":
             else:        
                 with placeholder.form(key=str(num)):
                     new_student = NewStudent(page_id=num)        
+                    NewStudent(page_id=num).output
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
-                            'id': num, 'name': new_student.name, 'age': new_student.age, 'output': new_student.output
+                            'id': num, 'name': new_student.name, 'age': new_student.age, 'output': new_student.json
                         })
                         st.session_state.num += 1
                         
