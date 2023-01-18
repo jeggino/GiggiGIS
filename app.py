@@ -260,16 +260,12 @@ def map():
     LocateControl(auto_start=True).add_to(m)
     return m
     
-def main():
-    while True:
+if st.button('Say hello'):
+    st.experimental_rerun()
 
-        if st.button('Say hello'):
-            st.experimental_rerun()
-            
 
-        else:
+else:
+    output = st_folium(map(),  returned_objects=["all_drawings"])
+    st.write(output)
+    st.stop()
             
-            output = st_folium(map(),  returned_objects=["all_drawings"])
-            st.write(output)
-            
-main()
