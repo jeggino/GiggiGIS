@@ -259,6 +259,7 @@ while True:
     
     if st.button('Say hello'):
         st.write("ok")
+        break
 
     else:
         m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
