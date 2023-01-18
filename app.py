@@ -281,6 +281,8 @@ def main():
 
     while True:    
         num = st.session_state.num
+        df = pd.DataFrame(st.session_state.data)
+        st.dataframe(df)
      
         with placeholder.form(key=str(num)):
             new_student = NewStudent(page_id=num)     
@@ -291,8 +293,7 @@ def main():
                     'id': num, 'name': new_student.name, "output": new_student.json})
                 st.session_state.num += 1                
                 placeholder.empty()                  
-                df = pd.DataFrame(st.session_state.data)
-                st.dataframe(df)
+                
             else:
                 st.stop()
 
