@@ -258,11 +258,9 @@ LocateControl(auto_start=True).add_to(m)
     
     
 left,right = st.columns([2,1])
-with left:
-    if st.button('submit'):
+if left.button('submit'):
         st.experimental_rerun()
-with right:
-    else:
-        output = st_folium(m,  returned_objects=["all_drawings"], width=250, height=250)
-        output
+else:
+    output = right.st_folium(m,  returned_objects=["all_drawings"], width=250, height=250)
+    output
             
