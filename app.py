@@ -271,6 +271,5 @@ def main():
             
             output = st_folium(map(),  returned_objects=["all_drawings"])
             st.write(output)
-            st.stop()
             
 main()
