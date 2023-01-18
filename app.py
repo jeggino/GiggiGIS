@@ -251,25 +251,48 @@ elif option == "🗺️ Data Visualization":
 elif option == "bla bla":
     
     import streamlit as st
-    from streamlit.script_runner import RerunException
+    import pandas as pd
 
-    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-    Fullscreen().add_to(m)
-    LocateControl(auto_start=True).add_to(m)
 
-    output = st_folium(m,  returned_objects=["all_drawings"])
+    if 'num' not in st.session_state:
+        st.session_state.num = 1
+    if 'data' not in st.session_state:
+        st.session_state.data = []
 
-    with st.form("my_form"):
-        st.write("Inside the form")
-        slider_val = st.slider("Form slider")
-        checkbox_val = st.checkbox("Form checkbox")
 
-        # Every form must have a submit button.
-        submitted = st.form_submit_button("Submit")
-        if submitted:
-            st.write("slider", slider_val, "checkbox", checkbox_val)
-            raise RerunException
+    class NewStudent:
+        def __init__(self, page_id):
+            st.title(f"Student N°{page_id}")
+            self.name = st.text_input("Name")
+            self.age = st.text_input("Age")
+
+
+    def main():
+        placeholder = st.empty()
+        placeholder2 = st.empty()
+
+        while True:    
+            num = st.session_state.num
+
+            if placeholder2.button('end', key=num):
+                placeholder2.empty()
+                df = pd.DataFrame(st.session_state.data)
+                st.dataframe(df)
+                break
+            else:        
+                with placeholder.form(key=str(num)):
+                    new_student = NewStudent(page_id=num)        
+
+                    if st.form_submit_button('register'):                
+                        st.session_state.data.append({
+                            'id': num, 'name': new_student.name, 'age': new_student.age})
+                        st.session_state.num += 1
+                        placeholder.empty()
+                        placeholder2.empty()
+                    else:
+                        st.stop()
+
+    main()
 
 
     
