@@ -276,14 +276,8 @@ class NewStudent:
         self.json = map()
 
 
-def main():
-    if st.button('Say hello'):
-        st.write('Why hello there')
-        st.experimental_rerun()
-    else:
-        st.write('Goodbye')
-   
-                    
-
-
-main()
+if st.button('Say hello'):
+    st.write('Why hello there')
+    st.experimental_rerun()
+else:
+    st.write('Goodbye')                   
