@@ -248,6 +248,7 @@ elif option == "bla bla":
             Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
             Fullscreen().add_to(m)
             LocateControl(auto_start=True).add_to(m)
+            st_folium(m)
 
         else:
             st.stop()
