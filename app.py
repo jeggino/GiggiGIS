@@ -259,12 +259,13 @@ elif option == "bla bla":
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
-        output = st_folium(m,  returned_objects=["all_drawings"])
+        
         
         def __init__(self):
            
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
+            self.output = st_folium(m,  returned_objects=["all_drawings"])
             
             
 
