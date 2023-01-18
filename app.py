@@ -262,7 +262,7 @@ elif option == "bla bla":
 
     class NewStudent:  
         
-        def __init__(self):
+        def __init__(self,page_id):
             m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
             Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
             Fullscreen().add_to(m)
@@ -290,7 +290,7 @@ elif option == "bla bla":
                 
             else:        
                 with placeholder.form(key=str(num)):
-                    NewStudent()        
+                    new_student = NewStudent(page_id=num)        
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
