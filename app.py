@@ -250,16 +250,37 @@ elif option == "🗺️ Data Visualization":
         
 elif option == "bla bla":
     
-    st.markdown('### Projects')
-    for index, row in self.projects.iterrows():
-        col1, col2 = st.beta_columns([6,1])
-        with col1:
-            st.markdown(f"**{row['name']}**({row['short_name']})", unsafe_allow_html=True)
-            st.markdown(row['description'])
-        with col2:
-            if st.button(label='Open',key=row['id']):
-                self.current_project = Project(row, self)
-                self.current_project.info()
+    import streamlit as st
+    import time
+    from helpers import *
+    from streamlit.script_runner import RerunException
+
+
+    @st.cache(suppress_st_warning=True)  # 👈 Changed this
+    def expensive_computation(a, b):
+        # 👇 Added this
+        st.write("Cache miss: expensive_computation(", a, ",", b, ") ran")
+        time.sleep(2)  # This makes the function take 2s to run
+        return a * b
+
+    a = 2
+    b = 21
+    res = expensive_computation(a, b)
+
+    st.write("Result:", res)
+
+    my_slot0 = st.sidebar.empty()
+    my_slot1 = st.sidebar.empty()
+    my_slot0.info("Clear cache")
+    if my_slot1.button("Clear"):
+        my_slot0.error("Do you really, really, wanna do this?")
+        if my_slot1.button("Yes I'm ready to rumble"):
+            caching.clear_cache()
+            st.balloons()
+            my_slot0.error("Cache is cleared, please reload to scrape new values")
+            time.sleep(10)
+            if my_slot1.button("reload"):
+                raise RerunException
             
     
         
