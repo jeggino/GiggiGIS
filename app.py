@@ -258,6 +258,8 @@ elif option == "bla bla":
         st.session_state.num = 1
     if 'data' not in st.session_state:
         st.session_state.data = []
+    if 'json' not in st.session_state:
+        st.session_state.json = []
 
 
     class NewStudent:
@@ -265,6 +267,14 @@ elif option == "bla bla":
             st.title(f"Student N°{page_id}")
             self.name = st.text_input("Name")
             self.age = st.text_input("Age")
+            
+            m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+            Fullscreen().add_to(m)
+            LocateControl(auto_start=True).add_to(m)
+
+            self.json = st_folium(m,  returned_objects=["all_drawings"])
+            
 
 
     def main():
@@ -285,7 +295,7 @@ elif option == "bla bla":
 
                     if st.form_submit_button('register'):                
                         st.session_state.data.append({
-                            'id': num, 'name': new_student.name, 'age': new_student.age})
+                            'id': num, 'name': new_student.name, 'age': new_student.age, 'json':new_student.json})
                         st.session_state.num += 1
                         placeholder.empty()
                         placeholder2.empty()
