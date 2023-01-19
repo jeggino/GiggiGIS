@@ -243,7 +243,7 @@ elif selected == "🗺️ Data visualisatie":
 
         for i in df_point["json"].to_list():
             folium.GeoJson(i,
-                       tooltip=folium.GeoJsonTooltip(fields= ["date','sp','gedrag','functie','verblijf','aantal','opmerking'],
+                       tooltip=folium.GeoJsonTooltip(fields= ['date','sp','gedrag','functie','verblijf','aantal','opmerking'],
                                                      aliases=["Date:','Soort:','Gedrag:','Functie:','Verblijf:','Aantal:','Opmerking:'],
                                                      labels=True,
                                                      style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
