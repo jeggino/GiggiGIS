@@ -131,7 +131,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                 key = password_generator(12)
 
                 if len(new_dict["features"]) > 1:
-                    st.error("You cannot upload more than one survey at time!")
+                    st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
                     st.stop()
 
                 else:
@@ -154,10 +154,10 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         new_dict["features"][0]["properties"]["image_name"] = None
                         insert_json(new_dict,key)
 
-                    st.success('Data saved!', icon="✅")
+                    st.success('Gegevens opgeslagen!', icon="✅")
 
             except:
-                st.info("Mark an observation")
+                st.info("Markeer een waarneming")
         
         
 
