@@ -189,10 +189,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 # 2. horizontal menu
-selected = option_menu(None, ['📝 Gegevensinvoer',  '🗺️ Data visualisatie'], 
-    
-    default_index=0, orientation="horizontal")
-selected2
+selected = option_menu(None, ['📝 Gegevensinvoer',  '🗺️ Data visualisatie'], default_index=0, orientation="horizontal")
 
 # # 3. CSS style definitions
 # selected3 = option_menu(None, ["Home", "Upload",  "Tasks", 'Settings'], 
