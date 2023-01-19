@@ -141,7 +141,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                     new_dict["features"][0]["properties"]["gedrag"] = gedrag
                     new_dict["features"][0]["properties"]["functie"] = functie
                     new_dict["features"][0]["properties"]["verblijf"] = verblijf
-                    new_dict["features"][0]["properties"]["aantal = aantal
+                    new_dict["features"][0]["properties"]["aantal"] = aantal
                     new_dict["features"][0]["properties"]["opmerking"] = opmerking
                     new_dict["features"][0]["properties"]["id"] = key
 
