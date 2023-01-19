@@ -165,7 +165,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 with st.sidebar:
-    option = st.radio("", options=('📝 Data Entry', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
+    option = st.radio("", options=('📝 Gegevensinvoer', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
     
 
 
