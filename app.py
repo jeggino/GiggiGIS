@@ -121,7 +121,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
     output = map()
     
     with st.sidebar:
-        submitted = st.button("Save Data")
+        submitted = st.button("Gegevens opslaan")
         if submitted:           
 
             try:
@@ -165,6 +165,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 with st.sidebar:
+    soortgroup = st.radio("", options=('🦇 vleermuizen', '🐦 Data visualisatie'), horizontal=True, label_visibility="visible") 
     option = st.radio("", options=('📝 Gegevensinvoer', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
     
 
