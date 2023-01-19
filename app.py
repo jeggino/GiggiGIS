@@ -189,32 +189,32 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 # 2. horizontal menu
-# selected2 = option_menu(None, ["Home", "Upload", "Tasks", 'Settings'], 
-#     icons=['house', 'cloud-upload', "list-task", 'gear'], 
-#     menu_icon="cast", default_index=0, orientation="horizontal")
-# selected2
+selected = option_menu(None, ['📝 Gegevensinvoer',  '🗺️ Data visualisatie'], 
+    
+    default_index=0, orientation="horizontal")
+selected2
 
-# 3. CSS style definitions
-selected3 = option_menu(None, ["Home", "Upload",  "Tasks", 'Settings'], 
-    icons=['house', 'cloud-upload', "list-task", 'gear'], 
-    menu_icon="cast", default_index=0, orientation="horizontal",
-    styles={
-        "container": {"padding": "0!important", "background-color": "#fafafa"},
-        "icon": {"color": "orange", "font-size": "25px"}, 
-        "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
-        "nav-link-selected": {"background-color": "green"},
-    }
-)
-selected3
+# # 3. CSS style definitions
+# selected3 = option_menu(None, ["Home", "Upload",  "Tasks", 'Settings'], 
+#     icons=['house', 'cloud-upload', "list-task", 'gear'], 
+#     menu_icon="cast", default_index=0, orientation="horizontal",
+#     styles={
+#         "container": {"padding": "0!important", "background-color": "#fafafa"},
+#         "icon": {"color": "orange", "font-size": "25px"}, 
+#         "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+#         "nav-link-selected": {"background-color": "green"},
+#     }
+# )
+# selected3
 
 
 with st.sidebar:
     soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible") 
-    option = st.radio("", options=('📝 Gegevensinvoer', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
+#     option = st.radio("", options=('📝 Gegevensinvoer', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
     
 
 
-if option == '📝 Gegevensinvoer':
+if selected == '📝 Gegevensinvoer':
     
     with st.sidebar:
         
@@ -250,7 +250,7 @@ if option == '📝 Gegevensinvoer':
 
 
 
-elif option == "🗺️ Data Visualization":
+elif selected == "🗺️ Data Visualization":
 
     try:
         db_content = db.fetch().items
