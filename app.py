@@ -49,8 +49,18 @@ BAT_NAMES = ['Laatvlieger', 'Gewone dwergvleermuis', 'Watervleermuis',
        'Bechsteins vleermuis', 'Tweekleurige vleermuis',
        'Dwergvleermuis spec.', 'Plecotus spec.', 'Mopsvleermuis']
 
+BIRD_NAMES = ['Gierzwaluw','Huismus']
+
 BAT_BEHAVIOURS = ['foeragerend', 'roepend','verplaatsend (vliegroute)', 'sociale roep', 'uitvliegend','invliegend', 'overvliegend', 
            'nest-indicerend gedrag', 'zwermend', 'sporen', 'balts', 'verkeersslachtoffer','bezet nest']
+
+BIRD_BEHAVIOURS = ['bezet nest', 'nest-indicerend gedrag', 'overvliegend',
+       'foeragerend', 'ter plaatse', 'roepend', 'baltsend / zingend',
+       'nestbouw', 'invliegend', 'uitvliegend', 'jagend',
+       'roepend vanuit gebouw', 'baltsend / zingend op gebouw',
+       'baltsend / zingend in vegetatie, struik of boom', 'sporen',
+       'geen / onbekend', 'onbekend', 'vondst', 'paaiend',
+       'verplaatsend (vliegroute)', 'copula']
 
 BAT_FUNCTIE = ['geen / onbekend', 'zomerverblijfplaats in gebouw', 'paarverblijfplaats in gebouw','vliegroute', 'kraamverblijfplaats in gebouw',
            'vliegroute (bomen)', 'vliegroute (water)', 'zomerverblijfplaats in boom', 'paarverblijfplaats in boom', 
@@ -58,10 +68,24 @@ BAT_FUNCTIE = ['geen / onbekend', 'zomerverblijfplaats in gebouw', 'paarverblijf
            'essentieel foerageergebied (water)', 'winterverblijfplaats in bloei', 'essentieel foerageergebied (bomen)', 'vastgesteld territorium',
            'essentieel foerageergebied (grasland)']
 
+BIRD_FUNCTIE = ['nestlocatie', 'geen / onbekend', 'vastgesteld territorium',
+       'functioneel leefgebied', 'mogelijke nestlocatie',
+       'voortplantingsbiotoop', 'winterverblijfplaats in boom',
+       'zomerverblijfplaats']
+
+
+
 BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
        'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
        'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors']
+
+BIRD_VERBLIJF = ['dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
+       'gevelbetimmering', 'openingen in dak', 'regenpijp',
+       'geen / onbekend', 'dakpan', 'spouwmuur', 'onder dakrand',
+       'raamkozijn', 'luik', 'schoorsteen', 'daklijst', 'dakkapel',
+       'in struweel / struiken', 'holte', 'op / bij nest in boom',
+       'scheur', 'vleermuiskast']
 
 
 
@@ -165,7 +189,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 with st.sidebar:
-    soortgroup = st.radio("", options=('🦇 vleermuizen', '🐦 Data visualisatie'), horizontal=True, label_visibility="visible") 
+    soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible") 
     option = st.radio("", options=('📝 Gegevensinvoer', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
     
 
@@ -173,12 +197,25 @@ with st.sidebar:
 if option == '📝 Gegevensinvoer':
     
     with st.sidebar:
+        
+        
 
         date = st.date_input("Date")
-        sp = st.selectbox("Soort", BAT_NAMES)
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+        
+        if soortgroup == '🦇 Vleermuizen':
+            
+            sp = st.selectbox("Soort", BAT_NAMES)
+            gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+            functie = st.selectbox("Functie", BAT_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+            
+        elif soortgroup == '🐦 Vogels':
+            
+            sp = st.selectbox("Soort", BIRD_NAMES)
+            gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+            functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+            
         aantal = st.number_input("Aantal:", min_value=0)
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
         with st.expander("Upload een foto"):
