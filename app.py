@@ -281,6 +281,7 @@ elif selected == "🗺️":
                             if submitted:
                                 db.delete(id)
                                 st.success('Gegevens verwijderd!', icon="✅")
+                                st.experimental_rerun()
 
 
             except:
