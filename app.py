@@ -188,32 +188,17 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 
 # --- APP ---
-# 2. horizontal menu
+# horizontal menu
 selected = option_menu(None, ['📝 Gegevensinvoer',  '🗺️ Data visualisatie'], default_index=0, orientation="horizontal")
 
-# # 3. CSS style definitions
-# selected3 = option_menu(None, ["Home", "Upload",  "Tasks", 'Settings'], 
-#     icons=['house', 'cloud-upload', "list-task", 'gear'], 
-#     menu_icon="cast", default_index=0, orientation="horizontal",
-#     styles={
-#         "container": {"padding": "0!important", "background-color": "#fafafa"},
-#         "icon": {"color": "orange", "font-size": "25px"}, 
-#         "nav-link": {"font-size": "25px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
-#         "nav-link-selected": {"background-color": "green"},
-#     }
-# )
-# selected3
 
-
-with st.sidebar:
-    soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible") 
-#     option = st.radio("", options=('📝 Gegevensinvoer', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
-    
+ 
 
 
 if selected == '📝 Gegevensinvoer':
     
     with st.sidebar:
+        soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible")    
         
         "---"
 
@@ -247,7 +232,7 @@ if selected == '📝 Gegevensinvoer':
 
 
 
-elif selected == "🗺️ Data Visualization":
+elif selected == "🗺️ Data visualisatie":
 
     try:
         db_content = db.fetch().items
@@ -258,8 +243,8 @@ elif selected == "🗺️ Data Visualization":
 
         for i in df_point["json"].to_list():
             folium.GeoJson(i,
-                       tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
-                                                     aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
+                       tooltip=folium.GeoJsonTooltip(fields= ["date','sp','gedrag','functie','verblijf','aantal','opmerking'],
+                                                     aliases=["Date:','Soort:','Gedrag:','Functie:','Verblijf:','Aantal:','Opmerking:'],
                                                      labels=True,
                                                      style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
                                                    )
@@ -278,23 +263,23 @@ elif selected == "🗺️ Data Visualization":
                     try:
 
                         res = drive.get(name).read()
-                        with st.expander("See image"):
+                        with st.expander("Zie foto"):
                             st.image(res)
 
                         with st.form("entry_form", clear_on_submit=True):
-                            submitted = st.form_submit_button("Deleted Data")
+                            submitted = st.form_submit_button("Verwijder data")
                             if submitted:
                                 db.delete(id)
                                 drive.delete(name)
-                                st.success('Data deleted!', icon="✅")
+                                st.success('Gegevens verwijderd!', icon="✅")
 
                     except:
-                        st.warning('No picture saved!', icon="⚠️")
+                        st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
                         with st.form("entry_form", clear_on_submit=True):
-                            submitted = st.form_submit_button("Deleted Data")
+                            submitted = st.form_submit_button("Verwijder data")
                             if submitted:
                                 db.delete(id)
-                                st.success('Data deleted!', icon="✅")
+                                st.success('Gegevens verwijderd!', icon="✅")
 
 
             except:
