@@ -135,7 +135,7 @@ def map():
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
-    output = st_folium(m, returned_objects=["all_drawings"], width=150, height=250)
+    output = st_folium(m, returned_objects=["all_drawings"], width=300, height=600)
     
     return  output
     
@@ -198,7 +198,7 @@ if option == '📝 Gegevensinvoer':
     
     with st.sidebar:
         
-        
+        "---"
 
         date = st.date_input("Date")
         
