@@ -251,7 +251,7 @@ elif selected == "🗺️":
                                                    )
                        ).add_to(map)
 
-        output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"], width=350, height=600)
+        output = st_folium(map, returned_objects=["last_active_drawing"], width=350, height=600)
 
         with st.sidebar:
 
