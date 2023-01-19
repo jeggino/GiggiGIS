@@ -116,7 +116,7 @@ def map():
     return  output
     
 
-def input_data(date,sp,n,comment,uploaded_file):
+def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
     
     output = map()
     
@@ -138,8 +138,11 @@ def input_data(date,sp,n,comment,uploaded_file):
 
                     new_dict["features"][0]["properties"]["date"] = str(date)
                     new_dict["features"][0]["properties"]["sp"] = sp
-                    new_dict["features"][0]["properties"]["n"] = n
-                    new_dict["features"][0]["properties"]["comment"] = comment
+                    new_dict["features"][0]["properties"]["gedrag"] = gedrag
+                    new_dict["features"][0]["properties"]["functie"] = functie
+                    new_dict["features"][0]["properties"]["verblijf"] = verblijf
+                    new_dict["features"][0]["properties"]["aantal = aantal
+                    new_dict["features"][0]["properties"]["opmerking"] = opmerking
                     new_dict["features"][0]["properties"]["id"] = key
 
                     if uploaded_file is not None:
@@ -162,22 +165,25 @@ def input_data(date,sp,n,comment,uploaded_file):
 
 # --- APP ---
 with st.sidebar:
-    option = st.radio("", options=('📝 Data Entry', '🗺️ Data Visualization'), horizontal=True, label_visibility="visible")
+    option = st.radio("", options=('📝 Data Entry', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
     
-"---"
 
-if option == '📝 Data Entry':
+
+if option == '📝 Gegevensinvoer':
     
     with st.sidebar:
 
         date = st.date_input("Date")
         sp = st.selectbox("Soort", BAT_NAMES)
-        n = st.number_input("Number of specimens:", min_value=0)
-        comment = st.text_input("", placeholder="Enter a comment here ...")
-        with st.expander("Upload a picture"):
+        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+        functie = st.selectbox("Functie", BAT_FUNCTIE) 
+        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+        aantal = st.number_input("Aantal:", min_value=0)
+        opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+        with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
             
-    input_data(date,sp,n,comment,uploaded_file)
+    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
             
     
     
