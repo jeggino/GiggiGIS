@@ -189,13 +189,13 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 # horizontal menu
-selected = option_menu(None, ['📝 Gegevensinvoer',  '🗺️ Data visualisatie'], default_index=0, orientation="horizontal")
+selected = option_menu(None, ['📝',  '🗺️'], default_index=0, orientation="horizontal")
 
 
  
 
 
-if selected == '📝 Gegevensinvoer':
+if selected == '📝':
     
     with st.sidebar:
         soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible")    
@@ -232,7 +232,7 @@ if selected == '📝 Gegevensinvoer':
 
 
 
-elif selected == "🗺️ Data visualisatie":
+elif selected == "🗺️":
 
     try:
         db_content = db.fetch().items
