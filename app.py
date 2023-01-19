@@ -1,5 +1,5 @@
-
 import streamlit as st
+from streamlit_option_menu import option_menu
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
@@ -188,6 +188,13 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 
 # --- APP ---
+# 2. horizontal menu
+selected2 = option_menu(None, ["Home", "Upload", "Tasks", 'Settings'], 
+    icons=['house', 'cloud-upload', "list-task", 'gear'], 
+    menu_icon="cast", default_index=0, orientation="horizontal")
+selected2
+
+
 with st.sidebar:
     soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible") 
     option = st.radio("", options=('📝 Gegevensinvoer', '🗺️ Data visualisatie'), horizontal=True, label_visibility="visible")
