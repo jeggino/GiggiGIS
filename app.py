@@ -105,78 +105,78 @@ def password_generator(length):
 
     return password  # returns the string
 
-# def map():
+def map():
     
-#     m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
-#     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-#     Fullscreen().add_to(m)
-#     LocateControl(auto_start=True).add_to(m)
+    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, width=150, height=250)
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+    Fullscreen().add_to(m)
+    LocateControl(auto_start=True).add_to(m)
 
-#     return output = st_folium(m,  returned_objects=["all_drawings"])
+    return output = st_folium(m,  returned_objects=["all_drawings"])
     
 
-# def input_data(date,sp,n,comment,uploaded_file):
+def input_data(date,sp,n,comment,uploaded_file):
     
-#     output = map()
+    output = map()
     
-#     with st.sidebar:
-#         submitted = st.button("Save Data")
-#         if submitted:           
+    with st.sidebar:
+        submitted = st.button("Save Data")
+        if submitted:           
 
-#             try:
+            try:
 
-#                 new_dict = output
-#                 new_dict["features"] = new_dict.pop("all_drawings")
-#                 key = password_generator(12)
+                new_dict = output
+                new_dict["features"] = new_dict.pop("all_drawings")
+                key = password_generator(12)
 
-#                 if len(new_dict["features"]) > 1:
-#                     st.error("You cannot upload more than one survey at time!")
-#                     st.stop()
+                if len(new_dict["features"]) > 1:
+                    st.error("You cannot upload more than one survey at time!")
+                    st.stop()
 
-#                 else:
+                else:
 
-#                     new_dict["features"][0]["properties"]["date"] = str(date)
-#                     new_dict["features"][0]["properties"]["sp"] = sp
-#                     new_dict["features"][0]["properties"]["n"] = n
-#                     new_dict["features"][0]["properties"]["comment"] = comment
-#                     new_dict["features"][0]["properties"]["id"] = key
+                    new_dict["features"][0]["properties"]["date"] = str(date)
+                    new_dict["features"][0]["properties"]["sp"] = sp
+                    new_dict["features"][0]["properties"]["n"] = n
+                    new_dict["features"][0]["properties"]["comment"] = comment
+                    new_dict["features"][0]["properties"]["id"] = key
 
-#                     if uploaded_file is not None:
-#                         bytes_data = uploaded_file.getvalue()
-#                         drive.put(f"{key}.jpeg", data=bytes_data)            
-#                         new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
-#                         insert_json(new_dict,key)
-#                     else:
-#                         new_dict["features"][0]["properties"]["image_name"] = None
-#                         insert_json(new_dict,key)
+                    if uploaded_file is not None:
+                        bytes_data = uploaded_file.getvalue()
+                        drive.put(f"{key}.jpeg", data=bytes_data)            
+                        new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
+                        insert_json(new_dict,key)
+                    else:
+                        new_dict["features"][0]["properties"]["image_name"] = None
+                        insert_json(new_dict,key)
 
-#                     st.success('Data saved!', icon="✅")
+                    st.success('Data saved!', icon="✅")
 
-#             except:
-#                 st.info("Mark an observation")
+            except:
+                st.info("Mark an observation")
         
         
 
 
 
-# # --- APP ---
-# with st.sidebar:
-#     option = st.radio("", options=('📝 Data Entry', '🗺️ Data Visualization', 'bla bla'), horizontal=True, label_visibility="visible")
+# --- APP ---
+with st.sidebar:
+    option = st.radio("", options=('📝 Data Entry', '🗺️ Data Visualization'), horizontal=True, label_visibility="visible")
     
-# "---"
+"---"
 
-# if option == '📝 Data Entry':
+if option == '📝 Data Entry':
     
-#     with st.sidebar:
+    with st.sidebar:
 
-#         date = st.date_input("Date")
-#         sp = st.selectbox("Soort", BAT_NAMES)
-#         n = st.number_input("Number of specimens:", min_value=0)
-#         comment = st.text_input("", placeholder="Enter a comment here ...")
-#         with st.expander("Upload a picture"):
-#             uploaded_file = st.camera_input("")
+        date = st.date_input("Date")
+        sp = st.selectbox("Soort", BAT_NAMES)
+        n = st.number_input("Number of specimens:", min_value=0)
+        comment = st.text_input("", placeholder="Enter a comment here ...")
+        with st.expander("Upload a picture"):
+            uploaded_file = st.camera_input("")
             
-#     input_data(date,sp,n,comment,uploaded_file)
+    input_data(date,sp,n,comment,uploaded_file)
             
     
     
@@ -185,99 +185,58 @@ def password_generator(length):
 
 
 
-# elif option == "🗺️ Data Visualization":
+elif option == "🗺️ Data Visualization":
 
-#     try:
-#         db_content = db.fetch().items
-#         df_point = pd.DataFrame(db_content)
+    try:
+        db_content = db.fetch().items
+        df_point = pd.DataFrame(db_content)
 
-#         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-#         LocateControl(auto_start=True).add_to(map)
+        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+        LocateControl(auto_start=True).add_to(map)
 
-#         for i in df_point["json"].to_list():
-#             folium.GeoJson(i,
-#                        tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
-#                                                      aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
-#                                                      labels=True,
-#                                                      style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-#                                                    )
-#                        ).add_to(map)
+        for i in df_point["json"].to_list():
+            folium.GeoJson(i,
+                       tooltip=folium.GeoJsonTooltip(fields= ["date", "sp", "n", "comment"],
+                                                     aliases=["Date: ", "Species: ", "Nember of specimens: ", "Comment: "],
+                                                     labels=True,
+                                                     style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+                                                   )
+                       ).add_to(map)
 
-#         output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
+        output = st_folium(map, width=500, height=700, returned_objects=["last_active_drawing"])
 
-#         with st.sidebar:
+        with st.sidebar:
 
-#             try:
-#                 id = output["last_active_drawing"]["properties"]["id"]
-#                 name = output["last_active_drawing"]["properties"]["image_name"]
+            try:
+                id = output["last_active_drawing"]["properties"]["id"]
+                name = output["last_active_drawing"]["properties"]["image_name"]
 
-#                 with st.sidebar:
+                with st.sidebar:
 
-#                     try:
+                    try:
 
-#                         res = drive.get(name).read()
-#                         with st.expander("See image"):
-#                             st.image(res)
+                        res = drive.get(name).read()
+                        with st.expander("See image"):
+                            st.image(res)
 
-#                         with st.form("entry_form", clear_on_submit=True):
-#                             submitted = st.form_submit_button("Deleted Data")
-#                             if submitted:
-#                                 db.delete(id)
-#                                 drive.delete(name)
-#                                 st.success('Data deleted!', icon="✅")
+                        with st.form("entry_form", clear_on_submit=True):
+                            submitted = st.form_submit_button("Deleted Data")
+                            if submitted:
+                                db.delete(id)
+                                drive.delete(name)
+                                st.success('Data deleted!', icon="✅")
 
-#                     except:
-#                         st.warning('No picture saved!', icon="⚠️")
-#                         with st.form("entry_form", clear_on_submit=True):
-#                             submitted = st.form_submit_button("Deleted Data")
-#                             if submitted:
-#                                 db.delete(id)
-#                                 st.success('Data deleted!', icon="✅")
-
-
-#             except:
-#                 st.info("Select an observation")
-
-#     except:
-#         st.error('No data yet!', icon="🚨")
-        
-        
-        
-        
-        
-        
-        
-        
-# elif option == "bla bla":
-import streamlit as st
-
-with st.form("my_form",clear_on_submit=True):
-    st.write("Inside the form")
-    slider_val = st.slider("Form slider")
-    checkbox_val = st.checkbox("Form checkbox")
-    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, ).add_to(m)
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False})
-    Fullscreen().add_to(m)
-    LocateControl(auto_start=True).add_to(m)
-    st_folium(m,  returned_objects=["all_drawings"], width=450, height=600)
-
-    # Every form must have a submit button.
-    submitted = st.form_submit_button("Submit")
-    if submitted:
-        st.write("slider", slider_val, "checkbox", checkbox_val)
-        st.experimental_rerun()
-
-st.write("Outside the form")    
+                    except:
+                        st.warning('No picture saved!', icon="⚠️")
+                        with st.form("entry_form", clear_on_submit=True):
+                            submitted = st.form_submit_button("Deleted Data")
+                            if submitted:
+                                db.delete(id)
+                                st.success('Data deleted!', icon="✅")
 
 
-    
-# left,right = st.columns([2,1])
+            except:
+                st.info("Select an observation")
 
-# if st.button('submit'):
-#     st.experimental_rerun()
-# else:     
-#     with left:
-#         output = st_folium(m,  returned_objects=["all_drawings"], width=450, height=600)
-#     with right:
-#         output
-            
+    except:
+        st.error('No data yet!', icon="🚨")
