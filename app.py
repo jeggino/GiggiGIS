@@ -255,10 +255,9 @@ with st.form("my_form",clear_on_submit=True):
     st.write("Inside the form")
     slider_val = st.slider("Form slider")
     checkbox_val = st.checkbox("Form checkbox")
-    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, )
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-    Fullscreen().add_to(m)
-    LocateControl(auto_start=True).add_to(m)
+    m = folium.Map(location=[44.266308, 11.719301], zoom_start=3, ).Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False})
+#     Fullscreen().add_to(m)
+#     LocateControl(auto_start=True).add_to(m)
     st_folium(m,  returned_objects=["all_drawings"], width=450, height=600)
 
     # Every form must have a submit button.
