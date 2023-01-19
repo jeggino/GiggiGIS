@@ -265,6 +265,7 @@ with st.form("my_form",clear_on_submit=True):
     submitted = st.form_submit_button("Submit")
     if submitted:
         st.write("slider", slider_val, "checkbox", checkbox_val)
+        st.experimental_rerun()
 
 st.write("Outside the form")    
 
