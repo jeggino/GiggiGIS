@@ -240,7 +240,7 @@ elif selected == "🗺️":
 
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
         LocateControl(auto_start=True).add_to(map)
-        Fullscreen().add_to(m)
+        Fullscreen().add_to(map)
 
         for i in df_point["json"].to_list():
             folium.GeoJson(i,
