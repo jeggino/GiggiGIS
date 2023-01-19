@@ -111,8 +111,9 @@ def map():
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
-
-    return output = st_folium(m,  returned_objects=["all_drawings"])
+    output = st_folium(m,  returned_objects=["all_drawings"])
+    
+    return  output
     
 
 def input_data(date,sp,n,comment,uploaded_file):
