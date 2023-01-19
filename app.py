@@ -283,7 +283,7 @@ elif selected == "🗺️ Data visualisatie":
 
 
             except:
-                st.info("Select an observation")
+                st.info("Selecteer een waarneming")
 
     except:
-        st.error('No data yet!', icon="🚨")
+        st.error('Nog geen waarnemingen!', icon="🚨")
