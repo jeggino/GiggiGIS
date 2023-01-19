@@ -151,7 +151,8 @@ def map():
 
 def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
     
-    output = map()
+    with st.container():
+        output = map()
     
     with st.sidebar:
         submitted = st.button("Gegevens opslaan")
