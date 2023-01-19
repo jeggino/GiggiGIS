@@ -36,6 +36,15 @@ st.markdown(f""" <style>
         padding-bottom: {padding}rem;
     }} </style> """, unsafe_allow_html=True)
 
+max_width_str = "max-width: 75%;"
+st.markdown(f""" 
+                <style> 
+                .reportview-container .main .block-container{{{max_width_str}}}
+                </style>    
+                """, 
+                unsafe_allow_html=True,
+    )
+
 # --- VARIABLES---
 
 GROUP = ["Vogels", "Vliermuizen"]
@@ -273,6 +282,7 @@ elif selected == "🗺️":
                                 db.delete(id)
                                 drive.delete(name)
                                 st.success('Gegevens verwijderd!', icon="✅")
+                                st.experimental_rerun()
 
                     except:
                         st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
