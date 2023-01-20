@@ -36,7 +36,7 @@ st.markdown(f""" <style>
         padding-bottom: {padding}rem;
     }} </style> """, unsafe_allow_html=True)
 
-max_width_str = "max-width: 75%;"
+max_width_str = "max-width: 10%;"
 st.markdown(f""" 
                 <style> 
                 .reportview-container .main .block-container{{{max_width_str}}}
