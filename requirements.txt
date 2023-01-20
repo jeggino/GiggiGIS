@@ -7,3 +7,5 @@ altair
 streamlit
 streamlit-folium>=0.8.1
 geopandas
+
+streamlit_elements
