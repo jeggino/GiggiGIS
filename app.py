@@ -237,16 +237,17 @@ if selected == '📝':
             
     input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
     
-    with elements("media_player"):
+    with elements("multiple_children"):
 
         # Play video from many third-party sources: YouTube, Facebook, Twitch,
         # SoundCloud, Streamable, Vimeo, Wistia, Mixcloud, DailyMotion and Kaltura.
         #
         # This element is powered by ReactPlayer (GitHub link below).
 
-        from streamlit_elements import media
-
-        media.Player(url="https://www.youtube.com/watch?v=iik25wqIuFo", controls=True)
+        with mui.Button:
+            mui.icon.EmojiPeople()
+            mui.icon.DoubleArrow()
+            mui.Typography("Button with multiple children")
             
     
     
