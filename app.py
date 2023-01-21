@@ -224,11 +224,24 @@ if selected == '📝':
 
 
 elif selected == "🗺️":
+    
+    @st.experimental_memo
+    def convert_df(df):
+       return df.to_csv(index=False).encode('utf-8')   
 
     try:
         db_content = db.fetch().items
         df_point = pd.DataFrame(db_content)
-        st.dataframe(df_point)
+        csv = convert_df(df)
+        
+        st.download_button(
+           "Press to Download",
+           csv,
+           "file.csv",
+           "text/csv",
+           key='download-csv'
+        )
+        
 
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
         LocateControl(auto_start=True).add_to(map)
