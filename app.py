@@ -144,34 +144,34 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
             try:
 
-                new_dict = output
-                new_dict["features"] = new_dict.pop("all_drawings")
+                json = output
+                json["features"] = json.pop("all_drawings")
                 key = password_generator(12)
 
-                if len(new_dict["features"]) > 1:
+                if len(json["features"]) > 1:
                     st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
                     st.stop()
 
                 else:
 
-                    new_dict["features"][0]["properties"]["date"] = str(date)
-                    new_dict["features"][0]["properties"]["sp"] = sp
-                    new_dict["features"][0]["properties"]["gedrag"] = gedrag
-                    new_dict["features"][0]["properties"]["functie"] = functie
-                    new_dict["features"][0]["properties"]["verblijf"] = verblijf
-                    new_dict["features"][0]["properties"]["aantal"] = aantal
-                    new_dict["features"][0]["properties"]["opmerking"] = opmerking
-                    new_dict["features"][0]["properties"]["id"] = key
+                    json["features"][0]["properties"]["date"] = str(date)
+                    json["features"][0]["properties"]["sp"] = sp
+                    json["features"][0]["properties"]["gedrag"] = gedrag
+                    json["features"][0]["properties"]["functie"] = functie
+                    json["features"][0]["properties"]["verblijf"] = verblijf
+                    json["features"][0]["properties"]["aantal"] = aantal
+                    json["features"][0]["properties"]["opmerking"] = opmerking
+                    json["features"][0]["properties"]["id"] = key
 
                     if uploaded_file is not None:
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
-                        new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
-                        insert_json(new_dict, key,date,sp,gedrag,functie,verblijf)
+                        json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
+                        insert_json(json, key,date,sp,gedrag,functie,verblijf)
                     else:
-                        new_dict["features"][0]["properties"]["image_name"] = None
+                        json["features"][0]["properties"]["image_name"] = None
                         st.write('ciao')
-                        insert_json(new_dict, key,date,sp,gedrag,functie,verblijf)
+                        insert_json(json, key,date,sp,gedrag,functie,verblijf)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
