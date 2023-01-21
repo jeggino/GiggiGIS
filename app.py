@@ -225,14 +225,13 @@ if selected == '📝':
 
 elif selected == "🗺️":
     
-    @st.experimental_memo
     def convert_df(df):
        return df.to_csv(index=False).encode('utf-8')   
 
     try:
         db_content = db.fetch().items
         df_point = pd.DataFrame(db_content)
-        csv = convert_df(df)
+        csv = convert_df(df_point)
         
         st.download_button(
            "Press to Download",
