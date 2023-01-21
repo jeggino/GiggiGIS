@@ -167,10 +167,10 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         new_dict["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
-                        insert_json(new_dict, key,date,sp,gedrag,functie,verblijf))
+                        insert_json(new_dict, key,date,sp,gedrag,functie,verblijf)
                     else:
                         new_dict["features"][0]["properties"]["image_name"] = None
-                        insert_json(new_dict, key,date,sp,gedrag,functie,verblijf))
+                        insert_json(new_dict, key,date,sp,gedrag,functie,verblijf)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
