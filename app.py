@@ -29,23 +29,23 @@ st.markdown(""" <style>
 footer {visibility: hidden;}
 </style> """, unsafe_allow_html=True)
 
-padding = 0
-st.markdown(f""" <style>
-    .reportview-container .main .block-container{{
-        padding-top: {padding}rem;
-        padding-right: {padding}rem;
-        padding-left: {padding}rem;
-        padding-bottom: {padding}rem;
-    }} </style> """, unsafe_allow_html=True)
+# padding = 0
+# st.markdown(f""" <style>
+#     .reportview-container .main .block-container{{
+#         padding-top: {padding}rem;
+#         padding-right: {padding}rem;
+#         padding-left: {padding}rem;
+#         padding-bottom: {padding}rem;
+#     }} </style> """, unsafe_allow_html=True)
 
-max_width_str = "max-width: 10%;"
-st.markdown(f""" 
-                <style> 
-                .reportview-container .main .block-container{{{max_width_str}}}
-                </style>    
-                """, 
-                unsafe_allow_html=True,
-    )
+# max_width_str = "max-width: 10%;"
+# st.markdown(f""" 
+#                 <style> 
+#                 .reportview-container .main .block-container{{{max_width_str}}}
+#                 </style>    
+#                 """, 
+#                 unsafe_allow_html=True,
+#     )
 
 # --- VARIABLES---
 
