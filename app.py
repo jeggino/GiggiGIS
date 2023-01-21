@@ -29,23 +29,6 @@ st.markdown(""" <style>
 footer {visibility: hidden;}
 </style> """, unsafe_allow_html=True)
 
-# padding = 0
-# st.markdown(f""" <style>
-#     .reportview-container .main .block-container{{
-#         padding-top: {padding}rem;
-#         padding-right: {padding}rem;
-#         padding-left: {padding}rem;
-#         padding-bottom: {padding}rem;
-#     }} </style> """, unsafe_allow_html=True)
-
-# max_width_str = "max-width: 10%;"
-# st.markdown(f""" 
-#                 <style> 
-#                 .reportview-container .main .block-container{{{max_width_str}}}
-#                 </style>    
-#                 """, 
-#                 unsafe_allow_html=True,
-#     )
 
 # --- VARIABLES---
 
@@ -245,6 +228,7 @@ elif selected == "🗺️":
     try:
         db_content = db.fetch().items
         df_point = pd.DataFrame(db_content)
+        st.dataframe(sd_points)
 
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
         LocateControl(auto_start=True).add_to(map)
