@@ -228,7 +228,7 @@ elif selected == "🗺️":
     try:
         db_content = db.fetch().items
         df_point = pd.DataFrame(db_content)
-        st.dataframe(sd_points)
+        st.dataframe(df_point)
 
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
         LocateControl(auto_start=True).add_to(map)
