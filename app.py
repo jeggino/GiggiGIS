@@ -90,9 +90,9 @@ drive = deta.Drive("GiggiGIS_pictures")
 
 # --- FUNCTIONS ---
 
-def insert_json(json, key,date,sp,gedrag,functie,verblijf):
+def insert_json(json,key,date,sp,gedrag,functie,verblijf):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"json":json, "key":key, "date":date,"sp":sp,"gedrag":gedrag,"functie":functie,"verblijf":verblijf})
+    return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf})
 
 
 def password_generator(length):
@@ -167,11 +167,11 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
-                        insert_json(json, key,date,sp,gedrag,functie,verblijf)
+                        insert_json(json,key,date,sp,gedrag,functie,verblijf)
                     else:
                         json["features"][0]["properties"]["image_name"] = None
                         st.write('ciao')
-                        insert_json(json, key,date,sp,gedrag,functie,verblijf)
+                        insert_json(json,key,date,sp,gedrag,functie,verblijf)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
