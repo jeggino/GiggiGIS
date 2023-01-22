@@ -233,17 +233,17 @@ elif selected == "🗺️":
             
             if soortgroup == '🦇 Vleermuizen':
             
-                sp = st.selectbox("Soort", BAT_NAMES)
-                gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-                functie = st.selectbox("Functie", BAT_FUNCTIE) 
-                verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+                sp = st.multiselect("Soort", BAT_NAMES)
+                gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS) 
+                functie = st.multiselect("Functie", BAT_FUNCTIE) 
+                verblijf = st.multiselect("Verblijf", BAT_VERBLIJF) 
             
             elif soortgroup == '🐦 Vogels':
 
-                sp = st.selectbox("Soort", BIRD_NAMES)
-                gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-                functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-                verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+                sp = st.multiselect("Soort", BIRD_NAMES)
+                gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS) 
+                functie = st.multiselect("Functie", BIRD_FUNCTIE) 
+                verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF) 
         
         df_point = pd.DataFrame(db_content)
         st.error("HERE THE PROBLEM", icon="💀")
