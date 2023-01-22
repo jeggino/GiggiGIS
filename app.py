@@ -244,9 +244,10 @@ elif selected == "🗺️":
                 gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
                 functie = st.selectbox("Functie", BIRD_FUNCTIE) 
                 verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-        st.error("HERE THE PROBLEM", icon="💀")
+        
         df_point = pd.DataFrame(db_content)
         df_filter = df_point[(df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
+        st.error("HERE THE PROBLEM", icon="💀")
         
         
         csv = df_filter.to_csv(index=False).encode('utf-8') 
