@@ -170,7 +170,6 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         insert_json(json,key,date,sp,gedrag,functie,verblijf)
                     else:
                         json["features"][0]["properties"]["image_name"] = None
-                        st.write('ciao')
                         insert_json(json,key,str(date),sp,gedrag,functie,verblijf)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
@@ -230,8 +229,15 @@ elif selected == "🗺️":
 
     try:
         db_content = db.fetch().items
+        with st.sidebar:
+            sp = st.multiselect("Soort", BAT_NAMES)
+            gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS) 
+            functie = st.multiselect("Functie", BAT_FUNCTIE) 
+            verblijf = st.multiselect("Verblijf", BAT_VERBLIJF)
+            
         df_point = pd.DataFrame(db_content)
-        csv = convert_df(df_point)
+        df_filter = df_point[(df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
+        csv = convert_df(df_filter)
         
         st.download_button(
            "Press to Download",
@@ -246,7 +252,7 @@ elif selected == "🗺️":
         LocateControl(auto_start=True).add_to(map)
         Fullscreen().add_to(map)
 
-        for i in df_point["json"].to_list():
+        for i in df_filter["json"].to_list():
             folium.GeoJson(i,
                        tooltip=folium.GeoJsonTooltip(fields= ['date','sp','gedrag','functie','verblijf','aantal','opmerking'],
                                                      aliases=['Date:','Soort:','Gedrag:','Functie:','Verblijf:','Aantal:','Opmerking:'],
@@ -277,7 +283,6 @@ elif selected == "🗺️":
                                 db.delete(id)
                                 drive.delete(name)
                                 st.success('Gegevens verwijderd!', icon="✅")
-                                st.experimental_rerun()
 
                     except:
                         st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
@@ -286,7 +291,6 @@ elif selected == "🗺️":
                             if submitted:
                                 db.delete(id)
                                 st.success('Gegevens verwijderd!', icon="✅")
-                                st.experimental_rerun()
 
 
             except:
