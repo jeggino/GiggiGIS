@@ -228,7 +228,7 @@ elif selected == "🗺️":
         
         with st.sidebar:
             
-            soortgroup = = option_menu(None, ['Vleermuizen',  'Vogels'], icons=['🦇', '🐦'], default_index=0, orientation="vertica",menu_icon="cast",)
+            soortgroup = option_menu(None, ['Vleermuizen',  'Vogels'], icons=['🦇', '🐦'], default_index=0, orientation="vertica",menu_icon="cast",)
         
             "---"
             
