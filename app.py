@@ -220,7 +220,7 @@ if selected == 'Data entry':
     
 
 
-elif selected == Data visualization":  
+elif selected == "Data visualization":  
 
     try:
         
