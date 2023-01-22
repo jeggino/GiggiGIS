@@ -190,7 +190,7 @@ if selected == 'Data entry':
     
     with st.sidebar:
         # horizontal menu
-        soortgroup = option_menu(None, ['🦇 Vleermuizen',  ' 🐦 Vogels'], icons=None, default_index=0, orientation="vertica",menu_icon="cast",)
+        soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], icons=["bi bi-binoculars-fill","bi bi-binoculars-fill"], default_index=0, orientation="vertical",menu_icon="cast",)
         
         "---"
 
@@ -228,18 +228,18 @@ elif selected == "Data visualization":
         
         with st.sidebar:
             
-            soortgroup = option_menu(None, ['Vleermuizen',  'Vogels'], icons=['🦇', '🐦'], default_index=0, orientation="vertica",menu_icon="cast",)
+            soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], icons=["bi bi-binoculars-fill","bi bi-binoculars-fill"], default_index=0, orientation="vertical",menu_icon="cast",)
         
             "---"
             
-            if soortgroup == 'Vleermuizen':
+            if soortgroup == '🦇 Vleermuizen':
             
                 sp = st.multiselect("Soort", BAT_NAMES)
                 gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS) 
                 functie = st.multiselect("Functie", BAT_FUNCTIE) 
                 verblijf = st.multiselect("Verblijf", BAT_VERBLIJF) 
             
-            elif soortgroup == 'Vogels':
+            elif soortgroup == '🐦 Vogels':
 
                 sp = st.multiselect("Soort", BIRD_NAMES)
                 gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS) 
