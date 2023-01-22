@@ -190,21 +190,20 @@ if selected == '📝':
     
     with st.sidebar:
         # horizontal menu
-        soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], default_index=0, orientation="vertica",menu_icon="cast",)
-#         soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="collapsed")    
+        soortgroup = option_menu(None, ['Vleermuizen',  'Vogels'], icons=['🦇', '🐦'], default_index=0, orientation="vertica",menu_icon="cast",)
         
         "---"
 
         date = st.date_input("Date")
         
-        if soortgroup == '🦇 Vleermuizen':
+        if soortgroup == 'Vleermuizen':
             
             sp = st.selectbox("Soort", BAT_NAMES)
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
             verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             
-        elif soortgroup == '🐦 Vogels':
+        elif soortgroup == 'Vogels':
             
             sp = st.selectbox("Soort", BIRD_NAMES)
             gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
@@ -229,18 +228,18 @@ elif selected == "🗺️":
         
         with st.sidebar:
             
-            soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="collapsed")    
+            soortgroup = = option_menu(None, ['Vleermuizen',  'Vogels'], icons=['🦇', '🐦'], default_index=0, orientation="vertica",menu_icon="cast",)
         
             "---"
             
-            if soortgroup == '🦇 Vleermuizen':
+            if soortgroup == 'Vleermuizen':
             
                 sp = st.multiselect("Soort", BAT_NAMES)
                 gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS) 
                 functie = st.multiselect("Functie", BAT_FUNCTIE) 
                 verblijf = st.multiselect("Verblijf", BAT_VERBLIJF) 
             
-            elif soortgroup == '🐦 Vogels':
+            elif soortgroup == 'Vogels':
 
                 sp = st.multiselect("Soort", BIRD_NAMES)
                 gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS) 
@@ -248,7 +247,6 @@ elif selected == "🗺️":
                 verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF) 
         
         df_point = pd.DataFrame(db_content)
-        st.error("HERE THE PROBLEM", icon="💀")
         df_filter = df_point[(df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
         
