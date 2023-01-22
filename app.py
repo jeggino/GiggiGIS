@@ -171,7 +171,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                     else:
                         json["features"][0]["properties"]["image_name"] = None
                         st.write('ciao')
-                        insert_json(json,key,date,sp,gedrag,functie,verblijf)
+                        insert_json(json,key,str(date),sp,gedrag,functie,verblijf)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
