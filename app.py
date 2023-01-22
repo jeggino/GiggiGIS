@@ -177,9 +177,6 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
             except:
                 st.info("Markeer een waarneming")
         
-        
-
-
 
 # --- APP ---
 # horizontal menu
@@ -230,24 +227,24 @@ elif selected == "🗺️":
         
         with st.sidebar:
             
-            soortgroup_2 = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="collapsed")    
+            soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="collapsed")    
         
             "---"
             
-            if soortgroup_2 == '🦇 Vleermuizen':
+            if soortgroup == '🦇 Vleermuizen':
             
                 sp = st.selectbox("Soort", BAT_NAMES)
                 gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
                 functie = st.selectbox("Functie", BAT_FUNCTIE) 
                 verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             
-            elif soortgroup_2 == '🐦 Vogels':
+            elif soortgroup == '🐦 Vogels':
 
                 sp = st.selectbox("Soort", BIRD_NAMES)
                 gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
                 functie = st.selectbox("Functie", BIRD_FUNCTIE) 
                 verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-            
+        st.error("HERE THE PROBLEM", icon="💀")
         df_point = pd.DataFrame(db_content)
         df_filter = df_point[(df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
