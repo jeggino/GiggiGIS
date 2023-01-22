@@ -180,7 +180,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 # horizontal menu
-selected = option_menu(None, ['📝',  '🗺️'], default_index=0, orientation="horizontal",default_index=0)
+selected = option_menu(None, ['📝',  '🗺️'], default_index=0, orientation="horizontal"menu_icon="cast",)
 
 
  
