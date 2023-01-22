@@ -222,10 +222,7 @@ if selected == '📝':
     
 
 
-elif selected == "🗺️":
-    
-    def convert_df(df):
-       return df.to_csv(index=False).encode('utf-8')   
+elif selected == "🗺️":  
 
     try:
         
@@ -233,18 +230,18 @@ elif selected == "🗺️":
         
         with st.sidebar:
             
-            soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="collapsed")    
+            soortgroup_2 = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="collapsed")    
         
             "---"
             
-            if soortgroup == '🦇 Vleermuizen':
+            if soortgroup_2 == '🦇 Vleermuizen':
             
                 sp = st.selectbox("Soort", BAT_NAMES)
                 gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
                 functie = st.selectbox("Functie", BAT_FUNCTIE) 
                 verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             
-            elif soortgroup == '🐦 Vogels':
+            elif soortgroup_2 == '🐦 Vogels':
 
                 sp = st.selectbox("Soort", BIRD_NAMES)
                 gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
@@ -253,8 +250,9 @@ elif selected == "🗺️":
             
         df_point = pd.DataFrame(db_content)
         df_filter = df_point[(df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
-        csv = convert_df(df_filter)
         
+        
+        csv = df_filter.to_csv(index=False).encode('utf-8') 
         st.download_button(
            "Press to Download",
            csv,
