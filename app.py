@@ -190,20 +190,20 @@ if selected == 'Data entry':
     
     with st.sidebar:
         # horizontal menu
-        soortgroup = option_menu(None, ['🦇 Vleermuizen',  ' 🐦Vogels'], icons=['', ''], default_index=0, orientation="vertica",menu_icon="cast",)
+        soortgroup = option_menu(None, ['🦇 Vleermuizen',  ' 🐦 Vogels'], icons=None, default_index=0, orientation="vertica",menu_icon="cast",)
         
         "---"
 
         date = st.date_input("Date")
         
-        if soortgroup == 'Vleermuizen':
+        if soortgroup == '🦇 Vleermuizen':
             
             sp = st.selectbox("Soort", BAT_NAMES)
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
             verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             
-        elif soortgroup == 'Vogels':
+        elif soortgroup == '🐦 Vogels':
             
             sp = st.selectbox("Soort", BIRD_NAMES)
             gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
