@@ -228,12 +228,28 @@ elif selected == "🗺️":
        return df.to_csv(index=False).encode('utf-8')   
 
     try:
+        
         db_content = db.fetch().items
+        
         with st.sidebar:
-            sp = st.multiselect("Soort", BAT_NAMES)
-            gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS) 
-            functie = st.multiselect("Functie", BAT_FUNCTIE) 
-            verblijf = st.multiselect("Verblijf", BAT_VERBLIJF)
+            
+            soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible")    
+        
+            "---"
+            
+            if soortgroup == '🦇 Vleermuizen':
+            
+                sp = st.selectbox("Soort", BAT_NAMES)
+                gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+                functie = st.selectbox("Functie", BAT_FUNCTIE) 
+                verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+            
+            elif soortgroup == '🐦 Vogels':
+
+                sp = st.selectbox("Soort", BIRD_NAMES)
+                gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+                functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+                verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
             
         df_point = pd.DataFrame(db_content)
         df_filter = df_point[(df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
