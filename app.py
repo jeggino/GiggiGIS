@@ -192,7 +192,7 @@ selected = option_menu(None, ['📝',  '🗺️'], default_index=0, orientation=
 if selected == '📝':
     
     with st.sidebar:
-        soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible")    
+        soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="collapsed")    
         
         "---"
 
@@ -233,7 +233,7 @@ elif selected == "🗺️":
         
         with st.sidebar:
             
-            soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="visible")    
+            soortgroup = st.radio("", options=('🦇 Vleermuizen', '🐦 Vogels'), horizontal=True, label_visibility="collapsed")    
         
             "---"
             
