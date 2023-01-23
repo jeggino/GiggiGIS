@@ -309,6 +309,7 @@ elif selected == "Data visualization":
 
 
             except:
+                st.stop()
                 st.info("Selecteer een waarneming")
 
     except:
