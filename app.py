@@ -231,7 +231,10 @@ elif selected == "Data visualization":
             soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], icons=["bi bi-binoculars-fill","bi bi-binoculars-fill"], default_index=0, orientation="vertical",menu_icon="cast",)
         
             "---"
-            
+            start_time = st.slider(
+                "When do you start?",
+                value=(datetime(2020, 1, 1),datetime(2021, 1, 1)),
+                format="YY/MM/DD")
             if soortgroup == '🦇 Vleermuizen':
             
                 sp = st.multiselect("Soort", BAT_NAMES)
