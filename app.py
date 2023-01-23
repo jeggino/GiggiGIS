@@ -234,6 +234,7 @@ elif selected == "Data visualization":
             
             start_date, end_date = st.date_input('start date  - end date :', [])
             if start_date <= end_date:
+   
                 pass
             else:
                 st.error('Error: End date must fall after start date.')
@@ -254,7 +255,9 @@ elif selected == "Data visualization":
                 verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF) 
         
         df_point = pd.DataFrame(db_content)
-        df_filter = df_point[(df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
+        df_point['date'] = pd.to_datetime(df_point['date'], format='%Y/%m/%d')
+        mask_date = (df_point['date'] > start_date) & (df_point['date'] <= end_date)
+        df_filter = df_point[mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
         
         
