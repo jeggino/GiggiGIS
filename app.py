@@ -297,7 +297,7 @@ elif selected == "Data visualization":
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password" label_visibility="collapsed")
+                                password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password", label_visibility="collapsed")
                                 if password == PASSWORD:
                                     db.delete(id)
                                     drive.delete(name)
@@ -311,7 +311,7 @@ elif selected == "Data visualization":
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password" label_visibility="collapsed")
+                                password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password", label_visibility="collapsed")
                                 if password == PASSWORD:
                                     db.delete(id)
                                     st.success('Gegevens verwijderd!', icon="✅")
