@@ -236,7 +236,7 @@ elif selected == "Data visualization":
                                    datetime(2020, 1, 1),
                                    datetime(2021, 1, 1),
                                    (datetime(2020, 1, 1), datetime(2021, 1, 1)),
-                                   format = 'YYYY MM DD')
+                                   format = 'YYYY-MM-DD')
       
             
             if soortgroup == '🦇 Vleermuizen':
