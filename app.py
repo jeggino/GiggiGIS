@@ -233,7 +233,7 @@ elif selected == "Data visualization":
             "---"
             
             start_date, end_date = st.date_input('start date  - end date :', [])
-            
+            st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
             try:
                 
                 if start_date <= end_date:
@@ -241,7 +241,7 @@ elif selected == "Data visualization":
                 else:
                     st.error('Error: End date must fall after start date.')
             except:
-                st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
+                
             
       
             
