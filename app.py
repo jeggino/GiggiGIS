@@ -241,6 +241,7 @@ elif selected == "Data visualization":
                 else:
                     st.error('Error: End date must fall after start date.')
             except:
+                pass
                 
             
       
