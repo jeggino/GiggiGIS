@@ -234,18 +234,13 @@ elif selected == "Data visualization":
             "---"
             
             start_date, end_date = st.date_input('start date  - end date :', [date.today(),date.today()])
-            st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
+#             st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
             
                 
             if start_date <= end_date:
                 pass
             else:
-                st.error('Error: End date must fall after start date.')
-            
-                
-                
-            
-      
+                st.error('Error: End date must fall after start date.')    
             
             if soortgroup == '🦇 Vleermuizen':
             
