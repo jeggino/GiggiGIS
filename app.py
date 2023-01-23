@@ -257,9 +257,9 @@ elif selected == "Data visualization":
         
         df_point = pd.DataFrame(db_content)        
         df_point['date'] = pd.to_datetime(df_point['date']).dt.date
-        
-        mask_date = (df_point['date'] >= start_date) & (df_point['date'] <= end_date)
         st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
+
+        mask_date = (df_point['date'] >= start_date) & (df_point['date'] <= end_date)
         df_filter = df_point[mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
