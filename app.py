@@ -33,6 +33,8 @@ footer {visibility: hidden;}
 
 # --- VARIABLES---
 
+PASSWORD = "GiggiGIS"
+
 GROUP = ["Vogels", "Vliermuizen"]
 
 BAT_NAMES = ['Laatvlieger', 'Gewone dwergvleermuis', 'Watervleermuis',
@@ -295,22 +297,31 @@ elif selected == "Data visualization":
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                db.delete(id)
-                                drive.delete(name)
-                                st.success('Gegevens verwijderd!', icon="✅")
+                                password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password" label_visibility="collapsed")
+                                if password == PASSWORD:
+                                    db.delete(id)
+                                    drive.delete(name)
+                                    st.success('Gegevens verwijderd!', icon="✅")
+                                else:
+                                    st.warning('Het wachtwoord is niet correct!', icon="⚠️")
+                                    
 
                     except:
                         st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                db.delete(id)
-                                st.success('Gegevens verwijderd!', icon="✅")
+                                password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password" label_visibility="collapsed")
+                                if password == PASSWORD:
+                                    db.delete(id)
+                                    st.success('Gegevens verwijderd!', icon="✅")
+                                else:
+                                    st.warning('Het wachtwoord is niet correct!', icon="⚠️")
+                                
 
 
             except:
                 st.stop()
-                st.info("Selecteer een waarneming")
 
     except:
-        st.error('Nog geen waarnemingen!', icon="🚨")
+        st.stop()
