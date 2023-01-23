@@ -280,7 +280,7 @@ elif selected == "Data visualization":
                                                    )
                        ).add_to(fg)
 
-        output = st_folium(map, returned_objects=["last_active_drawing"], feature_group_to_add=fg,width=350, height=600)
+        output = st_folium(map, returned_objects=["last_active_drawing"], feature_group_to_add=fg, width=350, height=600)
 
         with st.sidebar:
 
@@ -299,7 +299,7 @@ elif selected == "Data visualization":
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password", label_visibility="collapsed")
+                                password = st.text_input("", value="", type="password", label_visibility="collapsed")
                                 if password == PASSWORD:
                                     db.delete(id)
                                     drive.delete(name)
