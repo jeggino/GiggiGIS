@@ -315,7 +315,7 @@ elif selected == "Data visualization":
                                 if password == PASSWORD:
                                     db.delete(id)
                                     st.success('Gegevens verwijderd!', icon="✅")
-                                elif password is None:
+                                elif password == "":
                                     st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
                                 else:
                                     st.warning('Het wachtwoord is niet correct!', icon="⚠️")
