@@ -256,7 +256,7 @@ elif selected == "Data visualization":
                 verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF) 
         
         df_point = pd.DataFrame(db_content)
-        df_point['date'] = pd.to_datetime(df_point['date'], format='%Y-%m-%d')
+        df_point['date'] = df_point['date'].astype('datetime64[ns]') 
         mask_date = (df_point['date'] > start_date) & (df_point['date'] <= end_date)
         df_filter = df_point[mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
