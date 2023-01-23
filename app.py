@@ -232,11 +232,11 @@ elif selected == "Data visualization":
         
             "---"
             
-            start_time = st.slider( "When do you start?",
-                                   datetime(2020, 1, 1, 9, 30),
-                                   datetime(2021, 1, 1, 9, 30),
-                                   (datetime(2020, 1, 1, 9, 30), datetime(2021, 1, 1, 9, 30)),
-                                   format = "MM/DD/YY - hh:mm")
+            start_date, end_date = st.date_input('start date  - end date :', [])
+            if start_date < end_date:
+                pass
+            else:
+                st.error('Error: End date must fall after start date.')
       
             
             if soortgroup == '🦇 Vleermuizen':
