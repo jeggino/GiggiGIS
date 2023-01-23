@@ -302,8 +302,8 @@ elif selected == "Data visualization":
                                 password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password", label_visibility="collapsed")
                                 if password == PASSWORD:
                                     db.delete(id)
-                                        drive.delete(name)
-                                        st.success('Gegevens verwijderd!', icon="✅")
+                                    drive.delete(name)
+                                    st.success('Gegevens verwijderd!', icon="✅")
                                 else:
                                     st.warning('Het wachtwoord is niet correct!', icon="⚠️")
                                     
