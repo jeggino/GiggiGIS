@@ -255,15 +255,11 @@ elif selected == "Data visualization":
                 functie = st.multiselect("Functie", BIRD_FUNCTIE) 
                 verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF) 
         
-        df_point = pd.DataFrame(db_content)
-        
+        df_point = pd.DataFrame(db_content)        
         df_point['date'] = pd.to_datetime(df_point['date']).dt.date
-        st.write(df_point['date'][0])
-        st.write(start_date)
-        st.write(end_date)
         
         mask_date = (df_point['date'] >= start_date) & (df_point['date'] <= end_date)
-#         st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
+        st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
         df_filter = df_point[mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
