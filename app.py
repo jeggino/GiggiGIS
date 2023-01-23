@@ -266,6 +266,8 @@ elif selected == "Data visualization":
         df_filter = df_point[mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+        fg = folium.FeatureGroup(name="Markers")
+
         LocateControl(auto_start=True).add_to(map)
         Fullscreen().add_to(map)
 
@@ -276,9 +278,9 @@ elif selected == "Data visualization":
                                                      labels=True,
                                                      style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
                                                    )
-                       ).add_to(map)
+                       ).add_to(fg)
 
-        output = st_folium(map, returned_objects=["last_active_drawing"], width=350, height=600)
+        output = st_folium(map, returned_objects=["last_active_drawing"], feature_group_to_add=fg,width=350, height=600)
 
         with st.sidebar:
 
