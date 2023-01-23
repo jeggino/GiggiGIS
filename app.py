@@ -233,7 +233,7 @@ elif selected == "Data visualization":
         
             "---"
             
-            start_date, end_date = st.date_input('start date  - end date :', [date.today()])
+            start_date, end_date = st.date_input('start date  - end date :', [date.today(),date.today()])
             st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
             
                 
