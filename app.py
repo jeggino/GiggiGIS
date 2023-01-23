@@ -219,8 +219,8 @@ if selected == 'Data entry':
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
-            
-    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
+    with st.spinner('Wait for it...'):
+        input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
     
     
 
