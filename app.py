@@ -170,10 +170,12 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
-                        insert_json(json,key,str(date),sp,gedrag,functie,verblijf)
+                        with st.spinner('Wait for it...')
+                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf)
                     else:
                         json["features"][0]["properties"]["image_name"] = None
-                        insert_json(json,key,str(date),sp,gedrag,functie,verblijf)
+                        with st.spinner('Wait for it...'):
+                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf)
                         
                     
 
@@ -186,9 +188,6 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 # --- APP ---
 # horizontal menu
 selected = option_menu(None, ['Data entry', 'Data visualization'], icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],default_index=0, orientation="horizontal",menu_icon="cast",)
-
-
- 
 
 
 if selected == 'Data entry':
@@ -219,8 +218,7 @@ if selected == 'Data entry':
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
-        with st.spinner('Wait for it...'):
-            input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
+    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
     
     
 
