@@ -232,7 +232,10 @@ elif selected == "Data visualization":
         
             "---"
             
-            start_time = st.slider( "When do you start?",0.0, 100.0, (25.0, 75.0))
+            start_time = st.slider( "When do you start?",
+                                   datetime(2020, 1, 1),
+                                   datetime(2021, 1, 1),
+                                   (datetime(2020, 1, 1), datetime(2021, 1, 1)))
       
             
             if soortgroup == '🦇 Vleermuizen':
