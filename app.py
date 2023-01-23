@@ -258,7 +258,8 @@ elif selected == "Data visualization":
         df_point = pd.DataFrame(db_content)
         
         df_point['date'] = df_point['date'].astype('datetime64[ns]')
-        st.write(start_date end_date)
+        st.write(start_date)
+        st.write(end_date)
         
         mask_date = (df_point['date'] >= start_date) & (df_point['date'] <= end_date)
         st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
