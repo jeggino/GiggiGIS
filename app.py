@@ -258,6 +258,7 @@ elif selected == "Data visualization":
         df_point = pd.DataFrame(db_content)
         
         df_point['date'] = df_point['date'].astype('datetime64[ns]')
+        st.write(df_point['date'][0])
         st.write(start_date)
         st.write(end_date)
         
