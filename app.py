@@ -263,21 +263,9 @@ elif selected == "Data visualization":
         st.write(end_date)
         
         mask_date = (df_point['date'] >= start_date) & (df_point['date'] <= end_date)
-        st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
+#         st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
         df_filter = df_point[mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
-        
-        
-        csv = df_filter.to_csv(index=False).encode('utf-8') 
-        st.download_button(
-           "Press to Download",
-           csv,
-           "file.csv",
-           "text/csv",
-           key='download-csv'
-        )
-        
-
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
         LocateControl(auto_start=True).add_to(map)
         Fullscreen().add_to(map)
