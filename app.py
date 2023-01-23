@@ -170,7 +170,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
-                        with st.spinner('Wait for it...')
+                        with st.spinner('Wait for it...'):
                             insert_json(json,key,str(date),sp,gedrag,functie,verblijf)
                     else:
                         json["features"][0]["properties"]["image_name"] = None
