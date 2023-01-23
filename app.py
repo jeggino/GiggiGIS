@@ -8,6 +8,7 @@ from streamlit_folium import st_folium
 import pandas as pd
 import geopandas as gpd
 import datetime
+from datetime import date
 
 from deta import Deta
 
@@ -234,6 +235,7 @@ elif selected == "Data visualization":
             
             start_date, end_date = st.date_input('start date  - end date :', [])
             st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
+            st.write(date.today())
             
                 
             if start_date <= end_date:
