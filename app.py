@@ -217,8 +217,8 @@ if selected == 'Data entry':
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
-            
-    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
+    with st.spinner(text="loading image..."):
+        input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
     
     
 
@@ -300,8 +300,9 @@ elif selected == "Data visualization":
                                 password = st.text_input("", value="Vul hier het wachtwoord in ...", type="password", label_visibility="collapsed")
                                 if password == PASSWORD:
                                     db.delete(id)
-                                    drive.delete(name)
-                                    st.success('Gegevens verwijderd!', icon="✅")
+                                    with st.spinner(text="loading image..."):
+                                        drive.delete(name)
+                                        st.success('Gegevens verwijderd!', icon="✅")
                                 else:
                                     st.warning('Het wachtwoord is niet correct!', icon="⚠️")
                                     
