@@ -195,18 +195,18 @@ if selected == 'Data entry':
     with st.sidebar:
         # horizontal menu
 #         soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], icons=["bi bi-binoculars-fill","bi bi-binoculars-fill"], default_index=0, orientation="vertical",menu_icon="cast",)
-        soortgroup = st.selectbox("Soortgroep", ['🦇 Vleermuizen',  '🐦 Vogels'])
+        soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
 
         date = st.date_input("Date")
         
-        if soortgroup == '🦇 Vleermuizen':
+        if soortgroup == 'Vleermuizen':
             
             sp = st.selectbox("Soort", BAT_NAMES)
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
             verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             
-        elif soortgroup == '🐦 Vogels':
+        elif soortgroup == 'Vogels':
             
             sp = st.selectbox("Soort", BIRD_NAMES)
             gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
@@ -230,9 +230,7 @@ elif selected == "Data visualization":
         
         with st.sidebar:
             
-            soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], icons=["bi bi-binoculars-fill","bi bi-binoculars-fill"], default_index=0, orientation="vertical",menu_icon="cast",)
-        
-            "---"
+            soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
             
             start_date, end_date = st.date_input('start date  - end date :', [date.today(),date.today()])
 #             st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
@@ -243,14 +241,14 @@ elif selected == "Data visualization":
             else:
                 st.error('Error: End date must fall after start date.')    
             
-            if soortgroup == '🦇 Vleermuizen':
+            if soortgroup == 'Vleermuizen':
             
                 sp = st.multiselect("Soort", BAT_NAMES)
                 gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS) 
                 functie = st.multiselect("Functie", BAT_FUNCTIE) 
                 verblijf = st.multiselect("Verblijf", BAT_VERBLIJF) 
             
-            elif soortgroup == '🐦 Vogels':
+            elif soortgroup == 'Vogels':
 
                 sp = st.multiselect("Soort", BIRD_NAMES)
                 gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS) 
