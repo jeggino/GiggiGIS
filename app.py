@@ -194,9 +194,8 @@ if selected == 'Data entry':
     
     with st.sidebar:
         # horizontal menu
-        soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], icons=["bi bi-binoculars-fill","bi bi-binoculars-fill"], default_index=0, orientation="vertical",menu_icon="cast",)
-        
-        "---"
+#         soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], icons=["bi bi-binoculars-fill","bi bi-binoculars-fill"], default_index=0, orientation="vertical",menu_icon="cast",)
+        soortgroup = st.selectbox("Soortgroep", ['🦇 Vleermuizen',  '🐦 Vogels'])
 
         date = st.date_input("Date")
         
