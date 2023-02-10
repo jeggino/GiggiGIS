@@ -195,11 +195,11 @@ selected = option_menu(None, ['Data entry', 'Data visualization'], icons=["bi bi
 if selected == 'Data entry':
     
     with st.sidebar:
-        # horizontal menu
-#         soortgroup = option_menu(None, ['🦇 Vleermuizen',  '🐦 Vogels'], icons=["bi bi-binoculars-fill","bi bi-binoculars-fill"], default_index=0, orientation="vertical",menu_icon="cast",)
+        
         soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
-
         date = st.date_input("Date")
+        geometry_type = st.selectbox("Type geometrie", ['Point',  'LineString', 'Polygon'])
+        
         
         if soortgroup == 'Vleermuizen':
             
@@ -236,7 +236,9 @@ elif selected == "Data visualization":
             soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
             
             start_date, end_date = st.date_input('start date  - end date :', [date.today(),date.today()])
+            soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
 #             st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
+
             
                 
             if start_date <= end_date:
