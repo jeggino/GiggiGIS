@@ -93,12 +93,14 @@ drive = deta.Drive("GiggiGIS_pictures")
 
 # --- FUNCTIONS ---
 
-@st.cache(suppress_st_warning=True)
+@st.cache
+def load_dataset():
+    return db.fetch().items
+
 def insert_json(json,key,date,sp,gedrag,functie,verblijf):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf})
 
-@st.cache(suppress_st_warning=True)
 def password_generator(length):
     """ Function that generates a password given a length """
 
@@ -126,7 +128,6 @@ def password_generator(length):
 
     return password  # returns the string
 
-@st.cache(suppress_st_warning=True)
 def map():
     
     m = folium.Map(location=[44.266308, 11.719301], zoom_start=3)
@@ -218,6 +219,7 @@ if selected == 'Data entry':
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
+            
     input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
     
     
@@ -227,7 +229,7 @@ elif selected == "Data visualization":
 
     try:
         
-        db_content = db.fetch().items
+        db_content = load_dataset()
         
         with st.sidebar:
             
