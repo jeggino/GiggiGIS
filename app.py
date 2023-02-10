@@ -93,10 +93,12 @@ drive = deta.Drive("GiggiGIS_pictures")
 
 # --- FUNCTIONS ---
 
+@st.cache
 def insert_json(json,key,date,sp,gedrag,functie,verblijf):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf})
 
+@st.cache
 def password_generator(length):
     """ Function that generates a password given a length """
 
@@ -124,6 +126,7 @@ def password_generator(length):
 
     return password  # returns the string
 
+@st.cache
 def map():
     
     m = folium.Map(location=[44.266308, 11.719301], zoom_start=3)
