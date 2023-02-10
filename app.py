@@ -189,38 +189,38 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 # horizontal menu
-selected = option_menu(None, ['Data entry', 'Data visualization'], icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],default_index=0, orientation="horizontal",menu_icon="cast",)
+# selected = option_menu(None, ['Data entry', 'Data visualization'], icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],default_index=0, orientation="horizontal",menu_icon="cast",)
 
 
-if selected == 'Data entry':
+# if selected == 'Data entry':
     
-    with st.sidebar:
-        
-        soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
-        date = st.date_input("Date")        
-        
-        if soortgroup == 'Vleermuizen':
-            
-            sp = st.selectbox("Soort", BAT_NAMES)
-            gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-            functie = st.selectbox("Functie", BAT_FUNCTIE) 
-            verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-            
-        elif soortgroup == 'Vogels':
-            
-            sp = st.selectbox("Soort", BIRD_NAMES)
-            gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-            functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-            verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-            
-        aantal = st.number_input("Aantal:", min_value=0)
-        opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-        with st.expander("Upload een foto"):
-            uploaded_file = st.camera_input("")
-            
-    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
-    
-    
+with st.sidebar:
+
+    soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
+    date = st.date_input("Date")        
+
+    if soortgroup == 'Vleermuizen':
+
+        sp = st.selectbox("Soort", BAT_NAMES)
+        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+        functie = st.selectbox("Functie", BAT_FUNCTIE) 
+        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+
+    elif soortgroup == 'Vogels':
+
+        sp = st.selectbox("Soort", BIRD_NAMES)
+        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+
+    aantal = st.number_input("Aantal:", min_value=0)
+    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+    with st.expander("Upload een foto"):
+        uploaded_file = st.camera_input("")
+
+input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
+
+
 
 
 elif selected == "Data visualization":  
