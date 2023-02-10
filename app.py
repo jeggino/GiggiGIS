@@ -197,9 +197,7 @@ if selected == 'Data entry':
     with st.sidebar:
         
         soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
-        date = st.date_input("Date")
-        geometry_type = st.selectbox("Type geometrie", ['Point',  'LineString', 'Polygon'])
-        
+        date = st.date_input("Date")        
         
         if soortgroup == 'Vleermuizen':
             
@@ -234,9 +232,8 @@ elif selected == "Data visualization":
         with st.sidebar:
             
             soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
-            
             start_date, end_date = st.date_input('start date  - end date :', [date.today(),date.today()])
-            soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
+            geometry_type = st.multiselect("Type geometrie", ['Point',  'LineString', 'Polygon'])
 #             st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
 
             
@@ -267,7 +264,8 @@ elif selected == "Data visualization":
         
 
         mask_date = (df_point['date'] >= start_date) & (df_point['date'] <= end_date)
-        df_filter = df_point[mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
+        mask_geometry_type = (df_point.geometry_type.isin(geometry_type))
+        df_filter = df_point[mask_geometry_type & mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
         fg = folium.FeatureGroup(name="Markers")
