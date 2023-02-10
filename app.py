@@ -93,7 +93,6 @@ drive = deta.Drive("GiggiGIS_pictures")
 
 # --- FUNCTIONS ---
 
-@st.cache
 def load_dataset():
     return db.fetch().items
 
