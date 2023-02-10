@@ -204,18 +204,16 @@ if selected == 'Data entry':
         if soortgroup == 'Vleermuizen':
             
             sp = st.selectbox("Soort", BAT_NAMES)
-            with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
-                gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-                functie = st.selectbox("Functie", BAT_FUNCTIE) 
-                verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+            gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+            functie = st.selectbox("Functie", BAT_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             
         elif soortgroup == 'Vogels':
             
             sp = st.selectbox("Soort", BIRD_NAMES)
-            with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
-                gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-                functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-                verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+            gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+            functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
             
         aantal = st.number_input("Aantal:", min_value=0)
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
@@ -249,16 +247,18 @@ elif selected == "Data visualization":
             if soortgroup == 'Vleermuizen':
             
                 sp = st.multiselect("Soort", BAT_NAMES)
-                gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS, BAT_BEHAVIOURS) 
-                functie = st.multiselect("Functie", BAT_FUNCTIE, BAT_FUNCTIE) 
-                verblijf = st.multiselect("Verblijf", BAT_VERBLIJF, BAT_VERBLIJF) 
+                with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
+                    gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS, BAT_BEHAVIOURS) 
+                    functie = st.multiselect("Functie", BAT_FUNCTIE, BAT_FUNCTIE) 
+                    verblijf = st.multiselect("Verblijf", BAT_VERBLIJF, BAT_VERBLIJF) 
             
             elif soortgroup == 'Vogels':
 
                 sp = st.multiselect("Soort", BIRD_NAMES)
-                gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS,BIRD_BEHAVIOURS) 
-                functie = st.multiselect("Functie", BIRD_FUNCTIE,BIRD_FUNCTIE) 
-                verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF,BIRD_VERBLIJF) 
+                with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
+                    gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS,BIRD_BEHAVIOURS) 
+                    functie = st.multiselect("Functie", BIRD_FUNCTIE,BIRD_FUNCTIE) 
+                    verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF,BIRD_VERBLIJF) 
         
         df_point = pd.DataFrame(db_content)        
         df_point['date'] = pd.to_datetime(df_point['date']).dt.date
