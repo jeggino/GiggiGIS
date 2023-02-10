@@ -3,7 +3,7 @@ from streamlit_option_menu import option_menu
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
-from streamlit_folium import st_folium, folium_static
+from streamlit_folium import st_folium
 
 import pandas as pd
 import geopandas as gpd
@@ -133,7 +133,7 @@ def map():
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
-    output = folium_static(m, returned_objects=["all_drawings"])#, width=350, height=600)
+    output = st_folium(m, returned_objects=["all_drawings"])#, width=350, height=600)
     
     return  output
     
