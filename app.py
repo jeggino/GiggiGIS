@@ -204,16 +204,18 @@ if selected == 'Data entry':
         if soortgroup == 'Vleermuizen':
             
             sp = st.selectbox("Soort", BAT_NAMES)
-            gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-            functie = st.selectbox("Functie", BAT_FUNCTIE) 
-            verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+            with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
+                gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+                functie = st.selectbox("Functie", BAT_FUNCTIE) 
+                verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             
         elif soortgroup == 'Vogels':
             
             sp = st.selectbox("Soort", BIRD_NAMES)
-            gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-            functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-            verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+            with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
+                gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+                functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+                verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
             
         aantal = st.number_input("Aantal:", min_value=0)
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
