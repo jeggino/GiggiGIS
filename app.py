@@ -150,7 +150,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
                 json = output
                 json["features"] = json.pop("all_drawings")
-                geometry_type = json["features"][0]["geometry"]["Type"]
+                geometry_type = json["features"][0]["geometry"]["type"]
                 key = password_generator(12)
 
                 if len(json["features"]) > 1:
