@@ -96,7 +96,7 @@ drive = deta.Drive("GiggiGIS_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(json,key,date,sp,gedrag,functie,verblijf):
+def insert_json(json,key,date,sp,gedrag,functie,verblijf,geometry_type):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,"geometry_type":geometry_type})
 
