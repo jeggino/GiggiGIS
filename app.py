@@ -189,147 +189,147 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 # horizontal menu
-# selected = option_menu(None, ['Data entry', 'Data visualization'], icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],default_index=0, orientation="horizontal",menu_icon="cast",)
+selected = option_menu(None, ['Data entry', 'Data visualization'], icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],default_index=0, orientation="horizontal",menu_icon="cast",)
 
 
-# if selected == 'Data entry':
+if selected == 'Data entry':
     
-with st.sidebar:
+    with st.sidebar:
 
-    soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
-    date = st.date_input("Date")        
+        soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
+        date = st.date_input("Date")        
 
-    if soortgroup == 'Vleermuizen':
+        if soortgroup == 'Vleermuizen':
 
-        sp = st.selectbox("Soort", BAT_NAMES)
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+            sp = st.selectbox("Soort", BAT_NAMES)
+            gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+            functie = st.selectbox("Functie", BAT_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
 
-    elif soortgroup == 'Vogels':
+        elif soortgroup == 'Vogels':
 
-        sp = st.selectbox("Soort", BIRD_NAMES)
-        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+            sp = st.selectbox("Soort", BIRD_NAMES)
+            gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+            functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
 
-    aantal = st.number_input("Aantal:", min_value=0)
-    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-    with st.expander("Upload een foto"):
-        uploaded_file = st.camera_input("")
+        aantal = st.number_input("Aantal:", min_value=0)
+        opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+        with st.expander("Upload een foto"):
+            uploaded_file = st.camera_input("")
 
-input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
-
-
+    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
 
 
-# elif selected == "Data visualization":  
 
-#     try:
+
+elif selected == "Data visualization":  
+
+    try:
         
-#         db_content = load_dataset()
+        db_content = load_dataset()
         
-#         with st.sidebar:
+        with st.sidebar:
             
-#             soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
-#             start_date, end_date = st.date_input('start date  - end date :', [date.today(),date.today()])
-#             geometry_type = st.multiselect("Type geometrie", ['Point',  'LineString', 'Polygon'])
-# #             st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
+            soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
+            start_date, end_date = st.date_input('start date  - end date :', [date.today(),date.today()])
+            geometry_type = st.multiselect("Type geometrie", ['Point',  'LineString', 'Polygon'])
+#             st.warning("HERE IS THE PROBLEM!!!!!", icon="💀")
 
             
                 
-#             if start_date <= end_date:
-#                 pass
-#             else:
-#                 st.error('Error: End date must fall after start date.')    
+            if start_date <= end_date:
+                pass
+            else:
+                st.error('Error: End date must fall after start date.')    
             
-#             if soortgroup == 'Vleermuizen':
+            if soortgroup == 'Vleermuizen':
             
-#                 sp = st.multiselect("Soort", BAT_NAMES)
-#                 with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
-#                     gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS, BAT_BEHAVIOURS) 
-#                     functie = st.multiselect("Functie", BAT_FUNCTIE, BAT_FUNCTIE) 
-#                     verblijf = st.multiselect("Verblijf", BAT_VERBLIJF, BAT_VERBLIJF) 
+                sp = st.multiselect("Soort", BAT_NAMES)
+                with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
+                    gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS, BAT_BEHAVIOURS) 
+                    functie = st.multiselect("Functie", BAT_FUNCTIE, BAT_FUNCTIE) 
+                    verblijf = st.multiselect("Verblijf", BAT_VERBLIJF, BAT_VERBLIJF) 
             
-#             elif soortgroup == 'Vogels':
+            elif soortgroup == 'Vogels':
 
-#                 sp = st.multiselect("Soort", BIRD_NAMES)
-#                 with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
-#                     gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS,BIRD_BEHAVIOURS) 
-#                     functie = st.multiselect("Functie", BIRD_FUNCTIE,BIRD_FUNCTIE) 
-#                     verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF,BIRD_VERBLIJF) 
+                sp = st.multiselect("Soort", BIRD_NAMES)
+                with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
+                    gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS,BIRD_BEHAVIOURS) 
+                    functie = st.multiselect("Functie", BIRD_FUNCTIE,BIRD_FUNCTIE) 
+                    verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF,BIRD_VERBLIJF) 
         
-#         df_point = pd.DataFrame(db_content)        
-#         df_point['date'] = pd.to_datetime(df_point['date']).dt.date
+        df_point = pd.DataFrame(db_content)        
+        df_point['date'] = pd.to_datetime(df_point['date']).dt.date
         
 
-#         mask_date = (df_point['date'] >= start_date) & (df_point['date'] <= end_date)
-#         mask_geometry_type = (df_point.geometry_type.isin(geometry_type))
-#         df_filter = df_point[mask_geometry_type & mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
+        mask_date = (df_point['date'] >= start_date) & (df_point['date'] <= end_date)
+        mask_geometry_type = (df_point.geometry_type.isin(geometry_type))
+        df_filter = df_point[mask_geometry_type & mask_date & (df_point.sp.isin(sp)) & (df_point.gedrag.isin(gedrag)) & (df_point.functie.isin(functie)) & (df_point.verblijf.isin(verblijf))]
         
-#         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-#         fg = folium.FeatureGroup(name="Markers")
+        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+        fg = folium.FeatureGroup(name="Markers")
 
-#         LocateControl(auto_start=True).add_to(map)
-#         Fullscreen().add_to(map)
+        LocateControl(auto_start=True).add_to(map)
+        Fullscreen().add_to(map)
 
-#         for i in df_filter["json"].to_list():
-#             folium.GeoJson(i,
-#                        tooltip=folium.GeoJsonTooltip(fields= ['date','sp','gedrag','functie','verblijf','aantal','opmerking'],
-#                                                      aliases=['Date:','Soort:','Gedrag:','Functie:','Verblijf:','Aantal:','Opmerking:'],
-#                                                      labels=True,
-#                                                      style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-#                                                    )
-#                        ).add_to(fg)
+        for i in df_filter["json"].to_list():
+            folium.GeoJson(i,
+                       tooltip=folium.GeoJsonTooltip(fields= ['date','sp','gedrag','functie','verblijf','aantal','opmerking'],
+                                                     aliases=['Date:','Soort:','Gedrag:','Functie:','Verblijf:','Aantal:','Opmerking:'],
+                                                     labels=True,
+                                                     style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+                                                   )
+                       ).add_to(fg)
 
-#         output = st_folium(map, returned_objects=["last_active_drawing"], feature_group_to_add=fg, width=350, height=600)
+        output = st_folium(map, returned_objects=["last_active_drawing"], feature_group_to_add=fg, width=350, height=600)
 
-#         with st.sidebar:
+        with st.sidebar:
 
-#             try:
-#                 id = output["last_active_drawing"]["properties"]["id"]
-#                 name = output["last_active_drawing"]["properties"]["image_name"]
+            try:
+                id = output["last_active_drawing"]["properties"]["id"]
+                name = output["last_active_drawing"]["properties"]["image_name"]
 
-#                 with st.sidebar:
+                with st.sidebar:
 
-#                     try:
+                    try:
 
-#                         res = drive.get(name).read()
-#                         with st.expander("Zie foto"):
-#                             st.image(res)
+                        res = drive.get(name).read()
+                        with st.expander("Zie foto"):
+                            st.image(res)
 
-#                         with st.form("entry_form", clear_on_submit=True):
-#                             submitted = st.form_submit_button("Verwijder data")
-#                             if submitted:
-#                                 password = st.text_input("", value="", type="password", label_visibility="collapsed")
-#                                 if password == PASSWORD:
-#                                     db.delete(id)
-#                                     drive.delete(name)
-#                                     st.success('Gegevens verwijderd!', icon="✅")
-#                                 elif password == "":
-#                                     st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
-#                                 else:
-#                                     st.warning('Het wachtwoord is niet correct!', icon="⚠️")
+                        with st.form("entry_form", clear_on_submit=True):
+                            submitted = st.form_submit_button("Verwijder data")
+                            if submitted:
+                                password = st.text_input("", value="", type="password", label_visibility="collapsed")
+                                if password == PASSWORD:
+                                    db.delete(id)
+                                    drive.delete(name)
+                                    st.success('Gegevens verwijderd!', icon="✅")
+                                elif password == "":
+                                    st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
+                                else:
+                                    st.warning('Het wachtwoord is niet correct!', icon="⚠️")
                                     
 
-#                     except:
-#                         st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
-#                         with st.form("entry_form", clear_on_submit=True):
-#                             submitted = st.form_submit_button("Verwijder data")
-#                             if submitted:
-#                                 password = st.text_input("", value="", type="password", label_visibility="collapsed")
-#                                 if password == PASSWORD:
-#                                     db.delete(id)
-#                                     st.success('Gegevens verwijderd!', icon="✅")
-#                                 elif password == "":
-#                                     st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
-#                                 else:
-#                                     st.warning('Het wachtwoord is niet correct!', icon="⚠️")
+                    except:
+                        st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
+                        with st.form("entry_form", clear_on_submit=True):
+                            submitted = st.form_submit_button("Verwijder data")
+                            if submitted:
+                                password = st.text_input("", value="", type="password", label_visibility="collapsed")
+                                if password == PASSWORD:
+                                    db.delete(id)
+                                    st.success('Gegevens verwijderd!', icon="✅")
+                                elif password == "":
+                                    st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
+                                else:
+                                    st.warning('Het wachtwoord is niet correct!', icon="⚠️")
                                 
 
 
-#             except:
-#                 st.stop()
+            except:
+                st.stop()
 
-#     except:
-#         st.stop()
+    except:
+        st.stop()
