@@ -335,5 +335,5 @@ input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
 #             except:
 #                 st.stop()
 
-    except:
-        st.stop()
+    # except:
+    #     st.stop()
