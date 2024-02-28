@@ -94,21 +94,21 @@ def load_dataset():
 
 with st.sidebar:
             
-              if soortgroup == 'Vleermuizen':
-            
-                sp = st.multiselect("Soort", BAT_NAMES)
-                with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
-                    gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS, BAT_BEHAVIOURS) 
-                    functie = st.multiselect("Functie", BAT_FUNCTIE, BAT_FUNCTIE) 
-                    verblijf = st.multiselect("Verblijf", BAT_VERBLIJF, BAT_VERBLIJF) 
-            
-            elif soortgroup == 'Vogels':
-
-                sp = st.multiselect("Soort", BIRD_NAMES)
-                with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
-                    gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS,BIRD_BEHAVIOURS) 
-                    functie = st.multiselect("Functie", BIRD_FUNCTIE,BIRD_FUNCTIE) 
-                    verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF,BIRD_VERBLIJF) 
+    if soortgroup == 'Vleermuizen':
+    
+        sp = st.multiselect("Soort", BAT_NAMES)
+        with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
+            gedrag = st.multiselect("Gedrag", BAT_BEHAVIOURS, BAT_BEHAVIOURS) 
+            functie = st.multiselect("Functie", BAT_FUNCTIE, BAT_FUNCTIE) 
+            verblijf = st.multiselect("Verblijf", BAT_VERBLIJF, BAT_VERBLIJF) 
+    
+    elif soortgroup == 'Vogels':
+    
+        sp = st.multiselect("Soort", BIRD_NAMES)
+        with st.expander("Kies het gedrag, de functie en het verblijf", expanded=False):
+            gedrag = st.multiselect("Gedrag", BIRD_BEHAVIOURS,BIRD_BEHAVIOURS) 
+            functie = st.multiselect("Functie", BIRD_FUNCTIE,BIRD_FUNCTIE) 
+            verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF,BIRD_VERBLIJF) 
 
 db_content = load_dataset()
 df_point = pd.DataFrame(db_content)        
