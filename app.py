@@ -15,9 +15,6 @@ from deta import Deta
 import string
 import random
 
-from streamlit_elements import elements, mui, html
-
-
 st.set_page_config(
     page_title="GiggiGIS",
     page_icon="🍕",
