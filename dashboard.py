@@ -93,3 +93,9 @@ def load_dataset():
 db_content = load_dataset()
 df_point = pd.DataFrame(db_content)
 df_point
+
+with st.sidebar:
+            
+    soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels'])
+    start_date, end_date = st.date_input('start date  - end date :', [date.today(),date.today()])
+    geometry_type = st.multiselect("Type geometrie", ['Point',  'LineString', 'Polygon'])
