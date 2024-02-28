@@ -229,6 +229,7 @@ elif selected == "Data visualization":
     try:
         
         db_content = load_dataset()
+        df_point = pd.DataFrame(db_content)
         
         with st.sidebar:
             
@@ -260,7 +261,7 @@ elif selected == "Data visualization":
             #         functie = st.multiselect("Functie", BIRD_FUNCTIE,BIRD_FUNCTIE) 
             #         verblijf = st.multiselect("Verblijf", BIRD_VERBLIJF,BIRD_VERBLIJF) 
         
-        df_point = pd.DataFrame(db_content)        
+        # df_point = pd.DataFrame(db_content)        
         # df_point['date'] = pd.to_datetime(df_point['date']).dt.date
         
 
