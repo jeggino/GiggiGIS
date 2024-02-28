@@ -10,7 +10,7 @@ from deta import Deta
 
 st.set_page_config(
     page_title="GiggiGIS",
-    page_icon="🍕",
+    page_icon="🗺️",
     layout="wide",
     
 )
