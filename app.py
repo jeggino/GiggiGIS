@@ -95,7 +95,7 @@ drive = deta.Drive("GiggiGIS_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(json,key,date,sp,gedrag,functie,verblijf,geometry_type,coordinates):
+def insert_json(json,key,date,sp,gedrag,functie,verblijf,geometry_type,lat,lng):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,"geometry_type":geometry_type,"lat":lat,"lng":lng})
 
@@ -150,11 +150,8 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                 json = output
                 json["features"] = json.pop("all_drawings")
                 geometry_type = json["features"][0]["geometry"]["type"]
-                coordinates = json["features"][0]["geometry"]["coordinates"]
-                st.write(coordinates)
-                
+                coordinates = json["features"][0]["geometry"]["coordinates"]                
                 lng = coordinates[0]
-                st.write(lng)
                 lat = coordinates[1]
                 key = password_generator(12)
 
