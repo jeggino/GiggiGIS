@@ -151,8 +151,9 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                 json["features"] = json.pop("all_drawings")
                 geometry_type = json["features"][0]["geometry"]["type"]
                 coordinates = json["features"][0]["geometry"]["coordinates"]
-                lng = float(coordinates[0])
-                lat = float(coordinates[1])
+                st.write(coordinates)
+                # lng = float(coordinates[0])
+                # lat = float(coordinates[1])
                 key = password_generator(12)
 
                 if len(json["features"]) > 1:
