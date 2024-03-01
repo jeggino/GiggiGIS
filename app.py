@@ -234,7 +234,7 @@ if selected == 'Data entry':
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
     
-    input_data(date,sp,gedrag,functie,onbewoond,verblijf,aantal,opmerking,uploaded_file,onbewoond)
+    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,onbewoond)
 
 
 
