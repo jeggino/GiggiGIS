@@ -36,7 +36,7 @@ footer {visibility: hidden;}
 
 PASSWORD = "GiggiGIS"
 
-GROUP = ["Vogels", "Vliermuizen"]
+GROUP = ["Vogels", "Vliermuizen", "Vleermuiskast"]
 
 BAT_NAMES = ['Laatvlieger', 'Gewone dwergvleermuis', 'Watervleermuis',
        'Rosse vleermuis', 'Ruige dwergvleermuis', 'Meervleermuis',
@@ -75,6 +75,8 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
        'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
        'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors']
+
+VLEERMUISKAST_VERBLIJF = ["Op boom", "Op gebouw"]
 
 BIRD_VERBLIJF = ['dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
        'gevelbetimmering', 'openingen in dak', 'regenpijp',
@@ -215,6 +217,11 @@ if selected == 'Data entry':
             gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
             functie = st.selectbox("Functie", BIRD_FUNCTIE) 
             verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+
+        elif soortgroup == 'Vleermuiskast':
+
+            sp = st.selectbox("Soort", BAT_NAMES) 
+            verblijf = st.selectbox("Verblijf", VLEERMUISKAST_VERBLIJF)
     
         aantal = st.number_input("Aantal:", min_value=0)
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
