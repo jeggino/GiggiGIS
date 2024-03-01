@@ -152,7 +152,9 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                 geometry_type = json["features"][0]["geometry"]["type"]
                 coordinates = json["features"][0]["geometry"]["coordinates"]
                 st.write(coordinates)
+                
                 lng = coordinates[0]
+                st.write(lng)
                 lat = coordinates[1]
                 key = password_generator(12)
 
