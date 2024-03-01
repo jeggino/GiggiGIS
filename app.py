@@ -221,6 +221,8 @@ if selected == 'Data entry':
         elif soortgroup == 'Vleermuiskast':
 
             sp = st.selectbox("Soort", BAT_NAMES) 
+            gedrag = None
+            functie = None
             verblijf = st.selectbox("Verblijf", VLEERMUISKAST_VERBLIJF)
     
         aantal = st.number_input("Aantal:", min_value=0)
