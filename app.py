@@ -139,7 +139,7 @@ def map():
     
     return  output
     
-def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
+def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,onbewoond):
     
     with st.container():
         output = map()
@@ -194,7 +194,8 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
 
 # --- APP ---
 # horizontal menu
-selected = option_menu(None, ['Data entry', 'Data visualization'], icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],default_index=0, orientation="horizontal",menu_icon="cast",)
+selected = option_menu(None, ['Data entry', 'Data visualization'], 
+                       icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],default_index=0, orientation="horizontal",menu_icon="cast",)
 
 
 if selected == 'Data entry':
@@ -233,7 +234,7 @@ if selected == 'Data entry':
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
     
-    input_data(date,sp,gedrag,functie,onbewoond,verblijf,aantal,opmerking,uploaded_file)
+    input_data(date,sp,gedrag,functie,onbewoond,verblijf,aantal,opmerking,uploaded_file,onbewoond)
 
 
 
