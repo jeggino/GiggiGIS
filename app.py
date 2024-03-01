@@ -97,7 +97,7 @@ def load_dataset():
 
 def insert_json(json,key,date,sp,gedrag,functie,verblijf,geometry_type,coordinates):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,"geometry_type":geometry_type,"coordinates":coordinates})
+    return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,"geometry_type":geometry_type,"lat":lat,"lng":lng})
 
 def password_generator(length):
     """ Function that generates a password given a length """
@@ -151,6 +151,8 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                 json["features"] = json.pop("all_drawings")
                 geometry_type = json["features"][0]["geometry"]["type"]
                 coordinates = json["features"][0]["geometry"]["coordinates"]
+                lng = float(coordinates.split(",")[0])
+                lat = float(coordinates.split(",")[1])
                 key = password_generator(12)
 
                 if len(json["features"]) > 1:
@@ -173,11 +175,11 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf,geometry_type,coordinates)
+                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf,geometry_type,lat,lng)
                     else:
                         json["features"][0]["properties"]["image_name"] = None
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf,geometry_type,coordinates)
+                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf,geometry_type,lat,lng)
                         
                     
 
