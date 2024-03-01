@@ -71,8 +71,6 @@ BIRD_FUNCTIE = ['nestlocatie', 'geen / onbekend', 'vastgesteld territorium',
        'voortplantingsbiotoop', 'winterverblijfplaats in boom',
        'zomerverblijfplaats']
 
-
-
 BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
        'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
@@ -97,9 +95,9 @@ drive = deta.Drive("GiggiGIS_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(json,key,date,sp,gedrag,functie,verblijf,geometry_type):
+def insert_json(json,key,date,sp,gedrag,functie,verblijf,geometry_type,coordinates):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,"geometry_type":geometry_type})
+    return db.put({"json":json, "key":key, "date":date, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,"geometry_type":geometry_type,"coordinates":coordinates})
 
 def password_generator(length):
     """ Function that generates a password given a length """
@@ -152,6 +150,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                 json = output
                 json["features"] = json.pop("all_drawings")
                 geometry_type = json["features"][0]["geometry"]["type"]
+                coordinates = json["features"][0]["geometry"]["coordinates"]
                 key = password_generator(12)
 
                 if len(json["features"]) > 1:
@@ -174,11 +173,11 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf,geometry_type)
+                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf,geometry_type,coordinates)
                     else:
                         json["features"][0]["properties"]["image_name"] = None
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf,geometry_type)
+                            insert_json(json,key,str(date),sp,gedrag,functie,verblijf,geometry_type,coordinates)
                         
                     
 
@@ -231,8 +230,6 @@ elif selected == "Data visualization":
         db_content = load_dataset()
         df_point = pd.DataFrame(db_content)
             
-
-
         df_filter = df_point
         map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
         fg = folium.FeatureGroup(name="Markers")
