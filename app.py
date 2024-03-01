@@ -97,10 +97,10 @@ drive = deta.Drive("GiggiGIS_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(json,key,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking):
+def insert_json(json,key,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
     """Returns the user on a successful user creation, otherwise raises and error"""
     return db.put({"json":json, "key":key, "date":date,"soortgroup":soortgroup, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking})
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond})
 
 def password_generator(length):
     """ Function that generates a password given a length """
@@ -178,11 +178,11 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking)
+                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
                     else:
                         json["features"][0]["properties"]["image_name"] = None
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking)
+                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
                         
                     
 
@@ -210,6 +210,7 @@ if selected == 'Data entry':
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
             verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+            onbewoond = None
     
         elif soortgroup == 'Vogels':
     
@@ -217,10 +218,12 @@ if selected == 'Data entry':
             gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
             functie = st.selectbox("Functie", BIRD_FUNCTIE) 
             verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+            onbewoond = None
 
         elif soortgroup == 'Vleermuiskast':
 
             sp = st.selectbox("Soort", BAT_NAMES) 
+            onbewoond = st.selectbox("Onbewoond", ["Ja","Nee"])
             gedrag = None
             functie = None
             verblijf = st.selectbox("Verblijf", VLEERMUISKAST_VERBLIJF)
@@ -230,7 +233,7 @@ if selected == 'Data entry':
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
     
-    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file)
+    input_data(date,sp,gedrag,functie,onbewoond,verblijf,aantal,opmerking,uploaded_file)
 
 
 
