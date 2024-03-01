@@ -201,7 +201,7 @@ if selected == 'Data entry':
     
     with st.sidebar:
     
-        soortgroup = st.selectbox("Soortgroep", ['Vleermuizen',  'Vogels', 'Vleermuiskast'])
+        soortgroup = st.selectbox("Soortgroep", GROUP)
         date = st.date_input("Date")        
     
         if soortgroup == 'Vleermuizen':
