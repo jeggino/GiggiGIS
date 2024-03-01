@@ -95,9 +95,10 @@ drive = deta.Drive("GiggiGIS_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(json,key,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng):
+def insert_json(json,key,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"json":json, "key":key, "date":date,"soortgroup":soortgroup, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,"geometry_type":geometry_type,"lat":lat,"lng":lng})
+    return db.put({"json":json, "key":key, "date":date,"soortgroup":soortgroup, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking})
 
 def password_generator(length):
     """ Function that generates a password given a length """
@@ -175,11 +176,11 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file):
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng)
+                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking)
                     else:
                         json["features"][0]["properties"]["image_name"] = None
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng)
+                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking)
                         
                     
 
