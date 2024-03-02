@@ -16,9 +16,6 @@ import string
 import random
 from log_fun import *
 
-login()
-
-
 
 st.set_page_config(
     page_title="GiggiGIS",
@@ -26,6 +23,8 @@ st.set_page_config(
     layout="wide",
     
 )
+
+login()
 
 if st.button("Logout"):
     st.cache_resource.clear()
