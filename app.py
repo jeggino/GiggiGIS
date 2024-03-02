@@ -97,37 +97,11 @@ drive = deta.Drive("df_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(json,key,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
+def insert_json(key,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"json":json, "key":key, "date":date,"soortgroup":soortgroup, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+    return db.put({"key":key, "date":date,"soortgroup":soortgroup, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond})
 
-def password_generator(length):
-    """ Function that generates a password given a length """
-
-    uppercase_loc = random.randint(1,4)  # random location of lowercase
-    symbol_loc = random.randint(5, 6)  # random location of symbols
-    lowercase_loc = random.randint(7,12)  # random location of uppercase
-
-    password = ''  # empty string for password
-
-    pool = string.ascii_letters + string.punctuation  # the selection of characters used
-
-    for i in range(length):
-
-        if i == uppercase_loc:   # this is to ensure there is at least one uppercase
-            password += random.choice(string.ascii_uppercase)
-
-        elif i == lowercase_loc:  # this is to ensure there is at least one uppercase
-            password += random.choice(string.ascii_lowercase)
-
-        elif i == symbol_loc:  # this is to ensure there is at least one symbol
-            password += random.choice(string.punctuation)
-
-        else:  # adds a random character from pool
-            password += random.choice(pool)
-
-    return password  # returns the string
 
 def map():
     
@@ -165,27 +139,14 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,on
 
                 else:
 
-                    json["features"][0]["properties"]["date"] = str(date)
-                    json["features"][0]["properties"]["sp"] = sp
-                    json["features"][0]["properties"]["gedrag"] = gedrag
-                    json["features"][0]["properties"]["functie"] = functie
-                    json["features"][0]["properties"]["verblijf"] = verblijf
-                    json["features"][0]["properties"]["aantal"] = aantal
-                    json["features"][0]["properties"]["opmerking"] = opmerking
-                    json["features"][0]["properties"]["id"] = key
-
                     if uploaded_file is not None:
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
-                        json["features"][0]["properties"]["image_name"] = f"{key}.jpeg"
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
                     else:
-                        json["features"][0]["properties"]["image_name"] = None
                         with st.spinner('Wait for it...'):
-                            insert_json(json,key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
-                        
-                    
+                            insert_json(key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
@@ -206,7 +167,7 @@ if selected == 'Data entry':
         soortgroup = st.selectbox("Soortgroep", GROUP)
         date = st.date_input("Date")        
     
-        if soortgroup == 'Vleermuizen':
+        if soortgroup == 'Vliermuizen':
     
             sp = st.selectbox("Soort", BAT_NAMES)
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
@@ -232,6 +193,7 @@ if selected == 'Data entry':
     
         aantal = st.number_input("Aantal:", min_value=0)
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+        
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
     
