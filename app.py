@@ -283,7 +283,7 @@ elif selected == "Data visualization":
                           popup=df_2.iloc[i]['key'],
                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
 
-        output = st_folium(map, returned_objects=["last_active_drawing"],feature_group_to_add=fg,width=350, height=600)
+        output = st_folium(map,feature_group_to_add=fg)
         st.write(output)
 
 
