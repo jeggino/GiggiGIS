@@ -45,6 +45,8 @@ PASSWORD = "GiggiGIS"
 
 GROUP = ["🪶 Vogels", "🦇 Vleermuizen", "🏠 Vleermuiskast"]
 
+GROUP_DICT = {"🪶 Vogels":"Vogels", "🦇 Vleermuizen":"Vleermuizen", "🏠 Vleermuiskast":"Vleermuiskast"}
+
 BAT_NAMES = ['Laatvlieger', 'Gewone dwergvleermuis', 'Watervleermuis',
        'Rosse vleermuis', 'Ruige dwergvleermuis', 'Meervleermuis',
        'Bosvleermuis', 'Franjestaart', 'Vleermuis onbekend',
@@ -149,10 +151,10 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,on
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(date),GROUP_DICT[soortgroup],sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
                     else:
                         with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(date),GROUP_DICT[soortgroup],sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
