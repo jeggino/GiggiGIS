@@ -24,7 +24,9 @@ st.set_page_config(
     
 )
 
-login()
+name = login()
+
+st.write(name)
 
 if st.sidebar.button("Logout"):
     st.cache_resource.clear()
