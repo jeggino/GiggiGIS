@@ -293,7 +293,7 @@ elif selected == "Data visualization":
 
             try:
                 # id = output["last_active_drawing"]["properties"]["id"]
-                # name = output["last_active_drawing"]["properties"]["image_name"]
+                name = f"{key}.jpeg"
                 id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
 
                 with st.sidebar:
