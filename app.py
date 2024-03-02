@@ -248,6 +248,7 @@ elif selected == "Data visualization":
                 
                 id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
                 name = f"{id}.jpeg"
+                st.write(db_content)
 
                 with st.sidebar:
 
