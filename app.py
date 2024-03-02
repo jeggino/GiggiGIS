@@ -108,7 +108,7 @@ def load_dataset():
 
 def insert_json(key,waarnemer,date,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"key":key, "waarnemer":waarnemer,"date":date,"soortgroup":soortgroup, "aantal",aantal,"sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+    return db.put({"key":key, "waarnemer":waarnemer,"date":date,"soortgroup":soortgroup, "aantal":aantal,"sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond})
 
 
