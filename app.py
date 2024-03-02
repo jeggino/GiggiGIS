@@ -30,6 +30,8 @@ if st.button("Logout"):
     st.cache_resource.clear()
     st.rerun()
 
+st.write(dict[id_input]['name'])
+
 
 st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
