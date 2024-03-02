@@ -265,10 +265,11 @@ elif selected == "Data visualization":
                         res = drive.get(name).read()
                         with st.expander("Zie foto"):
                             st.image(res)
+                            
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                if waarnemer == PASSWORD:
+                                if waarnemer ==  df_point.loc[id,"waarnemer"]:
                                     db.delete(id)
                                     drive.delete(name)
                                     st.success('Gegevens verwijderd!', icon="✅")
@@ -294,7 +295,7 @@ elif selected == "Data visualization":
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                if waarnemer == PASSWORD:
+                                if waarnemer == df_point.loc[id,"waarnemer"]:
                                     db.delete(id)
                                     st.success('Gegevens verwijderd!', icon="✅")
                                 else:
