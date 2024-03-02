@@ -90,7 +90,7 @@ BIRD_VERBLIJF = ['dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
 # --- CONNECT TO DETA ---
 deta = Deta(st.secrets["deta_key"])
 db = deta.Base("df_observations")
-drive = deta.Drive("GiggiGIS_pictures")
+drive = deta.Drive("df_pictures")
 
 # --- FUNCTIONS ---
 
