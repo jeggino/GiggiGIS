@@ -24,9 +24,7 @@ st.set_page_config(
     
 )
 
-name = login()
-
-st.write(name)
+waarnemer = login()
 
 if st.sidebar.button("Logout"):
     st.cache_resource.clear()
@@ -106,9 +104,9 @@ drive = deta.Drive("df_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
+def insert_json(key,waarnemer,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"key":key, "date":date,"soortgroup":soortgroup, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+    return db.put({"key":key, "waarnemer":waarnemer,"date":date,"soortgroup":soortgroup, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond})
 
 
@@ -139,7 +137,6 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,on
                 coordinates = json["features"][0]["geometry"]["coordinates"]                
                 lng = coordinates[0]
                 lat = coordinates[1]
-                # key = password_generator(12)
                 key = str(lng)+str(lat)
 
                 if len(json["features"]) > 1:
@@ -152,10 +149,10 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,on
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         with st.spinner('Wait for it...'):
-                            insert_json(key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
                     else:
                         with st.spinner('Wait for it...'):
-                            insert_json(key,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(date),soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
