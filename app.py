@@ -181,7 +181,7 @@ def popup_html(row):
     
     html = """<!DOCTYPE html>
     <html>
-    <table style="height: 126px; width: 300px;">
+    <table style="height: 126px; width: 200;">
     <tbody>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
