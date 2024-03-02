@@ -246,23 +246,43 @@ elif selected == "Data visualization":
         db_content = load_dataset()
         df_point = pd.DataFrame(db_content)
             
-        df_filter = df_point
-        map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-        fg = folium.FeatureGroup(name="Markers")
+        # df_filter = df_point
+        # map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
+        # fg = folium.FeatureGroup(name="Markers")
 
-        LocateControl(auto_start=True).add_to(map)
-        Fullscreen().add_to(map)
+        # LocateControl(auto_start=True).add_to(map)
+        # Fullscreen().add_to(map)
 
-        for i in df_filter["json"].to_list():
-            folium.GeoJson(i,
-                       tooltip=folium.GeoJsonTooltip(fields= ['date','sp','gedrag','functie','verblijf','aantal','opmerking'],
-                                                     aliases=['Date:','Soort:','Gedrag:','Functie:','Verblijf:','Aantal:','Opmerking:'],
-                                                     labels=True,
-                                                     style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-                                                   )
-                       ).add_to(fg)
+        # for i in df_filter["json"].to_list():
+        #     folium.GeoJson(i,
+        #                tooltip=folium.GeoJsonTooltip(fields= ['date','sp','gedrag','functie','verblijf','aantal','opmerking'],
+        #                                              aliases=['Date:','Soort:','Gedrag:','Functie:','Verblijf:','Aantal:','Opmerking:'],
+        #                                              labels=True,
+        #                                              style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
+        #                                            )
+        #                ).add_to(fg)
 
-        output = st_folium(map, returned_objects=["last_active_drawing"], feature_group_to_add=fg, width=350, height=600)
+        # output = st_folium(map, returned_objects=["last_active_drawing"], feature_group_to_add=fg, width=350, height=600)
+
+        df_2 = df_point[df_point.soortgroup.isin(["Vleermuizen","Vogels"])]
+
+        icon = {"Gierzwaluw":"https://cdn-icons-png.flaticon.com/128/732/732126.png",
+                "Huismus":"https://cdn-icons-png.flaticon.com/128/8531/8531874.png",
+                "Bat": "https://cdn-icons-png.flaticon.com/128/2250/2250418.png"}
+        
+        df_2["icon_data"] = df_2.apply(lambda x: icon[x["sp"]] if x["soortgroup"]=="Vogels" else icon["Bat"], axis=1)
+        
+        world = folium.Map(
+            zoom_start=8
+            )
+        
+        for i in range(len(df_2)):
+            
+            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], 
+                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(world)
+
+        output = st_folium(world, returned_objects=["last_active_drawing"],  width=350, height=600)
+
 
         with st.sidebar:
 
