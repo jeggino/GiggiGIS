@@ -260,7 +260,7 @@ elif selected == "Data visualization":
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                if waarnemer ==  df_point.loc[id,"waarnemer"]:
+                                if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
                                     db.delete(id)
                                     drive.delete(name)
                                     st.success('Gegevens verwijderd!', icon="✅")
@@ -273,7 +273,7 @@ elif selected == "Data visualization":
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                if waarnemer == df_point.loc[id,"waarnemer"]:
+                                if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
                                     db.delete(id)
                                     st.success('Gegevens verwijderd!', icon="✅")
                                 else:
