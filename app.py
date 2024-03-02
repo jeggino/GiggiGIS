@@ -13,8 +13,8 @@ from datetime import date
 from deta import Deta
 
 import string
-import random
 from log_fun import *
+from credencials import dict
 
 
 st.set_page_config(
