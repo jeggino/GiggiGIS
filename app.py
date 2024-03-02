@@ -248,16 +248,7 @@ elif selected == "Data visualization":
                 
                 id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
                 name = f"{id}.jpeg"
-                def load_dataset():
-                    return db.fetch().items
-                
-                
-                db_content = load_dataset()
-                df_point = pd.DataFrame(db_content).set_index("key")             
-                
-                
-                df_point
-
+        
                 with st.sidebar:
 
                     try:
@@ -275,19 +266,6 @@ elif selected == "Data visualization":
                                     st.success('Gegevens verwijderd!', icon="✅")
                                 else:
                                     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
-
-                        # with st.form("entry_form", clear_on_submit=True):
-                        #     submitted = st.form_submit_button("Verwijder data")
-                        #     if submitted:
-                        #         password = st.text_input("", value="", type="password", label_visibility="collapsed")
-                        #         if password == df_point.loc["id","waarnemer"]:
-                        #             db.delete(id)
-                        #             drive.delete(name)
-                        #             st.success('Gegevens verwijderd!', icon="✅")
-                        #         elif password == "":
-                        #             st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
-                        #         else:
-                        #             st.warning('Het wachtwoord is niet correct!', icon="⚠️")
                                     
 
                     except:
