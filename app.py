@@ -210,7 +210,7 @@ elif selected == "Data visualization":
         df_point = pd.DataFrame(db_content)
             
         
-        df_2 = df_point[df_point.soortgroup.isin(["Vleermuizen","Vogels"])]
+        df_2 = df_point
 
         icon = {"Gierzwaluw":"https://cdn-icons-png.flaticon.com/128/732/732126.png",
                 "Huismus":"https://cdn-icons-png.flaticon.com/128/8531/8531874.png",
