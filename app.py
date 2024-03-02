@@ -248,7 +248,15 @@ elif selected == "Data visualization":
                 
                 id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
                 name = f"{id}.jpeg"
-                pd.DataFrame(db_content)
+                def load_dataset():
+                    return db.fetch().items
+                
+                
+                db_content = load_dataset()
+                df_point = pd.DataFrame(db_content).set_index("key")             
+                
+                
+                df_point
 
                 with st.sidebar:
 
@@ -257,19 +265,28 @@ elif selected == "Data visualization":
                         res = drive.get(name).read()
                         with st.expander("Zie foto"):
                             st.image(res)
-
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                password = st.text_input("", value="", type="password", label_visibility="collapsed")
-                                if password == PASSWORD:
+                                if waarnemer == PASSWORD:
                                     db.delete(id)
                                     drive.delete(name)
                                     st.success('Gegevens verwijderd!', icon="✅")
-                                elif password == "":
-                                    st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
                                 else:
                                     st.warning('Het wachtwoord is niet correct!', icon="⚠️")
+
+                        # with st.form("entry_form", clear_on_submit=True):
+                        #     submitted = st.form_submit_button("Verwijder data")
+                        #     if submitted:
+                        #         password = st.text_input("", value="", type="password", label_visibility="collapsed")
+                        #         if password == df_point.loc["id","waarnemer"]:
+                        #             db.delete(id)
+                        #             drive.delete(name)
+                        #             st.success('Gegevens verwijderd!', icon="✅")
+                        #         elif password == "":
+                        #             st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
+                        #         else:
+                        #             st.warning('Het wachtwoord is niet correct!', icon="⚠️")
                                     
 
                     except:
@@ -277,12 +294,9 @@ elif selected == "Data visualization":
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
-                                password = st.text_input("", value="", type="password", label_visibility="collapsed")
-                                if password == PASSWORD:
+                                if waarnemer == PASSWORD:
                                     db.delete(id)
                                     st.success('Gegevens verwijderd!', icon="✅")
-                                elif password == "":
-                                    st.info('Schrijf het wachtwoord op', icon="🕵️‍♀️")
                                 else:
                                     st.warning('Het wachtwoord is niet correct!', icon="⚠️")
 
