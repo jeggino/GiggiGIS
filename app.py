@@ -135,7 +135,7 @@ def map():
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
-    output = st_folium(m, returned_objects=["all_drawings"])#, width=350, height=600)
+    output = st_folium(m, returned_objects=["all_drawings"])
     
     return  output
     
@@ -283,6 +283,7 @@ elif selected == "Data visualization":
                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
 
         output = st_folium(map, returned_objects=["last_active_drawing"],feature_group_to_add=fg,width=350, height=600)
+        st.write(output)
 
 
         with st.sidebar:
