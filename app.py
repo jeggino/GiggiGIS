@@ -158,6 +158,60 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,on
 
             except:
                 st.info("Markeer een waarneming")
+def popup_html(row):
+    
+    i = row
+     
+    date=df_2['date'].iloc[i] 
+    soortgroup=df_2['soortgroup'].iloc[i]
+    sp = df_2['sp'].iloc[i] 
+    functie=df_2['functie'].iloc[i]
+    gedrag=df_2['gedrag'].iloc[i]
+    verblijf=df_2['verblijf'].iloc[i]
+    bewoond=df_2['onbewoond'].iloc[i] 
+    opmerking=df_2['opmerking'].iloc[i] 
+       
+
+    left_col_color = "#19a7bd"
+    right_col_color = "#f2f0d3"
+    
+    html = """<!DOCTYPE html>
+    <html>
+    <table style="height: 126px; width: 300px;">
+    <tbody>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(date) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soortgroup</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(soortgroup) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gedrag) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Bewoond</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(bewoond) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
+    </tr>
+    </tbody>
+    </table>
+    </html>
+    """
+    return html
         
 
 # --- APP ---
@@ -232,9 +286,12 @@ elif selected == "Data visualization":
         Fullscreen().add_to(map)        
         
         for i in range(len(df_2)):
+
+            html = popup_html(i)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=220)
             
             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
-                          popup=df_2.iloc[i]['key'],
+                          popup=popup,
                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
 
         output = st_folium(map,feature_group_to_add=fg)
