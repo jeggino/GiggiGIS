@@ -279,12 +279,13 @@ elif selected == "Data visualization":
         
         for i in range(len(df_2)):
             
-            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], 
+            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
                           popup=df_2.iloc[i]['key'],
                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
 
         output = st_folium(map,feature_group_to_add=fg)
         st.write(output)
+
 
 
         with st.sidebar:
