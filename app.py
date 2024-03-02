@@ -14,6 +14,11 @@ from deta import Deta
 
 import string
 import random
+from log_fun import *
+
+login()
+
+
 
 st.set_page_config(
     page_title="GiggiGIS",
@@ -21,6 +26,10 @@ st.set_page_config(
     layout="wide",
     
 )
+
+if st.button("Logout"):
+    st.cache_resource.clear()
+    st.rerun()
 
 
 st.markdown(""" <style>
