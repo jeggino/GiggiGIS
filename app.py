@@ -106,9 +106,9 @@ drive = deta.Drive("df_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,waarnemer,date,soortgroup,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
+def insert_json(key,waarnemer,date,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
     """Returns the user on a successful user creation, otherwise raises and error"""
-    return db.put({"key":key, "waarnemer":waarnemer,"date":date,"soortgroup":soortgroup, "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+    return db.put({"key":key, "waarnemer":waarnemer,"date":date,"soortgroup":soortgroup, "aantal",aantal,"sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond})
 
 
@@ -151,10 +151,10 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,on
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(date),GROUP_DICT[soortgroup],sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(date),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
                     else:
                         with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(date),GROUP_DICT[soortgroup],sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(date),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
@@ -171,7 +171,8 @@ def popup_html(row):
     gedrag=df_2['gedrag'].iloc[i]
     verblijf=df_2['verblijf'].iloc[i]
     bewoond=df_2['onbewoond'].iloc[i] 
-    opmerking=df_2['opmerking'].iloc[i] 
+    opmerking=df_2['opmerking'].iloc[i]
+    aantal=df_2['aantal'].iloc[i]
     waarnemer=df_2['waarnemer'].iloc[i] 
        
 
@@ -209,6 +210,10 @@ def popup_html(row):
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(aantal) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
