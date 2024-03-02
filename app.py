@@ -36,7 +36,7 @@ footer {visibility: hidden;}
 
 PASSWORD = "GiggiGIS"
 
-GROUP = ["Vogels", "Vliermuizen", "Vleermuiskast"]
+GROUP = ["🪶 Vogels", "🦇 Vliermuizen", "🏠 Vleermuiskast"]
 
 BAT_NAMES = ['Laatvlieger', 'Gewone dwergvleermuis', 'Watervleermuis',
        'Rosse vleermuis', 'Ruige dwergvleermuis', 'Meervleermuis',
@@ -191,7 +191,7 @@ if selected == 'Data entry':
             verblijf = None
             
     
-        aantal = st.number_input("Aantal:", min_value=0)
+        aantal = st.number_input("Aantal", min_value=0)
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
         
         with st.expander("Upload een foto"):
