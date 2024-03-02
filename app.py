@@ -288,7 +288,7 @@ elif selected == "Data visualization":
         for i in range(len(df_2)):
 
             html = popup_html(i)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=220)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=200)
             
             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
                           popup=popup,
