@@ -184,12 +184,12 @@ if selected == 'Data entry':
             onbewoond = None
 
         elif soortgroup == 'Vleermuiskast':
-
+            onbewoond = st.selectbox("Onbewoond", ["Ja","Nee"])
             sp = st.selectbox("Soort", BAT_NAMES) 
             gedrag = None
             functie = None
-            verblijf = st.selectbox("Verblijf", VLEERMUISKAST_VERBLIJF)
-            onbewoond = st.selectbox("Onbewoond", ["Ja","Nee"])
+            verblijf = None
+            
     
         aantal = st.number_input("Aantal:", min_value=0)
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
