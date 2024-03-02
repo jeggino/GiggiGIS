@@ -26,7 +26,7 @@ st.set_page_config(
 
 login()
 
-if st.button("Logout"):
+if st.sidebar.button("Logout"):
     st.cache_resource.clear()
     st.rerun()
 
