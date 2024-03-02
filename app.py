@@ -247,24 +247,7 @@ elif selected == "Data visualization":
         db_content = load_dataset()
         df_point = pd.DataFrame(db_content)
             
-        # df_filter = df_point
-        # map = folium.Map(location=[52.370898, 4.898065], zoom_start=8)
-        # fg = folium.FeatureGroup(name="Markers")
-
-        # LocateControl(auto_start=True).add_to(map)
-        # Fullscreen().add_to(map)
-
-        # for i in df_filter["json"].to_list():
-        #     folium.GeoJson(i,
-        #                tooltip=folium.GeoJsonTooltip(fields= ['date','sp','gedrag','functie','verblijf','aantal','opmerking'],
-        #                                              aliases=['Date:','Soort:','Gedrag:','Functie:','Verblijf:','Aantal:','Opmerking:'],
-        #                                              labels=True,
-        #                                              style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 20px;")
-        #                                            )
-        #                ).add_to(fg)
-
-        # output = st_folium(map, returned_objects=["last_active_drawing"], feature_group_to_add=fg, width=350, height=600)
-
+        
         df_2 = df_point[df_point.soortgroup.isin(["Vleermuizen","Vogels"])]
 
         icon = {"Gierzwaluw":"https://cdn-icons-png.flaticon.com/128/732/732126.png",
@@ -292,9 +275,9 @@ elif selected == "Data visualization":
         with st.sidebar:
 
             try:
-                # id = output["last_active_drawing"]["properties"]["id"]
-                name = f"{key}.jpeg"
+                
                 id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+                name = f"{id}.jpeg"
 
                 with st.sidebar:
 
