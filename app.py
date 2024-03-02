@@ -274,7 +274,7 @@ elif selected == "Data visualization":
                                     drive.delete(name)
                                     st.success('Gegevens verwijderd!', icon="✅")
                                 else:
-                                    st.warning('Het wachtwoord is niet correct!', icon="⚠️")
+                                    st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
                         # with st.form("entry_form", clear_on_submit=True):
                         #     submitted = st.form_submit_button("Verwijder data")
@@ -299,7 +299,7 @@ elif selected == "Data visualization":
                                     db.delete(id)
                                     st.success('Gegevens verwijderd!', icon="✅")
                                 else:
-                                    st.warning('Het wachtwoord is niet correct!', icon="⚠️")
+                                    st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
             except:
                 st.stop()
