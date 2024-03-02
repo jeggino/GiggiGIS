@@ -29,8 +29,8 @@ footer {visibility: hidden;}
 
 # --- CONNECT TO DETA ---
 deta = Deta(st.secrets["deta_key"])
-db = deta.Base("GiggiGIS_data")
-drive = deta.Drive("GiggiGIS_pictures")
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures")
 
 # --- FUNCTIONS ---
 
