@@ -156,7 +156,8 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,on
                 coordinates = json["features"][0]["geometry"]["coordinates"]                
                 lng = coordinates[0]
                 lat = coordinates[1]
-                key = password_generator(12)
+                # key = password_generator(12)
+                key = str(lng)+str(lat)
 
                 if len(json["features"]) > 1:
                     st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
