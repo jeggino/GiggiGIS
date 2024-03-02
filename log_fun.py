@@ -24,3 +24,7 @@ def login():
           st.stop()
   else:
     st.stop()
+
+  return dict[id_input]['name']
+
+
