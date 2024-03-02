@@ -167,7 +167,7 @@ if selected == 'Data entry':
         soortgroup = st.selectbox("Soortgroep", GROUP)
         date = st.date_input("Date")        
     
-        if soortgroup == 'Vliermuizen':
+        if soortgroup == '🦇 Vliermuizen':
     
             sp = st.selectbox("Soort", BAT_NAMES)
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
@@ -175,7 +175,7 @@ if selected == 'Data entry':
             verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             onbewoond = None
     
-        elif soortgroup == 'Vogels':
+        elif soortgroup == '🪶 Vogels':
     
             sp = st.selectbox("Soort", BIRD_NAMES)
             gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
@@ -183,7 +183,7 @@ if selected == 'Data entry':
             verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
             onbewoond = None
 
-        elif soortgroup == 'Vleermuiskast':
+        elif soortgroup == '🏠 Vleermuiskast':
             onbewoond = st.selectbox("Onbewoond", ["Ja","Nee"])
             sp = st.selectbox("Soort", BAT_NAMES) 
             gedrag = None
