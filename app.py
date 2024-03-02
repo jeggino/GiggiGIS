@@ -216,7 +216,7 @@ elif selected == "Data visualization":
                 "Huismus":"https://cdn-icons-png.flaticon.com/128/8531/8531874.png",
                 "Bat": "https://cdn-icons-png.flaticon.com/128/2250/2250418.png",
                 "Nest_bezet": "https://cdn-icons-png.flaticon.com/128/12085/12085929.png",
-                "Nest_bezet": "https://cdn-icons-png.flaticon.com/128/9468/9468770.png"}
+                "Nest_unbezet": "https://cdn-icons-png.flaticon.com/128/9468/9468770.png"}
         
         df_2["icon_data"] = df_2.apply(lambda x: icon[x["sp"]] if x["soortgroup"]=="Vogels" else (icon["Bat"] if x["soortgroup"]=="Vliermuizen"  else (icon["Nest_bezet"] if x["soortgroup"]=="Ja" else icon["Nest_unbezet"])), axis=1)
         
