@@ -36,7 +36,7 @@ footer {visibility: hidden;}
 
 PASSWORD = "GiggiGIS"
 
-GROUP = ["🪶 Vogels", "🦇 Vliermuizen", "🏠 Vleermuiskast"]
+GROUP = ["🪶 Vogels", "🦇 Vleermuizen", "🏠 Vleermuiskast"]
 
 BAT_NAMES = ['Laatvlieger', 'Gewone dwergvleermuis', 'Watervleermuis',
        'Rosse vleermuis', 'Ruige dwergvleermuis', 'Meervleermuis',
@@ -167,7 +167,7 @@ if selected == 'Data entry':
         soortgroup = st.selectbox("", GROUP)
         date = st.date_input("Date")        
     
-        if soortgroup == '🦇 Vliermuizen':
+        if soortgroup == '🦇 Vleermuizen':
     
             sp = st.selectbox("Soort", BAT_NAMES)
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
@@ -184,7 +184,7 @@ if selected == 'Data entry':
             onbewoond = None
 
         elif soortgroup == '🏠 Vleermuiskast':
-            onbewoond = st.selectbox("Onbewoond", ["Ja","Nee"])
+            onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
             sp = st.selectbox("Soort", BAT_NAMES) 
             gedrag = None
             functie = None
