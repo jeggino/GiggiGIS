@@ -181,7 +181,7 @@ def popup_html(row):
     
     html = """<!DOCTYPE html>
     <html>
-    <table style="height: 126px; width: 200;">
+    <table style="height: 126px; width: 300;">
     <tbody>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
@@ -300,7 +300,7 @@ elif selected == "Data visualization":
         for i in range(len(df_2)):
 
             html = popup_html(i)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=200)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             
             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
                           popup=popup,
