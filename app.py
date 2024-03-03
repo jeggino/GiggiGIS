@@ -233,7 +233,10 @@ elif selected == "Data visualization":
         
         df_2 = df_point
         
-        df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if x["soortgroup"]=="Vogels" else (ICON["Bat"] if x["soortgroup"]=="Vleermuizen"  else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" else ICON["Nest_unbezet"])), axis=1)
+        df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if x["soortgroup"]=="Vogels" 
+                                       else (ICON["Bat"] if x["soortgroup"]=="Vleermuizen"  
+                                             else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
+                                                   else ICON["Nest_unbezet"])), axis=1)
         
         map = folium.Map(zoom_start=8)
         fg = folium.FeatureGroup(name="Markers")
