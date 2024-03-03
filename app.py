@@ -67,7 +67,9 @@ def map():
     
     return  output
     
-def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,onbewoond):
+# def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,onbewoond):
+def input_data():
+
     
     with st.container():
         output = map()
@@ -213,7 +215,9 @@ if selected == 'Data entry':
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
     
-    input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,onbewoond)
+    # input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,onbewoond)
+    input_data()
+
 
 
 elif selected == "Data visualization":  
