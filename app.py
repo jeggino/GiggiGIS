@@ -225,14 +225,8 @@ elif selected == "Data visualization":
             
         
         df_2 = df_point
-
-        icon = {"Gierzwaluw":"https://cdn-icons-png.flaticon.com/128/732/732126.png",
-                "Huismus":"https://cdn-icons-png.flaticon.com/128/8531/8531874.png",
-                "Bat": "https://cdn-icons-png.flaticon.com/128/2250/2250418.png",
-                "Nest_bezet": "https://cdn-icons-png.flaticon.com/128/12085/12085929.png",
-                "Nest_unbezet": "https://cdn-icons-png.flaticon.com/128/9468/9468770.png"}
         
-        df_2["icon_data"] = df_2.apply(lambda x: icon[x["sp"]] if x["soortgroup"]=="Vogels" else (icon["Bat"] if x["soortgroup"]=="Vleermuizen"  else (icon["Nest_bezet"] if x["onbewoond"]=="Ja" else icon["Nest_unbezet"])), axis=1)
+        df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if x["soortgroup"]=="Vogels" else (ICON["Bat"] if x["soortgroup"]=="Vleermuizen"  else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" else ICON["Nest_unbezet"])), axis=1)
         
         map = folium.Map(zoom_start=8)
         fg = folium.FeatureGroup(name="Markers")
