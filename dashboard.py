@@ -1,10 +1,5 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
-
 import pandas as pd
-import geopandas as gpd
-import datetime
-from datetime import date
 
 from deta import Deta
 
@@ -40,7 +35,7 @@ def load_dataset():
 
 db_content = load_dataset()
 df_point = pd.DataFrame(db_content)        
-df_point['date'] = pd.to_datetime(df_point['date']).dt.date
+df_point['datum'] = pd.to_datetime(df_point['datum']).dt.date
 
 
 
