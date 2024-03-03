@@ -66,16 +66,17 @@ def map():
     output = st_folium(m, returned_objects=["all_drawings"])
     
     return  output
-    
-# def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,onbewoond):
-def input_data():
 
+
+def input_data():
     
     with st.container():
         output = map()
     
     with st.sidebar:
+        
         submitted = st.button("Gegevens opslaan")
+        
         if submitted:           
 
             try:
@@ -106,6 +107,8 @@ def input_data():
 
             except:
                 st.info("Markeer een waarneming")
+
+
 def popup_html(row):
     
     i = row
@@ -175,7 +178,9 @@ def popup_html(row):
 # --- APP ---
 # horizontal menu
 selected = option_menu(None, ['Data entry', 'Data visualization'], 
-                       icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],default_index=0, orientation="horizontal",menu_icon="cast",)
+                       icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],
+                       default_index=0,
+                       orientation="horizontal")
 
 
 if selected == 'Data entry':
@@ -215,9 +220,7 @@ if selected == 'Data entry':
         with st.expander("Upload een foto"):
             uploaded_file = st.camera_input("")
     
-    # input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,onbewoond)
     input_data()
-
 
 
 elif selected == "Data visualization":  
