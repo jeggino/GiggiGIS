@@ -34,9 +34,9 @@ def load_dataset():
 
 
 db_content = load_dataset()
-df_point = pd.DataFrame(db_content)        
-df_point['datum'] = pd.to_datetime(df_point['datum']).dt.date
+# df_point = pd.DataFrame(db_content)        
+# df_point['datum'] = pd.to_datetime(df_point['datum']).dt.date
+st.write(db_content)
 
 
-
-df_point
+# df_point
