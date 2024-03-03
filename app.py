@@ -50,9 +50,9 @@ drive = deta.Drive("df_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,waarnemer,date,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
+def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
     
-    return db.put({"key":key, "waarnemer":waarnemer,"date":date,"soortgroup":soortgroup, "aantal":aantal,
+    return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond})
 
@@ -98,10 +98,10 @@ def input_data():
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(date),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
                     else:
                         with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(date),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
@@ -113,7 +113,7 @@ def popup_html(row):
     
     i = row
      
-    date=df_2['date'].iloc[i] 
+    datum=df_2['datum'].iloc[i] 
     soortgroup=df_2['soortgroup'].iloc[i]
     sp = df_2['sp'].iloc[i] 
     functie=df_2['functie'].iloc[i]
@@ -134,7 +134,7 @@ def popup_html(row):
     <tbody>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(date) + """
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soortgroup</span></td>
@@ -188,7 +188,7 @@ if selected == 'Data entry':
     with st.sidebar:
     
         soortgroup = st.selectbox("", GROUP)
-        date = st.date_input("Date")        
+        datum = st.date_input("Datum")        
     
         if soortgroup == '🦇 Vleermuizen':
     
