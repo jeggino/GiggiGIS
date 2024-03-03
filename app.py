@@ -14,7 +14,7 @@ from deta import Deta
 
 import string
 from log_fun import *
-from credencials import dict
+from credencials import *
 
 
 st.set_page_config(
