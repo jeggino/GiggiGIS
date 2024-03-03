@@ -85,7 +85,7 @@ def input_data(date,sp,gedrag,functie,verblijf,aantal,opmerking,uploaded_file,on
                 lat = coordinates[1]
                 key = str(lng)+str(lat)
 
-                if len(json["features"]) > 1:
+                if len(output["features"]) > 1:
                     st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
                     st.stop()
 
