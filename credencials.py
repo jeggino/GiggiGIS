@@ -60,3 +60,9 @@ BIRD_VERBLIJF = ['dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
        'raamkozijn', 'luik', 'schoorsteen', 'daklijst', 'dakkapel',
        'in struweel / struiken', 'holte', 'op / bij nest in boom',
        'scheur', 'vleermuiskast']
+
+ICON = {"Gierzwaluw":"https://cdn-icons-png.flaticon.com/128/732/732126.png",
+        "Huismus":"https://cdn-icons-png.flaticon.com/128/8531/8531874.png",
+        "Bat": "https://cdn-icons-png.flaticon.com/128/2250/2250418.png",
+        "Nest_bezet": "https://cdn-icons-png.flaticon.com/128/12085/12085929.png",
+        "Nest_unbezet": "https://cdn-icons-png.flaticon.com/128/9468/9468770.png"}
