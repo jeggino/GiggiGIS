@@ -50,11 +50,11 @@ drive = deta.Drive("df_pictures")
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond):
+def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates):
     
     return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond})
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates})
 
 
 def map():
@@ -83,9 +83,19 @@ def input_data():
 
                 output["features"] = output.pop("all_drawings")
                 geometry_type = output["features"][0]["geometry"]["type"]
-                coordinates = output["features"][0]["geometry"]["coordinates"]                
-                lng = coordinates[0]
-                lat = coordinates[1]
+                coordinates = output["features"][0]["geometry"]["coordinates"] 
+                
+                if geometry_type == "LineString":
+                    
+                    lng = None
+                    lat = None
+                
+                else: 
+                    
+                    lng = coordinates[0]
+                    lat = coordinates[1]
+                    coordinates = None
+                    
                 key = str(lng)+str(lat)
 
                 if len(output["features"]) > 1:
@@ -98,10 +108,10 @@ def input_data():
                         bytes_data = uploaded_file.getvalue()
                         drive.put(f"{key}.jpeg", data=bytes_data)            
                         with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
                     else:
                         with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond)
+                            insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
 
                     st.success('Gegevens opgeslagen!', icon="✅")
 
