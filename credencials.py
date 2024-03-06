@@ -64,5 +64,5 @@ BIRD_VERBLIJF = ['dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
 ICON = {"Gierzwaluw":"https://cdn-icons-png.flaticon.com/128/732/732126.png",
         "Huismus":"https://cdn-icons-png.flaticon.com/128/8531/8531874.png",
         "Bat": "https://cdn-icons-png.flaticon.com/128/2250/2250418.png",
-        "Nest_bezet": "icons/WhatsApp Image 2024-03-06 at 08.32_edited.jpg",
+        "Nest_bezet": "icons/WhatsApp Image 2024-03-06 at 08.32.45_8959982f.jpg",
         "Nest_unbezet": "icons/WhatsApp Image 2024-03-06 at 08.32.45_8959982f.jpg"}
