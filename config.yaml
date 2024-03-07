@@ -1,0 +1,19 @@
+cookie:
+  expiry_days: 0
+  key: ceppo
+  name: capocchia
+credentials:
+  usernames:
+    luigi:
+      email: jeggino@gmail.com
+      logged_in: False
+      name: Luigi Giugliano
+      password: Platinum_79
+
+    daan:
+      email: jeggino@gmail.com
+      logged_in: False
+      name: Daan
+      password: Daan_79
+preauthorized:
+  emails: melsby@gmail.com
