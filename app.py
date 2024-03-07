@@ -13,15 +13,11 @@ from datetime import date
 from deta import Deta
 
 import string
-from log_fun import *
 from credencials import *
-
-#___PROVA
 import streamlit_authenticator as stauth
 
 import yaml
 from yaml.loader import SafeLoader
-#___PROVA
 
 
 st.set_page_config(
@@ -30,18 +26,6 @@ st.set_page_config(
     layout="wide",
     
 )
-
-#___VECCHIO
-
-# waarnemer = login()
-# if st.sidebar.button("Logout"):
-#     st.cache_resource.clear()
-#     st.rerun()
-
-#___VECCHIO
-
-
-#___PROVA
 
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
@@ -56,9 +40,6 @@ authenticator = stauth.Authenticate(
 
 authenticator.login()
 
-
-
-        
 if st.session_state["authentication_status"] is False:
     st.error('Username/password is incorrect')
 elif st.session_state["authentication_status"] is None:
