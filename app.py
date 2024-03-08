@@ -13,8 +13,8 @@ import random
 
 from deta import Deta
 
-import string
 from credencials import *
+
 import streamlit_authenticator as stauth
 
 import yaml
@@ -112,13 +112,7 @@ elif st.session_state["authentication_status"]:
                         
                         lng = None
                         lat = None
-
-                        key = coordinates
-                        # length = 12
-                        # for _ in range(length):
-                        #     bits = random.getrandbits(8)
-                        #     num = (int('{0:b}'.format(bits),2) + 33) % 127
-                        #     key += chr(num)
+                        key = None
                     
                     else: 
                         
