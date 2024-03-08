@@ -276,13 +276,19 @@ elif st.session_state["authentication_status"]:
             Fullscreen().add_to(map)        
             
             for i in range(len(df_2)):
+
+                if df_2.iloc[i]['geometry_type'] == "Point":
     
-                html = popup_html(i)
-                popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-                
-                folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
-                              popup=popup,
-                              icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
+                    html = popup_html(i)
+                    popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+                    
+                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
+                                  popup=popup,
+                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
+
+                elif df_2.iloc[i]['geometry_type'] == "LineString":
+
+                    folium.PolyLine(coords).add_to(fg)
     
             output = st_folium(map,feature_group_to_add=fg)
             
