@@ -9,6 +9,7 @@ import pandas as pd
 import geopandas as gpd
 import datetime
 from datetime import date
+import random
 
 from deta import Deta
 
