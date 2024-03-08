@@ -288,7 +288,7 @@ elif st.session_state["authentication_status"]:
 
                 elif df_2.iloc[i]['geometry_type'] == "LineString":
 
-                    folium.PolyLine(coords).add_to(fg)
+                    folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
     
             output = st_folium(map,feature_group_to_add=fg)
             
