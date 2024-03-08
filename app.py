@@ -111,6 +111,13 @@ elif st.session_state["authentication_status"]:
                         
                         lng = None
                         lat = None
+
+                        key = ''
+                        length = 12
+                        for _ in range(length):
+                            bits = random.getrandbits(8)
+                            num = (int('{0:b}'.format(bits),2) + 33) % 127
+                            key += chr(num)
                     
                     else: 
                         
@@ -118,7 +125,7 @@ elif st.session_state["authentication_status"]:
                         lat = coordinates[1]
                         coordinates = None
                         
-                    key = str(lng)+str(lat)
+                        key = str(lng)+str(lat)
     
                     if len(output["features"]) > 1:
                         st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
