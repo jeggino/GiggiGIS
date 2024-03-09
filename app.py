@@ -20,6 +20,8 @@ import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
 
+import time
+
 
 st.set_page_config(
     page_title="GiggiGIS",
@@ -46,10 +48,14 @@ if st.session_state["authentication_status"] is False:
 elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your username and password')
 elif st.session_state["authentication_status"]:
-    
-    st.write(f'Welcome *{st.session_state["name"]}*')
+
+    placeholder = st.empty()
+    placeholder.empty().title(f'Welcome *{st.session_state["name"]}*')
+    time.sleep(2)
+    placeholder.empty()
     
     waarnemer = st.session_state["name"]
+    
     
     #___PROVA
     
