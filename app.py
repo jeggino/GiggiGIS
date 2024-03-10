@@ -57,8 +57,6 @@ elif st.session_state["authentication_status"]:
     waarnemer = st.session_state["name"]
     
     
-    #___PROVA
-    
     st.markdown(""" <style>
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
@@ -221,9 +219,11 @@ elif st.session_state["authentication_status"]:
                            icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],
                            default_index=0,
                            orientation="horizontal")
-    
-    
-    if selected == 'Data entry':
+
+    st.button("Reset", type="primary")
+   
+    if st.button('Say hello'):
+    # if selected == 'Data entry':
         
         with st.sidebar:
         
@@ -262,8 +262,8 @@ elif st.session_state["authentication_status"]:
         
         input_data()
     
-    
-    elif selected == "Data visualization":  
+    else:
+    # elif selected == "Data visualization":  
     
         try:
             
