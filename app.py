@@ -215,10 +215,10 @@ elif st.session_state["authentication_status"]:
     
     # --- APP ---
     # horizontal menu
-    selected = option_menu(None, ['Data entry', 'Data visualization'], 
-                           icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],
-                           default_index=0,
-                           orientation="horizontal")
+    # selected = option_menu(None, ['Data entry', 'Data visualization'], 
+    #                        icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],
+    #                        default_index=0,
+    #                        orientation="horizontal")
 
     st.button("Reset", type="primary")
    
