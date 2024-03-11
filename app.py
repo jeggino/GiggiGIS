@@ -85,7 +85,7 @@ elif st.session_state["authentication_status"]:
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
-        output = st_folium(m, returned_objects=["all_drawings"],width=700)
+        output = st_folium(m, returned_objects=["all_drawings"])
         
         return  output
     
