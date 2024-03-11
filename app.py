@@ -89,12 +89,44 @@ elif st.session_state["authentication_status"]:
     
     
     def map():
+        # __OLD__
+        # m = folium.Map(location=[44.266308, 11.719301], zoom_start=3)
+        # Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+        # Fullscreen().add_to(m)
+        # LocateControl(auto_start=True).add_to(m)
+        # output = st_folium(m, returned_objects=["all_drawings"])
+
+        #___NEW___
+        db_content = load_dataset()
+        df_point = pd.DataFrame(db_content)
+            
         
-        m = folium.Map(location=[44.266308, 11.719301], zoom_start=3)
+        df_2 = df_point
+        
+        df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if x["soortgroup"]=="Vogels" 
+                                       else (ICON["Bat"] if x["soortgroup"]=="Vleermuizen"  
+                                             else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
+                                                   else ICON["Nest_unbezet"])), axis=1)
+        
+        map = folium.Map(zoom_start=8)
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-        Fullscreen().add_to(m)
-        LocateControl(auto_start=True).add_to(m)
-        output = st_folium(m, returned_objects=["all_drawings"])
+        Fullscreen().add_to(map)
+        LocateControl(auto_start=True).add_to(map)
+        fg = folium.FeatureGroup(name="Markers")
+       
+        
+        for i in range(len(df_2)):
+
+            if df_2.iloc[i]['geometry_type'] == "Point":
+
+                html = popup_html(i)
+                popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+                
+                folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
+                              popup=popup,
+                              icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
+
+        output = st_folium(map,feature_group_to_add=fg)
         
         return  output
     
