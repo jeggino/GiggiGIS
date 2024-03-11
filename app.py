@@ -219,13 +219,13 @@ elif st.session_state["authentication_status"]:
     
     # --- APP ---
     # horizontal menu
-    selected = option_menu(None, ['Data entry', 'Data visualization'], 
+    selected = option_menu(None, ['Datavisualisatie','Voeg een waarneming in'], 
                            icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],
                            default_index=0,
                            orientation="horizontal")
 
 
-    if selected == 'Data entry':
+    if selected == 'Voeg een waarneming in':
         
         with st.sidebar:
         
@@ -264,7 +264,7 @@ elif st.session_state["authentication_status"]:
         
         input_data()
     
-    elif selected == "Data visualization":  
+    elif selected == "Datavisualisatie":  
     
         try:
             
