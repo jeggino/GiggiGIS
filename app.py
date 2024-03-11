@@ -59,6 +59,15 @@ elif st.session_state["authentication_status"]:
       visibility: hidden;
     }
     </style> """, unsafe_allow_html=True)
+
+    padding = 0
+    st.markdown(f""" <style>
+        .reportview-container .main .block-container{{
+            padding-top: {padding}rem;
+            padding-right: {padding}rem;
+            padding-left: {padding}rem;
+            padding-bottom: {padding}rem;
+        }} </style> """, unsafe_allow_html=True)
     
     
     
