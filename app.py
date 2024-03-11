@@ -24,7 +24,7 @@ import time
 
 
 st.set_page_config(
-    page_title="GiggiGIS",
+    page_title="GigGIS",
     page_icon="📝",
     layout="wide",
     
@@ -215,15 +215,13 @@ elif st.session_state["authentication_status"]:
     
     # --- APP ---
     # horizontal menu
-    # selected = option_menu(None, ['Data entry', 'Data visualization'], 
-    #                        icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],
-    #                        default_index=0,
-    #                        orientation="horizontal")
+    selected = option_menu(None, ['Data entry', 'Data visualization'], 
+                           icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],
+                           default_index=0,
+                           orientation="horizontal")
 
-    st.button("Reset", type="primary")
-   
-    if st.button('Say hello'):
-    # if selected == 'Data entry':
+
+    if selected == 'Data entry':
         
         with st.sidebar:
         
@@ -262,8 +260,7 @@ elif st.session_state["authentication_status"]:
         
         input_data()
     
-    else:
-    # elif selected == "Data visualization":  
+    elif selected == "Data visualization":  
     
         try:
             
