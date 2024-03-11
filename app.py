@@ -48,11 +48,6 @@ if st.session_state["authentication_status"] is False:
 elif st.session_state["authentication_status"] is None:
     st.warning('Please enter your username and password')
 elif st.session_state["authentication_status"]:
-
-    placeholder = st.empty()
-    placeholder.empty().title(f'Welcome *{st.session_state["name"]}*')
-    time.sleep(2)
-    placeholder.empty()
     
     waarnemer = st.session_state["name"]
     
