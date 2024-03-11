@@ -109,7 +109,7 @@ elif st.session_state["authentication_status"]:
                                                    else ICON["Nest_unbezet"])), axis=1)
         
         map = folium.Map(zoom_start=8)
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(map)
         Fullscreen().add_to(map)
         LocateControl(auto_start=True).add_to(map)
         fg = folium.FeatureGroup(name="Markers")
