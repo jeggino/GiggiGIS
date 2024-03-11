@@ -220,7 +220,7 @@ elif st.session_state["authentication_status"]:
     # --- APP ---
     # horizontal menu
     selected = option_menu(None, ['Datavisualisatie','Voeg een waarneming in'], 
-                           icons=["bi bi-pencil-square","bi bi-geo-alt-fill"],
+                           icons=["bi bi-geo-alt-fill","bi bi-pencil-square"],
                            default_index=0,
                            orientation="horizontal")
 
