@@ -83,7 +83,7 @@ elif st.session_state["authentication_status"]:
         if password == st.secrets[user]:
             st.write("ok")
         else:
-            st.stop()
+            st.warning("wrong password")
     except:
         st.stop()
     
