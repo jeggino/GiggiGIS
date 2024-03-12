@@ -304,9 +304,9 @@ elif st.session_state["authentication_status"]:
             output = st_folium(map)
             # output["features"] = output.pop("all_drawings")
             # geometry_type = output["features"][0]["geometry"]["type"]
-            # coordinates = output["features"][0]["geometry"]["coordinates"] 
+            coordinates = output["features"][0]["geometry"]["coordinates"] 
             st.write(output)
-            # st.write(coordinates)
+            st.write(coordinates)
             st.write(output["last_active_drawing"]['geometry']['coordinates'][0])
             
     
