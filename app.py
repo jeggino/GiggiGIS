@@ -307,9 +307,6 @@ elif st.session_state["authentication_status"]:
             output = st_folium(map,feature_group_to_add=fg#,returned_objects=["last_object_clicked"]
                               )
             st.write(output)
-            output["features"] = output.pop("all_drawings")
-            geometry_type = output["features"][0]["geometry"]["type"]
-            coordinates = output["features"][0]["geometry"]["coordinates"] 
     
             with st.sidebar:
     
