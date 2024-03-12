@@ -294,7 +294,7 @@ elif st.session_state["authentication_status"]:
                     popup = folium.Popup(folium.Html(html, script=True), max_width=300)
                     
                     folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
-                                  popup=popup,
+                                  popup=popup, id=i,
                                   icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(map)
 
                 elif df_2.iloc[i]['geometry_type'] == "LineString":
