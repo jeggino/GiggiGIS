@@ -353,13 +353,9 @@ elif st.session_state["authentication_status"]:
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
-import folium
+
 import requests
-import streamlit as st
 
-from streamlit_folium import st_folium
-
-st.set_page_config(layout="wide")
 
 
 @st.cache_resource
