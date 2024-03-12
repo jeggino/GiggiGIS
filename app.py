@@ -299,7 +299,8 @@ elif st.session_state["authentication_status"]:
 
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
     
-            output = st_folium(map)
+            output = st_folium(map,returned_objects=["last_object_clicked"])
+            st.write(output)
             output["features"] = output.pop("all_drawings")
             geometry_type = output["features"][0]["geometry"]["type"]
             coordinates = output["features"][0]["geometry"]["coordinates"] 
