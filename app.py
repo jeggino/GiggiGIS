@@ -83,9 +83,10 @@ elif st.session_state["authentication_status"]:
         if password == st.secrets[user]:
             st.write("ok")
         else:
-            st.warning("wrong password")
+            st.warning('wrong password', icon="⚠️")
+            st.stop()
     except:
-        st.warning("no user name")
+        st.warning('wrong username', icon="⚠️")
         st.stop()
     
     # --- FUNCTIONS ---
