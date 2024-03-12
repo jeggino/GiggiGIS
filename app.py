@@ -79,7 +79,7 @@ elif st.session_state["authentication_status"]:
     user = st.text_input('write your username')
     password = st.text_input('write your password')
 
-    if password == st.secrets["user"]:
+    if password == st.secrets[user]:
         st.write("ok")
     else:
         st.stop()
