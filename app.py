@@ -283,8 +283,6 @@ elif st.session_state["authentication_status"]:
             fg = folium.FeatureGroup(name="Markers")
             LocateControl(auto_start=True).add_to(map)
             Fullscreen().add_to(map)        
-            Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(map)
-
             
             for i in range(len(df_2)):
 
