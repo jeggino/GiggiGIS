@@ -75,6 +75,8 @@ elif st.session_state["authentication_status"]:
     deta = Deta(st.secrets["deta_key"])
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
+
+    st.write(st.secrets["var_e"])
     
     # --- FUNCTIONS ---
     
