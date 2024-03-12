@@ -75,19 +75,6 @@ elif st.session_state["authentication_status"]:
     deta = Deta(st.secrets["deta_key"])
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
-
-    user = st.text_input('write your username')
-    password = st.text_input('write your password')
-
-    try:
-        if password == st.secrets[user]:
-            st.write("ok")
-        else:
-            st.warning('wrong password', icon="⚠️")
-            st.stop()
-    except:
-        st.warning('wrong username', icon="⚠️")
-        st.stop()
     
     # --- FUNCTIONS ---
     
