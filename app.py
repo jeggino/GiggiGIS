@@ -76,7 +76,13 @@ elif st.session_state["authentication_status"]:
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
 
-    st.write(st.secrets["var_e"])
+    user = st.text_input('write your username')
+    password = st.text_input('write your password')
+
+    if password == st.secrets["user"]:
+        st.write("ok")
+    else:
+        st.stop()
     
     # --- FUNCTIONS ---
     
