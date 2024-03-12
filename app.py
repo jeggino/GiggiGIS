@@ -444,8 +444,6 @@ with c1:
 
     for park in parks:
         popup = folium.Popup(
-            
-            ,
             max_width=250,
         )
         folium.Marker([park["latitude"], park["longitude"]], popup=popup).add_to(m)
