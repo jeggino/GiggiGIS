@@ -85,6 +85,7 @@ elif st.session_state["authentication_status"]:
         else:
             st.warning("wrong password")
     except:
+        st.warning("no user name")
         st.stop()
     
     # --- FUNCTIONS ---
