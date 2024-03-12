@@ -306,8 +306,7 @@ elif st.session_state["authentication_status"]:
     
             output = st_folium(map,feature_group_to_add=fg,returned_objects=["last_active_drawing"]
                               )
-            st.write(output)
-    
+            
             with st.sidebar:
     
                 try:
