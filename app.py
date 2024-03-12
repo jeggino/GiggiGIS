@@ -91,7 +91,7 @@ elif st.session_state["authentication_status"]:
     def map():
         
         m = folium.Map()
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
+        Draw(export=True,draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
         output = st_folium(m, returned_objects=["all_drawings"])
@@ -299,7 +299,7 @@ elif st.session_state["authentication_status"]:
 
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
     
-            output = st_folium(map,returned_objects=["all_drawings"])
+            output = st_folium(map)
             output["features"] = output.pop("all_drawings")
             geometry_type = output["features"][0]["geometry"]["type"]
             coordinates = output["features"][0]["geometry"]["coordinates"] 
