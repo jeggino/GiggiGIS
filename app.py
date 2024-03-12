@@ -304,7 +304,7 @@ elif st.session_state["authentication_status"]:
 
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
     
-            output = st_folium(map,feature_group_to_add=fg#,returned_objects=["last_object_clicked"]
+            output = st_folium(map,feature_group_to_add=fg,returned_objects=["last_active_drawing"]
                               )
             st.write(output)
     
