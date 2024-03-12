@@ -283,6 +283,7 @@ elif st.session_state["authentication_status"]:
             
             map = folium.Map(zoom_start=8)
             fg = folium.FeatureGroup(name="Markers")
+            map.add_child(fg)
             LocateControl(auto_start=True).add_to(map)
             Fullscreen().add_to(map)        
             
@@ -293,15 +294,15 @@ elif st.session_state["authentication_status"]:
                     html = popup_html(i)
                     popup = folium.Popup(folium.Html(html, script=True), max_width=300)
                     
-                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']], id=df_2.iloc[i]['key'],
-                                  popup=popup, id=i,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(map)
+                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                                  popup=popup,
+                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
 
                 elif df_2.iloc[i]['geometry_type'] == "LineString":
 
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
     
-            output = st_folium(map#,returned_objects=["last_object_clicked"]
+            output = st_folium(map,feature_group_to_add=fg#,returned_objects=["last_object_clicked"]
                               )
             st.write(output)
             output["features"] = output.pop("all_drawings")
