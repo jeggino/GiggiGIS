@@ -50,9 +50,9 @@ elif st.session_state["authentication_status"]:
 
     reduce_header_height_style = """
     <style>
-        .reportview-container {
+        div.reportview-container {
             margin-top: -2em;
-        }
+        },
         div.block-container {padding-top:0rem; margin-top: -2em;}
     </style>
     """
@@ -60,7 +60,8 @@ elif st.session_state["authentication_status"]:
     
     st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } 
+    #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
     </style>
     """,
     unsafe_allow_html=True)
