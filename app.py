@@ -280,6 +280,7 @@ elif st.session_state["authentication_status"]:
             LocateControl(auto_start=True).add_to(map)
             Fullscreen().add_to(map)
             folium.TileLayer('openstreetmap').add_to(map)
+            folium.TileLayer('Stamen Terrain').add_to(map)
             fg = folium.FeatureGroup(name="Vleermuiskast")
             fg_2 = folium.FeatureGroup(name="Vogels")
             fg_3 = folium.FeatureGroup(name="Vleermuizen")
