@@ -287,8 +287,7 @@ elif st.session_state["authentication_status"]:
                                                        else ICON["Nest_unbezet"])), axis=1)
             
             map = folium.Map(zoom_start=8)
-            fg = folium.FeatureGroup(name="Markers")
-            map.add_child(fg)
+            
             LocateControl(auto_start=True).add_to(map)
             Fullscreen().add_to(map)        
             
@@ -301,14 +300,14 @@ elif st.session_state["authentication_status"]:
                     
                     folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                   popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
+                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(map)
 
                 elif df_2.iloc[i]['geometry_type'] == "LineString":
 
-                    folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
+                    folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
             with st.container(height=500, border=True):
-                output = st_folium(map,feature_group_to_add=fg,returned_objects=["last_active_drawing"])
+                output = st_folium(map,returned_objects=["last_active_drawing"])
             
             with st.sidebar:
     
