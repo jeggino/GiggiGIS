@@ -70,6 +70,7 @@ elif st.session_state["authentication_status"]:
 
     # --- DIMENSIONS ---
     OUTPUT_height = 560
+    OUTPUT_width = 310
     CONTAINER_height = 590
     # --- FUNCTIONS ---
     
@@ -90,7 +91,7 @@ elif st.session_state["authentication_status"]:
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
         
-        output = st_folium(m, returned_objects=["all_drawings"],width=300, height=OUTPUT_height)
+        output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
         
         return  output
     
@@ -297,7 +298,7 @@ elif st.session_state["authentication_status"]:
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
             with st.container(height=CONTAINER_height, border=True):
-                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=300, height=OUTPUT_height,feature_group_to_add=fg)
+                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=fg)
                 
             try:
                 
