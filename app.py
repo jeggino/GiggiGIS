@@ -207,18 +207,6 @@ elif st.session_state["authentication_status"]:
             
     
     # --- APP ---
-    # # horizontal menu
-    # selected = option_menu(None, ['Datavisualisatie','Voeg een waarneming in'], 
-    #                        icons=["bi bi-geo-alt-fill","bi bi-pencil-square"],
-    #                        default_index=0,
-    #                        orientation="horizontal")
-    #---TAB---
-    # tab1, tab2 = st.tabs(["🗺️ Datavisualisatie", "✍️ Voeg een waarneming in"])
-    
-    
-    # if selected == 'Voeg een waarneming in':
-    # with tab1:
-
     on = st.toggle('✍️ Voeg een waarneming in')
 
     if on:
@@ -265,18 +253,13 @@ elif st.session_state["authentication_status"]:
             
         input_data()
 
-
-    
-    # elif selected == "Datavisualisatie":  
-    # with tab2:
-
     else:
+        
         try:
             
             db_content = load_dataset()
             df_point = pd.DataFrame(db_content)
                 
-            
             df_2 = df_point
             
             df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if x["soortgroup"]=="Vogels" 
@@ -284,8 +267,7 @@ elif st.session_state["authentication_status"]:
                                                  else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
                                                        else ICON["Nest_unbezet"])), axis=1)
             
-            map = folium.Map(zoom_start=8)
-            
+            map = folium.Map()
             LocateControl(auto_start=True).add_to(map)
             Fullscreen().add_to(map)        
             
@@ -306,46 +288,44 @@ elif st.session_state["authentication_status"]:
 
             with st.container(height=500, border=True):
                 output = st_folium(map,returned_objects=["last_active_drawing"])
-            
-            with st.sidebar:
-    
-                try:
-                    
-                    id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
-                    name = f"{id}.jpeg"
-            
-                    with st.sidebar:
-    
-                        try:
-    
-                            res = drive.get(name).read()
-                            with st.expander("Zie foto"):
-                                st.image(res)
-                                
-                            with st.form("entry_form", clear_on_submit=True):
-                                submitted = st.form_submit_button("Verwijder data")
-                                if submitted:
-                                    if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
-                                        db.delete(id)
-                                        drive.delete(name)
-                                        st.success('Gegevens verwijderd!', icon="✅")
-                                    else:
-                                        st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
-                                        
-    
-                        except:
-                            st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
-                            with st.form("entry_form", clear_on_submit=True):
-                                submitted = st.form_submit_button("Verwijder data")
-                                if submitted:
-                                    if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
-                                        db.delete(id)
-                                        st.success('Gegevens verwijderd!', icon="✅")
-                                    else:
-                                        st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
-    
-                except:
-                    st.stop()
+                
+            try:
+                
+                id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+                name = f"{id}.jpeg"
+        
+                with st.sidebar:
+
+                    try:
+
+                        res = drive.get(name).read()
+                        with st.expander("Zie foto"):
+                            st.image(res)
+                            
+                        with st.form("entry_form", clear_on_submit=True):
+                            submitted = st.form_submit_button("Verwijder data")
+                            if submitted:
+                                if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
+                                    db.delete(id)
+                                    drive.delete(name)
+                                    st.success('Gegevens verwijderd!', icon="✅")
+                                else:
+                                    st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
+                                    
+
+                    except:
+                        st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
+                        with st.form("entry_form", clear_on_submit=True):
+                            submitted = st.form_submit_button("Verwijder data")
+                            if submitted:
+                                if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
+                                    db.delete(id)
+                                    st.success('Gegevens verwijderd!', icon="✅")
+                                else:
+                                    st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
+
+            except:
+                st.stop()
     
         except:
             st.stop()
