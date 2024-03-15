@@ -4,7 +4,7 @@ cookie:
   name: capocchia
 credentials:
   usernames:
-    luigi:
+    Luigi:
       email: jeggino@gmail.com
       logged_in: False
       name: Luigi Giugliano
