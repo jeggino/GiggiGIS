@@ -284,11 +284,11 @@ elif st.session_state["authentication_status"]:
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
             with st.container(height=500, border=True):
-                output = st_folium(map,returned_objects=["last_active_drawing"],width=300, height=480)
+                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=300, height=480)
                 
             try:
                 
-                id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+                id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
                 name = f"{id}.jpeg"
         
                 with st.sidebar:
