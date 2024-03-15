@@ -287,8 +287,7 @@ elif st.session_state["authentication_status"]:
             map.add_child(fg_2)
             map.add_child(fg_3)
             folium.LayerControl().add_to(map)
-            folium.TileLayer('openstreetmap').add_to(map)
-            folium.TileLayer('Stamen Terrain').add_to(map)
+           
 
             
             
