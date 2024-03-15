@@ -94,7 +94,7 @@ elif st.session_state["authentication_status"]:
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
         
-        output = st_folium(m, returned_objects=["all_drawings"],width=200, height=500,)
+        output = st_folium(m, returned_objects=["all_drawings"],width=100, height=200,)
         
         return  output
     
