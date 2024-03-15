@@ -206,10 +206,7 @@ elif st.session_state["authentication_status"]:
         return html
             
     
-    # --- APP ---
-    st.image("https://www.mapsinternational.co.uk/pub/media/catalog/product/x/s/a/satellite-map-of-the-world_wm00875.jpg", 
-             width=None, use_column_width="always", clamp=False, channels="RGB", output_format="auto")
-    
+    # --- APP ---    
     on = st.toggle('✍️ Voeg een waarneming in')
 
     if on:
