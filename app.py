@@ -299,11 +299,8 @@ elif st.session_state["authentication_status"]:
                 
                 id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
                 name = f"{id}.jpeg"
-                st.write(id)
-                st.write(name)
         
                 with st.sidebar:
-                    st.write("dcas")
 
                     try:
                         st.write("dcas")
@@ -335,7 +332,6 @@ elif st.session_state["authentication_status"]:
                                     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
             except:
-                st.write("dcas")
                 st.stop()
     
         except:
