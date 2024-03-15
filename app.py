@@ -150,8 +150,6 @@ elif st.session_state["authentication_status"]:
     
                 except:
                     st.info("Markeer een waarneming")
-
-                map()
     
     
     def popup_html(row):
