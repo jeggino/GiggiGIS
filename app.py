@@ -70,7 +70,7 @@ elif st.session_state["authentication_status"]:
 
     # --- DIMENSIONS ---
     OUTPUT_height = 560
-    OUTPUT_width = 320
+    OUTPUT_width = 340
     CONTAINER_height = 590
     # --- FUNCTIONS ---
     
