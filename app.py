@@ -245,6 +245,7 @@ elif st.session_state["authentication_status"]:
     
             elif soortgroup == '🏠 Vleermuiskast':
                 onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
+                BAT_NAMES = ["onbekend"] + BAT_NAMES
                 sp = st.selectbox("Soort", BAT_NAMES) 
                 gedrag = None
                 functie = None
