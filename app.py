@@ -47,14 +47,15 @@ elif st.session_state["authentication_status"] is None:
 elif st.session_state["authentication_status"]:
     
     waarnemer = st.session_state["name"]
+
     
-    st.markdown(""" <style>
+    st.markdown(""" 
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     #GithubIcon {
       visibility: hidden;
     }
-    </style> """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
     
     
     
