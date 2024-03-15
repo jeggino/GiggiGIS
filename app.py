@@ -61,6 +61,18 @@ elif st.session_state["authentication_status"]:
     </style>
     """,
     unsafe_allow_html=True)
+
+    st.markdown("""
+        <style>
+            .reportview-container {
+                margin-top: -2em;
+            }
+            #MainMenu {visibility: hidden;}
+            .stDeployButton {display:none;}
+            footer {visibility: hidden;}
+            #stDecoration {display:none;}
+        </style>
+    """, unsafe_allow_html=True)
     
     
     # --- CONNECT TO DETA ---
