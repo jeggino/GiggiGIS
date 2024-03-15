@@ -222,11 +222,15 @@ elif st.session_state["authentication_status"]:
     #                        default_index=0,
     #                        orientation="horizontal")
     #---TAB---
-    tab1, tab2 = st.tabs(["🗺️ Datavisualisatie", "✍️ Voeg een waarneming in"])
-
+    # tab1, tab2 = st.tabs(["🗺️ Datavisualisatie", "✍️ Voeg een waarneming in"])
+    
     
     # if selected == 'Voeg een waarneming in':
-    with tab1:
+    # with tab1:
+
+    on = st.toggle('✍️ Voeg een waarneming in')
+
+    if on:
         
         with st.sidebar:
         
@@ -262,17 +266,20 @@ elif st.session_state["authentication_status"]:
             
             with st.expander("Upload een foto"):
                 uploaded_file = st.camera_input("")
-
+    
         
         with st.container(height=500, border=True):
             
             output = map()
             
         input_data()
+
+
     
     # elif selected == "Datavisualisatie":  
-    with tab2:
-    
+    # with tab2:
+
+    else:
         try:
             
             db_content = load_dataset()
@@ -351,6 +358,7 @@ elif st.session_state["authentication_status"]:
     
         except:
             st.stop()
+    
 
 
 
