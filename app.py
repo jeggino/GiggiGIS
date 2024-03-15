@@ -101,9 +101,6 @@ elif st.session_state["authentication_status"]:
     
     def input_data():
         
-        with st.container(height=500, border=True):
-            
-            output = map()
         
         with st.sidebar:
             
@@ -265,7 +262,12 @@ elif st.session_state["authentication_status"]:
             
             with st.expander("Upload een foto"):
                 uploaded_file = st.camera_input("")
+
         
+        with st.container(height=500, border=True):
+            
+            output = map()
+            
         input_data()
     
     # elif selected == "Datavisualisatie":  
