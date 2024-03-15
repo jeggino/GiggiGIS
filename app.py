@@ -64,8 +64,8 @@ elif st.session_state["authentication_status"]:
     drive = deta.Drive("df_pictures")
 
     # --- DIMENSIONS ---
-    OUTPUT_height = 410
-    CONTAINER_height = 440
+    OUTPUT_height = 430
+    CONTAINER_height = 460
     # --- FUNCTIONS ---
     
     def load_dataset():
@@ -207,6 +207,8 @@ elif st.session_state["authentication_status"]:
             
     
     # --- APP ---
+
+    
     on = st.toggle('✍️ Voeg een waarneming in')
 
     if on:
