@@ -133,13 +133,14 @@ elif st.session_state["authentication_status"]:
                             drive.put(f"{key}.jpeg", data=bytes_data)            
                             with st.spinner('Wait for it...'):
                                 insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
-                                st.rerun()
+                                
                         else:
                             with st.spinner('Wait for it...'):
                                 insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
-                                st.rerun()
+                                
     
                         st.success('Gegevens opgeslagen!', icon="✅")
+                        st.rerun()
     
                 except:
                     st.info("Markeer een waarneming")
