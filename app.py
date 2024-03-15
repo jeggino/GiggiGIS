@@ -92,6 +92,7 @@ elif st.session_state["authentication_status"]:
     
     def input_data():
         
+        output = map()
         
         with st.sidebar:
             
