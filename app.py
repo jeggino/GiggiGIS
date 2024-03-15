@@ -93,7 +93,7 @@ elif st.session_state["authentication_status"]:
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
-        with st.container( height=500, border=True)
+        
         output = st_folium(m, returned_objects=["all_drawings"])
         
         return  output
@@ -101,7 +101,8 @@ elif st.session_state["authentication_status"]:
     
     def input_data():
         
-        with st.container():
+        with st.container(height=500, border=True):
+            
             output = map()
         
         with st.sidebar:
