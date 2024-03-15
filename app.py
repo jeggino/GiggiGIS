@@ -219,17 +219,17 @@ elif st.session_state["authentication_status"]:
             
     
     # --- APP ---
-    # horizontal menu
-    selected = option_menu(None, ['Datavisualisatie','Voeg een waarneming in'], 
-                           icons=["bi bi-geo-alt-fill","bi bi-pencil-square"],
-                           default_index=0,
-                           orientation="horizontal")
+    # # horizontal menu
+    # selected = option_menu(None, ['Datavisualisatie','Voeg een waarneming in'], 
+    #                        icons=["bi bi-geo-alt-fill","bi bi-pencil-square"],
+    #                        default_index=0,
+    #                        orientation="horizontal")
     #---TAB---
     tab1, tab2 = st.tabs(["🗺️ Datavisualisatie", "✍️ Voeg een waarneming in"])
 
     
     # if selected == 'Voeg een waarneming in':
-    with "✍️ Voeg een waarneming in":
+    with tab1:
         
         with st.sidebar:
         
@@ -269,7 +269,7 @@ elif st.session_state["authentication_status"]:
         input_data()
     
     # elif selected == "Datavisualisatie":  
-    with "🗺️ Datavisualisatie":
+    with tab2:
     
         try:
             
