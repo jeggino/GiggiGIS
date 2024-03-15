@@ -279,7 +279,8 @@ elif st.session_state["authentication_status"]:
             map = folium.Map()
             LocateControl(auto_start=True).add_to(map)
             Fullscreen().add_to(map)
-            fg = folium.FeatureGroup(name="Markers")
+            fg = folium.FeatureGroup(name="kdfjhvcd")
+            fg_2 = folium.FeatureGroup(name="dybht")
             map.add_child(fg)
             folium.LayerControl().add_to(map)
 
@@ -291,17 +292,24 @@ elif st.session_state["authentication_status"]:
     
                     html = popup_html(i)
                     popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-                    
-                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                                  popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
+
+                    if df_2.iloc[i]['soortgroup'] == "Vleermuiskast":
+                        folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                                      popup=popup,
+                                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
+
+                    else:
+                        folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                                      popup=popup,
+                                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_2)
+                        
 
                 elif df_2.iloc[i]['geometry_type'] == "LineString":
 
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
             with st.container(height=CONTAINER_height, border=True):
-                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=fg)
+                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=[fg,fg_2])
                 
             try:
                 
