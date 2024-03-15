@@ -146,7 +146,7 @@ elif st.session_state["authentication_status"]:
                                 st.rerun()
     
                         st.success('Gegevens opgeslagen!', icon="✅")
-                        on is False
+                        
                         
     
                 except:
@@ -350,7 +350,7 @@ elif st.session_state["authentication_status"]:
                                     
 
                     except:
-                        st.warning('Geen foto opgeslagen voor deze waarneming!', icon="⚠️")
+                        st.info('Geen foto opgeslagen voor deze waarneming!')
                         with st.form("entry_form", clear_on_submit=True):
                             submitted = st.form_submit_button("Verwijder data")
                             if submitted:
