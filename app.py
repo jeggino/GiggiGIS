@@ -282,6 +282,7 @@ elif st.session_state["authentication_status"]:
             fg = folium.FeatureGroup(name="kdfjhvcd")
             fg_2 = folium.FeatureGroup(name="dybht")
             map.add_child(fg)
+            map.add_child(fg_2)
             folium.LayerControl().add_to(map)
 
             
