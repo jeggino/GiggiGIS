@@ -301,7 +301,7 @@ elif st.session_state["authentication_status"]:
                                       popup=popup,
                                       icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
 
-                    if df_2.iloc[i]['soortgroup'] == "Vogels":
+                    elif df_2.iloc[i]['soortgroup'] == "Vogels":
                         folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                       popup=popup,
                                       icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_2)
@@ -317,7 +317,7 @@ elif st.session_state["authentication_status"]:
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
             with st.container(height=CONTAINER_height, border=True):
-                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=[fg,fg_2])
+                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=[fg,fg_2,fg_3])
                 
             try:
                 
