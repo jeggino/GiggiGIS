@@ -146,7 +146,7 @@ elif st.session_state["authentication_status"]:
                                 st.rerun()
     
                         st.success('Gegevens opgeslagen!', icon="✅")
-                        on = False
+                        on is False
                         
     
                 except:
