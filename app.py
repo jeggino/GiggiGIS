@@ -101,7 +101,7 @@ elif st.session_state["authentication_status"]:
     
     def input_data():
         
-        with st.container(height=300, border=True):
+        with st.container(height=500, border=True):
             
             output = map()
         
@@ -305,7 +305,7 @@ elif st.session_state["authentication_status"]:
 
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-            with st.container(height=300, border=True):
+            with st.container(height=500, border=True):
                 output = st_folium(map,feature_group_to_add=fg,returned_objects=["last_active_drawing"])
             
             with st.sidebar:
