@@ -225,9 +225,7 @@ elif st.session_state["authentication_status"]:
                            default_index=0,
                            orientation="horizontal")
 
-    "---"
-
-
+    
     if selected == 'Voeg een waarneming in':
         
         with st.sidebar:
@@ -302,9 +300,9 @@ elif st.session_state["authentication_status"]:
                 elif df_2.iloc[i]['geometry_type'] == "LineString":
 
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
-    
-            output = st_folium(map,feature_group_to_add=fg,returned_objects=["last_active_drawing"]
-                              )
+
+            with st.container(height=500, border=True):
+                output = st_folium(map,feature_group_to_add=fg,returned_objects=["last_active_drawing"])
             
             with st.sidebar:
     
