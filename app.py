@@ -333,6 +333,7 @@ elif st.session_state["authentication_status"]:
                                     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
             except:
+                st.write("dcas")
                 st.stop()
     
         except:
