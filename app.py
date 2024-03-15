@@ -69,8 +69,8 @@ elif st.session_state["authentication_status"]:
     drive = deta.Drive("df_pictures")
 
     # --- DIMENSIONS ---
-    OUTPUT_height = 460
-    CONTAINER_height = 490
+    OUTPUT_height = 550
+    CONTAINER_height = 590
     # --- FUNCTIONS ---
     
     def load_dataset():
