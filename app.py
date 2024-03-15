@@ -50,6 +50,9 @@ elif st.session_state["authentication_status"]:
 
     reduce_header_height_style = """
     <style>
+        .reportview-container {
+            margin-top: -2em;
+        }
         div.block-container {padding-top:0rem; margin-top: -2em;}
     </style>
     """
