@@ -51,7 +51,7 @@ elif st.session_state["authentication_status"]:
     reduce_header_height_style = """
     <style>
        
-        div.block-container {padding-top:0rem; margin-top: -2em;}
+        div.block-container {padding-top:0rem; margin-top: -2em; padding-bottom: 0rem;}
     </style>
     """
     st.markdown(reduce_header_height_style, unsafe_allow_html=True)
