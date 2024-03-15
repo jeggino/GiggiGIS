@@ -303,6 +303,7 @@ elif st.session_state["authentication_status"]:
                 st.write(name)
         
                 with st.sidebar:
+                    st.write("dcas")
 
                     try:
                         st.write("dcas")
