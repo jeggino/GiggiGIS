@@ -302,7 +302,6 @@ elif st.session_state["authentication_status"]:
                 with st.sidebar:
 
                     try:
-                        st.write("dcas")
 
                         res = drive.get(name).read()
                         with st.expander("Zie foto"):
@@ -335,7 +334,3 @@ elif st.session_state["authentication_status"]:
     
         except:
             st.stop()
-    
-
-
-
