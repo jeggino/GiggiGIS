@@ -51,7 +51,11 @@ elif st.session_state["authentication_status"]:
     
     st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } 
+    #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    header.css-k0sv6k.e8zbici2 {{
+          background: url(data:image/{https://th.bing.com/th/id/R.4e53599aa0558bec6d92a086a9523e56?rik=xLgaAOWtvgyRXw&pid=ImgRaw&r=0};base64,{bin_str});
+      }}
     }
     </style>
     """,
