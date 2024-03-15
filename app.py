@@ -271,7 +271,10 @@ elif st.session_state["authentication_status"]:
             
             map = folium.Map()
             LocateControl(auto_start=True).add_to(map)
-            Fullscreen().add_to(map)        
+            Fullscreen().add_to(map)
+            fg = folium.FeatureGroup(name="Markers")
+            map.add_child(fg)
+            
             
             for i in range(len(df_2)):
 
@@ -282,14 +285,14 @@ elif st.session_state["authentication_status"]:
                     
                     folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                   popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(map)
+                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
 
                 elif df_2.iloc[i]['geometry_type'] == "LineString":
 
-                    folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
+                    folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
             with st.container(height=CONTAINER_height, border=True):
-                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=300, height=OUTPUT_height,key="new")
+                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=300, height=OUTPUT_height,feature_group_to_add=fg)
                 
             try:
                 
