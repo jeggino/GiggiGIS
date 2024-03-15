@@ -62,7 +62,10 @@ elif st.session_state["authentication_status"]:
     deta = Deta(st.secrets["deta_key"])
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
-    
+
+    # --- DIMENSIONS ---
+    OUTPUT_height = 420
+    CONTAINER_height = 450
     # --- FUNCTIONS ---
     
     def load_dataset():
@@ -82,7 +85,7 @@ elif st.session_state["authentication_status"]:
         Fullscreen().add_to(m)
         LocateControl(auto_start=True).add_to(m)
         
-        output = st_folium(m, returned_objects=["all_drawings"],width=300, height=450)
+        output = st_folium(m, returned_objects=["all_drawings"],width=300, height=OUTPUT_height)
         
         return  output
     
@@ -244,7 +247,7 @@ elif st.session_state["authentication_status"]:
                 uploaded_file = st.camera_input("")
     
         
-        with st.container(height=470, border=True):
+        with st.container(height=CONTAINER_height, border=True):
             
             output = map()
             
@@ -283,8 +286,8 @@ elif st.session_state["authentication_status"]:
 
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
-            with st.container(height=470, border=True):
-                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=300, height=450)
+            with st.container(height=CONTAINER_height, border=True):
+                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=300, height=OUTPUT_height)
                 
             try:
                 
