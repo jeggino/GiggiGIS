@@ -78,7 +78,7 @@ elif st.session_state["authentication_status"]:
                        "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates})
     
     
-    def map():
+    def map(OUTPUT_height):
         
         m = folium.Map()
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
@@ -90,11 +90,11 @@ elif st.session_state["authentication_status"]:
         return  output
     
     
-    def input_data():
+    def input_data(OUTPUT_height):
 
         with st.container(height=CONTAINER_height, border=True):
             
-            output = map()
+            output = map(OUTPUT_height)
         
         with st.sidebar:
             
@@ -253,7 +253,7 @@ elif st.session_state["authentication_status"]:
     
         
             
-        input_data()
+        input_data(OUTPUT_height)
 
     else:
         
