@@ -1,5 +1,4 @@
 import streamlit as st
-# from streamlit_option_menu import option_menu
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
@@ -19,8 +18,6 @@ import streamlit_authenticator as stauth
 
 import yaml
 from yaml.loader import SafeLoader
-
-import time
 
 
 st.set_page_config(
@@ -287,7 +284,7 @@ elif st.session_state["authentication_status"]:
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
             with st.container(height=500, border=True):
-                output = st_folium(map,returned_objects=["last_active_drawing"])
+                output = st_folium(map,returned_objects=["last_active_drawing"],width=300, height=500)
                 
             try:
                 
