@@ -90,7 +90,7 @@ elif st.session_state["authentication_status"]:
         return  output
     
     
-    def input_data(OUTPUT_height):
+    def input_data(OUTPUT_height,CONTAINER_height):
 
         with st.container(height=CONTAINER_height, border=True):
             
@@ -253,7 +253,7 @@ elif st.session_state["authentication_status"]:
     
         
             
-        input_data(OUTPUT_height)
+        input_data(OUTPUT_height,CONTAINER_height)
 
     else:
         
