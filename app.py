@@ -91,8 +91,10 @@ elif st.session_state["authentication_status"]:
     
     
     def input_data():
-        
-        output = map()
+
+        with st.container(height=CONTAINER_height, border=True):
+            
+            output = map()
         
         with st.sidebar:
             
@@ -250,9 +252,6 @@ elif st.session_state["authentication_status"]:
                 uploaded_file = st.camera_input("")
     
         
-        with st.container(height=CONTAINER_height, border=True):
-            
-            output = map()
             
         input_data()
 
