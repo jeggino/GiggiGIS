@@ -151,7 +151,7 @@ elif st.session_state["authentication_status"]:
                 except:
                     st.info("Markeer een waarneming")
 
-            st.switch_page("pages/page_2.py")
+                st.switch_page("pages/page_2.py")
 
         
     
