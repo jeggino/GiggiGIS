@@ -297,7 +297,7 @@ elif st.session_state["authentication_status"]:
                 exclusive_groups=False,
                 collapsed=True,
             ).add_to(map)
-            folium.LayerControl().add_to(map)
+            # folium.LayerControl().add_to(map)
            
 
             
