@@ -291,7 +291,9 @@ elif st.session_state["authentication_status"]:
             map.add_child(fg_4)
             map.add_child(fg_3)
             folium.GroupedLayerControl(
-                groups={'Vogels': [fg_4, fg_2]},
+                groups={'Vogels': [fg_4, fg_2],
+                        "":fg,
+                        "":fg_3},
                 exclusive_groups=False,
                 collapsed=True,
             ).add_to(map)
