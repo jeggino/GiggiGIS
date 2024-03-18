@@ -125,8 +125,8 @@ def input_data():
 
 with st.sidebar:
 
-soortgroup = st.selectbox("", GROUP)
-datum = st.date_input("Datum")        
+    soortgroup = st.selectbox("", GROUP)
+    datum = st.date_input("Datum")        
 
 if soortgroup == '🦇 Vleermuizen':
 
