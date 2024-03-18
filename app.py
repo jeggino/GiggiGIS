@@ -78,12 +78,10 @@ elif st.session_state["authentication_status"]:
     
     def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates):
 
-        db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"soortgroup":soortgroup, "aantal":aantal,
+        return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"soortgroup":soortgroup, "aantal":aantal,
                        "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                        "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates})
-        
-        return st.rerun()
-    
+            
     
     def map():
         
@@ -223,6 +221,8 @@ elif st.session_state["authentication_status"]:
     
     # --- APP ---    
     on = st.toggle('✍️ Voeg een waarneming in')
+
+    st.write(on)
 
     if on:
         
