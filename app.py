@@ -95,67 +95,7 @@ elif st.session_state["authentication_status"]:
         return  output
     
     
-    def input_data():
 
-        with st.container(height=CONTAINER_height, border=True):
-            
-            output = map()
-        
-        with st.sidebar:
-            
-            submitted = st.button("Gegevens opslaan")
-            
-            if submitted:           
-    
-                try:
-    
-                    output["features"] = output.pop("all_drawings")
-                    geometry_type = output["features"][0]["geometry"]["type"]
-                    coordinates = output["features"][0]["geometry"]["coordinates"] 
-                    
-                    if geometry_type == "LineString":
-                        
-                        lng = None
-                        lat = None
-                        key = None
-                    
-                    else: 
-                        
-                        lng = coordinates[0]
-                        lat = coordinates[1]
-                        coordinates = None
-                        
-                        key = str(lng)+str(lat)
-    
-                    if len(output["features"]) > 1:
-                        st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
-                        st.stop()
-    
-                    else:
-    
-                        if uploaded_file is not None:
-                            bytes_data = uploaded_file.getvalue()
-                            drive.put(f"{key}.jpeg", data=bytes_data)            
-                            with st.spinner('Wait for it...'):
-                                insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
-                        
-                        else:
-                            with st.spinner('Wait for it...'):
-                                insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
-    
-                        st.success('Gegevens opgeslagen!', icon="✅")
-                        
-                        
-                        
-    
-                except:
-                    st.info("Markeer een waarneming")
-
-                st.switch_page("pages/page_2.py")
-
-        
-    
-    
     def popup_html(row):
         
         i = row
@@ -226,6 +166,8 @@ elif st.session_state["authentication_status"]:
     on = st.toggle('✍️ Voeg een waarneming in')
 
     if on:
+
+        st.switch_page("pages/page_2.py")
         
         with st.sidebar:
         
