@@ -144,7 +144,8 @@ elif st.session_state["authentication_status"]:
                                 insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
     
                         st.success('Gegevens opgeslagen!', icon="✅")
-                        st.switch_page("pages/page_2.py")
+                        st.switch_page("app.py")
+                        
                         
                         
     
