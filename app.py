@@ -144,7 +144,7 @@ elif st.session_state["authentication_status"]:
                                 insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
     
                         st.success('Gegevens opgeslagen!', icon="✅")
-                        on = False
+                        st.switch_page("pages/page_2.py")
                         
                         
     
@@ -222,8 +222,6 @@ elif st.session_state["authentication_status"]:
     
     # --- APP ---    
     on = st.toggle('✍️ Voeg een waarneming in')
-
-    st.write(on)
 
     if on:
         
