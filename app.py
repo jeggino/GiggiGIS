@@ -77,10 +77,12 @@ elif st.session_state["authentication_status"]:
         return db.fetch().items
     
     def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates):
-        
-        return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"soortgroup":soortgroup, "aantal":aantal,
+
+        db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"soortgroup":soortgroup, "aantal":aantal,
                        "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                        "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates})
+        
+        return st.rerun()
     
     
     def map():
