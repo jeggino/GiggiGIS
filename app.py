@@ -288,8 +288,9 @@ elif st.session_state["authentication_status"]:
             fg_3 = folium.FeatureGroup(name="Vleermuizen")
             map.add_child(fg)
             map.add_child(fg_2)
+            map.add_child(fg_4)
             map.add_child(fg_3)
-            folium.roupedLayerControl(
+            folium.GroupedLayerControl(
                 groups={'Vogels': [fg_4, fg2],
                 exclusive_groups=False,
                 collapsed=True,
