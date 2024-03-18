@@ -283,11 +283,17 @@ elif st.session_state["authentication_status"]:
             Fullscreen().add_to(map)
             
             fg = folium.FeatureGroup(name="Vleermuiskast")
-            fg_2 = folium.FeatureGroup(name="Vogels")
+            fg_2 = folium.FeatureGroup(name="Huismussen")
+            fg_4 = folium.FeatureGroup(name="Gierzwaluwen")
             fg_3 = folium.FeatureGroup(name="Vleermuizen")
             map.add_child(fg)
             map.add_child(fg_2)
             map.add_child(fg_3)
+            folium.roupedLayerControl(
+                groups={'Vogels': [fg_4, fg2],
+                exclusive_groups=False,
+                collapsed=True,
+            ).add_to(map)
             folium.LayerControl().add_to(map)
            
 
@@ -306,9 +312,18 @@ elif st.session_state["authentication_status"]:
                                       icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
 
                     elif df_2.iloc[i]['soortgroup'] == "Vogels":
-                        folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                                      popup=popup,
-                                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_2)
+                        if df_2.iloc[i]['sp'] == "Huismus":
+                            
+                            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                                          popup=popup,
+                                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_2)
+                            
+                        elif df_2.iloc[i]['sp'] == "Gierzwaluwen":
+                            
+                            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                                          popup=popup,
+                                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_4)
+
 
                     else:
                         folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
