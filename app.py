@@ -291,11 +291,11 @@ elif st.session_state["authentication_status"]:
             map.add_child(fg_4)
             map.add_child(fg_3)
             folium.GroupedLayerControl(
-                groups={'Vogels': [fg_4, fg2]},
+                groups={'Vogels': [fg_4, fg_2]},
                 exclusive_groups=False,
                 collapsed=True,
             ).add_to(map)
-            folium.LayerControl().add_to(map)
+            # folium.LayerControl().add_to(map)
            
 
             
@@ -337,7 +337,7 @@ elif st.session_state["authentication_status"]:
                     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
             with st.container(height=CONTAINER_height, border=True):
-                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=[fg,fg_2,fg_3])
+                output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=[fg,fg_2,fg_3,fg_4])
                 
             try:
                 
