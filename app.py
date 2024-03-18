@@ -1,7 +1,7 @@
 import streamlit as st
 
 import folium
-from folium.plugins import Draw, Fullscreen, LocateControl
+from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
 from streamlit_folium import st_folium
 
 import pandas as pd
@@ -290,7 +290,7 @@ elif st.session_state["authentication_status"]:
             map.add_child(fg_2)
             map.add_child(fg_4)
             map.add_child(fg_3)
-            folium.plugins.GroupedLayerControl(
+            GroupedLayerControl(
                 groups={'Vogels': [fg_4, fg_2],
                         "":fg,
                         "":fg_3},
