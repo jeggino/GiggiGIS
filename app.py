@@ -321,7 +321,7 @@ elif st.session_state["authentication_status"]:
                                           popup=popup,
                                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_2)
                             
-                        elif df_2.iloc[i]['sp'] == "Huismus":
+                        elif df_2.iloc[i]['sp'] == "Gierzwaluw":
                             
                             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                           popup=popup,
