@@ -33,6 +33,8 @@ deta = Deta(st.secrets["deta_key"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 
+waarnemer = st.session_state["name"]
+
 # --- DIMENSIONS ---
 OUTPUT_height = 610
 OUTPUT_width = 350
