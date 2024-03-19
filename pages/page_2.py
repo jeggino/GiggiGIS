@@ -138,9 +138,9 @@ def input_data():
     
 
 # --- APP ---    
-col1, col2, col3 = st.columns(3)
+# col1, col2, col3 = st.columns(3)
 
-with col2.popover("Click here"):
+with st.popover("Click here"):
     
     soortgroup = st.selectbox("", GROUP)
     datum = st.date_input("Datum")        
