@@ -28,12 +28,12 @@ st.set_page_config(
 )
 
 
-# reduce_header_height_style = """
-# <style>
-#     div.block-container {padding-top:0rem; padding-bottom: 0em; padding-left: 0rem; padding-right: 0rem; margin-top: -2em; margin-bottom: 2em;}
-# </style>
-# """
-# st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+reduce_header_height_style = """
+<style>
+    div.block-container {padding-top:0rem; padding-bottom: 0em; padding-left: 0rem; padding-right: 0rem; margin-top: -2em; margin-bottom: 2em;}
+</style>
+"""
+st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # st.markdown("""
 # <style>
