@@ -41,6 +41,14 @@ st.markdown("""
 """,
 unsafe_allow_html=True)
 
+st.markdown("""
+        <style>
+               #root > div:nth-child(1) > div.withScreencast > div > div > div > section:nth-child(2) {
+                    height: 3rem !important;
+                }
+        </style>
+        """, unsafe_allow_html=True)
+
 
 # --- CONNECT TO DETA ---
 deta = Deta(st.secrets["deta_key"])
@@ -141,10 +149,8 @@ def input_data():
     
 
 # --- APP ---    
+with st.sidebar:
 
-
-with st.popover("Open popover"):
-    
     soortgroup = st.selectbox("", GROUP)
     datum = st.date_input("Datum")        
 
@@ -179,42 +185,4 @@ with st.popover("Open popover"):
     with st.expander("Upload een foto"):
         uploaded_file = st.camera_input("")
 
-
-
-# with st.sidebar:
-
-    # soortgroup = st.selectbox("", GROUP)
-    # datum = st.date_input("Datum")        
-
-    # if soortgroup == '🦇 Vleermuizen':
-    
-    #     sp = st.selectbox("Soort", BAT_NAMES)
-    #     gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-    #     functie = st.selectbox("Functie", BAT_FUNCTIE) 
-    #     verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-    #     onbewoond = None
-    
-    # elif soortgroup == '🪶 Vogels':
-    
-    #     sp = st.selectbox("Soort", BIRD_NAMES)
-    #     gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-    #     functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-    #     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-    #     onbewoond = None
-    
-    # elif soortgroup == '🏠 Vleermuiskast':
-    #     onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
-    #     BAT_NAMES = ["onbekend"] + BAT_NAMES
-    #     sp = st.selectbox("Soort", BAT_NAMES) 
-    #     gedrag = None
-    #     functie = None
-    #     verblijf = None
-        
-    
-    # aantal = st.number_input("Aantal", min_value=0)
-    # opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-    
-    # with st.expander("Upload een foto"):
-    #     uploaded_file = st.camera_input("")
-
-# input_data()
+input_data()
