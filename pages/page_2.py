@@ -178,7 +178,7 @@ with col2.popover("Click here"):
 
 
 
-with st.sidebar:
+# with st.sidebar:
 
     # soortgroup = st.selectbox("", GROUP)
     # datum = st.date_input("Datum")        
