@@ -139,7 +139,11 @@ def input_data():
 
 # --- APP ---    
 # col1, col2, col3 = st.columns(3)
+with st.popover("Open popover"):
+    st.markdown("Hello World 👋")
+    name = st.text_input("What's your name?")
 
+st.write("Your name:", name)
 with st.popover("Open popover"):
     
     soortgroup = st.selectbox("", GROUP)
