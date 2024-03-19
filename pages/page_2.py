@@ -138,9 +138,10 @@ def input_data():
     
 
 # --- APP ---    
-popover = st.popover("Filter items")
+st.popover("Filter items")
 red = popover.checkbox("Show red items.", True)
 blue = popover.checkbox("Show blue items.", True)
+
 with st.popover("Open popover"):
     
     soortgroup = st.selectbox("", GROUP)
