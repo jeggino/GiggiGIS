@@ -138,9 +138,10 @@ def input_data():
     
 
 # --- APP ---    
+col1, col2, col3 = st.columns(3)
 
-with st.sidebar:
-
+with col2.popover("Click here"):
+    
     soortgroup = st.selectbox("", GROUP)
     datum = st.date_input("Datum")        
 
@@ -174,6 +175,44 @@ with st.sidebar:
     
     with st.expander("Upload een foto"):
         uploaded_file = st.camera_input("")
+
+
+
+with st.sidebar:
+
+    # soortgroup = st.selectbox("", GROUP)
+    # datum = st.date_input("Datum")        
+
+    # if soortgroup == '🦇 Vleermuizen':
+    
+    #     sp = st.selectbox("Soort", BAT_NAMES)
+    #     gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+    #     functie = st.selectbox("Functie", BAT_FUNCTIE) 
+    #     verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+    #     onbewoond = None
+    
+    # elif soortgroup == '🪶 Vogels':
+    
+    #     sp = st.selectbox("Soort", BIRD_NAMES)
+    #     gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+    #     functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+    #     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+    #     onbewoond = None
+    
+    # elif soortgroup == '🏠 Vleermuiskast':
+    #     onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
+    #     BAT_NAMES = ["onbekend"] + BAT_NAMES
+    #     sp = st.selectbox("Soort", BAT_NAMES) 
+    #     gedrag = None
+    #     functie = None
+    #     verblijf = None
+        
+    
+    # aantal = st.number_input("Aantal", min_value=0)
+    # opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+    
+    # with st.expander("Upload een foto"):
+    #     uploaded_file = st.camera_input("")
 
 
 
