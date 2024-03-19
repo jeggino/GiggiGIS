@@ -217,6 +217,4 @@ with st.popover("Open popover"):
     # with st.expander("Upload een foto"):
     #     uploaded_file = st.camera_input("")
 
-
-
-input_data()
+# input_data()
