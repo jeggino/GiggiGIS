@@ -47,7 +47,10 @@ deta = Deta(st.secrets["deta_key"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 
-waarnemer = st.session_state["name"]
+try:
+    waarnemer = st.session_state["name"]
+except:
+    st.switch_page("app.py")
 
 # --- DIMENSIONS ---
 OUTPUT_height = 610
