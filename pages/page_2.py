@@ -140,7 +140,7 @@ def input_data():
 # --- APP ---    
 # col1, col2, col3 = st.columns(3)
 
-with st.popover("Click here"):
+with st.popover("Open popover"):
     
     soortgroup = st.selectbox("", GROUP)
     datum = st.date_input("Datum")        
