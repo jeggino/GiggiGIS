@@ -41,14 +41,6 @@ st.markdown("""
 """,
 unsafe_allow_html=True)
 
-# st.markdown("""
-#         <style>
-#                #root > div:nth-child(1) > div.withScreencast > div > div > div > section:nth-child(2) {
-#                     height: 3rem !important;
-#                 }
-#         </style>
-#         """, unsafe_allow_html=True)
-
 
 # --- CONNECT TO DETA ---
 deta = Deta(st.secrets["deta_key"])
