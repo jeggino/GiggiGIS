@@ -167,7 +167,7 @@ elif st.session_state["authentication_status"]:
 
     if on:
 
-        st.switch_page("pages/page_2.py")
+        st.switch_page("pages/✍️.py")
         
         with st.sidebar:
         
