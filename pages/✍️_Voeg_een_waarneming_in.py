@@ -55,7 +55,7 @@ except:
     st.switch_page("🗺️_Home.py")
 
 # --- DIMENSIONS ---
-OUTPUT_height = 630
+OUTPUT_height = 650
 OUTPUT_width = 350
 CONTAINER_height = 680
 # --- FUNCTIONS ---
