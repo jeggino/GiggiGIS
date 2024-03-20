@@ -34,7 +34,7 @@ BAT_FUNCTIE = ['geen / onbekend', 'zomerverblijfplaats in gebouw', 'paarverblijf
            'essentieel foerageergebied (water)', 'winterverblijfplaats in bloei', 'essentieel foerageergebied (bomen)', 'vastgesteld territorium',
            'essentieel foerageergebied (grasland)']
 
-BIRD_FUNCTIE = ['nestlocatie', 'geen / onbekend', 'vastgesteld territorium',
+BIRD_FUNCTIE = ['geen / onbekend', 'nestlocatie',  'vastgesteld territorium',
        'functioneel leefgebied', 'mogelijke nestlocatie',
        'voortplantingsbiotoop', 'winterverblijfplaats in boom',
        'zomerverblijfplaats']
@@ -46,9 +46,9 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
 
 VLEERMUISKAST_VERBLIJF = ["Op boom", "Op gebouw"]
 
-BIRD_VERBLIJF = ['dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
+BIRD_VERBLIJF = ['geen / onbekend', 'dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
        'gevelbetimmering', 'openingen in dak', 'regenpijp',
-       'geen / onbekend', 'dakpan', 'spouwmuur', 'onder dakrand',
+        'dakpan', 'spouwmuur', 'onder dakrand',
        'raamkozijn', 'luik', 'schoorsteen', 'daklijst', 'dakkapel',
        'in struweel / struiken', 'holte', 'op / bij nest in boom',
        'scheur', 'vleermuiskast']
