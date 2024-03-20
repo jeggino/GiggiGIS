@@ -20,7 +20,7 @@ BIRD_NAMES = ['Gierzwaluw','Huismus']
 BAT_BEHAVIOURS = ['foeragerend', 'roepend','verplaatsend (vliegroute)', 'sociale roep', 'uitvliegend','invliegend', 'overvliegend', 
            'nest-indicerend gedrag', 'zwermend', 'sporen', 'balts', 'verkeersslachtoffer','bezet nest']
 
-BIRD_BEHAVIOURS = ['bezet nest', 'nest-indicerend gedrag', 'overvliegend',
+BIRD_BEHAVIOURS = ['overvliegend', 'bezet nest', 'nest-indicerend gedrag', 
        'foeragerend', 'ter plaatse', 'roepend', 'baltsend / zingend',
        'nestbouw', 'invliegend', 'uitvliegend', 'jagend',
        'roepend vanuit gebouw', 'baltsend / zingend op gebouw',
