@@ -57,7 +57,7 @@ except:
 # --- DIMENSIONS ---
 OUTPUT_height = 630
 OUTPUT_width = 350
-CONTAINER_height = 660
+CONTAINER_height = 670
 # --- FUNCTIONS ---
 
 def load_dataset():
