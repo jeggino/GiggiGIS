@@ -10,6 +10,12 @@ credentials:
       name: Luigi Giugliano
       password: Platinum_79
 
+    Maarten:
+      email: jeggino@gmail.com
+      logged_in: False
+      name: Maarten
+      password: veld_2024
+
     daan:
       email: jeggino@gmail.com
       logged_in: False
