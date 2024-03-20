@@ -158,16 +158,12 @@ elif st.session_state["authentication_status"]:
             
     
     # --- APP ---    
-    with st.popover("Open popover"):
-        st.markdown("Hello World 👋")
-        name = st.text_input("What's your name?")
 
-    st.write("Your name:", name)
     on = st.toggle('✍️ Voeg een waarneming in')
 
     if on:
 
-        st.switch_page("pages/✍️.py")
+        st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
         
     else:
         
@@ -280,6 +276,3 @@ elif st.session_state["authentication_status"]:
     
         except:
             st.stop()
-
-
-   
