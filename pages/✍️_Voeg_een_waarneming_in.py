@@ -138,7 +138,7 @@ def input_data():
             except:
                 st.info("Markeer een waarneming")
 
-            st.switch_page("app.py")
+            st.switch_page("🗺️_Home.py")
 
     
 
