@@ -55,9 +55,10 @@ except:
     st.switch_page("🗺️_Home.py")
 
 # --- DIMENSIONS ---
-OUTPUT_height = 650
+OUTPUT_height = 610
 OUTPUT_width = 350
-CONTAINER_height = 680
+CONTAINER_height = 640
+    
 # --- FUNCTIONS ---
 
 def load_dataset():
