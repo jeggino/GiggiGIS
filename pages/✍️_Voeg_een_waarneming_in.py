@@ -147,7 +147,7 @@ def input_data():
 
 with st.sidebar:
 
-    st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
+    
 
     soortgroup = st.selectbox("", GROUP)
     datum = st.date_input("Datum")        
@@ -182,5 +182,7 @@ with st.sidebar:
     
     with st.expander("Upload een foto"):
         uploaded_file = st.camera_input("")
+
+st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 
 input_data()
