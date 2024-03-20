@@ -76,11 +76,6 @@ elif st.session_state["authentication_status"]:
     def load_dataset():
         return db.fetch().items
     
-    def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates):
-
-        return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"soortgroup":soortgroup, "aantal":aantal,
-                       "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                       "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates})
             
     
     def map():
@@ -169,46 +164,6 @@ elif st.session_state["authentication_status"]:
 
         st.switch_page("pages/✍️.py")
         
-        with st.sidebar:
-        
-            soortgroup = st.selectbox("", GROUP)
-            datum = st.date_input("Datum")        
-        
-            if soortgroup == '🦇 Vleermuizen':
-        
-                sp = st.selectbox("Soort", BAT_NAMES)
-                gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-                functie = st.selectbox("Functie", BAT_FUNCTIE) 
-                verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-                onbewoond = None
-        
-            elif soortgroup == '🪶 Vogels':
-        
-                sp = st.selectbox("Soort", BIRD_NAMES)
-                gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-                functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-                verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-                onbewoond = None
-    
-            elif soortgroup == '🏠 Vleermuiskast':
-                onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
-                BAT_NAMES = ["onbekend"] + BAT_NAMES
-                sp = st.selectbox("Soort", BAT_NAMES) 
-                gedrag = None
-                functie = None
-                verblijf = None
-                
-        
-            aantal = st.number_input("Aantal", min_value=0)
-            opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-            
-            with st.expander("Upload een foto"):
-                uploaded_file = st.camera_input("")
-    
-        
-            
-        input_data()
-
     else:
         
         try:
