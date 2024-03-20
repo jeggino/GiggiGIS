@@ -276,3 +276,10 @@ elif st.session_state["authentication_status"]:
         except:
             st.stop()
 
+import streamlit as st
+
+with st.popover("Open popover"):
+    st.markdown("Hello World 👋")
+    name = st.text_input("What's your name?")
+
+st.write("Your name:", name)
