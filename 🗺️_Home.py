@@ -158,7 +158,7 @@ elif st.session_state["authentication_status"]:
             
     
     # --- APP ---    
-
+    st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
     on = st.toggle('✍️ Voeg een waarneming in')
 
     if on:
