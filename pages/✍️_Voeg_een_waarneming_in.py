@@ -137,6 +137,7 @@ def input_data():
 
             except:
                 st.info("Markeer een waarneming")
+                st.stop()
 
             st.switch_page("🗺️_Home.py")
 
