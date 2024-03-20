@@ -52,7 +52,7 @@ try:
     waarnemer = st.session_state["name"]
     
 except:
-    st.switch_page("app.py")
+    st.switch_page("🗺️_Home.py")
 
 # --- DIMENSIONS ---
 OUTPUT_height = 610
