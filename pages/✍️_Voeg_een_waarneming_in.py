@@ -143,8 +143,11 @@ def input_data():
     
 
 # --- APP ---    
-st.page_link("🗺️_Home.py", label="🗺️ Home")
+
 with st.sidebar:
+
+    st.page_link("🗺️_Home.py", label="🗺️ Home")
+    "---"
 
     soortgroup = st.selectbox("", GROUP)
     datum = st.date_input("Datum")        
