@@ -180,7 +180,6 @@ elif st.session_state["authentication_status"]:
                                                        else ICON["Nest_unbezet"])), axis=1)
             
             map = folium.Map()
-            folium.TileLayer('Cartodb Positron').add_to(map)
             LocateControl(auto_start=True).add_to(map)
             Fullscreen().add_to(map)
             
