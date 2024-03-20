@@ -143,6 +143,7 @@ def input_data():
     
 
 # --- APP ---    
+st.page_link("🗺️_Home.py", label="🗺️ Home")
 with st.sidebar:
 
     soortgroup = st.selectbox("", GROUP)
