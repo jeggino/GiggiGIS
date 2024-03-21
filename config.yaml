@@ -10,6 +10,12 @@ credentials:
       name: Luigi Giugliano
       password: Platinum_79
 
+    Mischa:
+      email: jeggino@gmail.com
+      logged_in: False
+      name: Mischa van der Hout
+      password: veld_2024
+
     Maarten:
       email: jeggino@gmail.com
       logged_in: False
