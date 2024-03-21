@@ -48,9 +48,9 @@ st.markdown("""
 authenticator.login()
 
 if st.session_state["authentication_status"] is False:
-    st.error('Username/password is incorrect')
+    st.error('Gebruikersnaam/wachtwoord is onjuist')
 elif st.session_state["authentication_status"] is None:
-    st.warning('Please enter your username and password')
+    st.warning('Voer uw gebruikersnaam en wachtwoord in')
 elif st.session_state["authentication_status"]:
     
     waarnemer = st.session_state["name"]
