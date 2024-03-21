@@ -261,6 +261,7 @@ elif st.session_state["authentication_status"]:
                                     db.delete(id)
                                     drive.delete(name)
                                     st.success('Gegevens verwijderd!', icon="✅")
+                                    st.switch_page("🗺️_Home.py")
                                     st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
                                 else:
                                     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
@@ -274,6 +275,7 @@ elif st.session_state["authentication_status"]:
                                 if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
                                     db.delete(id)
                                     st.success('Gegevens verwijderd!', icon="✅")
+                                    st.switch_page("🗺️_Home.py")
                                     st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
                                 else:
                                     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
