@@ -162,6 +162,7 @@ elif st.session_state["authentication_status"]:
             
     
     # --- APP ---    
+    st.page_link("pages/drop.py", label="Drop", icon="❌")
     on = st.toggle('✍️ Voeg een waarneming in')
 
     if on:
