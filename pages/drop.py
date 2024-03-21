@@ -239,7 +239,7 @@ try:
                 # with st.form("entry_form", clear_on_submit=True):
                 #     submitted = st.form_submit_button("Verwijder data")
                 #     if submitted:
-                # submitted = st.button("Verwijder data", type="primary")
+                submitted = st.button("Verwijder data", type="primary")
                 if submitted:
                     if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
                         db.delete(id)
