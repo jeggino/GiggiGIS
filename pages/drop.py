@@ -224,19 +224,19 @@ try:
             res = drive.get(name).read()
         
         
-        with st.form("entry_form", clear_on_submit=True):
-            submitted = st.form_submit_button("Verwijder data")
-            
-            if submitted:
-                if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
-                    db.delete(id)
-                    drive.delete(name)
-                    st.success('Gegevens verwijderd!', icon="✅")
-                    st.switch_page("🗺️_Home.py")
+            with st.form("entry_form", clear_on_submit=True):
+                submitted = st.form_submit_button("Verwijder data")
                 
-                else:
-                    st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
-    
+                if submitted:
+                    if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
+                        db.delete(id)
+                        drive.delete(name)
+                        st.success('Gegevens verwijderd!', icon="✅")
+                        st.switch_page("🗺️_Home.py")
+                    
+                    else:
+                        st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
+        
     
         except:
             st.info('Geen foto opgeslagen voor deze waarneming!')
