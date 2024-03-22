@@ -149,7 +149,7 @@ elif st.session_state["authentication_status"]:
     
     # --- APP ---    
 
-    st.page_link("pages/drop.py", label="Drop", icon="❌")
+    # st.page_link("pages/drop.py", label="Drop", icon="❌")
 
     
     
