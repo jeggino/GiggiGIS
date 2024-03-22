@@ -230,8 +230,6 @@ try:
                         db.delete(id)
                         drive.delete(name)
                         st.success('Gegevens verwijderd!', icon="✅")
-                        # st.switch_page("🗺️_Home.py", key="second")
-                    st.page_link("🗺️_Home.py", label="fff",  key="first")
                       
                     else:
                       st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
@@ -251,7 +249,7 @@ try:
                       st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
                       st.stop()
 
-                    st.switch_page("🗺️_Home.py")
+                    st.switch_page("🗺️_Home.py", key="second")
 
     except:
         st.stop()
