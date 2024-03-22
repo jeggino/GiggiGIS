@@ -74,6 +74,7 @@ elif st.session_state["authentication_status"]:
     OUTPUT_height = 610
     OUTPUT_width = 350
     CONTAINER_height = 640
+    ICON_SIZE = (10,10)
     
     # --- FUNCTIONS ---
     
@@ -200,26 +201,26 @@ elif st.session_state["authentication_status"]:
                     if df_2.iloc[i]['soortgroup'] == "Vleermuiskast":
                         folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                       popup=popup,
-                                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg)
+                                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg)
 
                     elif df_2.iloc[i]['soortgroup'] == "Vogels":
                         if df_2.iloc[i]['sp'] == "Huismus":
                             
                             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                           popup=popup,
-                                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_2)
+                                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_2)
                             
                         elif df_2.iloc[i]['sp'] == "Gierzwaluw":
                             
                             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                           popup=popup,
-                                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_4)
+                                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_4)
 
 
                     else:
                         folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                       popup=popup,
-                                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=(30,30))).add_to(fg_3)
+                                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_3)
                         
 
                 elif df_2.iloc[i]['geometry_type'] == "LineString":
