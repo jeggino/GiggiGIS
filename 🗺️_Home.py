@@ -74,7 +74,7 @@ elif st.session_state["authentication_status"]:
     OUTPUT_height = 610
     OUTPUT_width = 350
     CONTAINER_height = 640
-    ICON_SIZE = (15,15)
+    ICON_SIZE = (17,17)
     
     # --- FUNCTIONS ---
     
