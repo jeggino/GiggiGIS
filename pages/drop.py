@@ -230,7 +230,7 @@ try:
                         db.delete(id)
                         drive.delete(name)
                         st.success('Gegevens verwijderd!', icon="✅")
-                        st.switch_page("🗺️_Home.py", key="second")
+                        # st.switch_page("🗺️_Home.py", key="second")
                         st.page_link("🗺️_Home.py", label="fff",  key="first")
                       
                     else:
