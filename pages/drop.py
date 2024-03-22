@@ -227,16 +227,17 @@ try:
                 bot  = st.button("Drop")
                 if bot:
                     if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
-                      db.delete(id)
-                      drive.delete(name)
-                      st.success('Gegevens verwijderd!', icon="✅")
+                        db.delete(id)
+                        drive.delete(name)
+                        st.success('Gegevens verwijderd!', icon="✅")
+                        st.switch_page("🗺️_Home.py")
                         st.page_link("🗺️_Home.py", label="fff",  key="first")
                       
                     else:
                       st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
                       st.stop()
 
-                    st.switch_page("🗺️_Home.py")
+                    
                             
 
             except:
