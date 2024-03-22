@@ -78,21 +78,7 @@ elif st.session_state["authentication_status"]:
     # --- FUNCTIONS ---
     
     def load_dataset():
-        return db.fetch().items
-    
-            
-    
-    def map():
-        
-        m = folium.Map()
-        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False}).add_to(m)
-        Fullscreen().add_to(m)
-        LocateControl(auto_start=True).add_to(m)
-        
-        output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
-        
-        return  output
-    
+        return db.fetch().items      
     
 
     def popup_html(row):
@@ -162,7 +148,8 @@ elif st.session_state["authentication_status"]:
             
     
     # --- APP ---    
-    # st.page_link("pages/drop.py", label="Drop", icon="❌")
+
+    st.page_link("pages/drop.py", label="Drop", icon="❌")
     
     
     on = st.toggle('✍️ Voeg een waarneming in')
