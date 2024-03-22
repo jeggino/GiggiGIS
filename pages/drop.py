@@ -223,8 +223,9 @@ try:
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
                     st.image(res)
-                    
-                if st.button("Drop"):
+
+                bot  = st.button("Drop")
+                if bot:
                     if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
                       db.delete(id)
                       drive.delete(name)
