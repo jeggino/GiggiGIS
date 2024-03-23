@@ -89,56 +89,53 @@ def input_data():
         
         output = map()
     
-    with st.popover("vsdf"):
         
-        submitted = st.button("Gegevens opslaan")
-        
-        if submitted:           
+    submitted = popover.button("Gegevens opslaan")
+    
+    if submitted:           
 
-            try:
+        try:
 
-                output["features"] = output.pop("all_drawings")
-                geometry_type = output["features"][0]["geometry"]["type"]
-                coordinates = output["features"][0]["geometry"]["coordinates"] 
+            output["features"] = output.pop("all_drawings")
+            geometry_type = output["features"][0]["geometry"]["type"]
+            coordinates = output["features"][0]["geometry"]["coordinates"] 
+            
+            if geometry_type == "LineString":
                 
-                if geometry_type == "LineString":
-                    
-                    lng = None
-                    lat = None
-                    key = None
+                lng = None
+                lat = None
+                key = None
+            
+            else: 
                 
-                else: 
-                    
-                    lng = coordinates[0]
-                    lat = coordinates[1]
-                    coordinates = None
-                    
-                    key = str(lng)+str(lat)
+                lng = coordinates[0]
+                lat = coordinates[1]
+                coordinates = None
+                
+                key = str(lng)+str(lat)
 
-                if len(output["features"]) > 1:
-                    st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
-                    st.stop()
+            if len(output["features"]) > 1:
+                popover.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
+                popover.stop()
 
+            else:
+
+                if uploaded_file is not None:
+                    bytes_data = uploaded_file.getvalue()
+                    drive.put(f"{key}.jpeg", data=bytes_data)            
+                    insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
+                
                 else:
+                    insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
 
-                    if uploaded_file is not None:
-                        bytes_data = uploaded_file.getvalue()
-                        drive.put(f"{key}.jpeg", data=bytes_data)            
-                        with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
-                    
-                    else:
-                        with st.spinner('Wait for it...'):
-                            insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
+                popover.success('Gegevens opgeslagen!', icon="✅")
+                
+                
+                
 
-                    st.success('Gegevens opgeslagen!', icon="✅")
-                    
-                    
-                    
-
-            except:
-                st.info("Markeer een waarneming")
-                st.stop()
+        except:
+            popover.info("Markeer een waarneming")
+            popover.stop()
 
             st.switch_page("🗺️_Home.py")
 
@@ -184,43 +181,43 @@ def input_data():
 #     with st.expander("Upload een foto"):
 #         uploaded_file = st.camera_input("")
 
-with st.popover("📋"):
+popover = st.popover("Filter items")
 
-    soortgroup = st.selectbox("", GROUP)
-    datum = st.date_input("Datum")        
+soortgroup = popover.selectbox("", GROUP)
+datum = popover.date_input("Datum")        
 
-    if soortgroup == '🦇 Vleermuizen':
-    
-        sp = st.selectbox("Soort", BAT_NAMES)
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-        onbewoond = None
-    
-    elif soortgroup == '🪶 Vogels':
-    
-        sp = st.selectbox("Soort", BIRD_NAMES)
-        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-        onbewoond = None
-    
-    elif soortgroup == '🏠 Vleermuiskast':
-        onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
-        BAT_NAMES = ["onbekend"] + BAT_NAMES
-        sp = st.selectbox("Soort", BAT_NAMES) 
-        gedrag = None
-        functie = None
-        verblijf = None
-        
-    
-    aantal = st.number_input("Aantal", min_value=0)
-    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-    
-    with st.expander("Upload een foto"):
-        uploaded_file = st.camera_input("")
-        
-    st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
+if soortgroup == '🦇 Vleermuizen':
 
-    input_data()
+    sp = popover.selectbox("Soort", BAT_NAMES)
+    gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
+    functie = popover.selectbox("Functie", BAT_FUNCTIE) 
+    verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
+    onbewoond = None
+
+elif soortgroup == '🪶 Vogels':
+
+    sp = popover.selectbox("Soort", BIRD_NAMES)
+    gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+    functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
+    verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
+    onbewoond = None
+
+elif soortgroup == '🏠 Vleermuiskast':
+    onbewoond = popover.selectbox("Bewoond", ["Ja","Nee"])
+    BAT_NAMES = ["onbekend"] + BAT_NAMES
+    sp = popover.selectbox("Soort", BAT_NAMES) 
+    gedrag = None
+    functie = None
+    verblijf = None
+    
+
+aantal = popover.number_input("Aantal", min_value=0)
+opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
+
+with popover.expander("Upload een foto"):
+    uploaded_file = st.camera_input("")
+    
+popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
+
+input_data()
 
