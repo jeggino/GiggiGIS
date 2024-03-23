@@ -184,9 +184,7 @@ def input_data():
 #     with st.expander("Upload een foto"):
 #         uploaded_file = st.camera_input("")
 
-col_1, col_2 = st.columns(2)
-
-with col_1.popover("Open popover"):
+with st.popover("Open popover"):
 
     soortgroup = st.selectbox("", GROUP)
     datum = st.date_input("Datum")        
@@ -222,6 +220,6 @@ with col_1.popover("Open popover"):
     with st.expander("Upload een foto"):
         uploaded_file = st.camera_input("")
         
-col_2.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
+    st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 
 input_data()
