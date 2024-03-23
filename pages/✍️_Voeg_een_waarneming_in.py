@@ -184,7 +184,7 @@ def input_data():
 #     with st.expander("Upload een foto"):
 #         uploaded_file = st.camera_input("")
 
-col_1, col_2 = st.columns(2):
+col_1, col_2 = st.columns(2)
 
 with col_1.popover("Open popover"):
 
