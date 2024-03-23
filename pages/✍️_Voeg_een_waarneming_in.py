@@ -146,9 +146,47 @@ def input_data():
 
 # --- APP ---    
 
-with st.sidebar:
+# with st.sidebar:
 
     
+
+#     soortgroup = st.selectbox("", GROUP)
+#     datum = st.date_input("Datum")        
+
+#     if soortgroup == '🦇 Vleermuizen':
+    
+#         sp = st.selectbox("Soort", BAT_NAMES)
+#         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+#         functie = st.selectbox("Functie", BAT_FUNCTIE) 
+#         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+#         onbewoond = None
+    
+#     elif soortgroup == '🪶 Vogels':
+    
+#         sp = st.selectbox("Soort", BIRD_NAMES)
+#         gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+#         functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+#         verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+#         onbewoond = None
+    
+#     elif soortgroup == '🏠 Vleermuiskast':
+#         onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
+#         BAT_NAMES = ["onbekend"] + BAT_NAMES
+#         sp = st.selectbox("Soort", BAT_NAMES) 
+#         gedrag = None
+#         functie = None
+#         verblijf = None
+        
+    
+#     aantal = st.number_input("Aantal", min_value=0)
+#     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+    
+#     with st.expander("Upload een foto"):
+#         uploaded_file = st.camera_input("")
+
+col_1, col_2 = st.columns(2):
+
+with col_1.popover("Open popover"):
 
     soortgroup = st.selectbox("", GROUP)
     datum = st.date_input("Datum")        
@@ -183,13 +221,7 @@ with st.sidebar:
     
     with st.expander("Upload een foto"):
         uploaded_file = st.camera_input("")
-
-st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
+        
+col_2.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 
 input_data()
-
-with st.popover("Open popover"):
-    st.markdown("Hello World 👋")
-    name = st.text_input("What's your name?")
-
-st.write("Your name:", name)
