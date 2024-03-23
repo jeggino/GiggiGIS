@@ -187,3 +187,9 @@ with st.sidebar:
 st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 
 input_data()
+
+with st.popover("Open popover"):
+    st.markdown("Hello World 👋")
+    name = st.text_input("What's your name?")
+
+st.write("Your name:", name)
