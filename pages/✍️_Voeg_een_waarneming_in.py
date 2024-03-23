@@ -89,7 +89,7 @@ def input_data():
         
         output = map()
     
-    with st.sidebar:
+    with st.popover("vsdf"):
         
         submitted = st.button("Gegevens opslaan")
         
