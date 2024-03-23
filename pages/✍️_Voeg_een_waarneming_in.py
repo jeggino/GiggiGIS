@@ -135,9 +135,9 @@ def input_data():
 
         except:
             popover.info("Markeer een waarneming")
-            popover.stop()
+            st.stop()
 
-            popover.switch_page("🗺️_Home.py")
+        popover.switch_page("🗺️_Home.py")
 
     
 
