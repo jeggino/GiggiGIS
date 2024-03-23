@@ -137,7 +137,7 @@ def input_data():
             popover.info("Markeer een waarneming")
             popover.stop()
 
-            st.switch_page("🗺️_Home.py")
+            popover.switch_page("🗺️_Home.py")
 
     
 
