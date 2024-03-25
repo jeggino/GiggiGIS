@@ -181,7 +181,7 @@ def input_data():
 #     with st.expander("Upload een foto"):
 #         uploaded_file = st.camera_input("")
 
-popover = st.popover("Filter items")
+popover = st.popover("🗒️")
 
 soortgroup = popover.selectbox("", GROUP)
 datum = popover.date_input("Datum")        
