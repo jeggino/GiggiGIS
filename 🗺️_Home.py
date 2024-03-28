@@ -173,6 +173,7 @@ elif st.session_state["authentication_status"]:
                                                  else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
                                                        else ICON["Nest_unbezet"]))), axis=1)
         
+        
         map = folium.Map()
         LocateControl(auto_start=True).add_to(map)
         Fullscreen().add_to(map)
