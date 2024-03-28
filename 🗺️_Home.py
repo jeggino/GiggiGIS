@@ -151,9 +151,9 @@ elif st.session_state["authentication_status"]:
     # --- APP ---    
 
     # st.page_link("pages/drop.py", label="Drop", icon="❌")
-
+    col1, col2 = st.columns([3, 2])
     
-    st.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="Voeg een waarneming in", icon="✍️")
+    col1.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="Voeg een waarneming in", icon="✍️")
         
     try:
         
@@ -228,7 +228,7 @@ elif st.session_state["authentication_status"]:
             id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
             name = f"{id}.jpeg"
     
-            with st.sidebar:
+            with col2.popover("Open popover"):
 
                 
 
