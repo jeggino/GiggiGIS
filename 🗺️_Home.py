@@ -162,16 +162,16 @@ elif st.session_state["authentication_status"]:
             
         df_2 = df_point
         
-        # df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if (x["soortgroup"]=="Vogels" & x["functie"]!="nestlocatie") 
-        #                                else (ICON["Bat"] if x["soortgroup"]=="Vleermuizen"  
-        #                                      else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
-        #                                            else ICON["Nest_unbezet"])), axis=1)
+        df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if (x["soortgroup"]=="Vogels" & x["functie"]!="nestlocatie") 
+                                       else (ICON["Bat"] if x["soortgroup"]=="Vleermuizen"  
+                                             else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
+                                                   else ICON["Nest_unbezet"])), axis=1)
 
-        df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if ((x["soortgroup"]=="Vogels") & (x["functie"]!="nestlocatie")) 
-                                       else (ICON["Swift_nest"] if ((x["soortgroup"]=="Vogels") & (x["functie"]=="nestlocatie"))
-                                              else (ICON["Bat"] if x["soortgroup"]=="Vleermuizen"  
-                                                 else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
-                                                       else ICON["Nest_unbezet"]))), axis=1)
+        # df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if ((x["soortgroup"]=="Vogels") & (x["functie"]!="nestlocatie")) 
+        #                                else (ICON["Swift_nest"] if ((x["soortgroup"]=="Vogels") & (x["functie"]=="nestlocatie"))
+        #                                       else (ICON["Bat"] if x["soortgroup"]=="Vleermuizen"  
+        #                                          else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
+        #                                                else ICON["Nest_unbezet"]))), axis=1)
         
         
         map = folium.Map()
