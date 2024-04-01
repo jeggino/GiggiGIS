@@ -186,7 +186,7 @@ elif st.session_state["authentication_status"]:
         map.add_child(fg_2)
         map.add_child(fg_4)
         map.add_child(fg_3)
-        folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(m)
+        folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
         folium.LayerControl().add_to(map)
        
 
