@@ -74,6 +74,7 @@ def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf
 def map():
     
     m = folium.Map()
+    folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(m)
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False,}).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
