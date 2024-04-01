@@ -78,6 +78,8 @@ def map():
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False,}).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
+    folium.LayerControl().add_to(m)
+
     
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     
