@@ -8,6 +8,7 @@ credentials:
       email: jeggino@gmail.com
       logged_in: False
       name: Luigi Giugliano
+      project: jobert
       password: Platinum_79
 
     Mischa:
@@ -26,6 +27,7 @@ credentials:
       email: jeggino@gmail.com
       logged_in: False
       name: Daan
+      project: other
       password: Daan_2024
 preauthorized:
   emails: melsby@gmail.com
