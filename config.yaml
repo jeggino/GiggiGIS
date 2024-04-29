@@ -15,12 +15,14 @@ credentials:
       email: jeggino@gmail.com
       logged_in: False
       name: Mischa van der Hout
+      project: other
       password: veld_2024
 
     Maarten:
       email: jeggino@gmail.com
       logged_in: False
       name: Maarten
+      project: other
       password: veld_2024
 
     daan:
