@@ -61,13 +61,13 @@ elif st.session_state["authentication_status"] is None:
 elif st.session_state["authentication_status"]:
     
     
-    project = st.session_state["name"]
+    waarnemer = st.session_state["name"]
     st.selectbox(
     'How would you like to be contacted?',
-    ('Jobert', 'other'), key="name")
+    ('jobert', 'other'), key="peppe")
 
     # This exists now:
-    project = st.session_state.name
+    project = st.session_state.peppe
     st.write(project)
 
     
