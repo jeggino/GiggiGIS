@@ -46,9 +46,13 @@ unsafe_allow_html=True)
 
 try:
     waarnemer = st.session_state["name"]
-    # project = st.session_state["project"]
-        # --- CONNECT TO DETA ---
-    deta = Deta(st.secrets[f"deta_key_{project}"])
+    
+    if waarnemer == 'Luigi Giugliano':
+        deta = Deta(st.secrets[f"deta_key_jobert"])
+
+    else:
+        deta = Deta(st.secrets[f"deta_key_other"])
+        
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
     
