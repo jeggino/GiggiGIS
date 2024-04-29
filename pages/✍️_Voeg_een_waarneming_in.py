@@ -42,13 +42,15 @@ st.markdown("""
 unsafe_allow_html=True)
 
 
-# --- CONNECT TO DETA ---
-deta = Deta(st.secrets[f"deta_key_{option}"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
+
 
 try:
     waarnemer = st.session_state["name"]
+    project = st.session_state["project"]
+        # --- CONNECT TO DETA ---
+    deta = Deta(st.secrets[f"deta_key_{project}"])
+    db = deta.Base("df_observations")
+    drive = deta.Drive("df_pictures")
     
 except:
     st.switch_page("🗺️_Home.py")
