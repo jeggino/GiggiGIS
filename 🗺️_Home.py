@@ -62,7 +62,7 @@ elif st.session_state["authentication_status"]:
     
     # waarnemer = st.session_state["name"]
     # st.write(waarnemer)
-    project = st.session_state["project"]
+    project = st.session_state["name"]
     st.write(project)
 
     
