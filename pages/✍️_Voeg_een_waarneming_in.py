@@ -43,7 +43,7 @@ unsafe_allow_html=True)
 
 
 # --- CONNECT TO DETA ---
-deta = Deta(st.secrets["deta_key"])
+deta = Deta(st.secrets[f"deta_key_{option}"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 
