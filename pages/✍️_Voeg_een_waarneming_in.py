@@ -46,7 +46,7 @@ unsafe_allow_html=True)
 
 try:
     waarnemer = st.session_state["name"]
-    project = st.session_state["project"]
+    # project = st.session_state["project"]
         # --- CONNECT TO DETA ---
     deta = Deta(st.secrets[f"deta_key_{project}"])
     db = deta.Base("df_observations")
