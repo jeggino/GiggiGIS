@@ -51,6 +51,9 @@ reduce_header_height_style = """
 </style>
 """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+option = st.selectbox(
+'Select a project',
+('jobert', 'other'))
 
 authenticator.login()
 
@@ -62,9 +65,7 @@ elif st.session_state["authentication_status"]:
     
     waarnemer = st.session_state["name"]
 
-    option = st.selectbox(
-    'Select a project',
-    ('jobert', 'other'))
+    
 
 
     
