@@ -53,8 +53,7 @@ reduce_header_height_style = """
 """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-waarnemer, authentication_status, username = authenticator.login('Login', 'main')
-# authenticator.login()
+authenticator.login()
 
 if st.session_state["authentication_status"] is False:
     st.error('Gebruikersnaam/wachtwoord is onjuist')
@@ -62,13 +61,15 @@ elif st.session_state["authentication_status"] is None:
     st.warning('Voer uw gebruikersnaam en wachtwoord in')
 elif st.session_state["authentication_status"]:
 
-    st.write(waarnemer)
-    st.write(username)
-    # waarnemer = st.session_state.name
-    # project = st.session_state.email
+    waarnemer = st.session_state.name
 
-    # --- CONNECT TO DETA ---
-    deta = Deta(st.secrets[f"deta_key_{project}"])
+    if waarnemer == 'Luigi Giugliano':
+        deta = Deta(st.secrets[f"deta_key_jobert"])
+
+    else:
+        deta = Deta(st.secrets[f"deta_key_other"])
+        
+
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
 
