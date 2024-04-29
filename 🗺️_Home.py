@@ -60,19 +60,9 @@ elif st.session_state["authentication_status"] is None:
     st.warning('Voer uw gebruikersnaam en wachtwoord in')
 elif st.session_state["authentication_status"]:
     
-    
+    write(st.session_state["authentication_status"])
     waarnemer = st.session_state.name
     project = st.session_state.project
-    # st.selectbox(
-    # 'How would you like to be contacted?',
-    # ('jobert', 'other'), key="project")
-
-    # # This exists now:
-    # project = st.session_state.project
-    # st.write(project)
-
-    
-
 
     
     
