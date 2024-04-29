@@ -61,14 +61,15 @@ elif st.session_state["authentication_status"] is None:
 elif st.session_state["authentication_status"]:
     
     
-    waarnemer = st.session_state["name"]
-    st.selectbox(
-    'How would you like to be contacted?',
-    ('jobert', 'other'), key="peppe")
+    waarnemer = st.session_state.name
+    project = st.session_state.project
+    # st.selectbox(
+    # 'How would you like to be contacted?',
+    # ('jobert', 'other'), key="project")
 
-    # This exists now:
-    project = st.session_state.peppe
-    st.write(project)
+    # # This exists now:
+    # project = st.session_state.project
+    # st.write(project)
 
     
 
