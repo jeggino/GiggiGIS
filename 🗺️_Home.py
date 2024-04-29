@@ -61,10 +61,8 @@ elif st.session_state["authentication_status"] is None:
 elif st.session_state["authentication_status"]:
     
     waarnemer = st.session_state.name
-    project = st.session_state.email
+    # project = st.session_state.email
 
-    
-    
     # --- CONNECT TO DETA ---
     deta = Deta(st.secrets[f"deta_key_{project}"])
     db = deta.Base("df_observations")
