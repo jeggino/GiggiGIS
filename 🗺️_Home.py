@@ -62,11 +62,15 @@ elif st.session_state["authentication_status"]:
     
     waarnemer = st.session_state["name"]
 
+    option = st.selectbox(
+    'Select a project',
+    ('jobert', 'other'))
+
 
     
     
     # --- CONNECT TO DETA ---
-    deta = Deta(st.secrets["deta_key"])
+    deta = Deta(st.secrets[f"deta_key_{option}"])
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
 
