@@ -51,9 +51,6 @@ reduce_header_height_style = """
 </style>
 """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
-option = st.selectbox(
-'Select a project',
-('jobert', 'other'))
 
 authenticator.login()
 
@@ -64,6 +61,7 @@ elif st.session_state["authentication_status"] is None:
 elif st.session_state["authentication_status"]:
     
     waarnemer = st.session_state["name"]
+    project = st.session_state["project"]
 
     
 
@@ -71,7 +69,7 @@ elif st.session_state["authentication_status"]:
     
     
     # --- CONNECT TO DETA ---
-    deta = Deta(st.secrets[f"deta_key_{option}"])
+    deta = Deta(st.secrets[f"deta_key_{project}"])
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
 
