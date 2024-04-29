@@ -30,6 +30,7 @@ st.set_page_config(
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
+
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
@@ -52,15 +53,18 @@ reduce_header_height_style = """
 """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-authenticator.login()
+waarnemer, authentication_status, username = authenticator.login('Login', 'main')
+# authenticator.login()
 
 if st.session_state["authentication_status"] is False:
     st.error('Gebruikersnaam/wachtwoord is onjuist')
 elif st.session_state["authentication_status"] is None:
     st.warning('Voer uw gebruikersnaam en wachtwoord in')
 elif st.session_state["authentication_status"]:
-    
-    waarnemer = st.session_state.name
+
+    st.write(waarnemer)
+    st.write(username)
+    # waarnemer = st.session_state.name
     # project = st.session_state.email
 
     # --- CONNECT TO DETA ---
