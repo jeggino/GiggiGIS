@@ -8,28 +8,12 @@ credentials:
       email: jeggino@gmail.com
       logged_in: False
       name: Luigi Giugliano
-      project: jobert
       password: Platinum_79
-
-    Mischa:
-      email: jeggino@gmail.com
-      logged_in: False
-      name: Mischa van der Hout
-      project: other
-      password: veld_2024
-
-    Maarten:
-      email: jeggino@gmail.com
-      logged_in: False
-      name: Maarten
-      project: other
-      password: veld_2024
 
     daan:
       email: jeggino@gmail.com
       logged_in: False
       name: Daan
-      project: other
       password: Daan_2024
 preauthorized:
   emails: melsby@gmail.com
