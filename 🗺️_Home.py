@@ -62,7 +62,6 @@ elif st.session_state["authentication_status"] is None:
 elif st.session_state["authentication_status"]:
 
     waarnemer = st.session_state.name
-    st.write(waarnemer)
 
     if waarnemer == 'Luigi Giugliano':
         deta = Deta(st.secrets[f"deta_key_jobert"])
