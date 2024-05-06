@@ -44,7 +44,7 @@ def load_dataset():
     return db.fetch().items
 
 
-db_content = pd.Dataframe(load_dataset())
+db_content = pd.DataFrame(load_dataset())
 
 st.dataframe(data=db_content, width=None, height=None, use_container_width=False, hide_index=True, column_order=None, column_config=None)
 
