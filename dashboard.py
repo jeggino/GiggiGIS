@@ -4,7 +4,7 @@ import pandas as pd
 from deta import Deta
 
 st.set_page_config(
-    page_title="GiggiGIS",
+    page_title="Dashboard_jobert_2024",
     page_icon="🗺️",
     layout="wide",
     
@@ -23,7 +23,7 @@ footer {visibility: hidden;}
 
 
 # --- CONNECT TO DETA ---
-deta = Deta(st.secrets["deta_key"])
+deta = Deta(st.secrets["deta_key_jobert"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 
@@ -34,9 +34,4 @@ def load_dataset():
 
 
 db_content = load_dataset()
-# df_point = pd.DataFrame(db_content)        
-# df_point['datum'] = pd.to_datetime(df_point['datum']).dt.date
 st.write(db_content)
-
-
-# df_point
