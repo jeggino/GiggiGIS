@@ -23,7 +23,7 @@ footer {visibility: hidden;}
 
 
 # --- CONNECT TO DETA ---
-deta = Deta(st.secrets["deta_key_jobert"])
+deta = Deta(st.secrets["deta_key"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 
