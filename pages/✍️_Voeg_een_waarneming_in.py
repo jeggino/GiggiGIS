@@ -48,13 +48,14 @@ try:
     waarnemer = st.session_state["name"]
     
     if waarnemer == 'Luigi Giugliano':
-        deta = Deta(st.secrets[f"deta_key_jobert"])
+        db = deta.Base("df")
+        drive = deta.Drive("df_pictures")
 
     else:
         deta = Deta(st.secrets[f"deta_key_other"])
+        db = deta.Base("df_observations")
+        drive = deta.Drive("df_pictures")
         
-    db = deta.Base("df_observations")
-    drive = deta.Drive("df_pictures")
     
 except:
     st.switch_page("🗺️_Home.py")
