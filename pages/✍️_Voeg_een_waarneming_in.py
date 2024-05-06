@@ -44,23 +44,6 @@ unsafe_allow_html=True)
 
 
 
-try:
-    waarnemer = st.session_state["name"]
-    
-    if waarnemer == 'Luigi Giugliano':
-        deta = Deta(st.secrets[f"deta_key_jobert"])
-        db = deta.Base("df_observations")
-        drive = deta.Drive("df_pictures")
-
-    else:
-        deta = Deta(st.secrets[f"deta_key_other"])
-        db = deta.Base("df_observations")
-        drive = deta.Drive("df_pictures")
-        
-    
-except:
-    st.switch_page("🗺️_Home.py")
-
 # --- DIMENSIONS ---
 OUTPUT_height = 610
 OUTPUT_width = 350
@@ -150,10 +133,31 @@ def input_data():
 
     
 
-# --- APP ---    
+# --- APP ---  
 popover = st.popover("🗒️")
 
+try:
+    waarnemer = st.session_state["name"]
+    
+    if waarnemer == 'Luigi Giugliano':
+        deta = Deta(st.secrets[f"deta_key_jobert"])
+        db = deta.Base("df_observations")
+        drive = deta.Drive("df_pictures")
+
+    else:
+        deta = Deta(st.secrets[f"deta_key_other"])
+        db = deta.Base("df_observations")
+        drive = deta.Drive("df_pictures")
+        
+    
+except:
+    st.switch_page("🗺️_Home.py")
+
+
 popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
+if waarnemer == 'Luigi Giugliano':
+    project = popover.selectbox("Project", ["Zaandam","kjhsdkfj"],key="project")
+    
 soortgroup = popover.selectbox("", GROUP)
 datum = popover.date_input("Datum")        
 
