@@ -22,6 +22,7 @@ from yaml.loader import SafeLoader
 
 st.set_page_config(
     page_title="GigGIS",
+    initial_sidebar_state="collapsed"
     page_icon="📝",
     layout="wide",
     
@@ -52,6 +53,18 @@ reduce_header_height_style = """
 </style>
 """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+
+
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
 
 authenticator.login()
 
