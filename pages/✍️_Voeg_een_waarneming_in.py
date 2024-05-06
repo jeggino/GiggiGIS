@@ -48,6 +48,7 @@ try:
     waarnemer = st.session_state["name"]
     
     if waarnemer == 'Luigi Giugliano':
+        deta = Deta(st.secrets[f"deta_key_jobert"])
         db = deta.Base("df_observations")
         drive = deta.Drive("df_pictures")
 
