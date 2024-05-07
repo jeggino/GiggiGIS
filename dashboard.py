@@ -6,6 +6,7 @@ from deta import Deta
 st.set_page_config(
     page_title="Dashboard_jobert_2024",
     page_icon="🗺️",
+    initial_sidebar_state="collapsed",
     layout="wide",
     
 )
@@ -19,16 +20,16 @@ footer {visibility: hidden;}
 }
 </style> """, unsafe_allow_html=True)
 
-st.markdown(
-    """
-<style>
-    [data-testid="collapsedControl"] {
-        display: none
-    }
-</style>
-""",
-    unsafe_allow_html=True,
-)
+# st.markdown(
+#     """
+# <style>
+#     [data-testid="collapsedControl"] {
+#         display: none
+#     }
+# </style>
+# """,
+#     unsafe_allow_html=True,
+# )
 
 
 
