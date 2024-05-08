@@ -169,7 +169,7 @@ except:
 
 popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 if waarnemer == 'Luigi Giugliano':
-    project = popover.selectbox("Project", ["Zaandam","kjhsdkfj"],key="project")
+    project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
 else:
     project = None
     
