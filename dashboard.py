@@ -47,7 +47,7 @@ def load_dataset():
 
 db_content = pd.DataFrame(load_dataset())
 
-project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
+project = st.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
 db_content = db_content[db_content["project"]==project]
 
 
