@@ -47,4 +47,8 @@ def load_dataset():
 
 db_content = pd.DataFrame(load_dataset())
 
+project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
+db_content = db_content[db_content["project"]==project]
+
+
 st.dataframe(data=db_content, width=None, height=None, use_container_width=False, hide_index=True, column_order=None, column_config=None)
