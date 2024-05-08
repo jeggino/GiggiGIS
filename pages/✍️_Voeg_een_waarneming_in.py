@@ -22,6 +22,7 @@ from yaml.loader import SafeLoader
 st.set_page_config(
     page_title="GigGIS",
     page_icon="📝",
+    initial_sidebar_state="collapsed",
     layout="wide",
     
 )
@@ -130,7 +131,7 @@ def input_data():
                     insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project)
                 
                 else:
-                    insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project)
+                    insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project)
 
                 popover.success('Gegevens opgeslagen!', icon="✅")
                 
