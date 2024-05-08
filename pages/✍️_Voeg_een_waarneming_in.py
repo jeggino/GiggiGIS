@@ -66,11 +66,11 @@ CONTAINER_height = 640
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates):
+def insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project):
 
     return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates})
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates,"project":project})
         
 
 def map():
@@ -127,10 +127,10 @@ def input_data():
                 if uploaded_file is not None:
                     bytes_data = uploaded_file.getvalue()
                     drive.put(f"{key}.jpeg", data=bytes_data)            
-                    insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
+                    insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project)
                 
                 else:
-                    insert_json(key,waarnemer,str(datum),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
+                    insert_json(key,waarnemer,datum,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project)
 
                 popover.success('Gegevens opgeslagen!', icon="✅")
                 
@@ -169,6 +169,8 @@ except:
 popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 if waarnemer == 'Luigi Giugliano':
     project = popover.selectbox("Project", ["Zaandam","kjhsdkfj"],key="project")
+else:
+    project = None
     
 soortgroup = popover.selectbox("", GROUP)
 datum = popover.date_input("Datum")        
