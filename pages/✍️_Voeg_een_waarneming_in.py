@@ -180,7 +180,7 @@ if soortgroup == '🦇 Vleermuizen':
 
     sp = popover.selectbox("Soort", BAT_NAMES)
     gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
-    functie = popover.selectbox("Functie", BAT_FUNCTIE) 
+    functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
     verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
     onbewoond = None
 
