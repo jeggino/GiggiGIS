@@ -174,8 +174,8 @@ else:
     project = None
     
 soortgroup = popover.selectbox("", GROUP)
-datum = popover.date_input("Datum",datetime.datetime.now().date())       
-time = popover.time_input("Tijd", datetime.datetime.now().time())
+datum = popover.date_input("Datum","today")       
+time = popover.time_input("Tijd", "now")
 
 if soortgroup == '🦇 Vleermuizen':
 
