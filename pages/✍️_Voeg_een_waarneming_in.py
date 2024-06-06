@@ -170,12 +170,12 @@ except:
 def vote():
     st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
     if waarnemer == 'Luigi Giugliano':
-        project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
+        project = st.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
     else:
         project = None
         
     soortgroup = st.selectbox("", GROUP)
-    datum = popstover.date_input("Datum","today")       
+    datum = st.date_input("Datum","today")       
     time = st.time_input("Tijd", "now")
     
     if soortgroup == '🦇 Vleermuizen':
