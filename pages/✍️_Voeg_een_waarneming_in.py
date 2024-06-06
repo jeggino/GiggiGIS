@@ -147,7 +147,7 @@ def input_data():
     
 
 # --- APP ---  
-# popover = st.popover("🗒️")
+popover = st.popover("🗒️")
 
 try:
     waarnemer = st.session_state["name"]
@@ -167,52 +167,48 @@ except:
     st.switch_page("🗺️_Home.py")
 
 
-BAT_NAMES = BAT_NAMES
-@st.experimental_dialog("---")
-def vote():
     
-    st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
-    if waarnemer == 'Luigi Giugliano':
-        project = st.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
-    else:
-        project = None
-        
-    soortgroup = st.selectbox("", GROUP)
-    datum = st.date_input("Datum","today")       
-    time = st.time_input("Tijd", "now")
+popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
+if waarnemer == 'Luigi Giugliano':
+    project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
+else:
+    project = None
     
-    if soortgroup == '🦇 Vleermuizen':
-    
-        sp = st.selectbox("Soort", BAT_NAMES)
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-        onbewoond = None
-    
-    elif soortgroup == '🪶 Vogels':
-    
-        sp = st.selectbox("Soort", BIRD_NAMES)
-        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-        onbewoond = None
-    
-    elif soortgroup == '🏠 Vleermuiskast':
-        onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
-        BAT_NAMES = ["onbekend"] + BAT_NAMES
-        sp = st.selectbox("Soort", BAT_NAMES) 
-        gedrag = None
-        functie = None
-        verblijf = None
-        
-    
-    aantal = st.number_input("Aantal", min_value=0)
-    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-    
-    with st.expander("Upload een foto"):
-        uploaded_file = st.camera_input("")
+soortgroup = popover.selectbox("", GROUP)
+datum = popover.date_input("Datum","today")       
+time = popover.time_input("Tijd", "now")
 
-if st.button("📝"):
-    vote()
-    input_data()
+if soortgroup == '🦇 Vleermuizen':
+
+    sp = popover.selectbox("Soort", BAT_NAMES)
+    gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
+    functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
+    verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
+    onbewoond = None
+
+elif soortgroup == '🪶 Vogels':
+
+    sp = popover.selectbox("Soort", BIRD_NAMES)
+    gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+    functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
+    verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
+    onbewoond = None
+
+elif soortgroup == '🏠 Vleermuiskast':
+    onbewoond = popover.selectbox("Bewoond", ["Ja","Nee"])
+    BAT_NAMES = ["onbekend"] + BAT_NAMES
+    sp = popover.selectbox("Soort", BAT_NAMES) 
+    gedrag = None
+    functie = None
+    verblijf = None
+    
+
+aantal = popover.number_input("Aantal", min_value=0)
+opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
+
+with popover.expander("Upload een foto"):
+    uploaded_file = st.camera_input("")
+
+
+input_data()
 
