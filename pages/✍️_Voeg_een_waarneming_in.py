@@ -147,7 +147,7 @@ def input_data():
     
 
 # --- APP ---  
-popover = st.popover("🗒️")
+# popover = st.popover("🗒️")
 
 try:
     waarnemer = st.session_state["name"]
@@ -166,8 +166,11 @@ try:
 except:
     st.switch_page("🗺️_Home.py")
 
+
+
 @st.experimental_dialog("---")
 def vote():
+    BAT_NAMES = BAT_NAMES
     st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
     if waarnemer == 'Luigi Giugliano':
         project = st.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
