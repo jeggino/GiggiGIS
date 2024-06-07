@@ -39,6 +39,15 @@ st.set_page_config(
 #     unsafe_allow_html=True
 # )
 
+st.markdown(f"""
+    <style>
+        .reportview-container .main .block-container{{
+            padding-top: 0 rem;
+        }}
+    </style>""",
+    unsafe_allow_html=True,
+)
+
 st.markdown(
     """
 <style>
@@ -59,7 +68,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 25px; padding-bottom: 0em; padding-left: 0rem; padding-right: 0rem; margin-top: -2em; margin-bottom: 2em;}
+    div.block-container {padding-bottom: 0em; padding-left: 0rem; padding-right: 0rem; margin-top: -2em; margin-bottom: 2em;}
 </style>
 """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
