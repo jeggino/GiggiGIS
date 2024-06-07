@@ -39,9 +39,18 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown("""
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    </style>
+    """,
+    unsafe_allow_html=True)
 
-
-
+reduce_header_height_style = """
+<style>
+    div.block-container {padding-top: 0em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -5em; margin-bottom: 2em;}
+</style>
+"""
 
 
 # ---AUTENTICATION---
@@ -59,25 +68,18 @@ authenticator = stauth.Authenticate(
 
 authenticator.login()
 
-st.markdown("""
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
-    </style>
-    """,
-    unsafe_allow_html=True)
 
-reduce_header_height_style = """
-<style>
-    div.block-container {padding-top: 0em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -3em; margin-bottom: 2em;}
-</style>
-"""
-st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+
+
+
 
 if st.session_state["authentication_status"] is False:
     st.error('Gebruikersnaam/wachtwoord is onjuist')
 elif st.session_state["authentication_status"] is None:
     st.warning('Voer uw gebruikersnaam en wachtwoord in')
 elif st.session_state["authentication_status"]:
+
+    st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
     waarnemer = st.session_state.name
 
