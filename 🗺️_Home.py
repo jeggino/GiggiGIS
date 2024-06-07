@@ -28,26 +28,6 @@ st.set_page_config(
     
 )
 
-# st.markdown(
-#     body="""
-#         <style>
-#             .block-container{
-#                     padding-top: 25px;
-#                 }
-#         </style>
-#     """, 
-#     unsafe_allow_html=True
-# )
-
-st.markdown(f"""
-    <style>
-        .reportview-container .main .block-container{{
-            padding-top: 0 rem;
-        }}
-    </style>""",
-    unsafe_allow_html=True,
-)
-
 st.markdown(
     """
 <style>
@@ -68,7 +48,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -2em; margin-bottom: 2em;}
+    div.block-container {padding-top: 1em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -2em; margin-bottom: 2em;}
 </style>
 """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
