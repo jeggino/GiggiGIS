@@ -22,9 +22,9 @@ from yaml.loader import SafeLoader
 # ---LAYOUT---
 st.set_page_config(
     page_title="GigGIS",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="auto",
     page_icon="📝",
-    layout="auto",
+    layout="wide",
     
 )
 
