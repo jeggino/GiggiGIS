@@ -93,7 +93,7 @@ def map():
 
 def input_data():
 
-    with st.container(height=CONTAINER_height, border=False):
+    with st.container(height=CONTAINER_height, border=True):
         
         output = map()
     
