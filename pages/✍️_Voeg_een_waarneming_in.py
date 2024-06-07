@@ -155,7 +155,7 @@ def input_data(output):
 # --- APP ---  
 # popover = st.popover("🗒️")
 @st.experimental_dialog("Cast your vote")
-def vote():
+def vote(output):
     try:
         waarnemer = st.session_state["name"]
         
