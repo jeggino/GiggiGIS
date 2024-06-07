@@ -47,7 +47,7 @@ st.markdown(
     """
 <style>
     [data-testid="collapsedControl"] {
-        display: none
+        display: True
     }
 </style>
 """,
