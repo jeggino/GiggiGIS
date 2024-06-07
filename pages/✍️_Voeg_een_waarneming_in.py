@@ -91,11 +91,13 @@ def map():
     return  output
 
 
-def input_data():
+def input_data(output):
 
-    with st.container(height=CONTAINER_height, border=True):
+    # with st.container(height=CONTAINER_height, border=True):
         
-        output = map()
+    #     output = map()
+
+    output = output
     
         
     submitted = popover.button("Gegevens opslaan")
@@ -213,5 +215,9 @@ with popover.expander("Upload een foto"):
     uploaded_file = st.camera_input("")
 
 
-input_data()
+with st.container(height=CONTAINER_height, border=True):
+    
+    output = map()
+    
+input_data(output)
 
