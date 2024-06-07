@@ -222,7 +222,7 @@ def vote():
     
 
 if st.button("jhkal"):
-    vote()
+    vote(output)
     
 with st.container(height=CONTAINER_height, border=True):
     
