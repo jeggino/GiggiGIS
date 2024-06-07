@@ -1,7 +1,7 @@
 cookie:
-  expiry_days: 0
-  key: ceppo
-  name: capocchia
+  expiry_days: 10
+  key: giggigis
+  name: giggigis
 credentials:
   usernames:
     Luigi:
