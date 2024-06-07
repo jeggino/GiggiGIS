@@ -1,5 +1,5 @@
 cookie:
-  expiry_days: 10
+  expiry_days: 0
   key: giggigis
   name: giggigis
 credentials:
