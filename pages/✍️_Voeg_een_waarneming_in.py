@@ -174,7 +174,7 @@ except:
     
 popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 if waarnemer == 'Luigi Giugliano':
-    project = st.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
+    project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
 else:
     project = None
     
@@ -211,7 +211,7 @@ aantal = popover.number_input("Aantal", min_value=0)
 opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
 
 with st.expander("Upload een foto"):
-    uploaded_file = st.camera_input("")
+    uploaded_file = popover.camera_input("")
 
     
 
