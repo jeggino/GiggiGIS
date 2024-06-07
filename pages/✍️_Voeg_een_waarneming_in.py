@@ -225,6 +225,9 @@ def vote():
 with st.container(height=CONTAINER_height, border=True):
     
     output = map()
+
+if st.botton("jhkal"):
+    vote()
     
 # input_data(output)
 
