@@ -92,16 +92,14 @@ def map():
 
 
 
-def input_data(output):
+def input_data():
 
-    # with st.container(height=CONTAINER_height, border=True):
+    with st.container(height=CONTAINER_height, border=True):
         
-    #     output = map()
-
-    output = output
+        output = map()
     
         
-    submitted = st.button("Gegevens opslaan")
+    submitted = popover.button("Gegevens opslaan")
     
     if submitted:           
 
@@ -126,7 +124,7 @@ def input_data(output):
                 key = str(lng)+str(lat)
 
             if len(output["features"]) > 1:
-                st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
+                popover.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
                 st.stop()
 
             else:
@@ -139,13 +137,13 @@ def input_data(output):
                 else:
                     insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project)
 
-                st.success('Gegevens opgeslagen!', icon="✅")
+                popover.success('Gegevens opgeslagen!', icon="✅")
                 
                 
                 
 
         except:
-            st.info("Markeer een waarneming")
+            popover.info("Markeer een waarneming")
             st.stop()
 
         st.switch_page("🗺️_Home.py")
@@ -153,82 +151,76 @@ def input_data(output):
     
 
 # --- APP ---  
-# popover = st.popover("🗒️")
-@st.experimental_dialog("Cast your vote")
-def vote(output):
-    try:
-        waarnemer = st.session_state["name"]
-        
-        if waarnemer == 'Luigi Giugliano':
-            deta = Deta(st.secrets[f"deta_key_jobert"])
-            db = deta.Base("df_observations")
-            drive = deta.Drive("df_pictures")
+popover = st.popover("🗒️")
+
+try:
+    waarnemer = st.session_state["name"]
     
-        else:
-            deta = Deta(st.secrets[f"deta_key_other"])
-            db = deta.Base("df_observations")
-            drive = deta.Drive("df_pictures")
-            
-        
-    except:
-        st.switch_page("🗺️_Home.py")
-    
-    
-        
-    st.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
     if waarnemer == 'Luigi Giugliano':
-        project = st.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
+        deta = Deta(st.secrets[f"deta_key_jobert"])
+        db = deta.Base("df_observations")
+        drive = deta.Drive("df_pictures")
+
     else:
-        project = None
-        
-    soortgroup = st.selectbox("", GROUP)
-    datum = st.date_input("Datum","today")       
-    time = st.time_input("Tijd", "now")
-    
-    if soortgroup == '🦇 Vleermuizen':
-    
-        sp = st.selectbox("Soort", BAT_NAMES,key="Soort")
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-        onbewoond = None
-    
-    elif soortgroup == '🪶 Vogels':
-    
-        sp = st.selectbox("Soort", BIRD_NAMES)
-        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-        onbewoond = None
-    
-    elif soortgroup == '🏠 Vleermuiskast':
-        onbewoond = st.selectbox("Bewoond", ["Ja","Nee"])
-        BAT_NAMES = ["onbekend"] + BAT_NAMES
-        sp = popover.selectbox("Soort", BAT_NAMES) 
-        gedrag = None
-        functie = None
-        verblijf = None
+        deta = Deta(st.secrets[f"deta_key_other"])
+        db = deta.Base("df_observations")
+        drive = deta.Drive("df_pictures")
         
     
-    aantal = st.number_input("Aantal", min_value=0)
-    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-    
-    with st.expander("Upload een foto"):
-        uploaded_file = st.camera_input("")
-
-    ####
-    input_data(output)
-    ###
-    
-
-if st.button("jhkal"):
-    vote(output)
-    
-with st.container(height=CONTAINER_height, border=True):
-    
-    output = map()
+except:
+    st.switch_page("🗺️_Home.py")
 
 
     
-# input_data(output)
+popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
+if waarnemer == 'Luigi Giugliano':
+    project = st.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
+else:
+    project = None
+    
+soortgroup = popover.selectbox("", GROUP)
+datum = popover.date_input("Datum","today")       
+time = popover.time_input("Tijd", "now")
+
+if soortgroup == '🦇 Vleermuizen':
+
+    sp = popover.selectbox("Soort", BAT_NAMES,key="Soort")
+    gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
+    functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
+    verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
+    onbewoond = None
+
+elif soortgroup == '🪶 Vogels':
+
+    sp = popover.selectbox("Soort", BIRD_NAMES)
+    gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+    functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
+    verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
+    onbewoond = None
+
+elif soortgroup == '🏠 Vleermuiskast':
+    onbewoond = popover.selectbox("Bewoond", ["Ja","Nee"])
+    BAT_NAMES = ["onbekend"] + BAT_NAMES
+    sp = popover.selectbox("Soort", BAT_NAMES) 
+    gedrag = None
+    functie = None
+    verblijf = None
+    
+
+aantal = popover.number_input("Aantal", min_value=0)
+opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
+
+with st.expander("Upload een foto"):
+    uploaded_file = st.camera_input("")
+
+    
+
+
+# with st.container(height=CONTAINER_height, border=True):
+    
+#     output = map()
+
+
+    
+input_data()
 
