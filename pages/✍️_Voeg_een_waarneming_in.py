@@ -187,7 +187,7 @@ def vote():
     
     if soortgroup == '🦇 Vleermuizen':
     
-        sp = st.selectbox("Soort", BAT_NAMES)
+        sp = st.selectbox("Soort", BAT_NAMES,key="Soort")
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
         functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
@@ -221,13 +221,14 @@ def vote():
     ###
     
 
-
+if st.button("jhkal"):
+    vote()
+    
 with st.container(height=CONTAINER_height, border=True):
     
     output = map()
 
-if st.button("jhkal"):
-    vote()
+
     
 # input_data(output)
 
