@@ -22,10 +22,21 @@ from yaml.loader import SafeLoader
 # ---LAYOUT---
 st.set_page_config(
     page_title="GigGIS",
-    initial_sidebar_state="auto",
+    initial_sidebar_state="collapsed",
     page_icon="📝",
     layout="wide",
     
+)
+
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
 )
 
 st.markdown("""
@@ -43,16 +54,7 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
-st.markdown(
-    """
-<style>
-    [data-testid="collapsedControl"] {
-        display: True
-    }
-</style>
-""",
-    unsafe_allow_html=True,
-)
+
 
 # ---AUTENTICATION---
 with open('config.yaml') as file:
