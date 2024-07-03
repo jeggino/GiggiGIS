@@ -180,7 +180,14 @@ else:
     
 soortgroup = popover.selectbox("", GROUP)
 datum = popover.date_input("Datum","today")       
-time = popover.time_input("Tijd", "now")
+
+from datetime import datetime, timedelta
+
+nine_hours_from_now = datetime.now() + timedelta(hours=2)
+st.write(format(nine_hours_from_now, '%H:%M:%S'))
+time = popover.time_input("Tijd", nine_hours_from_now)
+
+
 
 if soortgroup == '🦇 Vleermuizen':
 
