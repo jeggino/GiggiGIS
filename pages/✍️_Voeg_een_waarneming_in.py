@@ -152,6 +152,7 @@ def input_data():
 
 # --- APP ---  
 popover = st.popover("🗒️")
+st.write(waarnemer)
 
 # try:
 #     waarnemer = st.session_state["name"]
