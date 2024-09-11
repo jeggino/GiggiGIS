@@ -5,7 +5,8 @@ from dependancies import sign_up, fetch_users
 
 st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_state='collapsed')
 
-
+users = fetch_users()
+users
 try:
     users = fetch_users()
     emails = []
