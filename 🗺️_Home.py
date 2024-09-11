@@ -217,9 +217,9 @@ def popup_html(row):
 # else:
 #     st.stop()
     
-col1, col2 = st.columns([1, 1])
+# col1, col2 = st.columns([1, 1])
 
-col1.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="", icon="✍️")
+st.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="", icon="✍️")
     
 try:
     
@@ -312,7 +312,7 @@ try:
         id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
         name = f"{id}.jpeg"
 
-        with col2.popover("extra's ℹ️"):
+        with st.sidebar:
 
             
 
