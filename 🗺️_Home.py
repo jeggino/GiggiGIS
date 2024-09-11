@@ -109,8 +109,7 @@ else:
     st.stop()
 
 placeholder_waarnemer = st.empty()
-waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer", 
-                                            value=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...",)
+waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
 
 if waarnemer:
     placeholder_waarnemer.empty()
