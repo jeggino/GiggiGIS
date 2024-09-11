@@ -241,10 +241,16 @@ try:
     fg_2 = folium.FeatureGroup(name="Huismussen")
     fg_4 = folium.FeatureGroup(name="Gierzwaluwen")
     fg_3 = folium.FeatureGroup(name="Vleermuizen")
+    fg_5 = folium.FeatureGroup(name="Camera")
+    fg_6 = folium.FeatureGroup(name="Rat val")
+    
     map.add_child(fg)
     map.add_child(fg_2)
     map.add_child(fg_4)
     map.add_child(fg_3)
+    map.add_child(fg_5)
+    map.add_child(fg_5)
+    
     folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
     folium.LayerControl().add_to(map)
    
@@ -276,11 +282,21 @@ try:
                                   popup=popup,
                                   icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_4)
 
+            elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
+                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                                  popup=popup,
+                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_3)
 
-            else:
-                folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                              popup=popup,
-                              icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_3)
+            elif df_2.iloc[i]['soortgroup'] == "Camera":
+                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                                  popup=popup,
+                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_5)
+
+            elif df_2.iloc[i]['soortgroup'] == "Rat val":
+                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                                  popup=popup,
+                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_6)
+
                 
 
         elif df_2.iloc[i]['geometry_type'] == "LineString":
