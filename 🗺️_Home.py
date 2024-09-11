@@ -53,48 +53,48 @@ reduce_header_height_style = """
 """
 
 
-# ---AUTENTICATION---
-with open('config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
+# # ---AUTENTICATION---
+# with open('config.yaml') as file:
+#     config = yaml.load(file, Loader=SafeLoader)
 
 
-authenticator = stauth.Authenticate(
-    config['credentials'],
-    config['cookie']['name'],
-    config['cookie']['key'],
-    config['cookie']['expiry_days'],
-    config['preauthorized']
-)
+# authenticator = stauth.Authenticate(
+#     config['credentials'],
+#     config['cookie']['name'],
+#     config['cookie']['key'],
+#     config['cookie']['expiry_days'],
+#     config['preauthorized']
+# )
 
-authenticator.login()
-
-
-
+# authenticator.login()
 
 
 
-if st.session_state["authentication_status"] is False:
-    st.error('Gebruikersnaam/wachtwoord is onjuist')
-    st.stop()
-elif st.session_state["authentication_status"] is None:
-    st.warning('Voer uw gebruikersnaam en wachtwoord in')
-    st.stop()
-elif st.session_state["authentication_status"]:
-    pass
+
+
+
+# if st.session_state["authentication_status"] is False:
+#     st.error('Gebruikersnaam/wachtwoord is onjuist')
+#     st.stop()
+# elif st.session_state["authentication_status"] is None:
+#     st.warning('Voer uw gebruikersnaam en wachtwoord in')
+#     st.stop()
+# elif st.session_state["authentication_status"]:
+#     pass
     
-st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+# st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-waarnemer = st.session_state.name
+# waarnemer = st.session_state.name
 
-if waarnemer == 'Luigi Giugliano':
-    deta = Deta(st.secrets[f"deta_key_jobert"])
-    db = deta.Base("df_observations")
-    drive = deta.Drive("df_pictures")
+# if waarnemer == 'Luigi Giugliano':
+#     deta = Deta(st.secrets[f"deta_key_jobert"])
+#     db = deta.Base("df_observations")
+#     drive = deta.Drive("df_pictures")
 
-else:
-    deta = Deta(st.secrets[f"deta_key_other"])
-    db = deta.Base("df_observations")
-    drive = deta.Drive("df_pictures")
+# else:
+#     deta = Deta(st.secrets[f"deta_key_other"])
+#     db = deta.Base("df_observations")
+#     drive = deta.Drive("df_pictures")
         
 #___________NEW VERSION________________
 #---PASSWORD---
