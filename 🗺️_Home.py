@@ -111,8 +111,9 @@ reduce_header_height_style = """
 #     st.stop()
 
 placeholder_waarnemer = st.empty()
-st.session_state['waarnemer'] = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
+waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
 
+st.session_state['waarnemer'] = waarnemer
 if waarnemer:
     placeholder_waarnemer.empty()
 
