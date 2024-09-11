@@ -11,7 +11,7 @@ GROUP_DICT = {"🪶 Vogels":"Vogels",
               "📷 Camera":"Camera",
              "🐀 Rat val":"Rat val"}
 
-VLEERMUISKAST_OPTIONS = ["Ja","Nee"]
+VLEERMUISKAST_OPTIONS = ["Bewoond","Onbewoond"]
 
 CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]
 
@@ -65,7 +65,8 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
   'Laatvlieger': {'geen / onbekend': 'icons/laatflieger_foraging.png',
    'zomerverblijfplaats': 'icons/laatvlieger_zommer.png',
    'kraamverblijfplaats': 'icons/laatvlieger_kraam.png'}},
- 'Vleermuiskast': {},
+ 'Vleermuiskast': {"Bewoond":"icons/bat_bow_full.jpg",
+                   "Onbewoond":"icons/bat_box_empty.jpg"},
  'Camera': {'Camera in het veld': 'icons/camera-icon-orange.png',
   'Verwijderd, ratten gedetecteerd': 'icons/camera-icon-red.png',
   'Camera verwijderd, geen ratten gedetecteerd': 'icons/camera-icon-green.png'},
