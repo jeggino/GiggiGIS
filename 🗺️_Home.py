@@ -145,8 +145,6 @@ def popup_html(row):
     """
     return html
 
-
-# st.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="", icon="✍️")
     
 try:
     
