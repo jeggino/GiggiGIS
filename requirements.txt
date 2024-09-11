@@ -1,9 +1,0 @@
-deta
-pandas
-folium
-streamlit_js_eval
-altair
- streamlit>=1.32.0
-streamlit-folium>=0.8.1
-geopandas
-streamlit-authenticator
