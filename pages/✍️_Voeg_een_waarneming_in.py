@@ -152,7 +152,6 @@ def input_data():
 
 # --- APP ---  
 popover = st.popover("🗒️")
-st.write(waarnemer)
 
 # try:
 #     waarnemer = st.session_state["name"]
@@ -180,7 +179,7 @@ drive = deta.Drive("df_pictures")
 
 popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 
-waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")    
+waarnemer = popover.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")    
 soortgroup = popover.selectbox("", GROUP)
 datum = popover.date_input("Datum","today")       
 
