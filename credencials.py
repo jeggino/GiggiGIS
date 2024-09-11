@@ -72,4 +72,4 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
   'Camera verwijderd, geen ratten gedetecteerd': 'icons/camera-icon-green.png'},
  'Rat val': {'Val nog in het veld': 'icons/rat_trap_orange.png',
   'Val verwijderd. Ratten gedood': 'icons/rat_trap_green.png',
-  'Val verwijderd. Ratten gedood': 'icons/rat_trap_red.png'}}
+  'Val verwijderd. Geen ratten gedood': 'icons/rat_trap_red.png'}}
