@@ -110,15 +110,7 @@ reduce_header_height_style = """
 #     st.error("Verkeerd wachtwoord ...")
 #     st.stop()
 
-placeholder_waarnemer = st.empty()
-waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
 
-st.session_state['waarnemer'] = waarnemer
-if waarnemer:
-    placeholder_waarnemer.empty()
-
-else:
-    st.stop()
 
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_observations")
@@ -135,7 +127,14 @@ ICON_SIZE = (18,18)
 # --- FUNCTIONS ---
 
 def load_dataset():
-    return db.fetch().items      
+    return db.fetch().items    
+
+
+def add_waarnemer(c):
+    if "waarnemer" not in st.session_state:
+        st.session_state['waarnemer'] = []
+    if c not in st.session_state['waarnemer']:
+        st.session_state['waarnemer'].append(c)
 
 
 def popup_html(row):
@@ -215,6 +214,16 @@ try:
     
     db_content = load_dataset()
     df_point = pd.DataFrame(db_content)
+    
+    placeholder_waarnemer = st.empty()
+    waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
+    
+    if waarnemer:
+        placeholder_waarnemer.empty()
+        add_waarnemer(waarnemer)
+    
+    else:
+        st.stop()
         
     df_2 = df_point
     
