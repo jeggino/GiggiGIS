@@ -96,9 +96,9 @@ reduce_header_height_style = """
 #___________NEW VERSION________________
 #---PASSWORD---
 placeholder = st.empty()
-password = placeholder.text_input("Password", value=None, label_visibility= 'collapsed', placeholder = "schrijf hier uw wachtwoord ...",)
+st.session_state['password'] = placeholder.text_input("Password", value=None, label_visibility= 'collapsed', placeholder = "schrijf hier uw wachtwoord ...",)
 
-if password == st.secrets["password"]:
+if st.session_state['password'] == st.secrets["password"]:
     placeholder.empty()
 
 elif password == None:
