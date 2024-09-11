@@ -48,77 +48,17 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -5em; margin-bottom: 2em;}
+    div.block-container {padding-top: 0em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0em; margin-bottom: 2em;}
 </style>
 """
 
-
-# # ---AUTENTICATION---
-# with open('config.yaml') as file:
-#     config = yaml.load(file, Loader=SafeLoader)
-
-
-# authenticator = stauth.Authenticate(
-#     config['credentials'],
-#     config['cookie']['name'],
-#     config['cookie']['key'],
-#     config['cookie']['expiry_days'],
-#     config['preauthorized']
-# )
-
-# authenticator.login()
-
-
-
-
-
-
-# if st.session_state["authentication_status"] is False:
-#     st.error('Gebruikersnaam/wachtwoord is onjuist')
-#     st.stop()
-# elif st.session_state["authentication_status"] is None:
-#     st.warning('Voer uw gebruikersnaam en wachtwoord in')
-#     st.stop()
-# elif st.session_state["authentication_status"]:
-#     pass
     
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
-
-# waarnemer = st.session_state.name
-
-# if waarnemer == 'Luigi Giugliano':
-#     deta = Deta(st.secrets[f"deta_key_jobert"])
-#     db = deta.Base("df_observations")
-#     drive = deta.Drive("df_pictures")
-
-# else:
-#     deta = Deta(st.secrets[f"deta_key_other"])
-#     db = deta.Base("df_observations")
-#     drive = deta.Drive("df_pictures")
-        
-#___________NEW VERSION________________
-#---PASSWORD---
-# placeholder = st.empty()
-# password = placeholder.text_input("Password", value=None, label_visibility= 'collapsed', placeholder = "schrijf hier uw wachtwoord ...",)
-# st.session_state['password'] = password
-
-
-# if st.session_state['password'] == st.secrets["password"]:
-#     placeholder.empty()
-
-# elif st.session_state['password'] == None:
-#     st.stop()
-
-# else:
-#     st.error("Verkeerd wachtwoord ...")
-#     st.stop()
-
 
 
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
-# #___________NEW VERSION________________
 
 
 # --- DIMENSIONS ---
@@ -205,19 +145,6 @@ def popup_html(row):
     """
     return html
 
-
-# # --- APP ---    
-# placeholder_waarnemer = st.empty()
-# waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
-
-# if waarnemer:
-#     placeholder_waarnemer.empty()
-#     add_waarnemer(waarnemer)
-
-# else:
-#     st.stop()
-    
-# col1, col2 = st.columns([1, 1])
 
 st.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="", icon="✍️")
     
