@@ -70,11 +70,11 @@ CONTAINER_height = 640
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates):
 
     return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates,"project":project})
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates})
         
 
 def map():
@@ -132,10 +132,10 @@ def input_data():
                 if uploaded_file is not None:
                     bytes_data = uploaded_file.getvalue()
                     drive.put(f"{key}.jpeg", data=bytes_data)            
-                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project)
+                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
                 
                 else:
-                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates,project)
+                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
 
                 popover.success('Gegevens opgeslagen!', icon="✅")
                 
