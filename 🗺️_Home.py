@@ -95,20 +95,20 @@ reduce_header_height_style = """
         
 #___________NEW VERSION________________
 #---PASSWORD---
-placeholder = st.empty()
-password = placeholder.text_input("Password", value=None, label_visibility= 'collapsed', placeholder = "schrijf hier uw wachtwoord ...",)
-st.session_state['password'] = password
+# placeholder = st.empty()
+# password = placeholder.text_input("Password", value=None, label_visibility= 'collapsed', placeholder = "schrijf hier uw wachtwoord ...",)
+# st.session_state['password'] = password
 
 
-if st.session_state['password'] == st.secrets["password"]:
-    placeholder.empty()
+# if st.session_state['password'] == st.secrets["password"]:
+#     placeholder.empty()
 
-elif st.session_state['password'] == None:
-    st.stop()
+# elif st.session_state['password'] == None:
+#     st.stop()
 
-else:
-    st.error("Verkeerd wachtwoord ...")
-    st.stop()
+# else:
+#     st.error("Verkeerd wachtwoord ...")
+#     st.stop()
 
 placeholder_waarnemer = st.empty()
 waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
