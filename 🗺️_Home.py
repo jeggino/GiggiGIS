@@ -125,7 +125,7 @@ drive = deta.Drive("df_pictures")
 OUTPUT_height = 610
 OUTPUT_width = 350
 CONTAINER_height = 640
-ICON_SIZE = (18,18)
+ICON_SIZE = (20,20)
 
 # --- FUNCTIONS ---
 
