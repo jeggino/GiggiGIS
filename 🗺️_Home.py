@@ -272,6 +272,7 @@ try:
                         #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
     except:
+        st.warning('oillog')
         st.stop()
 
 except:
