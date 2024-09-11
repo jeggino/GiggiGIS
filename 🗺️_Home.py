@@ -249,7 +249,7 @@ try:
     map.add_child(fg_4)
     map.add_child(fg_3)
     map.add_child(fg_5)
-    map.add_child(fg_5)
+    map.add_child(fg_6)
     
     folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
     folium.LayerControl().add_to(map)
