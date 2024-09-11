@@ -82,7 +82,7 @@ reduce_header_height_style = """
 # elif st.session_state["authentication_status"]:
 #     pass
     
-# st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # waarnemer = st.session_state.name
 
