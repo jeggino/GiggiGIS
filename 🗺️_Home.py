@@ -85,7 +85,6 @@ def popup_html(row):
     functie=df_2['functie'].iloc[i]
     gedrag=df_2['gedrag'].iloc[i]
     verblijf=df_2['verblijf'].iloc[i]
-    bewoond=df_2['onbewoond'].iloc[i] 
     opmerking=df_2['opmerking'].iloc[i]
     aantal=df_2['aantal'].iloc[i]
     waarnemer=df_2['waarnemer'].iloc[i] 
@@ -121,10 +120,6 @@ def popup_html(row):
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gedrag) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Bewoond</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(bewoond) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
