@@ -232,7 +232,6 @@ try:
                                              else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
                                                    else ICON["Nest_unbezet"]))), axis=1)
     
-    st.write(st.session_state['waarnemer'])
     map = folium.Map()
     LocateControl(auto_start=True).add_to(map)
     Fullscreen().add_to(map)
