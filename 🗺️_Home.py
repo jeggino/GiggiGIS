@@ -24,7 +24,7 @@ st.set_page_config(
     page_title="GigGIS",
     initial_sidebar_state="collapsed",
     page_icon="📝",
-    layout="wide",
+    layout="centered",
     
 )
 
