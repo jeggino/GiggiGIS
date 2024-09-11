@@ -23,7 +23,7 @@ for index in range(len(emails)):
 
 credentials 
 
-Authenticator = stauth.Authenticate(credentials, cookie_name='Streamlit', key='abcdef', cookie_expiry_days=4)
+Authenticator = stauth.Authenticate(credentials, cookie_name='Streamlit', key='Authenticator', cookie_expiry_days=4)
 st.warning("PROBLEM!!!!!!!!!!!!!!!!")
 email, authentication_status, username = Authenticator.login(':green[Login]', 'main')
 
