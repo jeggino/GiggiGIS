@@ -51,7 +51,7 @@ VLEERMUISKAST_VERBLIJF = ["Op boom", "Op gebouw"]
 
 
 icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'swift.png',
-   'nestlocatie': 'swift_nest.png',
+   'nestlocatie': 'icons/swift_nest.png',
    'mogelijke nestlocatie': 'swift_mogelijk_nest.png'},
   'Huismus': {'geen / onbekend': 'sparrow.png',
    'nestlocatie': 'sparrow_nest.png',
