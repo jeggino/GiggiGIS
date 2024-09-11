@@ -156,10 +156,6 @@ popover = st.sidebar
 deta = Deta(st.secrets[f"deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
-# _____NEW VERSION______
-
-
-popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
 
 waarnemer = popover.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")    
 soortgroup = popover.selectbox("", GROUP)
@@ -218,8 +214,8 @@ elif soortgroup == '🐀 Rat val':
 
 opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
 
-with st.expander("Upload een foto"):
-    uploaded_file = popover.camera_input("")
+with popover.expander("Upload een foto"):
+    uploaded_file = st.camera_input("")
 
     
 input_data()
