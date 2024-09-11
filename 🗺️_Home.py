@@ -101,7 +101,7 @@ st.session_state['password'] = placeholder.text_input("Password", value=None, la
 if st.session_state['password'] == st.secrets["password"]:
     placeholder.empty()
 
-elif password == None:
+elif st.session_state['password'] == None:
     st.stop()
 
 else:
