@@ -160,13 +160,13 @@ deta = Deta(st.secrets[f"deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 
-waarnemer = popover.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...") 
+waarnemer = popover.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
+soortgroup = popover.selectbox("", GROUP)
 popover.divider()
 
 datum = popover.date_input("Datum","today")       
 nine_hours_from_now = datetime.now() + timedelta(hours=2)
 time = popover.time_input("Tijd", nine_hours_from_now)
-soortgroup = popover.selectbox("", GROUP)
 popover.divider()
 
 if soortgroup == '🦇 Vleermuizen':
