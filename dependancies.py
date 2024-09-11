@@ -4,11 +4,11 @@ import datetime
 import re
 from deta import Deta
 
-DETA_KEY = 'YOUR_DETA_KEY'
+DETA_KEY = st.secrets[f"deta_key_other"]
 
 deta = Deta(DETA_KEY)
 
-db = deta.Base('YOUR_DETA_BASE')
+db = deta.Base('df_authentication')
 
 
 def insert_user(email, username, password):
