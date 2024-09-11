@@ -70,11 +70,11 @@ CONTAINER_height = 640
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates):
 
     return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"onbewoond":onbewoond,"coordinates":coordinates})
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates})
         
 
 def map():
@@ -132,10 +132,10 @@ def input_data():
                 if uploaded_file is not None:
                     bytes_data = uploaded_file.getvalue()
                     drive.put(f"{key}.jpeg", data=bytes_data)            
-                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
+                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates)
                 
                 else:
-                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,onbewoond,coordinates)
+                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates)
 
                 popover.success('Gegevens opgeslagen!', icon="✅")
                 
@@ -172,7 +172,6 @@ if soortgroup == '🦇 Vleermuizen':
     gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
     functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
     verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
-    onbewoond = None
     aantal = popover.number_input("Aantal", min_value=1)
 
 elif soortgroup == '🪶 Vogels':
@@ -181,15 +180,13 @@ elif soortgroup == '🪶 Vogels':
     gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
     functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
     verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
-    onbewoond = None
     aantal = popover.number_input("Aantal", min_value=1)
 
 elif soortgroup == '🏠 Vleermuiskast':
-    onbewoond = popover.selectbox("Bewoond", VLEERMUISKAST_OPTIONS)
+    functie = popover.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
     BAT_NAMES = ["onbekend"] + BAT_NAMES
     sp = popover.selectbox("Soort", BAT_NAMES) 
     gedrag = None
-    functie = None
     verblijf = None
     aantal = popover.number_input("Aantal", min_value=1)
 
@@ -198,7 +195,6 @@ elif soortgroup == '📷 Camera':
     BAT_NAMES = None
     sp = None 
     gedrag = None
-    onbewoond = None
     verblijf = None
     aantal = None
 
@@ -207,7 +203,6 @@ elif soortgroup == '🐀 Rat val':
     BAT_NAMES = None
     sp = None 
     gedrag = None
-    onbewoond = None
     verblijf = None
     aantal = None
 
