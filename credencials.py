@@ -11,6 +11,8 @@ GROUP_DICT = {"🪶 Vogels":"Vogels",
               "📷 Camera":"Camera",
              "🐀 Rat val":"Rat val"}
 
+VLEERMUISKAST_OPTIONS = ["Ja","Nee"]
+
 CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]
 
 RAT_VAL_OPTIONS = ["Val nog in het veld","Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]
@@ -47,18 +49,26 @@ BIRD_VERBLIJF = ['geen / onbekend', 'dakgoot', 'kantpan', 'zonnepaneel', 'nokpan
 
 VLEERMUISKAST_VERBLIJF = ["Op boom", "Op gebouw"]
 
-ICON = {"Gierzwaluw":"https://cdn-icons-png.flaticon.com/128/732/732126.png",
-        "Huismus":"https://cdn-icons-png.flaticon.com/128/8531/8531874.png",
-        "Bat": "https://cdn-icons-png.flaticon.com/128/2250/2250418.png",
-        "Nest_bezet": "icons/bat_bow_full.jpg",
-        "Nest_unbezet": "icons/bat_box_empty.jpg",
-        "Swift_nest": "icons/swift_nest.jpg"}
 
-icon_dictionary['Vogels'] = {
-    'Gierzwaluw':{'geen / onbekend':"swift.png", 
-                  'nestlocatie':"swift_nest.png",
-                  'mogelijke nestlocatie':"swift_mogelijk_nest.png"},
-    'Huismus':{'geen / onbekend':"sparrow.png", 
-              'nestlocatie':"sparrow_mogelijk_nest.png",
-              'mogelijke nestlocatie':"sparrow_nest.png"},
-}
+icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'swift.png',
+   'nestlocatie': 'swift_nest.png',
+   'mogelijke nestlocatie': 'swift_mogelijk_nest.png'},
+  'Huismus': {'geen / onbekend': 'sparrow.png',
+   'nestlocatie': 'sparrow_nest.png',
+   'mogelijke nestlocatie': 'sparrow_mogelijk_nest.png'}},
+ 'Vleermuizen': {'Gewone dwergvleermuis': {'geen / onbekend': 'pippip_foraging.png',
+   'zomerverblijfplaats': 'pippip_zommer.png',
+   'kraamverblijfplaats': 'pippip_kraam.png'},
+  'Ruige dwergvleermuis': {'geen / onbekend': 'ruige_foraging.png',
+   'zomerverblijfplaats': 'ruige_zommer.png',
+   'kraamverblijfplaats': 'ruige_kraam.png'},
+  'Laatvlieger': {'geen / onbekend': 'laatflieger_foraging.png',
+   'zomerverblijfplaats': 'laatvlieger_zommer.png',
+   'kraamverblijfplaats': 'laatvlieger_kraam.png'}},
+ 'Vleermuiskast': {},
+ 'Camera': {'Camera in het veld': 'camera-icon-orange.png',
+  'Verwijderd, ratten gedetecteerd': 'camera-icon-red.png',
+  'Camera verwijderd, geen ratten gedetecteerd': 'camera-icon-green.png'},
+ 'Rat val': {'Val nog in het veld': 'rat_trap_orange.png',
+  'Val verwijderd. Geen\xa0ratten\xa0gedood': 'rat_trap_green.png',
+  'Val verwijderd. Ratten gedood': 'rat_trap_red.png'}}
