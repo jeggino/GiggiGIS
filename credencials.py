@@ -15,23 +15,12 @@ CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera
 
 RAT_VAL_OPTIONS = ["Val nog in het veld","Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]
 
-BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger', 'Rosse vleermuis', 'Watervleermuis',
-        'Meervleermuis',
-       'Bosvleermuis', 'Franjestaart', 'Vleermuis onbekend',
-       'Myotis spec.', 'Vale vleermuis', 'Gewone grootoorvleermuis',
-       'Ingekorven vleermuis', 'Baardvleermuis', 'Brandts vleermuis',
-       'Kleine dwergvleermuis', 'Grijze grootoorvleermuis',
-       'Bechsteins vleermuis', 'Tweekleurige vleermuis',
-       'Dwergvleermuis spec.', 'Plecotus spec.', 'Mopsvleermuis']
+BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger']
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 
          'zwermend', 'sporen', 'balts', 'verkeersslachtoffer']
 
-BAT_FUNCTIE = ['geen / onbekend', 'zomerverblijfplaats in gebouw', 'paarverblijfplaats in gebouw',
-                'kraamverblijfplaats in gebouw',
-            'zomerverblijfplaats in boom', 'paarverblijfplaats in boom', 
-           'kraamverblijfplaats in boom', 'winterverblijfplaats in gebouw', 'massa winterverblijfplaats', 
-           'winterverblijfplaats in bloei',]
+BAT_FUNCTIE = ['geen / onbekend','zomerverblijfplaats','kraamverblijfplaats']
 
 BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
@@ -47,8 +36,7 @@ BIRD_BEHAVIOURS = ['overvliegend',  'nest-indicerend gedrag', 'foeragerend', 'in
 
 
 
-BIRD_FUNCTIE = ['geen / onbekend', 'nestlocatie',  'vastgesteld territorium',
-       'mogelijke nestlocatie']
+BIRD_FUNCTIE = ['geen / onbekend', 'nestlocatie', 'mogelijke nestlocatie']
 
 BIRD_VERBLIJF = ['geen / onbekend', 'dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
        'gevelbetimmering', 'openingen in dak', 'regenpijp',
@@ -65,3 +53,12 @@ ICON = {"Gierzwaluw":"https://cdn-icons-png.flaticon.com/128/732/732126.png",
         "Nest_bezet": "icons/bat_bow_full.jpg",
         "Nest_unbezet": "icons/bat_box_empty.jpg",
         "Swift_nest": "icons/swift_nest.jpg"}
+
+icon_dictionary['Vogels'] = {
+    'Gierzwaluw':{'geen / onbekend':"swift.png", 
+                  'nestlocatie':"swift_nest.png",
+                  'mogelijke nestlocatie':"swift_mogelijk_nest.png"},
+    'Huismus':{'geen / onbekend':"sparrow.png", 
+              'nestlocatie':"sparrow_mogelijk_nest.png",
+              'mogelijke nestlocatie':"sparrow_nest.png"},
+}
