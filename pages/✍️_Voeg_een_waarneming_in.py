@@ -19,10 +19,11 @@ import yaml
 from yaml.loader import SafeLoader
 
 
+# ---LAYOUT---
 st.set_page_config(
     page_title="GigGIS",
-    page_icon="📝",
     initial_sidebar_state="collapsed",
+    page_icon="📝",
     layout="wide",
     
 )
@@ -47,16 +48,11 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    .appview-container .main .block-container {padding-top: 0em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 1em; margin-bottom: 2em;}
+    div.block-container {padding-top: 0em; padding-bottom: 2rem; padding-left: 0rem; padding-right: 0rem; margin-top: 1em; margin-bottom: 2em;}
 </style>
 """
+
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
-
-
-
-
-
-
 
 
 
