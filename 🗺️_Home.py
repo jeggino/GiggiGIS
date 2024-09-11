@@ -53,45 +53,48 @@ reduce_header_height_style = """
 """
 
 
-# # ---AUTENTICATION---
-# with open('config.yaml') as file:
-#     config = yaml.load(file, Loader=SafeLoader)
+# ---AUTENTICATION---
+with open('config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
 
 
-# authenticator = stauth.Authenticate(
-#     config['credentials'],
-#     config['cookie']['name'],
-#     config['cookie']['key'],
-#     config['cookie']['expiry_days'],
-#     config['preauthorized']
-# )
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
 
-# authenticator.login()
-
-
-
+authenticator.login()
 
 
 
-# if st.session_state["authentication_status"] is False:
-#     st.error('Gebruikersnaam/wachtwoord is onjuist')
-# elif st.session_state["authentication_status"] is None:
-#     st.warning('Voer uw gebruikersnaam en wachtwoord in')
-# elif st.session_state["authentication_status"]:
 
-#     st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-#     waarnemer = st.session_state.name
 
-#     if waarnemer == 'Luigi Giugliano':
-#         deta = Deta(st.secrets[f"deta_key_jobert"])
-#         db = deta.Base("df_observations")
-#         drive = deta.Drive("df_pictures")
+if st.session_state["authentication_status"] is False:
+    st.error('Gebruikersnaam/wachtwoord is onjuist')
+    st.stop()
+elif st.session_state["authentication_status"] is None:
+    st.warning('Voer uw gebruikersnaam en wachtwoord in')
+    st.stop()
+elif st.session_state["authentication_status"]:
+    continue
 
-#     else:
-#         deta = Deta(st.secrets[f"deta_key_other"])
-#         db = deta.Base("df_observations")
-#         drive = deta.Drive("df_pictures")
+st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+
+waarnemer = st.session_state.name
+
+if waarnemer == 'Luigi Giugliano':
+    deta = Deta(st.secrets[f"deta_key_jobert"])
+    db = deta.Base("df_observations")
+    drive = deta.Drive("df_pictures")
+
+else:
+    deta = Deta(st.secrets[f"deta_key_other"])
+    db = deta.Base("df_observations")
+    drive = deta.Drive("df_pictures")
         
 #___________NEW VERSION________________
 #---PASSWORD---
@@ -112,10 +115,10 @@ reduce_header_height_style = """
 
 
 
-deta = Deta(st.secrets["deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
-#___________NEW VERSION________________
+# deta = Deta(st.secrets["deta_key_other"])
+# db = deta.Base("df_observations")
+# drive = deta.Drive("df_pictures")
+# #___________NEW VERSION________________
 
 
 # --- DIMENSIONS ---
@@ -129,12 +132,6 @@ ICON_SIZE = (18,18)
 def load_dataset():
     return db.fetch().items    
 
-
-def add_waarnemer(c):
-    if "waarnemer" not in st.session_state:
-        st.session_state['waarnemer'] = []
-    if c not in st.session_state['waarnemer']:
-        st.session_state['waarnemer'].append(c)
 
 
 def popup_html(row):
@@ -201,18 +198,18 @@ def popup_html(row):
     </html>
     """
     return html
-        
 
-# --- APP ---    
-placeholder_waarnemer = st.empty()
-waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
 
-if waarnemer:
-    placeholder_waarnemer.empty()
-    add_waarnemer(waarnemer)
+# # --- APP ---    
+# placeholder_waarnemer = st.empty()
+# waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
 
-else:
-    st.stop()
+# if waarnemer:
+#     placeholder_waarnemer.empty()
+#     add_waarnemer(waarnemer)
+
+# else:
+#     st.stop()
     
 col1, col2 = st.columns([1, 1])
 
