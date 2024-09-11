@@ -125,7 +125,8 @@ drive = deta.Drive("df_pictures")
 OUTPUT_height = 610
 OUTPUT_width = 350
 CONTAINER_height = 640
-ICON_SIZE = (20,20)
+ICON_SIZE = (21,21)
+ICON_SIZE_huismus = (23,23)
 
 # --- FUNCTIONS ---
 
@@ -274,7 +275,7 @@ try:
                     
                     folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                                   popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_2)
+                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_huismus)).add_to(fg_2)
                     
                 elif df_2.iloc[i]['sp'] == "Gierzwaluw":
                     
