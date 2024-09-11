@@ -1,9 +1,18 @@
 # --- COSTANTS ---
 HELP_FUNCTIE = "Zomer- of kraamverblijfplaats: De vrouwtjes wonen in de zomer in kraamverblijfplaatsen. Hier brengt ze hun jongen groot. voorkomende leven ze gecombineerd in groepen (kolonies). \nZomer- of mannenverblijfplaats: De mannetjes wonen in de zomer soms solitair, soms in groepen, maar altijd op een andere plaats dan de vrouwtjes van hun soort. \nTijdelijke of paarverblijfplaats: Vaak kennen vleermuizen ook tussenkwartieren, waar ze slechts kort verblijven tijdens de reis van hun winter- naar zomerkolonie. Zo trekken zowel de mannetjes als de vrouwtjes aan het einde van de zomer naar speciale paarkwartieren, waar ze slechts kort verblijven. Winterverblijfplaats: Vleermuizen overwinteren in gebouwen, bunkers, ijskelders, groeven en boomholtes."
 
-GROUP = ["🦇 Vleermuizen","🪶 Vogels",  "🏠 Vleermuiskast"]
+GROUP = ["🦇 Vleermuizen","🪶 Vogels",  "🏠 Vleermuiskast",
+         "📷 Camera", "🐀 Rat val"]
 
-GROUP_DICT = {"🪶 Vogels":"Vogels", "🦇 Vleermuizen":"Vleermuizen", "🏠 Vleermuiskast":"Vleermuiskast"}
+GROUP_DICT = {"🪶 Vogels":"Vogels",
+              "🦇 Vleermuizen":"Vleermuizen", 
+              "🏠 Vleermuiskast":"Vleermuiskast",
+              "📷 Camera":"Camera",
+             "🐀 Rat val":"Rat val"}
+
+CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]
+
+RAT_VAL_OPTIONS = ["Val nog in het veld","Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]
 
 BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger', 'Rosse vleermuis', 'Watervleermuis',
         'Meervleermuis',
