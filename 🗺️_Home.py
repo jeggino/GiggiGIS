@@ -80,8 +80,8 @@ elif st.session_state["authentication_status"] is None:
     st.warning('Voer uw gebruikersnaam en wachtwoord in')
     st.stop()
 elif st.session_state["authentication_status"]:
-    continue
-
+    pass
+    
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 waarnemer = st.session_state.name
