@@ -211,6 +211,8 @@ opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
 with popover.expander("Upload een foto"):
     uploaded_file = st.camera_input("")
 
+popover.divider()
+
     
 input_data()
 
