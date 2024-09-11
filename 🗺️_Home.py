@@ -115,9 +115,9 @@ reduce_header_height_style = """
 
 
 
-# deta = Deta(st.secrets["deta_key_other"])
-# db = deta.Base("df_observations")
-# drive = deta.Drive("df_pictures")
+deta = Deta(st.secrets["deta_key_other"])
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures")
 # #___________NEW VERSION________________
 
 
