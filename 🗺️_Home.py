@@ -276,4 +276,5 @@ try:
         st.stop()
 
 except:
+    st.warning('problem')
     st.stop()
