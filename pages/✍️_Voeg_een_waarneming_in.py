@@ -178,7 +178,7 @@ drive = deta.Drive("df_pictures")
 
 
 popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
-waarnemer st.session_state['waarnemer']
+waarnemer = st.session_state['waarnemer']
 # if waarnemer == 'Luigi Giugliano':
 #     project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
 # else:
