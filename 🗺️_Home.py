@@ -39,8 +39,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# st.html("<style> .main {overflow: hidden} </style>")
-
 st.markdown("""
     <style>
     .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
@@ -54,7 +52,6 @@ reduce_header_height_style = """
 </style>
 """
 
-    
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
@@ -147,7 +144,9 @@ def popup_html(row):
     """
     return html
 
-    
+IMAGE = "image/logo.png"
+st.logo(IMAGE,  link=None, icon_image=None)
+
 try:
     
     db_content = load_dataset()
