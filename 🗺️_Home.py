@@ -206,6 +206,16 @@ def popup_html(row):
 # --- APP ---    
 
 # st.page_link("pages/drop.py", label="Drop", icon="❌")
+placeholder_waarnemer = st.empty()
+waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
+
+if waarnemer:
+    placeholder_waarnemer.empty()
+    add_waarnemer(waarnemer)
+
+else:
+    st.stop()
+    
 col1, col2 = st.columns([1, 1])
 
 col1.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="", icon="✍️")
@@ -215,16 +225,7 @@ try:
     db_content = load_dataset()
     df_point = pd.DataFrame(db_content)
     
-    placeholder_waarnemer = st.empty()
-    waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
-    
-    if waarnemer:
-        placeholder_waarnemer.empty()
-        add_waarnemer(waarnemer)
-    
-    else:
-        st.stop()
-        
+       
     df_2 = df_point
     
     df_2["icon_data"] = df_2.apply(lambda x: ICON[x["sp"]] if ((x["soortgroup"]=="Vogels") & (x["functie"]!="nestlocatie")) 
