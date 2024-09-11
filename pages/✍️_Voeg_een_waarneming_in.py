@@ -151,6 +151,9 @@ def input_data():
     
 
 # --- APP ---  
+IMAGE = "image/logo.png"
+st.logo(IMAGE,  link=None, icon_image=None)
+
 popover = st.sidebar
 
 deta = Deta(st.secrets[f"deta_key_other"])
