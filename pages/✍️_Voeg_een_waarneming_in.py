@@ -47,7 +47,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    .appview-container .main .block-container {padding-top: 1em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 1em; margin-bottom: 2em;}
+    .appview-container .main .block-container {padding-top: 0em; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 1em; margin-bottom: 2em;}
 </style>
 """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
