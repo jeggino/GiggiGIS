@@ -196,6 +196,7 @@ if soortgroup == '🦇 Vleermuizen':
     functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
     verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
     onbewoond = None
+    aantal = popover.number_input("Aantal", min_value=1)
 
 elif soortgroup == '🪶 Vogels':
 
@@ -204,17 +205,35 @@ elif soortgroup == '🪶 Vogels':
     functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
     verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
     onbewoond = None
+    aantal = popover.number_input("Aantal", min_value=1)
 
 elif soortgroup == '🏠 Vleermuiskast':
-    onbewoond = popover.selectbox("Bewoond", ["Ja","Nee"])
+    onbewoond = popover.selectbox("Bewoond", VLEERMUISKAST_OPTIONS)
     BAT_NAMES = ["onbekend"] + BAT_NAMES
     sp = popover.selectbox("Soort", BAT_NAMES) 
     gedrag = None
     functie = None
     verblijf = None
-    
+    aantal = popover.number_input("Aantal", min_value=1)
 
-aantal = popover.number_input("Aantal", min_value=0)
+elif soortgroup == '📷 Camera':
+    functie = popover.selectbox("Camera", CAMERA_OPTIONS)
+    BAT_NAMES = None
+    sp = None 
+    gedrag = None
+    onbewoond = None
+    verblijf = None
+    aantal = None
+
+elif soortgroup == '🐀 Rat val':
+    functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
+    BAT_NAMES = None
+    sp = None 
+    gedrag = None
+    onbewoond = None
+    verblijf = None
+    aantal = None
+
 opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
 
 with st.expander("Upload een foto"):
