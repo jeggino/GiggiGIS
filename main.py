@@ -22,6 +22,8 @@ credentials = {'usernames': {}}
 for index in range(len(emails)):
     credentials['usernames'][usernames[index]] = {'name': emails[index], 'password': passwords[index]}
 
+credentials 
+
 Authenticator = stauth.Authenticate(credentials, cookie_name='Streamlit', key='abcdef', cookie_expiry_days=4)
 st.warning("PROBLEM!!!!!!!!!!!!!!!!")
 email, authentication_status, username = Authenticator.login(':green[Login]', 'main')
