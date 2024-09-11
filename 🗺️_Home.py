@@ -108,7 +108,15 @@ else:
     st.error("Verkeerd wachtwoord ...")
     st.stop()
 
-waarnemer = st.selectbox("Waarnemer", WAARNEMERS, key="waarnemer")
+placeholder_waarnemer = st.empty()
+waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer", 
+                                            value=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...",)
+
+if waarnemer:
+    placeholder.empty()
+
+else:
+    st.stop()
 
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_observations")
