@@ -4,7 +4,7 @@ import datetime
 import re
 from deta import Deta
 
-DETA_KEY = st.secrets[f"deta_key_other"]
+DETA_KEY = st.secrets["deta_key_other"]
 
 deta = Deta(DETA_KEY)
 
