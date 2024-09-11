@@ -151,26 +151,8 @@ def input_data():
     
 
 # --- APP ---  
-popover = st.popover("🗒️")
+popover = st.sidebar
 
-# try:
-#     waarnemer = st.session_state["name"]
-    
-#     if waarnemer == 'Luigi Giugliano':
-#         deta = Deta(st.secrets[f"deta_key_jobert"])
-#         db = deta.Base("df_observations")
-#         drive = deta.Drive("df_pictures")
-
-#     else:
-#         deta = Deta(st.secrets[f"deta_key_other"])
-#         db = deta.Base("df_observations")
-#         drive = deta.Drive("df_pictures")
-        
-    
-# except:
-#     st.switch_page("🗺️_Home.py")
-
-# _____NEW VERSION______
 deta = Deta(st.secrets[f"deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
@@ -238,14 +220,6 @@ opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
 
 with st.expander("Upload een foto"):
     uploaded_file = popover.camera_input("")
-
-    
-
-
-# with st.container(height=CONTAINER_height, border=True):
-    
-#     output = map()
-
 
     
 input_data()
