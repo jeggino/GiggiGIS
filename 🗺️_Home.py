@@ -58,6 +58,7 @@ st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootst
 
 st.markdown("""
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #FFFFFF;">
+  <a class="navbar-brand" target="_blank">   </a>
 </nav>
 """, unsafe_allow_html=True)
 # st.markdown("""
