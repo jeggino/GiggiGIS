@@ -39,7 +39,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.html("<style> .main {overflow: hidden} </style>")
+# st.html("<style> .main {overflow: hidden} </style>")
 
 st.markdown("""
     <style>
