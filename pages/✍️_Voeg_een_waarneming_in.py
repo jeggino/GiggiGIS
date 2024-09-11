@@ -153,30 +153,36 @@ def input_data():
 # --- APP ---  
 popover = st.popover("🗒️")
 
-try:
-    waarnemer = st.session_state["name"]
+# try:
+#     waarnemer = st.session_state["name"]
     
-    if waarnemer == 'Luigi Giugliano':
-        deta = Deta(st.secrets[f"deta_key_jobert"])
-        db = deta.Base("df_observations")
-        drive = deta.Drive("df_pictures")
+#     if waarnemer == 'Luigi Giugliano':
+#         deta = Deta(st.secrets[f"deta_key_jobert"])
+#         db = deta.Base("df_observations")
+#         drive = deta.Drive("df_pictures")
 
-    else:
-        deta = Deta(st.secrets[f"deta_key_other"])
-        db = deta.Base("df_observations")
-        drive = deta.Drive("df_pictures")
+#     else:
+#         deta = Deta(st.secrets[f"deta_key_other"])
+#         db = deta.Base("df_observations")
+#         drive = deta.Drive("df_pictures")
         
     
-except:
-    st.switch_page("🗺️_Home.py")
+# except:
+#     st.switch_page("🗺️_Home.py")
+
+# _____NEW VERSION______
+deta = Deta(st.secrets[f"deta_key_other"])
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures")
+# _____NEW VERSION______
 
 
-    
 popover.page_link("🗺️_Home.py", label="Annuleren", icon="❌")
-if waarnemer == 'Luigi Giugliano':
-    project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
-else:
-    project = None
+waarnemer st.session_state['waarnemer']
+# if waarnemer == 'Luigi Giugliano':
+#     project = popover.selectbox("Project", ["Zaandam","Badhoevedorp"],key="project")
+# else:
+#     project = None
     
 soortgroup = popover.selectbox("", GROUP)
 datum = popover.date_input("Datum","today")       
