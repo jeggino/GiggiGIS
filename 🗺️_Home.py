@@ -204,8 +204,6 @@ def popup_html(row):
         
 
 # --- APP ---    
-
-# st.page_link("pages/drop.py", label="Drop", icon="❌")
 placeholder_waarnemer = st.empty()
 waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
 
