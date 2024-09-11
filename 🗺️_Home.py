@@ -111,7 +111,7 @@ reduce_header_height_style = """
 #     st.stop()
 
 placeholder_waarnemer = st.empty()
-waarnemer = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
+st.session_state['waarnemer'] = placeholder_waarnemer.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
 
 if waarnemer:
     placeholder_waarnemer.empty()
@@ -223,7 +223,7 @@ try:
                                              else (ICON["Nest_bezet"] if x["onbewoond"]=="Ja" 
                                                    else ICON["Nest_unbezet"]))), axis=1)
     
-    
+    st.write(st.session_state['waarnemer'])
     map = folium.Map()
     LocateControl(auto_start=True).add_to(map)
     Fullscreen().add_to(map)
