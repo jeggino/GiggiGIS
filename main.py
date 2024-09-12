@@ -28,21 +28,16 @@ import streamlit as st
 
 @st.cache_resource(experimental_allow_widgets=True)
 def logIn(name,password):
-    
+   return name,password
 
-    if password == st.secret["password"]:
-       return True, name
-    
-    else:
-        return False
 
 # _____APP_____
 name = st.text_input("Insert your name", "")
 password = st.text_input("Insert yput password", "")
 
+waarnemer,passord_2 = logIn(name,password)
 
-
-if logIn(name,password) == False:
+if logIn(name,password) != st.secret["password"]:
     st.error(f"password incorrect, {name}")
     st.stop()
 
