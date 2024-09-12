@@ -26,7 +26,7 @@ credentials
 
 import streamlit as st
 
-@st.cache_resource()
+@st.cache_resource(experimental_allow_widgets=True)
 def logIn():
     name = st.text_input("Insert your name", "")
     password = st.text_input("Insert yput password", "")
