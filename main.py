@@ -23,12 +23,12 @@ def project():
   st.rerun()
 
 def logOut():
-    if st.button("logOut"):
+    if st.button("logOut",use_container_width=True):
         del st.session_state.login
         st.rerun()
 
 def logOut_project():
-    if st.button("logOut project"):
+    if st.button("logOut project",use_container_width=True):
         del st.session_state.project
         st.rerun()
 
