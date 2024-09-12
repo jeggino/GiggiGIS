@@ -23,33 +23,26 @@ for index in range(len(emails)):
 
 credentials 
 
+from streamlit import session_state
 
-import streamlit as st
+with st.sidebar:
+    username = st.text_input("Username")
+    password = st.text_input("Password",type='password')
 
-@st.cache_resource(experimental_allow_widgets=True)
-def logIn(name,password):
-   return name,password
+if st.button("Login"):
+     
+    if password == st.secrets['password']:
+        session_state.login = True
+        session_state.username = username
+    else:
+        st.warning("Incorrect username or password")
 
-@st.cache_resource()
-def logOut():
-    st.cache_resource.clear()
-    st.rerun()
-
-
-# _____APP_____
-name = st.text_input("Insert your name", "")
-password = st.text_input("Insert yput password", "")
-
-
-if st.button("logIn"):
-    waarnemer,passord_2 = logIn(name,password)
-
-    if passord_2 != st.secrets["password"]:
-        st.error(f"password incorrect, {name}")
-        st.stop()
-
-st.write(f"Welkom {name}")
-
+# Check login state 
+if session_state.login == True:
+    st.write("Hello {}!".format(session_state.username))
+    
+else:
+    st.stop()
 
 
 
