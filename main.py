@@ -25,9 +25,8 @@ st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_sta
 
 from streamlit import session_state
 
-with st.sidebar:
-    username = st.text_input("Username")
-    password = st.text_input("Password",type='password')
+username = st.text_input("Username",key = "username")
+password = st.text_input("Password",type='password',key = "password")
 
 if st.button("Login"):
      
@@ -45,40 +44,3 @@ else:
     st.write("ciao!")
     st.stop()
 
-
-
-
-
-
-# if not authentication_status:
-#     sign_up()
-
-# if username:
-#     if username in usernames:
-#         if authentication_status:
-#             # let User see app
-#             st.sidebar.subheader(f'Welcome {username}')
-#             Authenticator.logout('Log Out', 'sidebar')
-
-#             st.subheader('This is the home page')
-#             st.markdown(
-#                 """
-#                 ---
-#                 Created with ❤️ by SnakeByte
-                
-#                 """
-#             )
-
-#         elif not authentication_status:
-#             with info:
-#                 st.error('Incorrect Password or username')
-#         else:
-#             with info:
-#                 st.warning('Please feed in your credentials')
-#     else:
-#         with info:
-#             st.warning('Username does not exist, Please Sign up')
-
-
-# # except:
-# #     st.success('Refresh Page')
