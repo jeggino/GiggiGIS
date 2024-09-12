@@ -81,6 +81,7 @@ db_content = load_dataset()
 df_point = pd.DataFrame(db_content)
 
 df_point
+st.divider()
 
 waarnemer = st.sidebar.selectbox("Chose an operator",WAARNEMERS)
 df_point[df_point['waarnemer']==waarnemer]
