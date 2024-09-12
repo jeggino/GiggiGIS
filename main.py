@@ -40,7 +40,7 @@ def logOut():
 name = st.text_input("Insert your name", "")
 password = st.text_input("Insert yput password", "")
 
-st.button("Reset", type="primary")
+
 if st.button("logIn"):
     waarnemer,passord_2 = logIn(name,password)
 
@@ -49,6 +49,8 @@ if st.button("logIn"):
         st.stop()
     else:
         st.write(f"Welkom {name}")
+
+st.button("Reset", type="primary")
 
 
 
