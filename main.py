@@ -13,7 +13,7 @@ db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 db_content = db.fetch().items 
 df_point = pd.DataFrame(db_content)
-SOORTGROUP = df_point[df_point.soortgroup.unique()]
+SOORTGROUP = df_point.soortgroup.unique()
 
 
 
