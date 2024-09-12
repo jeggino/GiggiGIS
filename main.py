@@ -28,8 +28,6 @@ def logOut_project():
 
 def project():
  project = st.selectbox("Chose a project",ASSAYS,key='project')
- if st.button("start"):
-  st.rerun()
   
         
     
@@ -52,6 +50,8 @@ if 'project' not in st.session_state:
  st.stop()
 
 f"Hello {st.session_state.login['name']} you will work at {st.session_state.project} project"
+logOut_project()
+logOut()
 if st.button("Say hello"):
     st.write("Why hello there")
     
