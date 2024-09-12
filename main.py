@@ -6,6 +6,7 @@ import pandas as pd
 st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_state='collapsed')
 
 ASSAYS = ['birds','bats','insects','rats']
+WAARNEMERS = ["Luigi","Daan"]
  
 import streamlit as st
 
@@ -75,6 +76,11 @@ df_point = pd.DataFrame(db_content)
 if st.button("Say hello"):
  st.write("Why hello there")
  df_point
+ waarnemer = st.sidebar.selectbox("Chose an operator",WAARNEMERS)
+ df_point[df_point['waarnemers']==waarnemer]
+
+
+ 
    
     
 
