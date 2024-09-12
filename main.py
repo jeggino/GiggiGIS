@@ -17,7 +17,7 @@ def logIn():
         st.rerun()
 
 def project():
- project = st.selectbox("Chose a project",ASSAYS,key='project')
+ project = st.selectbox("Chose a project",ASSAYS)
  if st.button("start"):
   st.session_state.project = {"project_name": project}
   st.rerun()
@@ -53,7 +53,7 @@ if 'project' not in st.session_state:
  project()
  st.stop()
 
-f"Hello {st.session_state.login['name']} you will work at {st.session_state.project} project"
+f"Hello {st.session_state.login['name']} you will work at {st.session_state.project['project_name']} project"
 logOut_project()
 logOut()
 if st.button("Say hello"):
