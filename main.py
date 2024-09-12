@@ -39,7 +39,7 @@ if "vote" not in st.session_state:
     vote()
 
 if st.session_state.vote['name'] == st.secrets['password']:
-    f"Hello {st.session_state.vote['name']}}"
+    f"Hello {st.session_state.vote['name']}"
 else:
     f"Sorry {st.session_state.vote['name']}} your password is not correct"
     
