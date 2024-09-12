@@ -43,7 +43,7 @@ if st.session_state.login['password'] != st.secrets['password']:
 
     
 
-def project():
+project():
 logOut()
 if st.button("Say hello"):
     st.write("Why hello there")
