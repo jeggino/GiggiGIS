@@ -75,9 +75,9 @@ df_point = pd.DataFrame(db_content)
 
 if st.button("Say hello"):
  st.write("Why hello there")
- df_point
- waarnemer = st.sidebar.selectbox("Chose an operator",WAARNEMERS)
- df_point[df_point['waarnemers']==waarnemer]
+df_point
+waarnemer = st.sidebar.selectbox("Chose an operator",WAARNEMERS)
+df_point[df_point['waarnemer']==waarnemer]
 
 
  
