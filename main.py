@@ -49,8 +49,7 @@ def logOut_project():
 db_content = load_dataset()
 df_point = pd.DataFrame(db_content)
 
-SOORTGROUP = df_point.soortgroup.unique()
-df_point_2 = df_point[df_point['soortgroup']==SOORTGROUP]
+
     
 
 
@@ -94,7 +93,7 @@ df_point
 st.divider()
 
 waarnemer = st.sidebar.selectbox("Chose an operator",WAARNEMERS)
-
+df_point_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
 df_point_2[df_point_2['waarnemer']==waarnemer]
 
 
