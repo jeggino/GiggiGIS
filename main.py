@@ -5,27 +5,10 @@ from dependancies import sign_up, fetch_users
 
 st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_state='collapsed')
 
-
-# # try:
-# users = fetch_users()
-# emails = []
-# usernames = []
-# passwords = []
-
-# for user in users:
-#     emails.append(user['key'])
-#     usernames.append(user['username'])
-#     passwords.append(user['password'])
-
-# credentials = {'usernames': {}}
-# for index in range(len(emails)):
-#     credentials['usernames'][usernames[index]] = {'name': emails[index], 'password': passwords[index]}
-
-# credentials 
-
+ASSAYS = ['birds','bats','insects','rats']
+ 
 import streamlit as st
 
-# @st.dialog("Cast your vote")
 def logIn():
     name = st.text_input("Nane ...")
     password = st.text_input("Password ...")
@@ -37,18 +20,33 @@ def logOut():
     if st.button("logOut"):
         del st.session_state.login
         st.rerun()
+        
+    
+    
 
+
+# ___APP___
 if "login" not in st.session_state:
     st.write("LogIn please")
     logIn()
     st.stop()
 
-if st.session_state.login['password'] == st.secrets['password']:
-    f"Hello {st.session_state.login['name']}"
-    logOut()
-else:
+if st.session_state.login['password'] != st.secrets['password']:
     f"Sorry {st.session_state.login['name']} your password is not correct"
     logIn()
     st.stop()
+
+    
+else:
+    f"Hello {st.session_state.login['name']}"
+    logOut()
+    project = st.selectbox("Chose a project",ASSAYS,key='project')
+
+
+st.write(st.session_state.project)
+if st.button("Say hello"):
+    st.write("Why hello there")
+    
+
     
 
