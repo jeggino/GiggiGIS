@@ -6,22 +6,22 @@ from dependancies import sign_up, fetch_users
 st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_state='collapsed')
 
 
-# try:
-users = fetch_users()
-emails = []
-usernames = []
-passwords = []
+# # try:
+# users = fetch_users()
+# emails = []
+# usernames = []
+# passwords = []
 
-for user in users:
-    emails.append(user['key'])
-    usernames.append(user['username'])
-    passwords.append(user['password'])
+# for user in users:
+#     emails.append(user['key'])
+#     usernames.append(user['username'])
+#     passwords.append(user['password'])
 
-credentials = {'usernames': {}}
-for index in range(len(emails)):
-    credentials['usernames'][usernames[index]] = {'name': emails[index], 'password': passwords[index]}
+# credentials = {'usernames': {}}
+# for index in range(len(emails)):
+#     credentials['usernames'][usernames[index]] = {'name': emails[index], 'password': passwords[index]}
 
-credentials 
+# credentials 
 
 from streamlit import session_state
 
@@ -42,6 +42,7 @@ if session_state.login == True:
     st.write("Hello {}!".format(session_state.username))
     
 else:
+    st.write("ciao!"))
     st.stop()
 
 
