@@ -75,7 +75,7 @@ if 'project' not in st.session_state:
     st.stop()
 
 with st.sidebar:
-    f"Hello {st.session_state.login['name']} you will work at {st.session_state.project['project_name']} project"
+    f"Hello {st.session_state.login['name']} you will work at the {st.session_state.project['project_name']} project. GOOD LUCK!!!"
     logOut_project()
     logOut()
     st.divider()
