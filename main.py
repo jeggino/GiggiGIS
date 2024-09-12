@@ -42,7 +42,7 @@ if session_state.login == True:
     st.write("Hello {}!".format(session_state.username))
     
 else:
-    st.write("ciao!"))
+    st.write("ciao!")
     st.stop()
 
 
