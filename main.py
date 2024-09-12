@@ -48,7 +48,7 @@ if st.session_state.login['password'] != st.secrets['password']:
     logIn()
     st.stop()
 
-if not st.session_stateproject:    
+if 'project' not in st.session_state:  
  project()
  st.stop()
  
