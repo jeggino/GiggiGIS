@@ -53,9 +53,10 @@ if 'project' not in st.session_state:
  project()
  st.stop()
 
-f"Hello {st.session_state.login['name']} you will work at {st.session_state.project['project_name']} project"
-logOut_project()
-logOut()
+with st.sidebar:
+ f"Hello {st.session_state.login['name']} you will work at {st.session_state.project['project_name']} project"
+ logOut_project()
+ logOut()
 if st.button("Say hello"):
     st.write("Why hello there")
     
