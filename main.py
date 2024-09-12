@@ -21,13 +21,16 @@ def logOut():
         del st.session_state.login
         st.rerun()
 
+def logOut_project():
+    if st.button("logOut project"):
+        del st.session_state.project
+        st.rerun()
+
 def project():
- placeholder = st.empty()
- project = placeholder.selectbox("Chose a project",ASSAYS,key='project')
+ project = st.selectbox("Chose a project",ASSAYS,key='project')
  if st.button("start"):
   f"Hello {st.session_state.login['name']} you will work at {st.session_state.project} project"
-  project.empty()
-  logOut()
+  st.rerun()
   
         
     
@@ -45,10 +48,10 @@ if st.session_state.login['password'] != st.secrets['password']:
     logIn()
     st.stop()
 
-    
-
-project()
-
+if not st.session_stateproject:    
+ project()
+ st.stop()
+ 
 if st.button("Say hello"):
     st.write("Why hello there")
     
