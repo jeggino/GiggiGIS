@@ -37,6 +37,7 @@ def vote():
 if "vote" not in st.session_state:
     st.write("LogIn please")
     vote()
+    st.stop()
 
 if st.session_state.vote['name'] == st.secrets['password']:
     f"Hello {st.session_state.vote['name']}"
