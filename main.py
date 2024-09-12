@@ -1,5 +1,5 @@
 import streamlit as st
-import Deta
+from deta import Deta
 
 
 st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_state='collapsed')
