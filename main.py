@@ -22,9 +22,12 @@ def logOut():
         st.rerun()
 
 def project():
- project = st.selectbox("Chose a project",ASSAYS,key='project')
+ placeholder = st.empty()
+ project = placeholder.selectbox("Chose a project",ASSAYS,key='project')
  if st.button("start"):
   f"Hello {st.session_state.login['name']} you will work at {st.session_state.project} project"
+  project.empty()
+  
         
     
     
