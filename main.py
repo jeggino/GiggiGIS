@@ -30,23 +30,27 @@ import streamlit as st
 def logIn(name,password):
    return name,password
 
+@st.cache_resource()
+def logOut():
+    st.cache_resource.clear()
+    st.rerun()
+
 
 # _____APP_____
 name = st.text_input("Insert your name", "")
 password = st.text_input("Insert yput password", "")
 
-waarnemer,passord_2 = logIn(name,password)
+st.button("Reset", type="primary")
+if st.button("logIn"):
+    waarnemer,passord_2 = logIn(name,password)
 
-if passord_2 != st.secrets["password"]:
-    st.error(f"password incorrect, {name}")
-    st.stop()
+    if passord_2 != st.secrets["password"]:
+        st.error(f"password incorrect, {name}")
+        st.stop()
+    else:
+        st.write(f"Welkom {name}")
 
-st.write(f"Welkom {name}")
 
-@st.cache_resource()
-def logOut():
-    st.cache_resource.clear()
-    st.rerun()
 
 
 
