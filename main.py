@@ -27,9 +27,8 @@ credentials
 import streamlit as st
 
 @st.cache_resource(experimental_allow_widgets=True)
-def logIn():
-    name = st.text_input("Insert your name", "")
-    password = st.text_input("Insert yput password", "")
+def logIn(name,password):
+    
 
     if password == st.secret["password"]:
        return True, name
@@ -38,9 +37,12 @@ def logIn():
         return False
 
 # _____APP_____
-logIn()
+name = st.text_input("Insert your name", "")
+password = st.text_input("Insert yput password", "")
 
-if logIn() == False:
+
+
+if logIn(name,password) == False:
     st.error(f"password incorrect, {name}")
     st.stop()
 
