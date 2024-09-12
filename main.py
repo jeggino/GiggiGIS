@@ -25,20 +25,22 @@ st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_sta
 
 import streamlit as st
 
-@st.dialog("Cast your vote")
-def vote(item):
-    st.write(f"Why is {item} your favorite?")
-    reason = st.text_input("Because...")
+# @st.dialog("Cast your vote")
+def vote():
+    
+    name = st.text_input("Nane ...")
+    password = st.text_input("Password ...")
     if st.button("Submit"):
-        st.session_state.vote = {"item": item, "reason": reason}
+        st.session_state.vote = {"name": name, "password": password}
         st.rerun()
 
 if "vote" not in st.session_state:
-    st.write("Vote for your favorite")
-    if st.button("A"):
-        vote("A")
-    if st.button("B"):
-        vote("B")
+    st.write("LogIn please")
+    vote()
+
+if st.session_state.vote['name'] == st.secrets['password']:
+    f"Hello {st.session_state.vote['name']}}"
 else:
-    f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
+    f"Sorry {st.session_state.vote['name']}} your password is not correct"
+    
 
