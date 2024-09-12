@@ -27,6 +27,7 @@ def project():
  if st.button("start"):
   f"Hello {st.session_state.login['name']} you will work at {st.session_state.project} project"
   project.empty()
+  logOut()
   
         
     
