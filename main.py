@@ -23,41 +23,41 @@ for index in range(len(emails)):
 
 credentials 
 
-Authenticator = stauth.Authenticate(credentials, cookie_name='Streamlit', key='Authenticator', cookie_expiry_days=4)
-st.warning("PROBLEM!!!!!!!!!!!!!!!!")
-email, authentication_status, username = Authenticator.login(':green[Login]', 'main')
+# Authenticator = stauth.Authenticate(credentials, cookie_name='Streamlit', key='Authenticator', cookie_expiry_days=4)
+# st.warning("PROBLEM!!!!!!!!!!!!!!!!")
+# email, authentication_status, username = Authenticator.login(':green[Login]', 'main')
 
-info, info1 = st.columns(2)
+# info, info1 = st.columns(2)
 
-if not authentication_status:
-    sign_up()
+# if not authentication_status:
+#     sign_up()
 
-if username:
-    if username in usernames:
-        if authentication_status:
-            # let User see app
-            st.sidebar.subheader(f'Welcome {username}')
-            Authenticator.logout('Log Out', 'sidebar')
+# if username:
+#     if username in usernames:
+#         if authentication_status:
+#             # let User see app
+#             st.sidebar.subheader(f'Welcome {username}')
+#             Authenticator.logout('Log Out', 'sidebar')
 
-            st.subheader('This is the home page')
-            st.markdown(
-                """
-                ---
-                Created with ❤️ by SnakeByte
+#             st.subheader('This is the home page')
+#             st.markdown(
+#                 """
+#                 ---
+#                 Created with ❤️ by SnakeByte
                 
-                """
-            )
+#                 """
+#             )
 
-        elif not authentication_status:
-            with info:
-                st.error('Incorrect Password or username')
-        else:
-            with info:
-                st.warning('Please feed in your credentials')
-    else:
-        with info:
-            st.warning('Username does not exist, Please Sign up')
+#         elif not authentication_status:
+#             with info:
+#                 st.error('Incorrect Password or username')
+#         else:
+#             with info:
+#                 st.warning('Please feed in your credentials')
+#     else:
+#         with info:
+#             st.warning('Username does not exist, Please Sign up')
 
 
-# except:
-#     st.success('Refresh Page')
+# # except:
+# #     st.success('Refresh Page')
