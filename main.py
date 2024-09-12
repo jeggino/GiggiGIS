@@ -26,6 +26,7 @@ def project():
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
+     del st.session_state.project     
         st.rerun()
 
 def logOut_project():
