@@ -37,7 +37,7 @@ password = st.text_input("Insert yput password", "")
 
 waarnemer,passord_2 = logIn(name,password)
 
-if logIn(name,password) != st.secret["password"]:
+if logIn(name,password) != st.secrets["password"]:
     st.error(f"password incorrect, {name}")
     st.stop()
 
