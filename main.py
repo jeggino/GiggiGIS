@@ -12,11 +12,7 @@ deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 
-db_content = load_dataset()
-df_point = pd.DataFrame(db_content)
 
-SOORTGROUP = df_point.soortgroup.unique()
-df_point_2 = df_point[df_point['soortgroup']==SOORTGROUP]
 
 
  
@@ -49,8 +45,12 @@ def logOut_project():
         del st.session_state.project
         st.rerun()
 
-        
-    
+
+db_content = load_dataset()
+df_point = pd.DataFrame(db_content)
+
+SOORTGROUP = df_point.soortgroup.unique()
+df_point_2 = df_point[df_point['soortgroup']==SOORTGROUP]
     
 
 
