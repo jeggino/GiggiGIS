@@ -5,12 +5,20 @@ import pandas as pd
 
 st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_state='collapsed')
 
-ASSAYS = ['birds','bats','insects','rats']
+# ASSAYS = ['birds','bats','insects','rats']
 WAARNEMERS = ["Luigi","Daan"]
 
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
+
+db_content = load_dataset()
+df_point = pd.DataFrame(db_content)
+
+SOORTGROUP = df_point.soortgroup.unique()
+df_point_2 = df_point[df_point['soortgroup']==SOORTGROUP]
+
+
  
 
 # --- FUNCTIONS ---
@@ -25,7 +33,7 @@ def logIn():
         st.rerun()
 
 def project():
- project = st.selectbox("Chose a project",ASSAYS)
+ project = st.selectbox("Chose a project",SOORTGROUP)
  if st.button("start"):
       st.session_state.project = {"project_name": project}
       st.rerun()
@@ -47,6 +55,9 @@ def logOut_project():
 
 
 # ___APP___
+
+
+
 if "login" not in st.session_state:
     st.write("LogIn please")
     logIn()
@@ -77,14 +88,14 @@ with st.sidebar:
 
    
     
-db_content = load_dataset()
-df_point = pd.DataFrame(db_content)
+
 
 df_point
 st.divider()
 
 waarnemer = st.sidebar.selectbox("Chose an operator",WAARNEMERS)
-df_point[df_point['waarnemer']==waarnemer]
+
+df_point_2[df_point_2['waarnemer']==waarnemer]
 
 
  
