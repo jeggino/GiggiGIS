@@ -11,6 +11,10 @@ WAARNEMERS = ["Luigi","Daan"]
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
+db_content = db.fetch().items 
+df_point = pd.DataFrame(db_content)
+SOORTGROUP = df_point[df_point.soortgroup.unique()]
+
 
 
 
@@ -18,8 +22,7 @@ drive = deta.Drive("df_pictures")
  
 
 # --- FUNCTIONS ---
-def load_dataset():
-    return db.fetch().items 
+ 
  
 def logIn():
     name = st.text_input("Nane ...")
@@ -29,10 +32,10 @@ def logIn():
         st.rerun()
 
 def project():
- project = st.selectbox("Chose a project",SOORTGROUP)
- if st.button("start"):
-      st.session_state.project = {"project_name": project}
-      st.rerun()
+    project = st.selectbox("Chose a project",SOORTGROUP)
+    if st.button("start"):
+         st.session_state.project = {"project_name": project}
+         st.rerun()
 
 def logOut():
     if st.button("logOut",use_container_width=True):
@@ -46,8 +49,7 @@ def logOut_project():
         st.rerun()
 
 
-db_content = load_dataset()
-df_point = pd.DataFrame(db_content)
+
 
 
     
