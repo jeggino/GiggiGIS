@@ -47,10 +47,11 @@ if st.button("logIn"):
     if passord_2 != st.secrets["password"]:
         st.error(f"password incorrect, {name}")
         st.stop()
-    else:
-        st.write(f"Welkom {name}")
 
-st.button("Reset", type="primary")
+st.write(f"Welkom {name}")
+
+if st.button("logOut"):
+    def logOut()
 
 
 
