@@ -1,6 +1,5 @@
 import streamlit as st
-import streamlit_authenticator as stauth
-from dependancies import sign_up, fetch_users
+import Deta
 
 
 st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_state='collapsed')
@@ -57,9 +56,24 @@ with st.sidebar:
  f"Hello {st.session_state.login['name']} you will work at {st.session_state.project['project_name']} project"
  logOut_project()
  logOut()
-if st.button("Say hello"):
-    st.write("Why hello there")
-    
 
+
+
+deta = Deta(st.secrets["deta_key_other"])
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures")
+
+
+# --- FUNCTIONS ---
+def load_dataset():
+    return db.fetch().items    
+    
+db_content = load_dataset()
+df_point = pd.DataFrame(db_content)
+
+if st.button("Say hello"):
+ st.write("Why hello there")
+ df_point
+   
     
 
