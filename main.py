@@ -26,24 +26,29 @@ st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_sta
 import streamlit as st
 
 # @st.dialog("Cast your vote")
-def vote():
-    
+def logIn():
     name = st.text_input("Nane ...")
     password = st.text_input("Password ...")
-    if st.button("Submit"):
-        st.session_state.vote = {"name": name, "password": password}
+    if st.button("logIn"):
+        st.session_state.login = {"name": name, "password": password}
         st.rerun()
 
-if "vote" not in st.session_state:
+def logOut():
+    if st.button("logOut"):
+        del st.session_state.login
+        st.rerun()
+
+if "login" not in st.session_state:
     st.write("LogIn please")
-    vote()
+    logIn()
     st.stop()
 
-if st.session_state.vote['password'] == st.secrets['password']:
-    f"Hello {st.session_state.vote['name']}"
+if st.session_state.login['password'] == st.secrets['password']:
+    f"Hello {st.session_state.login['name']}"
+    logOut()
 else:
-    f"Sorry {st.session_state.vote['name']} your password is not correct"
-    vote()
+    f"Sorry {st.session_state.login['name']} your password is not correct"
+    logIn()
     st.stop()
     
 
