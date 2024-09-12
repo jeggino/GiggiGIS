@@ -51,7 +51,7 @@ if st.button("logIn"):
 st.write(f"Welkom {name}")
 
 if st.button("logOut"):
-    def logOut()
+    logOut()
 
 
 
