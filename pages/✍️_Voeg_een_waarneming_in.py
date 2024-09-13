@@ -157,76 +157,79 @@ def input_data():
     
 
 # --- APP ---  
-IMAGE = "image/logo.png"
-st.logo(IMAGE,  link=None, icon_image=None)
-
-# f"Hello {st.session_state.login['name']} you will work at the {st.session_state.project['project_name']} project. GOOD LUCK!!!"
-
-deta = Deta(st.secrets[f"deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
-
-popover = st.sidebar
-
-# waarnemer = popover.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
-waarnemer = st.session_state.login['name']
-soortgroup = st.session_state.project['project_name']
-
-# popover.divider()
-
-datum = popover.date_input("Datum","today")       
-nine_hours_from_now = datetime.now() + timedelta(hours=2)
-time = popover.time_input("Tijd", nine_hours_from_now)
-
-popover.divider()
-
-if soortgroup == 'Vleermuizen':
-
-    sp = popover.selectbox("Soort", BAT_NAMES,key="Soort")
-    gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
-    functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
-    verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
-    aantal = popover.number_input("Aantal", min_value=1)
-
-elif soortgroup == 'Vogels':
-
-    sp = popover.selectbox("Soort", BIRD_NAMES)
-    gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-    functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
-    verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
-    aantal = popover.number_input("Aantal", min_value=1)
-
-elif soortgroup == 'Vleermuiskast':
-    functie = popover.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
-    BAT_NAMES = ["onbekend"] + BAT_NAMES
-    sp = popover.selectbox("Soort", BAT_NAMES) 
-    gedrag = None
-    verblijf = None
-    aantal = popover.number_input("Aantal", min_value=1)
-
-elif soortgroup == 'Camera':
-    functie = popover.selectbox("Camera", CAMERA_OPTIONS)
-    BAT_NAMES = None
-    sp = None 
-    gedrag = None
-    verblijf = None
-    aantal = None
-
-elif soortgroup == 'Rat val':
-    functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
-    BAT_NAMES = None
-    sp = None 
-    gedrag = None
-    verblijf = None
-    aantal = None
-
-opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
-
-with popover.expander("Upload een foto"):
-    uploaded_file = st.camera_input("")
-
-popover.divider()
-
+try:
+    IMAGE = "image/logo.png"
+    st.logo(IMAGE,  link=None, icon_image=None)
     
-input_data()
-
+    
+    
+    deta = Deta(st.secrets[f"deta_key_other"])
+    db = deta.Base("df_observations")
+    drive = deta.Drive("df_pictures")
+    
+    popover = st.sidebar
+    
+    waarnemer = st.session_state.login['name']
+    soortgroup = st.session_state.project['project_name']
+    
+    # popover.divider()
+    
+    datum = popover.date_input("Datum","today")       
+    nine_hours_from_now = datetime.now() + timedelta(hours=2)
+    time = popover.time_input("Tijd", nine_hours_from_now)
+    
+    popover.divider()
+    
+    if soortgroup == 'Vleermuizen':
+    
+        sp = popover.selectbox("Soort", BAT_NAMES,key="Soort")
+        gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
+        functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
+        verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
+        aantal = popover.number_input("Aantal", min_value=1)
+    
+    elif soortgroup == 'Vogels':
+    
+        sp = popover.selectbox("Soort", BIRD_NAMES)
+        gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+        functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
+        verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
+        aantal = popover.number_input("Aantal", min_value=1)
+    
+    elif soortgroup == 'Vleermuiskast':
+        functie = popover.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
+        BAT_NAMES = ["onbekend"] + BAT_NAMES
+        sp = popover.selectbox("Soort", BAT_NAMES) 
+        gedrag = None
+        verblijf = None
+        aantal = popover.number_input("Aantal", min_value=1)
+    
+    elif soortgroup == 'Camera':
+        functie = popover.selectbox("Camera", CAMERA_OPTIONS)
+        BAT_NAMES = None
+        sp = None 
+        gedrag = None
+        verblijf = None
+        aantal = None
+    
+    elif soortgroup == 'Rat val':
+        functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
+        BAT_NAMES = None
+        sp = None 
+        gedrag = None
+        verblijf = None
+        aantal = None
+    
+    opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
+    
+    with popover.expander("Upload een foto"):
+        uploaded_file = st.camera_input("")
+    
+    popover.divider()
+    
+        
+    input_data()
+    
+except:
+    st.switch_page("🗺️_Home.py")
+    
