@@ -115,10 +115,10 @@ def popup_html(row):
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Tijd</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(time) + """
     </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soortgroup</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(soortgroup) + """
-    </tr>
+    # <tr>
+    # <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soortgroup</span></td>
+    # <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(soortgroup) + """
+    # </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
