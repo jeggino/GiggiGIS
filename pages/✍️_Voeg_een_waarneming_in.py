@@ -180,7 +180,7 @@ time = popover.time_input("Tijd", nine_hours_from_now)
 
 popover.divider()
 
-if soortgroup == '🦇 Vleermuizen':
+if soortgroup == 'Vleermuizen':
 
     sp = popover.selectbox("Soort", BAT_NAMES,key="Soort")
     gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
@@ -188,7 +188,7 @@ if soortgroup == '🦇 Vleermuizen':
     verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
     aantal = popover.number_input("Aantal", min_value=1)
 
-elif soortgroup == '🪶 Vogels':
+elif soortgroup == 'Vogels':
 
     sp = popover.selectbox("Soort", BIRD_NAMES)
     gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
@@ -196,7 +196,7 @@ elif soortgroup == '🪶 Vogels':
     verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
     aantal = popover.number_input("Aantal", min_value=1)
 
-elif soortgroup == '🏠 Vleermuiskast':
+elif soortgroup == 'Vleermuiskast':
     functie = popover.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
     BAT_NAMES = ["onbekend"] + BAT_NAMES
     sp = popover.selectbox("Soort", BAT_NAMES) 
@@ -204,7 +204,7 @@ elif soortgroup == '🏠 Vleermuiskast':
     verblijf = None
     aantal = popover.number_input("Aantal", min_value=1)
 
-elif soortgroup == '📷 Camera':
+elif soortgroup == 'Camera':
     functie = popover.selectbox("Camera", CAMERA_OPTIONS)
     BAT_NAMES = None
     sp = None 
@@ -212,7 +212,7 @@ elif soortgroup == '📷 Camera':
     verblijf = None
     aantal = None
 
-elif soortgroup == '🐀 Rat val':
+elif soortgroup == 'Rat val':
     functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
     BAT_NAMES = None
     sp = None 
