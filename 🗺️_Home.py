@@ -137,7 +137,7 @@ def popup_html(row):
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(aantal) + """
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
