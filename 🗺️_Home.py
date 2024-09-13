@@ -223,7 +223,7 @@ try:
 
     d = st.sidebar.slider(
         "Filter op datum",
-        (df_2.datum_2.min(),
+        value=(df_2.datum_2.min(),
          df_2.datum_2.max()),
         format="YYYY.MM.DD",
     )
