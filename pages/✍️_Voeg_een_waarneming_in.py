@@ -160,6 +160,8 @@ def input_data():
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
+f"Hello {st.session_state.login['name']} you will work at the {st.session_state.project['project_name']} project. GOOD LUCK!!!"
+
 deta = Deta(st.secrets[f"deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
