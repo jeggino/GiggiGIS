@@ -168,10 +168,11 @@ drive = deta.Drive("df_pictures")
 
 popover = st.sidebar
 
-waarnemer = popover.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
-soortgroup = popover.selectbox("", GROUP)
+# waarnemer = popover.selectbox("Waarnemer", WAARNEMERS, key="waarnemer",index=None, label_visibility= 'collapsed', placeholder = "Wie ben je ...")
+waarnemer = st.session_state.login['name']
+soortgroup = st.session_state.project['project_name']
 
-popover.divider()
+# popover.divider()
 
 datum = popover.date_input("Datum","today")       
 nine_hours_from_now = datetime.now() + timedelta(hours=2)
