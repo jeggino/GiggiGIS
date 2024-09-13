@@ -158,7 +158,7 @@ df_point = pd.DataFrame(db_content)
 SOORTGROUP = df_point.soortgroup.unique()
 
 def logIn():
-    name = st.selectbox("Aan welke opdracht ga je werken?",WAARNEMERS)
+    name = st.selectbox("Wie ben je?",WAARNEMERS)
     password = st.text_input("Vul het wachtwoord in, alstublieft.")
     if st.button("logIn"):
         st.session_state.login = {"name": name, "password": password}
@@ -189,12 +189,12 @@ if "login" not in st.session_state:
     st.stop()
 
 if st.session_state.login['password'] != st.secrets['password']:
-    f"Sorry {st.session_state.login['name']} your password is not correct"
+    st.markdown(f"Sorry **{st.session_state.login['name']}**, uw wachtwoord is niet correct.")
     logIn()
     st.stop()
 
 if 'project' not in st.session_state:  
-    st.write("Chose a project")
+    st.markdown("Aan welke opdracht ga je werken?")
     project()
     st.stop()
 
