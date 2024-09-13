@@ -222,7 +222,7 @@ try:
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
 
     d = st.sidebar.date_input(
-        "Select your vacation for next year",
+        "Filter op datum",
         (df_2.datum_2.min(),
          df_2.datum_2.max()),
         df_2.datum_2.min(),
@@ -230,7 +230,7 @@ try:
         format="YYYY-MM-DD",
     )
 
-    df_2 = df_2[df_2['datum_2']>=d[0] and df_2['datum_2']<=d[1]]
+    df_2 = df_2[(df_2['datum_2']>=d[0]) & (df_2['datum_2']<=d[1])]
     
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
