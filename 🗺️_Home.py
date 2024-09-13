@@ -219,7 +219,7 @@ try:
     
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
-    # df_2[datum] = 
+    df_2["datum"] = pd.to_datetime(df_2["datum"])
     date_min = st.sidebar.write(df_2.datum.min())
     date_max = st.sidebar.write(df_2.datum.max())
     d = st.sidebar.date_input(
