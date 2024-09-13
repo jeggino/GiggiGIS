@@ -165,8 +165,8 @@ def logIn():
         st.rerun()
 
 def project():
-    project = st.selectbox("Chose a project",SOORTGROUP)
-    if st.button("start"):
+    project = st.selectbox("Chose a project",SOORTGROUP,label_visibility="collapsed")
+    if st.button("begin"):
          st.session_state.project = {"project_name": project}
          st.rerun()
 
@@ -177,14 +177,13 @@ def logOut():
         st.rerun()
 
 def logOut_project():
-    if st.button("logOut project",use_container_width=True):
+    if st.button("logOut opdracht",use_container_width=True):
         del st.session_state.project
         st.rerun()
         
 
 
 if "login" not in st.session_state:
-    st.write("LogIn please")
     logIn()
     st.stop()
 
