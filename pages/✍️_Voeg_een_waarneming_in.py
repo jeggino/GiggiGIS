@@ -138,10 +138,10 @@ def input_data():
                 if uploaded_file is not None:
                     bytes_data = uploaded_file.getvalue()
                     drive.put(f"{key}.jpeg", data=bytes_data)            
-                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates)
+                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates)
                 
                 else:
-                    insert_json(key,waarnemer,str(datum),str(time),GROUP_DICT[soortgroup],aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates)
+                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates)
 
                 popover.success('Gegevens opgeslagen!', icon="✅")
                 
@@ -160,7 +160,7 @@ def input_data():
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
-f"Hello {st.session_state.login['name']} you will work at the {st.session_state.project['project_name']} project. GOOD LUCK!!!"
+# f"Hello {st.session_state.login['name']} you will work at the {st.session_state.project['project_name']} project. GOOD LUCK!!!"
 
 deta = Deta(st.secrets[f"deta_key_other"])
 db = deta.Base("df_observations")
