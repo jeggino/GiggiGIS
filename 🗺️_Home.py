@@ -355,6 +355,6 @@ try:
         st.stop()
 
 except:
-    st.title('No data yet')
+    st.helder('No data yet')
     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
     st.stop()
