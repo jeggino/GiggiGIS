@@ -220,8 +220,8 @@ try:
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
     df_2["datum"] = pd.to_datetime(df_2["datum"])
-    date_min = st.sidebar.write(df_2.datum.min())
-    date_max = st.sidebar.write(df_2.datum.max())
+    date_min = st.sidebar.write(df_2.datum.min()).dt.date
+    date_max = st.sidebar.write(df_2.datum.max()).dt.date
     d = st.sidebar.date_input(
         "Select your vacation for next year",
         (date_min, date_max),
