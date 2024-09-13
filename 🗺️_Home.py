@@ -219,6 +219,7 @@ try:
     
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
+    # df_2[datum] = 
     date_min = st.sidebar.write(df_2.datum.min())
     date_max = st.sidebar.write(df_2.datum.max())
     d = st.sidebar.date_input(
@@ -226,7 +227,7 @@ try:
         (date_min, date_max),
         date_min,
         date_max,
-        format="MM.DD.YYYY",
+        # format="MM.DD.YYYY",
     )
     
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
