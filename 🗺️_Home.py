@@ -227,7 +227,7 @@ try:
          df_2.datum_2.max()),
         df_2.datum_2.min(),
         df_2.datum_2.max(),
-        format="YYYY-MM-DD",
+        format="YYYY.MM.DD",
     )
 
     df_2 = df_2[(df_2['datum_2']>=d[0]) & (df_2['datum_2']<=d[1])]
