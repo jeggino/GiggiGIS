@@ -204,7 +204,7 @@ IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
 with st.sidebar:
-    f"Hello {st.session_state.login['name']} you will work at the {st.session_state.project['project_name']} project. GOOD LUCK!!!"
+    st.markdown("f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** opdracht. VEEL SUCCES!!!"")
     logOut_project()
     logOut()
     st.divider()
