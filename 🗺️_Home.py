@@ -90,7 +90,7 @@ def popup_html(row):
      
     datum=df_2['datum'].iloc[i] 
     time=df_2['time'].iloc[i]
-    soortgroup=df_2['soortgroup'].iloc[i]
+    verblijf=df_2['verblijf'].iloc[i]
     sp = df_2['sp'].iloc[i] 
     functie=df_2['functie'].iloc[i]
     gedrag=df_2['gedrag'].iloc[i]
@@ -115,10 +115,6 @@ def popup_html(row):
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Tijd</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(time) + """
     </tr>
-    # <tr>
-    # <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soortgroup</span></td>
-    # <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(soortgroup) + """
-    # </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
@@ -130,6 +126,10 @@ def popup_html(row):
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gedrag) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Verblijf</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(verblijf) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
