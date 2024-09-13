@@ -158,8 +158,8 @@ df_point = pd.DataFrame(db_content)
 SOORTGROUP = df_point.soortgroup.unique()
 
 def logIn():
-    name = st.text_input("Nane ...")
-    password = st.text_input("Password ...")
+    name = st.selectbox("Aan welke opdracht ga je werken?",WAARNEMERS)
+    password = st.text_input("Vul het wachtwoord in, alstublieft.")
     if st.button("logIn"):
         st.session_state.login = {"name": name, "password": password}
         st.rerun()
@@ -204,7 +204,7 @@ IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
 with st.sidebar:
-    st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** opdracht. VEEL SUCCES!!!")
+    st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** opdracht. :rainbow[VEEL SUCCES!!!]")
     logOut_project()
     logOut()
     st.divider()
