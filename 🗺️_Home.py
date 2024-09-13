@@ -219,9 +219,9 @@ try:
     
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
-    st.write(df_2.datum.min())
-    st.write(df_2.datum.max())
-    d = st.date_input(
+    st.sidebar.write(df_2.datum.min())
+    st.sidebar.write(df_2.datum.max())
+    d = st.sidebar.date_input(
         "Select your vacation for next year",
         # (jan_1, datetime.date(next_year, 1, 7)),
         # jan_1,
