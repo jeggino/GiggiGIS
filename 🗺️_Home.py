@@ -206,6 +206,8 @@ with st.sidebar:
     logOut_project()
     logOut()
     st.divider()
+    
+    
 
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
@@ -217,6 +219,15 @@ try:
     
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
+    st.write(df_2.datum.min())
+    st.write(df_2.datum.max())
+    d = st.date_input(
+        "Select your vacation for next year",
+        # (jan_1, datetime.date(next_year, 1, 7)),
+        # jan_1,
+        # dec_31,
+        format="MM.DD.YYYY",
+    )
     
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
