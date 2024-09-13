@@ -199,14 +199,16 @@ if 'project' not in st.session_state:
 
 #______________NEW___________________
 
-IMAGE = "image/logo.png"
-st.logo(IMAGE,  link=None, icon_image=None)
+
 
 with st.sidebar:
     st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** opdracht. :rainbow[VEEL SUCCES!!!]")
     logOut_project()
     logOut()
     st.divider()
+
+IMAGE = "image/logo.png"
+st.logo(IMAGE,  link=None, icon_image=None)
 
 try:
     
