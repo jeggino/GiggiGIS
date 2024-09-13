@@ -210,7 +210,7 @@ try:
         sp = None 
         gedrag = None
         verblijf = None
-        aantal = None
+        aantal = popover.number_input("Aantal", min_value=1)
     
     elif soortgroup == 'Rat val':
         functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
@@ -218,7 +218,7 @@ try:
         sp = None 
         gedrag = None
         verblijf = None
-        aantal = None
+        aantal = popover.number_input("Aantal", min_value=1)
     
     opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
     
