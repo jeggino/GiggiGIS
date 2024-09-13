@@ -220,8 +220,7 @@ try:
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
-    date_min = st.sidebar.write(df_2.datum_2.min())
-    date_max = st.sidebar.write(df_2.datum_2.max())
+
     d = st.sidebar.date_input(
         "Select your vacation for next year",
         (df_2.datum_2.min(),
@@ -231,7 +230,7 @@ try:
         format="YYYY-MM-DD",
     )
 
-    d
+    df_2 = df_2[df_2['datum_2']>=d[0] and df_2['datum_2']<=d[1]]
     
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
