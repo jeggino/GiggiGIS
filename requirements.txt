@@ -1,2 +1,6 @@
 streamlit
 deta
+folium
+streamlit_js_eval
+streamlit-folium
+geopandas
