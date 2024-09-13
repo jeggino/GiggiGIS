@@ -230,7 +230,7 @@ try:
         format="YYYY.MM.DD",
     )
 
-    st.divider()
+    st.sidebar.divider()
 
     df_2 = df_2[(df_2['datum_2']>=d[0]) & (df_2['datum_2']<=d[1])]
     
