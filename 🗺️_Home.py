@@ -155,7 +155,7 @@ db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 db_content = db.fetch().items 
 df_point = pd.DataFrame(db_content)
-SOORTGROUP = df_point.soortgroup.unique()
+SOORTGROUP = ["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val"}
 
 def logIn():
     name = st.selectbox("Wie ben je?",WAARNEMERS)
