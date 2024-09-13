@@ -203,6 +203,12 @@ if 'project' not in st.session_state:
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
+with st.sidebar:
+    f"Hello {st.session_state.login['name']} you will work at the {st.session_state.project['project_name']} project. GOOD LUCK!!!"
+    logOut_project()
+    logOut()
+    st.divider()
+
 try:
     
     db_content = load_dataset()
