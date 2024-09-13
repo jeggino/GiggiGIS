@@ -177,7 +177,7 @@ def logOut():
         st.rerun()
 
 def logOut_project():
-    if st.button("logOut opdracht",use_container_width=True):
+    if st.button("Opdracht wijzigen",use_container_width=True):
         del st.session_state.project
         st.rerun()
         
