@@ -216,7 +216,7 @@ try:
     df_point = pd.DataFrame(db_content)
     
        
-    df_2 = df_point
+    df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
     
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
