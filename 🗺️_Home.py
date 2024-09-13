@@ -227,7 +227,7 @@ try:
         (date_min, date_max),
         date_min,
         date_max,
-        format="YYYY-MM_DD",
+        format="YYYY-MM-DD",
     )
     
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
