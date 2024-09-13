@@ -224,10 +224,10 @@ try:
     date_max = st.sidebar.write(df_2.datum_2.max())
     d = st.sidebar.date_input(
         "Select your vacation for next year",
-        (datetime.date(date_min.year, date_min.month, date_min.day),
-         datetime.date(date_max.year, date_max.month, date_max.day)),
-        datetime.date(date_max.year, date_max.month, date_max.day),
-        datetime.date(date_max.year, date_max.month, date_max.day),
+        (df_2.datum_2.min(),
+         df_2.datum_2.max()),
+        df_2.datum_2.min(),
+        df_2.datum_2.max(),
         format="YYYY-MM-DD",
     )
 
