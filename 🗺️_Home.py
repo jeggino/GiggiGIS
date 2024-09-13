@@ -221,14 +221,13 @@ try:
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
 
-    d = st.sidebar.date_input(
+    d = st.sidebar.slider(
         "Filter op datum",
         (df_2.datum_2.min(),
          df_2.datum_2.max()),
-        df_2.datum_2.min(),
-        df_2.datum_2.max(),
         format="YYYY.MM.DD",
     )
+
 
     st.sidebar.divider()
 
