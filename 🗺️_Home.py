@@ -158,7 +158,7 @@ df_point = pd.DataFrame(db_content)
 
 
 def logIn():
-    name = st.selectbox("Wie ben je?",DICTIONARY_USERS.keys())
+    name = st.selectbox("Wie ben je?",["juhd"])
     password = st.text_input("Vul het wachtwoord in, alstublieft.")
     if st.button("logIn"):
         st.session_state.login = {"name": name, "password": password}
