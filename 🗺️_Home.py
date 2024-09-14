@@ -165,10 +165,8 @@ def logIn():
         st.rerun()
 
 def project():
-    st.write(st.session_state.login["name"])
-    st.write(DICTIONARY_USERS[st.session_state.login["name"]])
-    project = st.selectbox("Chose a project",DICTIONARY_USERS[st.session_state.login["name"]],label_visibility="collapsed")
-    opdracht = st.selectbox("Chose a opdracht",DICTIONARY_PROJECTS[project],label_visibility="collapsed")
+    project = st.selectbox("Aan welke project ga je werken?",DICTIONARY_USERS[st.session_state.login["name"]],label_visibility="collapsed")
+    opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="collapsed")
     if st.button("begin"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht}
          st.rerun()
@@ -196,7 +194,6 @@ if st.session_state.login['password'] != st.secrets['password']:
     st.stop()
 
 if 'project' not in st.session_state:  
-    st.markdown("Aan welke opdracht ga je werken?")
     project()
     st.stop()
 
@@ -205,7 +202,7 @@ if 'project' not in st.session_state:
 
 
 with st.sidebar:
-    st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** opdracht. :rainbow[VEEL SUCCES!!!]")
+    st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** project, met de **{st.session_state.project['opdracht']}** opdracht. :rainbow[VEEL SUCCES!!!]")
     logOut_project()
     logOut()
     st.divider()
@@ -221,7 +218,7 @@ try:
     df_point = pd.DataFrame(db_content)
     
        
-    df_2 = df_point[df_point['soortgroup']==st.session_state.project['project_name']]
+    df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
 
     d = st.sidebar.date_input(
