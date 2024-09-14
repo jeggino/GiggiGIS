@@ -155,17 +155,18 @@ db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
 db_content = db.fetch().items 
 df_point = pd.DataFrame(db_content)
-SOORTGROUP = ["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val"]
+
 
 def logIn():
-    name = st.selectbox("Wie ben je?",WAARNEMERS)
+    name = st.selectbox("Wie ben je?",DICTIONARY_USERS.keys())
     password = st.text_input("Vul het wachtwoord in, alstublieft.")
     if st.button("logIn"):
         st.session_state.login = {"name": name, "password": password}
         st.rerun()
 
 def project():
-    project = st.selectbox("Chose a project",SOORTGROUP,label_visibility="collapsed")
+    project = st.selectbox("Chose a project",DICTIONARY_USERS[name],label_visibility="collapsed")
+    opdracht = st.selectbox("Chose a project",DICTIONARY_PROJECTS[project],label_visibility="collapsed")
     if st.button("begin"):
          st.session_state.project = {"project_name": project}
          st.rerun()
