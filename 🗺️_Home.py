@@ -239,7 +239,7 @@ try:
         format="YYYY.MM.DD",
     )
 
-    if st.sidebar.botton("A"):
+    if st.botton("A"):
         report()
 
 
