@@ -222,6 +222,10 @@ IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
 try:
+
+    if st.botton("ciao"):
+        report()
+        
     
     db_content = load_dataset()
     df_point = pd.DataFrame(db_content)
