@@ -165,8 +165,8 @@ def logIn():
         st.rerun()
 
 def project():
-    project = st.selectbox("Aan welke project ga je werken?",DICTIONARY_USERS[st.session_state.login["name"]],label_visibility="collapsed")
-    opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="collapsed")
+    project = st.selectbox("Aan welke project ga je werken?",DICTIONARY_USERS[st.session_state.login["name"]],label_visibility="visible")
+    opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
     if st.button("begin"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht}
          st.rerun()
