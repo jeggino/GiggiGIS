@@ -223,9 +223,6 @@ st.logo(IMAGE,  link=None, icon_image=None)
 
 try:
 
-
-        
-    
     db_content = load_dataset()
     df_point = pd.DataFrame(db_content)
     
@@ -241,11 +238,6 @@ try:
          df_2.datum_2.max()),
         format="YYYY.MM.DD",
     )
-
-
-
-
-
 
     st.sidebar.divider()
 
