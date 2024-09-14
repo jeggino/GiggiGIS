@@ -239,8 +239,7 @@ try:
         format="YYYY.MM.DD",
     )
 
-    if st.botton("A"):
-        report()
+
 
 
 
