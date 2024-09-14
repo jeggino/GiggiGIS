@@ -78,9 +78,7 @@ ICON_SIZE = (21,21)
 ICON_SIZE_huismus = (25,25)
 
 # --- FUNCTIONS ---
-@st.dialog("Cast your vote")
-def report():
-    st.write("this is the report")
+
     
 def load_dataset():
     return db.fetch().items
@@ -216,8 +214,7 @@ with st.sidebar:
     logOut_project()
     logOut()
     st.divider()
-if st.botton("ciao",use_container_width=True):
-    report()
+
     
     
 
