@@ -74,7 +74,9 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
   'Val verwijderd. Ratten gedood': 'icons/rat_trap_green.png',
   'Val verwijderd. Geen ratten gedood': 'icons/rat_trap_red.png'}}
 
-DICTIONARY_USERS = {"Luigi": ["Niet gespecificeerd"],
-                   "Daan": ["Niet gespecificeerd"]}
+DICTIONARY_USERS = {"Luigi": ["Niet gespecificeerd","A-001"],
+                   "Daan": ["Niet gespecificeerd"]
+                   }
 
-DICTIONARY_PROJECTS = {"Niet gespecificeerd":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val"]}
+DICTIONARY_PROJECTS = {"Niet gespecificeerd":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val"],
+                      "A-001":["Vogels","Vleermuizen"]}
