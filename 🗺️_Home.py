@@ -80,7 +80,11 @@ ICON_SIZE_huismus = (25,25)
 # --- FUNCTIONS ---
 
 def load_dataset():
-    return db.fetch().items    
+    return db.fetch().items
+
+@st.dialog("Cast your vote")
+def report():
+    st.write("this is the report")
 
 
 
@@ -234,6 +238,11 @@ try:
          df_2.datum_2.max()),
         format="YYYY.MM.DD",
     )
+
+    if st.sidebar.botton("A"):
+        report()
+
+
 
 
     st.sidebar.divider()
