@@ -78,13 +78,14 @@ ICON_SIZE = (21,21)
 ICON_SIZE_huismus = (25,25)
 
 # --- FUNCTIONS ---
-
-def load_dataset():
-    return db.fetch().items
-
 @st.dialog("Cast your vote")
 def report():
     st.write("this is the report")
+    
+def load_dataset():
+    return db.fetch().items
+
+
 
 
 
