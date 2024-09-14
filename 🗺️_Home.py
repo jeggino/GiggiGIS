@@ -165,6 +165,8 @@ def logIn():
         st.rerun()
 
 def project():
+    st.write(st.session_state.login.name)
+    st.write(DICTIONARY_USERS[st.session_state.login.name])
     project = st.selectbox("Chose a project",DICTIONARY_USERS[st.session_state.login.name],label_visibility="collapsed")
     opdracht = st.selectbox("Chose a opdracht",DICTIONARY_PROJECTS[project],label_visibility="collapsed")
     if st.button("begin"):
