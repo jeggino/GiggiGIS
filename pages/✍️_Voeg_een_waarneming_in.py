@@ -76,11 +76,11 @@ CONTAINER_height = 640
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
 
     return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates})
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project})
         
 
 def map():
@@ -138,10 +138,10 @@ def input_data():
                 if uploaded_file is not None:
                     bytes_data = uploaded_file.getvalue()
                     drive.put(f"{key}.jpeg", data=bytes_data)            
-                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates)
+                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
                 
                 else:
-                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates)
+                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
                 popover.success('Gegevens opgeslagen!', icon="✅")
                 
@@ -170,7 +170,8 @@ try:
     popover = st.sidebar
     
     waarnemer = st.session_state.login['name']
-    soortgroup = st.session_state.project['project_name']
+    project = st.session_state.project['project_name']
+    soortgroup = st.session_state.project['opdracht']
     
     # popover.divider()
     
