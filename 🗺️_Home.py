@@ -215,6 +215,8 @@ with st.sidebar:
     logOut_project()
     logOut()
     st.divider()
+    if st.botton("ciao",use_container_width=True):
+        report()
     
     
 
