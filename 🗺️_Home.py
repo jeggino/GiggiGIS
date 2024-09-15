@@ -266,7 +266,7 @@ try:
 
     for i in range(len(df_2)):
 
-        if df_2.iloc[i]['geometry_type'] == "Point":v
+        if df_2.iloc[i]['geometry_type'] == "Point":
 
             if (df_2.iloc[i]['sp']=="Gierzwaluw") and (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
                 ICON_SIZE = ICON_SIZE_huismus
