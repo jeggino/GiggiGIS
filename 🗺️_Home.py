@@ -268,7 +268,7 @@ try:
 
         if df_2.iloc[i]['geometry_type'] == "Point":
 
-            if (df_2.iloc[i]['sp']=="Huismus") and (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
+            if (df_2.iloc[i]['sp']=="Huismus") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
                 ICON_SIZE = ICON_SIZE_huismus
                 
 
