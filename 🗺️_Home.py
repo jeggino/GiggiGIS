@@ -75,7 +75,7 @@ OUTPUT_height = 610
 OUTPUT_width = 350
 CONTAINER_height = 640
 ICON_SIZE = (21,21)
-ICON_SIZE_huismus = (25,25)
+ICON_SIZE_huismus = (28,28)
 
 # --- FUNCTIONS ---
 
