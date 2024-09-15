@@ -269,7 +269,10 @@ try:
         if df_2.iloc[i]['geometry_type'] == "Point":
 
             if (df_2.iloc[i]['sp']=="Huismus") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
-                ICON_SIZE = ICON_SIZE_huismus
+                ICON_SIZE_2 = ICON_SIZE_huismus
+
+            else:
+                ICON_SIZE_2 = ICON_SIZE
                 
 
             html = popup_html(i)
@@ -278,7 +281,7 @@ try:
     
             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                           popup=popup,
-                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)
+                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
                          ).add_to(fouctie_loop)
         
     # fg = folium.FeatureGroup(name="Vleermuiskast")
