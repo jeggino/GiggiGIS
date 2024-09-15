@@ -270,6 +270,7 @@ try:
 
             if (df_2.iloc[i]['sp']=="Huismus") and (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
                 ICON_SIZE = ICON_SIZE_huismus
+                
 
             html = popup_html(i)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
