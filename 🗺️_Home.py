@@ -229,19 +229,26 @@ try:
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
-
+    "Filter op"
     d = st.sidebar.date_input(
-        "Filter op datum",
+        "Datum",
         min_value = df_2.datum_2.min(),
         max_value = df_2.datum_2.max(),
         value=(df_2.datum_2.min(),
          df_2.datum_2.max()),
         format="YYYY.MM.DD",
     )
+    
+    df_2 = df_2[(df_2['datum_2']>=d[0]) & (df_2['datum_2']<=d[1])]
+    
+    if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
+        species_filter_option = df_2["sp"].unique()
+        species_filter = st.multiselect("Sorten",species_filter_option,species_filter_option)
+        df_2 = df_2[(df_2['sp'].isin(species_filter)]
 
     st.sidebar.divider()
 
-    df_2 = df_2[(df_2['datum_2']>=d[0]) & (df_2['datum_2']<=d[1])]
+    
     
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
