@@ -271,7 +271,7 @@ try:
             html = popup_html(i)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-
+    
             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
                           popup=popup,
                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)
@@ -344,7 +344,8 @@ try:
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
     with st.container(height=CONTAINER_height, border=True):
-        output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=[fg,fg_2,fg_3,fg_4])
+        output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
+                             feature_group_to_add=list(functie_dictionary.values()))
         
     try:
         
