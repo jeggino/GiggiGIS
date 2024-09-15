@@ -252,65 +252,90 @@ try:
     LocateControl(auto_start=True).add_to(map)
     Fullscreen().add_to(map)
     
-    fg = folium.FeatureGroup(name="Vleermuiskast")
-    fg_2 = folium.FeatureGroup(name="Huismussen")
-    fg_4 = folium.FeatureGroup(name="Gierzwaluwen")
-    fg_3 = folium.FeatureGroup(name="Vleermuizen")
-    fg_5 = folium.FeatureGroup(name="Camera")
-    fg_6 = folium.FeatureGroup(name="Rat val")
+    functie_dictionary = {}
+    functie_len = df_2['functie'].unique()
     
-    map.add_child(fg)
-    map.add_child(fg_2)
-    map.add_child(fg_4)
-    map.add_child(fg_3)
-    map.add_child(fg_5)
-    map.add_child(fg_6)
+    for functie in functie_len:
+        functie_dictionary[functie] = folium.FeatureGroup(name=functie)     
     
-    folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
-    folium.LayerControl().add_to(map)
-   
+    for FeatureGroup in functie_dictionary.keys():
+        map.add_child(functie_dictionary[FeatureGroup])
 
-    
-    
+    folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
+    folium.LayerControl().add_to(map)    
+
     for i in range(len(df_2)):
 
         if df_2.iloc[i]['geometry_type'] == "Point":
 
             html = popup_html(i)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
-            if df_2.iloc[i]['soortgroup'] == "Vleermuiskast":
-                folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                              popup=popup,
-                              icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg)
+            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                          popup=popup,
+                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)
+                         ).add_to(fouctie_loop)
+        
+    # fg = folium.FeatureGroup(name="Vleermuiskast")
+    # fg_2 = folium.FeatureGroup(name="Huismussen")
+    # fg_4 = folium.FeatureGroup(name="Gierzwaluwen")
+    # fg_3 = folium.FeatureGroup(name="Vleermuizen")
+    # fg_5 = folium.FeatureGroup(name="Camera")
+    # fg_6 = folium.FeatureGroup(name="Rat val")
+    
+    # map.add_child(fg)
+    # map.add_child(fg_2)
+    # map.add_child(fg_4)
+    # map.add_child(fg_3)
+    # map.add_child(fg_5)
+    # map.add_child(fg_6)
+    
+    # folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
+    # folium.LayerControl().add_to(map)
+   
 
-            elif df_2.iloc[i]['soortgroup'] == "Vogels":
-                if df_2.iloc[i]['sp'] == "Huismus":
+    
+    
+    # for i in range(len(df_2)):
+
+    #     if df_2.iloc[i]['geometry_type'] == "Point":
+
+    #         html = popup_html(i)
+    #         popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+
+    #         if df_2.iloc[i]['soortgroup'] == "Vleermuiskast":
+    #             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+    #                           popup=popup,
+    #                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg)
+
+    #         elif df_2.iloc[i]['soortgroup'] == "Vogels":
+    #             if df_2.iloc[i]['sp'] == "Huismus":
                     
-                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                                  popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_huismus)).add_to(fg_2)
+    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+    #                               popup=popup,
+    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_huismus)).add_to(fg_2)
                     
-                elif df_2.iloc[i]['sp'] == "Gierzwaluw":
+    #             elif df_2.iloc[i]['sp'] == "Gierzwaluw":
                     
-                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                                  popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_4)
+    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+    #                               popup=popup,
+    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_4)
 
-            elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
-                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                                  popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_3)
+    #         elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
+    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+    #                               popup=popup,
+    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_3)
 
-            elif df_2.iloc[i]['soortgroup'] == "Camera":
-                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                                  popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_5)
+    #         elif df_2.iloc[i]['soortgroup'] == "Camera":
+    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+    #                               popup=popup,
+    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_5)
 
-            elif df_2.iloc[i]['soortgroup'] == "Rat val":
-                    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                                  popup=popup,
-                                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_6)
+    #         elif df_2.iloc[i]['soortgroup'] == "Rat val":
+    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+    #                               popup=popup,
+    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_6)
 
                 
 
