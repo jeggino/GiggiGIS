@@ -229,7 +229,7 @@ try:
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
-    "Filter op"
+    st.sidebar.markdown("Filter op")
     d = st.sidebar.date_input(
         "Datum",
         min_value = df_2.datum_2.min(),
@@ -243,7 +243,7 @@ try:
     
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
         species_filter_option = df_2["sp"].unique()
-        species_filter = st.multiselect("Sorten",species_filter_option,species_filter_option)
+        species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
         df_2 = df_2[df_2['sp'].isin(species_filter)]
 
     st.sidebar.divider()
