@@ -258,8 +258,8 @@ try:
     for functie in functie_len:
         functie_dictionary[functie] = folium.FeatureGroup(name=functie)     
     
-    for FeatureGroup in functie_dictionary.keys():
-        map.add_child(functie_dictionary[FeatureGroup])
+    for feature_group in functie_dictionary.keys():
+        map.add_child(functie_dictionary[feature_group])
 
     folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
     folium.LayerControl().add_to(map)    
