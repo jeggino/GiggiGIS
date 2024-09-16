@@ -78,5 +78,5 @@ DICTIONARY_USERS = {"Luigi": ["Niet gespecificeerd"],
                    "Daan": ["Niet gespecificeerd","A-001"]
                    }
 
-DICTIONARY_PROJECTS = {"Niet gespecificeerd":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val"],
-                      "A-001":["Rat val"]}
+DICTIONARY_PROJECTS = {"Niet gespecificeerd":["Vogels","Vleermuizen","Vleermuiskast"],
+                      "A-001":["Camera","Rat val"]}
