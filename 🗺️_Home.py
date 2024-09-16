@@ -14,10 +14,6 @@ from deta import Deta
 
 from credencials import *
 
-import streamlit_authenticator as stauth
-
-import yaml
-from yaml.loader import SafeLoader
 
 # ---LAYOUT---
 st.set_page_config(
