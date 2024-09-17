@@ -395,11 +395,13 @@ try:
                             
 
             except:
+                
                 st.info('Geen foto opgeslagen voor deze waarneming!')
                 # with st.form("entry_form", clear_on_submit=True):
                     # submitted = st.form_submit_button("Verwijder data")
                     # if submitted:
-                if st.botton("Verwijder data",use_container_width=True):
+                submitted = st.botton("Verwijder data",use_container_width=True)
+                if submitted:
                 # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
                     db.delete(id)
                     st.success('Gegevens verwijderd!', icon="✅")         
