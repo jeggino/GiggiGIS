@@ -389,7 +389,6 @@ try:
                     drive.delete(name)
                     st.success('Gegevens verwijderd!', icon="✅")
                     st.rerun()
-                
                     # st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
                         # else:
                         #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
@@ -406,7 +405,6 @@ try:
                     st.success('Gegevens verwijderd!', icon="✅")         
                     st.rerun()
                     # st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
-                    st.rerun()
                         # else:
                         #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
