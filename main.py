@@ -16,7 +16,6 @@ db = deta.Base("df_authentication")
 drive = deta.Drive("df_pictures")
 db_content = db.fetch().items 
 df_references = pd.DataFrame(db_content)
-df_references
 
 def logIn():
     name = st.selectbox("Wie ben je?",df_references["username"].tolist())
