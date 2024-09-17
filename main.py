@@ -65,5 +65,5 @@ if 'project' not in st.session_state:
     
 st.markdown(f"""
 Hi **{st.session_state.login["name"]}**, 
-you are working at the **{st.session_state.project.project_name}** with the assignment **{st.session_state.project.opdracht}**
+you are working at the **{st.session_state.project["project_name"]}** with the assignment **{st.session_state.project["opdracht"]}**
 """)
