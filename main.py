@@ -95,6 +95,7 @@ def update_item():
   if st.button("Update",use_container_width=True): 
     db.update(update,key_update)
     st.rerun()
+on = st.toggle("Do you want to update?")
 
-if st.toggle("Do you want to update?"):
+if on:
   update_item()
