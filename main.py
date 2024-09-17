@@ -34,7 +34,7 @@ def logIn():
             st.write("the password is not correct")
 
 def project():
-    index_project = df_references[df_references['username']==session_state.login["name"].index[0]
+    index_project = df_references[df_references['username']==session_state.login["name"]].index[0]
     project_list = df_references.loc[index,"project"]
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
