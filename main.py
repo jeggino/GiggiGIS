@@ -13,7 +13,6 @@ DICTIONARY_PROJECTS = {"Overing":["Vogels","Vleermuizen","Vleermuiskast"],
 
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_authentication")
-drive = deta.Drive("df_pictures")
 db_content = db.fetch().items 
 df_references = pd.DataFrame(db_content)
 
@@ -52,7 +51,16 @@ def logOut_project():
         del st.session_state.project
         st.rerun()
 
-# def update_item():
+def update_item():
+  key_update = st.selectbox("chose a key to udate",df_references["key"].tolist(),label_visibility="visible")
+  password_update = title = st.text_input("Write the new password")
+
+  update = {"password":password_update}
+  if st.button("Update",use_container_width=True): 
+    db.update(update,key_update)
+    st.rerun()
+
+  
   
 
 
@@ -71,3 +79,6 @@ you are working at the **{st.session_state.project["project_name"]}** with the a
 """)
 
 df_references
+
+if st.toggle("Do you want to update?"):
+  update_item()
