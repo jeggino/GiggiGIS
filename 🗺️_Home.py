@@ -160,21 +160,47 @@ drive = deta.Drive("df_pictures")
 db_content = db.fetch().items 
 df_point = pd.DataFrame(db_content)
 
+db_2 = deta.Base("df_authentication")
+db_content_2 = db_2.fetch().items 
+df_references = pd.DataFrame(db_content_2)
+
+
+# def logIn():
+#     name = st.selectbox("Wie ben je?",DICTIONARY_USERS.keys())
+#     password = st.text_input("Vul het wachtwoord in, alstublieft.")
+#     if st.button("logIn"):
+#         st.session_state.login = {"name": name, "password": password}
+#         st.rerun()
+
+# def project():
+#     project = st.selectbox("Aan welke project ga je werken?",DICTIONARY_USERS[st.session_state.login["name"]],label_visibility="visible")
+#     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
+#     if st.button("begin"):
+#          st.session_state.project = {"project_name": project,"opdracht": opdracht}
+#          st.rerun()
 
 def logIn():
-    name = st.selectbox("Wie ben je?",DICTIONARY_USERS.keys())
-    password = st.text_input("Vul het wachtwoord in, alstublieft.")
+    name = st.selectbox("Wie ben je?",df_references["username"].tolist())  
+    password = st.text_input("Vul het wachtwoord in, alstublieft")
+    index = df_references[df_references['username']==name].index[0]
+    true_password = df_references.loc[index,"password"]
+                             
     if st.button("logIn"):
-        st.session_state.login = {"name": name, "password": password}
-        st.rerun()
+        if password == true_password:
+            st.session_state.login = {"name": name, "password": password}
+            st.rerun()
+
+        else:
+            st.write("the password is not correct")
 
 def project():
-    project = st.selectbox("Aan welke project ga je werken?",DICTIONARY_USERS[st.session_state.login["name"]],label_visibility="visible")
+    index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
+    project_list = df_references.loc[index_project,"project"]
+    project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
     if st.button("begin"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht}
          st.rerun()
-
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
@@ -193,7 +219,6 @@ if "login" not in st.session_state:
     st.stop()
 
 if st.session_state.login['password'] != st.secrets['password']:
-    st.markdown(f"Sorry **{st.session_state.login['name']}**, uw wachtwoord is niet correct.")
     logIn()
     st.stop()
 
