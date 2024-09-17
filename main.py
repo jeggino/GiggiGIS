@@ -93,9 +93,17 @@ def update_item():
 
   update = {"password":password_update}
   if st.button("Update",use_container_width=True): 
+    st.session_state.update = True 
     db.update(update,key_update)
     st.rerun()
+
 on = st.toggle("Do you want to update?")
+if on:
+  update_item()
+    
+if st.session_state.update:
+    on == False
+
 
 if on:
   update_item()
