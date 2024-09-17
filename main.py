@@ -51,14 +51,14 @@ def logOut_project():
         del st.session_state.project
         st.rerun()
 
-def update_item():
-  key_update = st.selectbox("chose a key to udate",df_references["key"].tolist(),label_visibility="visible")
-  password_update = title = st.text_input("Write the new password")
+# def update_item():
+#   key_update = st.selectbox("chose a key to udate",df_references["key"].tolist(),label_visibility="visible")
+#   password_update = title = st.text_input("Write the new password")
 
-  update = {"password":password_update}
-  if st.button("Update",use_container_width=True): 
-    db.update(update,key_update)
-    st.rerun()
+#   update = {"password":password_update}
+#   if st.button("Update",use_container_width=True): 
+#     db.update(update,key_update)
+#     st.rerun()
 
   
   
@@ -80,25 +80,21 @@ you are working at the **{st.session_state.project["project_name"]}** with the a
 
 df_references
 
-if st.toggle("Do you want to update?"):
-  update_item()
+# if st.toggle("Do you want to update?"):
+#   update_item()
 
 
 import streamlit as st
 
 @st.dialog("Cast your vote")
-def vote(item):
-    st.write(f"Why is {item} your favorite?")
-    reason = st.text_input("Because...")
-    if st.button("Submit"):
-        st.session_state.vote = {"item": item, "reason": reason}
-        st.rerun()
+def update_item():
+  key_update = st.selectbox("chose a key to udate",df_references["key"].tolist(),label_visibility="visible")
+  password_update = title = st.text_input("Write the new password")
 
-if "vote" not in st.session_state:
-    st.write("Vote for your favorite")
-    if st.button("A"):
-        vote("A")
-    if st.button("B"):
-        vote("B")
-else:
-    f"You voted for {st.session_state.vote['item']} because {st.session_state.vote['reason']}"
+  update = {"password":password_update}
+  if st.button("Update",use_container_width=True): 
+    db.update(update,key_update)
+    st.rerun()
+
+if st.toggle("Do you want to update?"):
+  update_item()
