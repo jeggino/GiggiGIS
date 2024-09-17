@@ -206,7 +206,7 @@ if 'project' not in st.session_state:
 
 
 with st.sidebar:
-    st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** project, met de **{st.session_state.project['opdracht']}** opdracht. :rainbow[VEEL SUCCES!!!]")
+    # st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** project, met de **{st.session_state.project['opdracht']}** opdracht. :rainbow[VEEL SUCCES!!!]")
     logOut_project()
     logOut()
     st.divider()
