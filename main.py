@@ -20,7 +20,7 @@ def logIn():
     name = st.selectbox("Wie ben je?",df_references["username"].tolist())
     
     password = st.text_input("Vul het wachtwoord in, alstublieft")
-    index = df_references[df_references['username']=="name"].index[0]
+    index = df_references[df_references['username']==name].index[0]
     true_password = df.loc[index,"project"]
                              
     if st.button("logIn"):
