@@ -52,6 +52,9 @@ def logOut_project():
         del st.session_state.project
         st.rerun()
 
+# def update_item():
+  
+
 
 # ___APP___
 if "login" not in st.session_state:
@@ -66,3 +69,5 @@ st.markdown(f"""
 Hi **{st.session_state.login["name"]}**, 
 you are working at the **{st.session_state.project["project_name"]}** with the assignment **{st.session_state.project["opdracht"]}**
 """)
+
+df_references
