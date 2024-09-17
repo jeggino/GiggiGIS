@@ -167,7 +167,7 @@ df_references = pd.DataFrame(db_content_2)
 
 
 def logIn():
-    name = st.selectbox("Wie ben je?",df_references["username"].tolist())  
+    name = st.selectbox("Wie ben je?",df_references["username"].tolist(),index=None)  
     password = st.text_input("Vul het wachtwoord in, alstublieft")
     index = df_references[df_references['username']==name].index[0]
     true_password = df_references.loc[index,"password"]
