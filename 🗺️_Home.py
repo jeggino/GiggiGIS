@@ -191,7 +191,7 @@ def logIn():
             st.rerun()
 
         else:
-            st.write("the password is not correct")
+            st.write(f"Sorry {name}, het wachtwoord is niet correct")
 
 def project():
     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
