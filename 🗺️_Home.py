@@ -384,27 +384,32 @@ try:
                 with st.expander("Zie foto"):
                     st.image(res)
                     
-                with st.form("entry_form", clear_on_submit=True):
-                    submitted = st.form_submit_button("Verwijder data")
-                    if submitted:
-                        # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
-                            db.delete(id)
-                            drive.delete(name)
-                            st.success('Gegevens verwijderd!', icon="✅")
-                            st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
+                # with st.form("entry_form", clear_on_submit=True):
+                    # submitted = st.form_submit_button("Verwijder data")
+                    # if submitted:
+                if st.botton("Verwijder data",use_container_width=True):
+                    # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
+                    db.delete(id)
+                    drive.delete(name)
+                    st.success('Gegevens verwijderd!', icon="✅")
+                    st.rerun()
+                
+                    st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
                         # else:
                         #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
                             
 
             except:
                 st.info('Geen foto opgeslagen voor deze waarneming!')
-                with st.form("entry_form", clear_on_submit=True):
-                    submitted = st.form_submit_button("Verwijder data")
-                    if submitted:
-                        # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
-                            db.delete(id)
-                            st.success('Gegevens verwijderd!', icon="✅")
-                            st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
+                # with st.form("entry_form", clear_on_submit=True):
+                    # submitted = st.form_submit_button("Verwijder data")
+                    # if submitted:
+                if st.botton("Verwijder data",use_container_width=True):
+                # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
+                    db.delete(id)
+                    st.success('Gegevens verwijderd!', icon="✅")
+                    st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
+                    st.rerun()
                         # else:
                         #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
