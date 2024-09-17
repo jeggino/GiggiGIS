@@ -218,9 +218,6 @@ if "login" not in st.session_state:
     logIn()
     st.stop()
 
-if st.session_state.login['password'] != st.secrets['password']:
-    logIn()
-    st.stop()
 
 if 'project' not in st.session_state:  
     project()
