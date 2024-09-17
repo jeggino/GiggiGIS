@@ -76,7 +76,7 @@ def update_item():
     del st.session_state.project
     st.rerun()
 
-if st.toggle("Do you want to update?"):
+if st.button("Do you want to update?",use_container_width=True):
   update_item()
     
 
