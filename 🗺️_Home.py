@@ -181,7 +181,7 @@ def logIn():
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
 def project():
-    st.helder(f"Welkom !!")
+    st.header(f"Welkom {st.session_state.login["name"]}!!")
     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
     project_list = df_references.loc[index_project,"project"]
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
