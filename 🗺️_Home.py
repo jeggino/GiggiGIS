@@ -165,19 +165,6 @@ db_content_2 = db_2.fetch().items
 df_references = pd.DataFrame(db_content_2)
 
 
-# def logIn():
-#     name = st.selectbox("Wie ben je?",DICTIONARY_USERS.keys())
-#     password = st.text_input("Vul het wachtwoord in, alstublieft.")
-#     if st.button("logIn"):
-#         st.session_state.login = {"name": name, "password": password}
-#         st.rerun()
-
-# def project():
-#     project = st.selectbox("Aan welke project ga je werken?",DICTIONARY_USERS[st.session_state.login["name"]],label_visibility="visible")
-#     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-#     if st.button("begin"):
-#          st.session_state.project = {"project_name": project,"opdracht": opdracht}
-#          st.rerun()
 
 def logIn():
     name = st.selectbox("Wie ben je?",df_references["username"].tolist())  
@@ -191,7 +178,7 @@ def logIn():
             st.rerun()
 
         else:
-            st.write(f"Sorry {name}, het wachtwoord is niet correct")
+            st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
 def project():
     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
