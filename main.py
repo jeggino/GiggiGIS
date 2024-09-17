@@ -9,7 +9,7 @@ st.set_page_config(page_title='References', page_icon='🔐', initial_sidebar_st
 
 DICTIONARY_PROJECTS = {"Overing":["Vogels","Vleermuizen","Vleermuiskast"],
                       "A-001":["Camera","Rat val"],
-                      "ALL":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val"]}
+                      "All":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val"]}
 
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_authentication")
