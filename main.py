@@ -14,7 +14,7 @@ from costants import *
 from functions import *
 
 
-st.set_page_config(page_title='Streamlit', page_icon='🐍', initial_sidebar_state='collapsed')
+st.set_page_config(page_title='References', page_icon='🔐', initial_sidebar_state='collapsed')
 
 
 
