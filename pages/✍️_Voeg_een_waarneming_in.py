@@ -98,14 +98,14 @@ def map():
    
         
 @st.dialog(" ")
-def input_data():
+def input_data(output):
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
     soortgroup = st.session_state.project['opdracht']
     
     
-    datum = popover.date_input("Datum","today")       
+    datum = st.date_input("Datum","today")       
     nine_hours_from_now = datetime.now() + timedelta(hours=2)
     time = st.time_input("Tijd", nine_hours_from_now)
     
