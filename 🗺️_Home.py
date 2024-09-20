@@ -202,7 +202,7 @@ def update_item():
     sp = None 
     gedrag = None
     verblijf = None
-    aantal = popover.number_input("Aantal", min_value=1)
+    aantal = st.number_input("Aantal", min_value=1)
   
   elif st.session_state.project['opdracht'] == 'Rat val':
     
