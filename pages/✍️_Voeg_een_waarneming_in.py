@@ -227,10 +227,11 @@ try:
         
         output_map = map()
 
+    output_map["all_drawings"]
     if len(output_map["all_drawings"]) != 0:
     # if output_map["features"][0]["geometry"]["type"]:
         st.write("ok")
-        input_data(map())
+        # input_data(map())
     
 except:
     st.switch_page("🗺️_Home.py")
