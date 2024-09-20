@@ -107,7 +107,7 @@ def input_data():
     
     datum = popover.date_input("Datum","today")       
     nine_hours_from_now = datetime.now() + timedelta(hours=2)
-    time = popover.time_input("Tijd", nine_hours_from_now)
+    time = st.time_input("Tijd", nine_hours_from_now)
     
     st.divider()
     
