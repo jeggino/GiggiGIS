@@ -229,9 +229,6 @@ try:
     output_map#["features"]#["all_drawings"]
     if len(output_map["features"]) != 0:
         input_data()
-    # # # # if output_map["features"][0]["geometry"]["type"]:
-        st.write("There is a point")
-    #     input_data(output_map)
     
 except:
     # st.switch_page("🗺️_Home.py")
