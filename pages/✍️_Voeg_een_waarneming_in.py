@@ -226,8 +226,8 @@ try:
     with st.container(height=CONTAINER_height, border=True):
         
         output_map = map()
-
-    output_map["features"]#["all_drawings"]
+    output_map["features"] = output_map.pop("all_drawings")
+    output_map#["features"]#["all_drawings"]
     # if len(output_map["all_drawings"]) != 0:
     # # if output_map["features"][0]["geometry"]["type"]:
     #     st.write("ok")
