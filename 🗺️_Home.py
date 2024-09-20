@@ -153,26 +153,63 @@ def popup_html(row):
     """
     return html
 
-#______________NEW___________________
-deta = Deta(st.secrets["deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
-db_content = db.fetch().items 
-df_point = pd.DataFrame(db_content)
-
-db_2 = deta.Base("df_authentication")
-db_content_2 = db_2.fetch().items 
-df_references = pd.DataFrame(db_content_2)
-
-@st.dialog("Cast your vote")
+@st.dialog("")
 def update_item():
-  
-  key_update = st.selectbox("chose a key to udate",df_references["key"].tolist(),label_visibility="visible")
-  password_update = title = st.text_input("Write the new password")
 
-  update = {"password":password_update}
+  datum = st.date_input("Datum","today")
+  nine_hours_from_now = datetime.now() + timedelta(hours=2)
+  time = st.time_input("Tijd", nine_hours_from_now)
+  
+  if soortgroup == 'Vleermuizen':
+
+    sp = popover.selectbox("Soort", BAT_NAMES,key="Soort")
+    gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
+    functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
+    verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
+    aantal = popover.number_input("Aantal", min_value=1)
+
+  elif soortgroup == 'Vogels':
+  
+    sp = popover.selectbox("Soort", BIRD_NAMES)
+    gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+    functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
+    verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
+    aantal = popover.number_input("Aantal", min_value=1)
+  
+  elif soortgroup == 'Vleermuiskast':
+    
+    functie = popover.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
+    BAT_NAMES = ["onbekend"] + BAT_NAMES
+    sp = popover.selectbox("Soort", BAT_NAMES) 
+    gedrag = None
+    verblijf = None
+    aantal = popover.number_input("Aantal", min_value=1)
+  
+  elif soortgroup == 'Camera':
+    
+    functie = popover.selectbox("Camera", CAMERA_OPTIONS)
+    sp = None 
+    gedrag = None
+    verblijf = None
+    aantal = popover.number_input("Aantal", min_value=1)
+  
+  elif soortgroup == 'Rat val':
+    
+    functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
+    sp = None 
+    gedrag = None
+    verblijf = None
+    aantal = popover.number_input("Aantal", min_value=1)
+  
+  opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
+
+
+  update = {"datum":datum,"time":time,"sp":sp,
+            "aantal":aantal, "gedrag":gedrag, "functie":functie, 
+            "verblijf":verblijf,"opmerking":opmerking}
+    
   if st.button("Update",use_container_width=True): 
-    db_2.update(update,key_update)
+    db.update(update,key_update)
     st.rerun()
 
 def logIn():
