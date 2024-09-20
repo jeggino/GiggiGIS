@@ -227,8 +227,8 @@ try:
         output_map = map()
     
     output_map#["features"]#["all_drawings"]
-    if len(output_map["features"]) != 0:
-        input_data()
+    # if len(output_map["features"]) != 0:
+    #     input_data()
     # # # # if output_map["features"][0]["geometry"]["type"]:
     # #     st.write("empty")
     #     input_data(output_map)
