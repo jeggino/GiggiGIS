@@ -101,7 +101,7 @@ def map():
 @st.dialog(" ")
 def input_data(output):
 
-    st.link_button("Anulleren", "✍️_Voeg_een_waarneming_in.py")
+    st.link_button("Anulleren", "pages/✍️_Voeg_een_waarneming_in.py")
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
