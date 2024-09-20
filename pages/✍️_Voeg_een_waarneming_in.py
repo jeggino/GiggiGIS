@@ -130,7 +130,7 @@ def input_data(output):
     
     elif soortgroup == 'Vleermuiskast':
         functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
-        # BAT_NAMES = ["onbekend"] + BAT_NAMES
+        BAT_NAMES = ["onbekend"] + BAT_NAMES
         # sp = st.selectbox("Soort", BAT_NAMES) 
         gedrag = None
         verblijf = None
