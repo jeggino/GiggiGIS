@@ -155,16 +155,14 @@ def input_data(output):
         uploaded_file = st.camera_input("")
     
     st.divider()
-    
-    output = map()
-    
+        
     submitted = st.button("Gegevens opslaan")
     
     if submitted:           
 
         try:
 
-            output["features"] = output.pop("all_drawings")
+            # output["features"] = output.pop("all_drawings")
             geometry_type = output["features"][0]["geometry"]["type"]
             coordinates = output["features"][0]["geometry"]["coordinates"] 
             
@@ -226,12 +224,13 @@ try:
     with st.container(height=CONTAINER_height, border=True):
         
         output_map = map()
+    
     output_map["features"] = output_map.pop("all_drawings")
     # output_map#["features"]#["all_drawings"]
     if len(output_map["features"]) != 0:
-    # # if output_map["features"][0]["geometry"]["type"]:
-        st.write("empty")
-        input_data(map())
+    # # # if output_map["features"][0]["geometry"]["type"]:
+    #     st.write("empty")
+        input_data(output_map)
     
 except:
     st.switch_page("🗺️_Home.py")
