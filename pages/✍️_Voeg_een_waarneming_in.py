@@ -161,7 +161,7 @@ def input_data():
         
     submitted = st.button("Gegevens opslaan")
     
-    # if submitted:           
+    if submitted:           
 
     #     try:
 
