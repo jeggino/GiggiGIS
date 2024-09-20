@@ -227,9 +227,10 @@ try:
         output_map = map()
     
     output_map#["features"]#["all_drawings"]
-    if len(output_map["features"]) != 0:
-        input_data()
-    else:
+    try:
+        if len(output_map["features"]) != 0:
+            input_data()
+    except:
         st.stop()
     
 except:
