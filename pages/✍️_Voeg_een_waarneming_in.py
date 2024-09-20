@@ -227,9 +227,9 @@ try:
         
         output_map = map()
 
-    if output_map["features"][0]["geometry"]["type"]:
+    # if output_map["features"][0]["geometry"]["type"]:
     
-        input_data()
+    input_data()
     
 except:
     st.switch_page("🗺️_Home.py")
