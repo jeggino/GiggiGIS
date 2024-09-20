@@ -449,6 +449,8 @@ def input_data(output):
 try:
     IMAGE = "image/logo.png"
     st.logo(IMAGE,  link=None, icon_image=None)
+
+    waarnemer = st.session_state.login['name']
     
     
     
