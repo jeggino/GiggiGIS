@@ -164,7 +164,16 @@ db_2 = deta.Base("df_authentication")
 db_content_2 = db_2.fetch().items 
 df_references = pd.DataFrame(db_content_2)
 
+@st.dialog("Cast your vote")
+def update_item():
+  
+  key_update = st.selectbox("chose a key to udate",df_references["key"].tolist(),label_visibility="visible")
+  password_update = title = st.text_input("Write the new password")
 
+  update = {"password":password_update}
+  if st.button("Update",use_container_width=True): 
+    db_2.update(update,key_update)
+    st.rerun()
 
 def logIn():
     name = st.selectbox("Wie ben je?",df_references["username"].tolist(),index=None)  
@@ -299,66 +308,6 @@ try:
                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
                          ).add_to(fouctie_loop)
         
-    # fg = folium.FeatureGroup(name="Vleermuiskast")
-    # fg_2 = folium.FeatureGroup(name="Huismussen")
-    # fg_4 = folium.FeatureGroup(name="Gierzwaluwen")
-    # fg_3 = folium.FeatureGroup(name="Vleermuizen")
-    # fg_5 = folium.FeatureGroup(name="Camera")
-    # fg_6 = folium.FeatureGroup(name="Rat val")
-    
-    # map.add_child(fg)
-    # map.add_child(fg_2)
-    # map.add_child(fg_4)
-    # map.add_child(fg_3)
-    # map.add_child(fg_5)
-    # map.add_child(fg_6)
-    
-    # folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
-    # folium.LayerControl().add_to(map)
-   
-
-    
-    
-    # for i in range(len(df_2)):
-
-    #     if df_2.iloc[i]['geometry_type'] == "Point":
-
-    #         html = popup_html(i)
-    #         popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-
-    #         if df_2.iloc[i]['soortgroup'] == "Vleermuiskast":
-    #             folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-    #                           popup=popup,
-    #                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg)
-
-    #         elif df_2.iloc[i]['soortgroup'] == "Vogels":
-    #             if df_2.iloc[i]['sp'] == "Huismus":
-                    
-    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-    #                               popup=popup,
-    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_huismus)).add_to(fg_2)
-                    
-    #             elif df_2.iloc[i]['sp'] == "Gierzwaluw":
-                    
-    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-    #                               popup=popup,
-    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_4)
-
-    #         elif df_2.iloc[i]['soortgroup'] == "Vleermuizen":
-    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-    #                               popup=popup,
-    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_3)
-
-    #         elif df_2.iloc[i]['soortgroup'] == "Camera":
-    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-    #                               popup=popup,
-    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_5)
-
-    #         elif df_2.iloc[i]['soortgroup'] == "Rat val":
-    #                 folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-    #                               popup=popup,
-    #                               icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE)).add_to(fg_6)
-
                 
 
         elif df_2.iloc[i]['geometry_type'] == "LineString":
@@ -377,12 +326,13 @@ try:
         with st.sidebar:
 
             
-
             try:
 
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
                     st.image(res)
+
+                update_item()
                     
                 with st.form("entry_form", clear_on_submit=True):
                     submitted = st.form_submit_button("Verwijder data")
@@ -398,6 +348,9 @@ try:
 
             except:
                 st.info('Geen foto opgeslagen voor deze waarneming!')
+
+                update_item()
+                
                 with st.form("entry_form", clear_on_submit=True):
                     submitted = st.form_submit_button("Verwijder data")
                     if submitted:
