@@ -331,8 +331,8 @@ try:
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
                     st.image(res)
-
-                update_item()
+                if st.button("Do you want to update?",use_container_width=True):
+                    update_item()
                     
                 with st.form("entry_form", clear_on_submit=True):
                     submitted = st.form_submit_button("Verwijder data")
@@ -349,7 +349,8 @@ try:
             except:
                 st.info('Geen foto opgeslagen voor deze waarneming!')
 
-                update_item()
+                if st.button("Do you want to update?",use_container_width=True):
+                    update_item()
                 
                 with st.form("entry_form", clear_on_submit=True):
                     submitted = st.form_submit_button("Verwijder data")
