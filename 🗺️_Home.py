@@ -211,7 +211,7 @@ def update_item():
   opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
 
-  update = {"datum":datum,"time":time,"sp":sp,
+  update = {"datum":str(datum),"time":str(time),"sp":sp,
             "aantal":aantal, "gedrag":gedrag, "functie":functie, 
             "verblijf":verblijf,"opmerking":opmerking}
     
