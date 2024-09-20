@@ -95,12 +95,7 @@ def map():
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     
     return  output
-
-def map_output():
-    
-    with st.container(height=CONTAINER_height, border=True):
-        
-        return map()   
+   
         
 @st.dialog(" ")
 def input_data():
@@ -114,7 +109,7 @@ def input_data():
     nine_hours_from_now = datetime.now() + timedelta(hours=2)
     time = popover.time_input("Tijd", nine_hours_from_now)
     
-    popover.divider()
+    st.divider()
     
     if soortgroup == 'Vleermuizen':
     
@@ -161,9 +156,9 @@ def input_data():
     
     st.divider()
     
-    output = map_output()
+    output = map()
     
-    submitted = popover.button("Gegevens opslaan")
+    submitted = st.button("Gegevens opslaan")
     
     if submitted:           
 
@@ -228,8 +223,9 @@ try:
     # popover = st.sidebar
     
 
-    
-    output_map = map_output()
+    with st.container(height=CONTAINER_height, border=True):
+        
+        output_map = map()
 
     if output_map["features"][0]["geometry"]["type"]:
     
