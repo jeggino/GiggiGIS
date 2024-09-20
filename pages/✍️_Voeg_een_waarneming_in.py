@@ -230,7 +230,7 @@ try:
     if len(output_map["features"]) != 0:
     #     input_data()
     # # # # if output_map["features"][0]["geometry"]["type"]:
-        st.write("empty")
+        st.write("There is a point")
     #     input_data(output_map)
     
 except:
