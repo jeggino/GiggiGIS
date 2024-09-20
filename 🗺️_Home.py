@@ -379,16 +379,16 @@ try:
                 with st.expander("Zie foto"):
                     st.image(res)
 
-                if st.button("Do you want to update?",use_container_width=True):
+                if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                     
                 with st.form("entry_form", clear_on_submit=True,border=False,use_container_width=True):
-                    submitted = st.form_submit_button("Verwijder data")
+                    submitted = st.form_submit_button("Verwijder waarneming")
                     if submitted:
                         # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
                         db.delete(id)
                         drive.delete(name)
-                        st.success('Gegevens verwijderd!', icon="✅")
+                        st.success('Waarneming verwijderd', icon="✅")
                         st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
                             # else:
                             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
@@ -396,15 +396,15 @@ try:
             except:
                 st.info('Geen foto opgeslagen voor deze waarneming')
 
-                if st.button("Do you want to update?",use_container_width=True):
+                if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                 
                 with st.form("entry_form", clear_on_submit=True,border=False):
-                    submitted = st.form_submit_button("Verwijder data",use_container_width=True)
+                    submitted = st.form_submit_button("Verwijder waarneming",use_container_width=True)
                     if submitted:
                     # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
                         db.delete(id)
-                        st.success('Gegevens verwijderd!', icon="✅")         
+                        st.success('Waarneming verwijderd', icon="✅")         
                         st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
                             # else:
                             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
