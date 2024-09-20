@@ -169,32 +169,32 @@ def update_item():
   
   if st.session_state.project['opdracht'] == 'Vleermuizen':
 
-    sp = popover.selectbox("Soort", BAT_NAMES,key="Soort")
-    gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
-    functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
-    verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
-    aantal = popover.number_input("Aantal", min_value=1)
+    sp = st.selectbox("Soort", BAT_NAMES,key="Soort")
+    gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+    functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
+    verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+    aantal = st.number_input("Aantal", min_value=1)
 
   elif st.session_state.project['opdracht'] == 'Vogels':
   
-    sp = popover.selectbox("Soort", BIRD_NAMES)
-    gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-    functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
-    verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
-    aantal = popover.number_input("Aantal", min_value=1)
+    sp = st.selectbox("Soort", BIRD_NAMES)
+    gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+    functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+    verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+    aantal = st.number_input("Aantal", min_value=1)
   
   elif st.session_state.project['opdracht'] == 'Vleermuiskast':
     
-    functie = popover.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
+    functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
     BAT_NAMES = ["onbekend"] + BAT_NAMES
-    sp = popover.selectbox("Soort", BAT_NAMES) 
+    sp = st.selectbox("Soort", BAT_NAMES) 
     gedrag = None
     verblijf = None
-    aantal = popover.number_input("Aantal", min_value=1)
+    aantal = st.number_input("Aantal", min_value=1)
   
   elif st.session_state.project['opdracht'] == 'Camera':
     
-    functie = popover.selectbox("Camera", CAMERA_OPTIONS)
+    functie = st.selectbox("Camera", CAMERA_OPTIONS)
     sp = None 
     gedrag = None
     verblijf = None
@@ -202,13 +202,13 @@ def update_item():
   
   elif st.session_state.project['opdracht'] == 'Rat val':
     
-    functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
+    functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
     sp = None 
     gedrag = None
     verblijf = None
-    aantal = popover.number_input("Aantal", min_value=1)
+    aantal = st.number_input("Aantal", min_value=1)
   
-  opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
+  opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
 
   update = {"datum":datum,"time":time,"sp":sp,
