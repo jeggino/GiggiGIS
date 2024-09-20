@@ -96,15 +96,73 @@ def map():
     
     return  output
 
-
-
-def input_data():
-
+def map_output():
+    
     with st.container(height=CONTAINER_height, border=True):
         
-        output = map()
-    
+        return map()   
         
+@st.dialog(" ")
+def input_data():
+
+    waarnemer = st.session_state.login['name']
+    project = st.session_state.project['project_name']
+    soortgroup = st.session_state.project['opdracht']
+    
+    
+    datum = popover.date_input("Datum","today")       
+    nine_hours_from_now = datetime.now() + timedelta(hours=2)
+    time = popover.time_input("Tijd", nine_hours_from_now)
+    
+    popover.divider()
+    
+    if soortgroup == 'Vleermuizen':
+    
+        sp = st.selectbox("Soort", BAT_NAMES,key="Soort")
+        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+        functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
+        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+        aantal = st.number_input("Aantal", min_value=1)
+    
+    elif soortgroup == 'Vogels':
+    
+        sp = st.selectbox("Soort", BIRD_NAMES)
+        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+        aantal = st.number_input("Aantal", min_value=1)
+    
+    elif soortgroup == 'Vleermuiskast':
+        functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
+        BAT_NAMES = ["onbekend"] + BAT_NAMES
+        sp = st.selectbox("Soort", BAT_NAMES) 
+        gedrag = None
+        verblijf = None
+        aantal = st.number_input("Aantal", min_value=1)
+    
+    elif soortgroup == 'Camera':
+        functie = st.selectbox("Camera", CAMERA_OPTIONS)
+        sp = None 
+        gedrag = None
+        verblijf = None
+        aantal = st.number_input("Aantal", min_value=1)
+    
+    elif soortgroup == 'Rat val':
+        functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
+        sp = None 
+        gedrag = None
+        verblijf = None
+        aantal = st.number_input("Aantal", min_value=1)
+    
+    opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
+    
+    with st.expander("Upload een foto"):
+        uploaded_file = st.camera_input("")
+    
+    st.divider()
+    
+    output = map_output()
+    
     submitted = popover.button("Gegevens opslaan")
     
     if submitted:           
@@ -130,7 +188,7 @@ def input_data():
                 key = str(lng)+str(lat)
 
             if len(output["features"]) > 1:
-                popover.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
+                st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
                 st.stop()
 
             else:
@@ -143,13 +201,13 @@ def input_data():
                 else:
                     insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
-                popover.success('Gegevens opgeslagen!', icon="✅")
+                st.success('Gegevens opgeslagen!', icon="✅")
                 
                 
                 
 
         except:
-            popover.info("Markeer een waarneming")
+            # popover.info("Markeer een waarneming")
             st.stop()
 
         st.switch_page("🗺️_Home.py")
@@ -167,69 +225,15 @@ try:
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")
     
-    popover = st.sidebar
+    # popover = st.sidebar
     
-    waarnemer = st.session_state.login['name']
-    project = st.session_state.project['project_name']
-    soortgroup = st.session_state.project['opdracht']
+
     
-    # popover.divider()
+    map_output()
+
+    if geometry_type = output["features"][0]["geometry"]["type"]
     
-    datum = popover.date_input("Datum","today")       
-    nine_hours_from_now = datetime.now() + timedelta(hours=2)
-    time = popover.time_input("Tijd", nine_hours_from_now)
-    
-    popover.divider()
-    
-    if soortgroup == 'Vleermuizen':
-    
-        sp = popover.selectbox("Soort", BAT_NAMES,key="Soort")
-        gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = popover.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
-        verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
-        aantal = popover.number_input("Aantal", min_value=1)
-    
-    elif soortgroup == 'Vogels':
-    
-        sp = popover.selectbox("Soort", BIRD_NAMES)
-        gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-        functie = popover.selectbox("Functie", BIRD_FUNCTIE) 
-        verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
-        aantal = popover.number_input("Aantal", min_value=1)
-    
-    elif soortgroup == 'Vleermuiskast':
-        functie = popover.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
-        BAT_NAMES = ["onbekend"] + BAT_NAMES
-        sp = popover.selectbox("Soort", BAT_NAMES) 
-        gedrag = None
-        verblijf = None
-        aantal = popover.number_input("Aantal", min_value=1)
-    
-    elif soortgroup == 'Camera':
-        functie = popover.selectbox("Camera", CAMERA_OPTIONS)
-        BAT_NAMES = None
-        sp = None 
-        gedrag = None
-        verblijf = None
-        aantal = popover.number_input("Aantal", min_value=1)
-    
-    elif soortgroup == 'Rat val':
-        functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
-        BAT_NAMES = None
-        sp = None 
-        gedrag = None
-        verblijf = None
-        aantal = popover.number_input("Aantal", min_value=1)
-    
-    opmerking = popover.text_input("", placeholder="Vul hier een opmerking in ...")
-    
-    with popover.expander("Upload een foto"):
-        uploaded_file = st.camera_input("")
-    
-    popover.divider()
-    
-        
-    input_data()
+        input_data()
     
 except:
     st.switch_page("🗺️_Home.py")
