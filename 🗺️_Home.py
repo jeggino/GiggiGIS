@@ -394,7 +394,7 @@ try:
                             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
                             
             except:
-                st.info('Geen foto opgeslagen voor deze waarneming
+                st.info('Geen foto opgeslagen voor deze waarneming')
 
                 if st.button("Do you want to update?",use_container_width=True):
                     update_item()
