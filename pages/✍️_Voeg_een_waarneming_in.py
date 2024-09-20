@@ -227,10 +227,7 @@ try:
         
         output_map = map()
 
-    output_map["features"] = output_map.pop("all_drawings")
-    geometry_type = output_map["features"][0]["geometry"]["type"]
-    coordinates = output_map["features"][0]["geometry"]["coordinates"]
-    coordinates
+    output_map
     # if output_map["features"][0]["geometry"]["type"]:
     
     # input_data(map())
