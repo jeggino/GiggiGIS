@@ -19,8 +19,6 @@ def update_item():
   update = {"password":password_update}
   if st.button("Update",use_container_width=True): 
     db.update(update,key_update)
-    del st.session_state.login
-    del st.session_state.project
     st.rerun()
 
 
