@@ -17,7 +17,7 @@ CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera
 
 RAT_VAL_OPTIONS = ["Val nog in het veld","Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]
 
-aaa = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger']
+BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger']
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 
          'zwermend', 'sporen', 'balts', 'verkeersslachtoffer']
