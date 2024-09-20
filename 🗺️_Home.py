@@ -64,6 +64,13 @@ st.markdown("""
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures")
+db_content = db.fetch().items 
+df_point = pd.DataFrame(db_content)
+
+
+db_2 = deta.Base("df_authentication")
+db_content_2 = db_2.fetch().items 
+df_references = pd.DataFrame(db_content_2)
 
 
 # --- DIMENSIONS ---
