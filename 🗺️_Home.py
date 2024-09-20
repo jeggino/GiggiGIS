@@ -216,7 +216,7 @@ def update_item():
             "verblijf":verblijf,"opmerking":opmerking}
     
   if st.button("Update",use_container_width=True): 
-    db.update(update,key_update)
+    db.update(update,id)
     st.rerun()
 
 def logIn():
