@@ -99,7 +99,7 @@ def map():
 
         
 @st.dialog(" ")
-def input_data():
+def input_data(output):
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
@@ -229,7 +229,7 @@ try:
     output_map#["features"]#["all_drawings"]
     try:
         if len(output_map["features"]) != 0:
-            input_data()
+            input_data(output_map)
     except:
         st.stop()
     
