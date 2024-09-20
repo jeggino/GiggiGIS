@@ -93,12 +93,10 @@ def map():
 
     
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
+    output["features"] = output.pop("all_drawings")
     
     return  output
 
-@st.dialog(" ee")
-def ciao():
-    st.write("ciao")
         
 @st.dialog(" ")
 def input_data():
@@ -228,7 +226,6 @@ try:
         
         output_map = map()
     
-    output_map["features"] = output_map.pop("all_drawings")
     output_map#["features"]#["all_drawings"]
     if len(output_map["features"]) != 0:
         input_data()
