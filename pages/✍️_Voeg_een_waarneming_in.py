@@ -111,6 +111,7 @@ def input_data(output):
     
     if soortgroup == 'Vleermuizen':
     
+        sp = st.selectbox("Soort", BIRD_NAMES)
         sp = st.selectbox("Soort", BAT_NAMES)
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
         functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
@@ -127,6 +128,7 @@ def input_data(output):
     
     elif soortgroup == 'Vleermuiskast':
         functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
+        sp = st.selectbox("Soort", BIRD_NAMES)
         BAT_NAMES = ["onbekend"] + BAT_NAMES
         sp = st.selectbox("Soort", BAT_NAMES) 
         gedrag = None
