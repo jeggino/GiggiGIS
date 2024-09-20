@@ -229,6 +229,8 @@ try:
     output_map#["features"]#["all_drawings"]
     if len(output_map["features"]) != 0:
         input_data()
+    else:
+        st.stop()
     
 except:
     # st.switch_page("🗺️_Home.py")
