@@ -100,8 +100,9 @@ def map():
         
 @st.dialog(" ")
 def input_data(output):
-
-    st.link_button("Anulleren", "pages/✍️_Voeg_een_waarneming_in.py")
+    
+    if st.button("Annulleren")
+        st.link_button("Anulleren", "pages/✍️_Voeg_een_waarneming_in.py")
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
@@ -203,7 +204,6 @@ def input_data(output):
                 
 
         except:
-            # popover.info("Markeer een waarneming")
             st.stop()
 
         st.switch_page("🗺️_Home.py")
@@ -219,16 +219,12 @@ try:
     
     deta = Deta(st.secrets[f"deta_key_other"])
     db = deta.Base("df_observations")
-    drive = deta.Drive("df_pictures")
-    
-    # popover = st.sidebar
-    
+    drive = deta.Drive("df_pictures")    
 
     with st.container(height=CONTAINER_height, border=True):
         
         output_map = map()
     
-    output_map#["features"]#["all_drawings"]
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map)
@@ -236,6 +232,5 @@ try:
         st.stop()
     
 except:
-    # st.switch_page("🗺️_Home.py")
-    st.error("error")
+    st.switch_page("🗺️_Home.py")
     
