@@ -167,7 +167,7 @@ def update_item():
   nine_hours_from_now = datetime.now() + timedelta(hours=2)
   time = st.time_input("Tijd", nine_hours_from_now)
   
-  if soortgroup == 'Vleermuizen':
+  if st.session_state.project['opdracht'] == 'Vleermuizen':
 
     sp = popover.selectbox("Soort", BAT_NAMES,key="Soort")
     gedrag = popover.selectbox("Gedrag", BAT_BEHAVIOURS) 
@@ -175,7 +175,7 @@ def update_item():
     verblijf = popover.selectbox("Verblijf", BAT_VERBLIJF) 
     aantal = popover.number_input("Aantal", min_value=1)
 
-  elif soortgroup == 'Vogels':
+  elif st.session_state.project['opdracht'] == 'Vogels':
   
     sp = popover.selectbox("Soort", BIRD_NAMES)
     gedrag = popover.selectbox("Gedrag", BIRD_BEHAVIOURS) 
@@ -183,7 +183,7 @@ def update_item():
     verblijf = popover.selectbox("Verblijf", BIRD_VERBLIJF) 
     aantal = popover.number_input("Aantal", min_value=1)
   
-  elif soortgroup == 'Vleermuiskast':
+  elif st.session_state.project['opdracht'] == 'Vleermuiskast':
     
     functie = popover.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
     BAT_NAMES = ["onbekend"] + BAT_NAMES
@@ -192,7 +192,7 @@ def update_item():
     verblijf = None
     aantal = popover.number_input("Aantal", min_value=1)
   
-  elif soortgroup == 'Camera':
+  elif st.session_state.project['opdracht'] == 'Camera':
     
     functie = popover.selectbox("Camera", CAMERA_OPTIONS)
     sp = None 
@@ -200,7 +200,7 @@ def update_item():
     verblijf = None
     aantal = popover.number_input("Aantal", min_value=1)
   
-  elif soortgroup == 'Rat val':
+  elif st.session_state.project['opdracht'] == 'Rat val':
     
     functie = popover.selectbox("Rat val", RAT_VAL_OPTIONS)
     sp = None 
