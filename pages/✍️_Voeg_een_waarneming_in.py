@@ -28,6 +28,8 @@ st.set_page_config(
     
 )
 
+BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger']
+
 st.markdown(
     """
 <style>
