@@ -161,48 +161,48 @@ def input_data():
     
     if submitted:           
 
-    #     try:
+        try:
 
-    #         # output["features"] = output.pop("all_drawings")
-    #         geometry_type = output["features"][0]["geometry"]["type"]
-    #         coordinates = output["features"][0]["geometry"]["coordinates"] 
+            # output["features"] = output.pop("all_drawings")
+            geometry_type = output["features"][0]["geometry"]["type"]
+            coordinates = output["features"][0]["geometry"]["coordinates"] 
             
-    #         if geometry_type == "LineString":
+            if geometry_type == "LineString":
                 
-    #             lng = None
-    #             lat = None
-    #             key = None
+                lng = None
+                lat = None
+                key = None
             
-    #         else: 
+            else: 
                 
-    #             lng = coordinates[0]
-    #             lat = coordinates[1]
-    #             coordinates = None
+                lng = coordinates[0]
+                lat = coordinates[1]
+                coordinates = None
                 
-    #             key = str(lng)+str(lat)
+                key = str(lng)+str(lat)
 
-    #         if len(output["features"]) > 1:
-    #             st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
-    #             st.stop()
+            if len(output["features"]) > 1:
+                st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
+                st.stop()
 
-    #         else:
+            else:
 
-    #             if uploaded_file is not None:
-    #                 bytes_data = uploaded_file.getvalue()
-    #                 drive.put(f"{key}.jpeg", data=bytes_data)            
-    #                 insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
+                if uploaded_file is not None:
+                    bytes_data = uploaded_file.getvalue()
+                    drive.put(f"{key}.jpeg", data=bytes_data)            
+                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
                 
-    #             else:
-    #                 insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
+                else:
+                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
-    #             st.success('Gegevens opgeslagen!', icon="✅")
+                st.success('Gegevens opgeslagen!', icon="✅")
                 
                 
                 
 
-    #     except:
-    #         # popover.info("Markeer een waarneming")
-    #         st.stop()
+        except:
+            # popover.info("Markeer een waarneming")
+            st.stop()
 
         st.switch_page("🗺️_Home.py")
 
