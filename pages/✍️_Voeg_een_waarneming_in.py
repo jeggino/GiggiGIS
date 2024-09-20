@@ -229,9 +229,9 @@ try:
     
 
     
-    map_output()
+    output_map = map_output()
 
-    if geometry_type = output["features"][0]["geometry"]["type"]
+    if output_map["features"][0]["geometry"]["type"]:
     
         input_data()
     
