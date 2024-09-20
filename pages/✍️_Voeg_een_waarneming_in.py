@@ -64,9 +64,13 @@ st.markdown("""
 
 
 # --- DIMENSIONS ---
-OUTPUT_height = 610
-OUTPUT_width = 350
-CONTAINER_height = 640
+from streamlit_js_eval import streamlit_js_eval
+
+# st.write(f"Screen width is {streamlit_js_eval(js_expressions='screen.width', key = 'SCR')}")
+# st.write(f"Screen height is {streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')}")
+OUTPUT_height = streamlit_js_eval(js_expressions='screen.height', key = 'SCR')
+OUTPUT_width = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
+CONTAINER_height = streamlit_js_eval(js_expressions='screen.height', key = 'SCR')
     
 # --- FUNCTIONS ---
 
@@ -209,10 +213,7 @@ def input_data(output):
 try:
     IMAGE = "image/logo.png"
     st.logo(IMAGE,  link=None, icon_image=None)    
-    from streamlit_js_eval import streamlit_js_eval
 
-    st.write(f"Screen width is {streamlit_js_eval(js_expressions='screen.width', key = 'SCR')}")
-    st.write(f"Screen height is {streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')}")
     
     
     deta = Deta(st.secrets[f"deta_key_other"])
