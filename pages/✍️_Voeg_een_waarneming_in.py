@@ -234,5 +234,6 @@ try:
     #     input_data(output_map)
     
 except:
-    st.switch_page("🗺️_Home.py")
+    # st.switch_page("🗺️_Home.py")
+    st.error("error")
     
