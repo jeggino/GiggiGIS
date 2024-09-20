@@ -153,7 +153,7 @@ def popup_html(row):
     """
     return html
 
-@st.dialog("")
+@st.dialog(" ")
 def update_item():
 
   datum = st.date_input("Datum","today")
