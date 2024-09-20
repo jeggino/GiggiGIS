@@ -114,7 +114,7 @@ def input_data(output):
     
     if soortgroup == 'Vleermuizen':
     
-        # sp = st.selectbox("Soort", BAT_NAMES)
+        sp = st.selectbox("Soort", BAT_NAMES)
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
         functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
