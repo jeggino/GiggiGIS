@@ -13,10 +13,6 @@ from deta import Deta
 
 from credencials import *
 
-import streamlit_authenticator as stauth
-
-import yaml
-from yaml.loader import SafeLoader
 
 
 # ---LAYOUT---
@@ -28,7 +24,6 @@ st.set_page_config(
     
 )
 
-BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger']
 
 st.markdown(
     """
@@ -133,7 +128,7 @@ def input_data(output):
     elif soortgroup == 'Vleermuiskast':
         functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
         BAT_NAMES = ["onbekend"] + BAT_NAMES
-        # sp = st.selectbox("Soort", BAT_NAMES) 
+        sp = st.selectbox("Soort", BAT_NAMES) 
         gedrag = None
         verblijf = None
         aantal = st.number_input("Aantal", min_value=1)
@@ -212,11 +207,7 @@ def input_data(output):
 # --- APP ---  
 try:
     IMAGE = "image/logo.png"
-    st.logo(IMAGE,  link=None, icon_image=None)
-
-    
-    BAT_NAMES 
-    
+    st.logo(IMAGE,  link=None, icon_image=None)    
     
     
     deta = Deta(st.secrets[f"deta_key_other"])
