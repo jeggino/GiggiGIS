@@ -47,10 +47,10 @@ st.markdown("""
 
 # st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-padding_top = 1
+padding_top = 0
 padding_bottom = 0
-padding_left = 1
-padding_right = 10
+padding_left = 0
+padding_right = 0
 # max_width_str = f'max-width: 100%;'
 st.markdown(f'''
             <style>
