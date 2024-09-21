@@ -25,8 +25,7 @@ st.set_page_config(
     
 )
 
-x = streamlit_js_eval(js_expressions='window.innerWidth', key='Width',  want_output = True) 
-y = streamlit_js_eval(js_expressions='window.innerHeight', key='Height',  want_output = True)
+
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
 OUTPUT_width = WIDTH_SCREEN
