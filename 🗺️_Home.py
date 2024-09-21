@@ -29,7 +29,6 @@ st.set_page_config(
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
 OUTPUT_width = WIDTH_SCREEN
-type(HEIGHT_SCREEN)
 OUTPUT_height = int(HEIGHT_SCREEN * 0.75)
 
 ICON_SIZE = (20,20)
