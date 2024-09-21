@@ -47,6 +47,26 @@ reduce_header_height_style = """
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
+padding_top = 0
+padding_bottom = 10
+padding_left = 1
+padding_right = 10
+# max_width_str = f'max-width: 100%;'
+st.markdown(f'''
+            <style>
+                .reportview-container .sidebar-content {{
+                    padding-top: {padding_top}rem;
+                }}
+                .reportview-container .main .block-container {{
+                    padding-top: {padding_top}rem;
+                    padding-right: {padding_right}rem;
+                    padding-left: {padding_left}rem;
+                    padding-bottom: {padding_bottom}rem;
+                }}
+            </style>
+            ''', unsafe_allow_html=True,
+)
+
 # --- COSTANTS ---
 IMAGE = "image/logo.png"
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
