@@ -28,14 +28,14 @@ st.set_page_config(
 
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-OUTPUT_height = HEIGHT_SCREEN / 0.75
+OUTPUT_height = HEIGHT_SCREEN * 0.75
 OUTPUT_width = WIDTH_SCREEN
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
 x = streamlit_js_eval(js_expressions='window.innerWidth', key='WIDTH',  want_output = True,) 
 st.write(f"Width is {x}")
-st.write(f"Width is {OUTPUT_height }")
+st.write(f"Width is {int(OUTPUT_height) }")
 
 st.markdown("""
     <style>
