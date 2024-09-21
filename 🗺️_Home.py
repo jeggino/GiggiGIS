@@ -25,10 +25,10 @@ st.set_page_config(
     
 )
 
-
+x = streamlit_js_eval(js_expressions='window.innerWidth', key='HEIGHT',  want_output = True,) 
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-OUTPUT_width = WIDTH_SCREEN
+OUTPUT_width = x
 OUTPUT_height = HEIGHT_SCREEN * 0.75
 
 ICON_SIZE = (20,20)
