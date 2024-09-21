@@ -249,17 +249,13 @@ if 'project' not in st.session_state:
     project()
     st.stop()
 
-#______________NEW___________________
 
 
-
+#--- APP ---
 with st.sidebar:
     logOut_project()
     logOut()
     st.divider()
-
-    
-    
 
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
@@ -360,7 +356,7 @@ try:
                     update_item()
                     
                 with st.form("entry_form", clear_on_submit=True):
-                    submitted = st.form_submit_button("Verwijder data")
+                    submitted = st.form_submit_button("Verwijder data",use_container_width=True)
                     if submitted:
                         # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
                             db.delete(id)
@@ -378,7 +374,7 @@ try:
                     update_item()
                 
                 with st.form("entry_form", clear_on_submit=True):
-                    submitted = st.form_submit_button("Verwijder data")
+                    submitted = st.form_submit_button("Verwijder data",use_container_width=True)
                     if submitted:
                         # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
                             db.delete(id)
