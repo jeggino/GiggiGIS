@@ -154,7 +154,7 @@ def update_item():
   
   if st.session_state.project['opdracht'] == 'Vleermuizen':
 
-    sp = st.selectbox("Soort", BAT_NAMES,key="Soort")
+    sp = st.selectbox("Soort", BAT_NAMES)
     gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
     functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
     verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
@@ -171,8 +171,8 @@ def update_item():
   elif st.session_state.project['opdracht'] == 'Vleermuiskast':
     
     functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
-    BAT_NAMES = ["onbekend"] + BAT_NAMES
-    sp = st.selectbox("Soort", BAT_NAMES) 
+    bat_names = ["onbekend"] + BAT_NAMES
+    sp = st.selectbox("Soort", bat_names) 
     gedrag = None
     verblijf = None
     aantal = st.number_input("Aantal", min_value=1)
