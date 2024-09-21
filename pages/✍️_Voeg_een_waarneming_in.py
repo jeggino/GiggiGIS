@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_js_eval import streamlit_js_eval
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
@@ -62,23 +63,21 @@ st.markdown("""
 </nav>
 """, unsafe_allow_html=True)
 
-
-# --- DIMENSIONS ---
-from streamlit_js_eval import streamlit_js_eval
-
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-# st.write(f"Screen width is {WIDTH_SCREEN}")
-# st.write(f"Screen height is {HEIGHT_SCREEN}")
 OUTPUT_height = HEIGHT_SCREEN
 OUTPUT_width = WIDTH_SCREEN 
 CONTAINER_height = WIDTH_SCREEN
+
+# --- COSTANTS ---
+IMAGE = "image/logo.png"
+
+# --- DATASET ---
+deta = Deta(st.secrets[f"deta_key_other"])
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures") 
     
 # --- FUNCTIONS ---
-
-def load_dataset():
-    return db.fetch().items
-
 def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
 
     return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
@@ -167,7 +166,6 @@ def input_data(output):
 
         try:
 
-            # output["features"] = output.pop("all_drawings")
             geometry_type = output["features"][0]["geometry"]["type"]
             coordinates = output["features"][0]["geometry"]["coordinates"] 
             
@@ -213,17 +211,8 @@ def input_data(output):
 
 # --- APP ---  
 try:
-    IMAGE = "image/logo.png"
     st.logo(IMAGE,  link=None, icon_image=None)    
-
-    
-    
-    deta = Deta(st.secrets[f"deta_key_other"])
-    db = deta.Base("df_observations")
-    drive = deta.Drive("df_pictures")    
-
-    # with st.container(height=CONTAINER_height, border=True):
-        
+     
     output_map = map()
     
     try:
