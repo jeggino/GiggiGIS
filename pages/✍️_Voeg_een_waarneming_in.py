@@ -47,7 +47,7 @@ st.markdown("""
 
 # st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-padding_top = 0
+padding_top = 35px
 padding_bottom = 0
 padding_left = 0
 padding_right = 0
