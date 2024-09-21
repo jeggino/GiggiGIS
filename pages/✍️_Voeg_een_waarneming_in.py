@@ -39,13 +39,13 @@ st.markdown("""
     """,
     unsafe_allow_html=True)
 
-reduce_header_height_style = """
-<style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;}  header { visibility: hidden; padding-bottom: 1rem; }
-</style>
-"""
+# reduce_header_height_style = """
+# <style>
+#     div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;}  header { visibility: hidden; padding-bottom: 1rem; }
+# </style>
+# """
 
-st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+# st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 padding_top = 1
 padding_bottom = 0
