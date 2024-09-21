@@ -29,15 +29,11 @@ x = streamlit_js_eval(js_expressions='window.innerWidth', key='Width',  want_out
 y = streamlit_js_eval(js_expressions='window.innerHeight', key='Height',  want_output = True)
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-OUTPUT_width = x
-OUTPUT_height = y
+OUTPUT_width = WIDTH_SCREEN
+OUTPUT_height = HEIGHT_SCREEN
 
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
-
-y = streamlit_js_eval(js_expressions='window.innerHeight', key='y',  want_output = True,) 
-st.write(f"Height is {y}")
-# st.write(f"Height is {int(WIDTH_SCREEN) }")
 
 st.markdown("""
     <style>
