@@ -260,13 +260,7 @@ with st.sidebar:
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
-st.set_page_config(
-    page_title="GigGIS",
-    initial_sidebar_state="collapsed",
-    page_icon="📝",
-    layout="wide",
-    
-)
+
 try:
 
     db_content = load_dataset()
