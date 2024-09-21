@@ -39,33 +39,15 @@ st.markdown("""
     """,
     unsafe_allow_html=True)
 
-# reduce_header_height_style = """
-# <style>
-#     div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;}  header { visibility: hidden; padding-bottom: 1rem; }
-# </style>
-# """
+reduce_header_height_style = """
+<style>
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;}  header { visibility: hidden; padding-bottom: 1rem; }
+</style>
+"""
 
-# st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-padding_top = 35 px
-padding_bottom = 0
-padding_left = 0
-padding_right = 0
-# max_width_str = f'max-width: 100%;'
-st.markdown(f'''
-            <style>
-                .reportview-container .sidebar-content {{
-                    padding-top: {padding_top}rem;
-                }}
-                .reportview-container .main .block-container {{
-                    padding-top: {padding_top};
-                    padding-right: {padding_right}rem;
-                    padding-left: {padding_left}rem;
-                    padding-bottom: {padding_bottom}rem;
-                }}
-            </style>
-            ''', unsafe_allow_html=True,
-)
+
 
 # --- COSTANTS ---
 IMAGE = "image/logo.png"
