@@ -47,8 +47,8 @@ reduce_header_height_style = """
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-padding_top = 0
-padding_bottom = 10
+padding_top = 1
+padding_bottom = 0
 padding_left = 1
 padding_right = 10
 # max_width_str = f'max-width: 100%;'
