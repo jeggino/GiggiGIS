@@ -44,13 +44,13 @@ st.markdown("""
     """,
     unsafe_allow_html=True)
 
-# reduce_header_height_style = """
-# <style>
-#     div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0em; margin-bottom: 0em;}
-# </style>
-# """
+reduce_header_height_style = """
+<style>
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0em; margin-bottom: 0em;}
+</style>
+"""
 
-# st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
 
