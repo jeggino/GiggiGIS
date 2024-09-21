@@ -46,7 +46,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 1em; margin-bottom: 1em;}
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0em; margin-bottom: 0em;}
 </style>
 """
 
@@ -69,7 +69,7 @@ st.markdown("""
 IMAGE = "image/logo.png"
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-OUTPUT_height = HEIGHT_SCREEN / 2
+OUTPUT_height = HEIGHT_SCREEN 
 OUTPUT_width = WIDTH_SCREEN 
 
 # --- DATASET ---
