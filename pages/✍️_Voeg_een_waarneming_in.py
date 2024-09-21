@@ -70,9 +70,9 @@ WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
 st.write(f"Screen width is {WIDTH_SCREEN}")
 st.write(f"Screen height is {HEIGHT_SCREEN}")
-OUTPUT_height = streamlit_js_eval(WIDTH_SCREEN)
-OUTPUT_width = streamlit_js_eval(HEIGHT_SCREEN)
-CONTAINER_height = streamlit_js_eval(WIDTH_SCREEN)
+OUTPUT_height = WIDTH_SCREEN
+OUTPUT_width = HEIGHT_SCREEN
+CONTAINER_height = WIDTH_SCREEN
     
 # --- FUNCTIONS ---
 
