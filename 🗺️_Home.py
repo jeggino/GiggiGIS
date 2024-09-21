@@ -378,12 +378,11 @@ try:
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
                     st.image(res)
-
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                     
-                with st.form("entry_form", clear_on_submit=True,border=False,use_container_width=True):
-                    submitted = st.form_submit_button("Verwijder waarneming")
+                with st.form("entry_form", clear_on_submit=True,border=False):
+                    submitted = st.form_submit_button("Verwijder waarneming",use_container_width=True)
                     if submitted:
                         # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
                         db.delete(id)
