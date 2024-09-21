@@ -58,7 +58,7 @@ st.markdown(f'''
                     padding-top: {padding_top}rem;
                 }}
                 .reportview-container .main .block-container {{
-                    padding-top: {padding_top}rem;
+                    padding-top: {padding_top};
                     padding-right: {padding_right}rem;
                     padding-left: {padding_left}rem;
                     padding-bottom: {padding_bottom}rem;
