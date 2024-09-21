@@ -33,6 +33,10 @@ OUTPUT_width = WIDTH_SCREEN
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
+x = streamlit_js_eval(js_expressions='window.innerWidth', key='WIDTH',  want_output = True,) 
+st.write(f"Width is {x}")
+st.write(f"Width is {WIDTH_SCREEN}")
+
 st.markdown("""
     <style>
     .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_ } 
