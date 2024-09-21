@@ -63,14 +63,14 @@ st.markdown("""
 </nav>
 """, unsafe_allow_html=True)
 
-WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
-HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-OUTPUT_height = HEIGHT_SCREEN
-OUTPUT_width = WIDTH_SCREEN 
-CONTAINER_height = WIDTH_SCREEN
+
 
 # --- COSTANTS ---
 IMAGE = "image/logo.png"
+WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
+HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
+OUTPUT_height = HEIGHT_SCREEN / 2
+OUTPUT_width = WIDTH_SCREEN 
 
 # --- DATASET ---
 deta = Deta(st.secrets[f"deta_key_other"])
