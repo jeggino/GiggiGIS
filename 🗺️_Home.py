@@ -34,7 +34,7 @@ OUTPUT_height = HEIGHT_SCREEN * 0.75
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
-x = streamlit_js_eval(js_expressions='window.innerWidth', key='HEIGHT',  want_output = True,) 
+# x = streamlit_js_eval(js_expressions='window.innerWidth', key='HEIGHT',  want_output = True,) 
 st.write(f"Height is {x}")
 st.write(f"Height is {int(WIDTH_SCREEN) }")
 
