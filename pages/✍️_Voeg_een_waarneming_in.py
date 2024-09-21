@@ -25,7 +25,10 @@ st.set_page_config(
     
 )
 
-# .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; ,   footer { visibility: hidden;}
+WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
+HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
+OUTPUT_height = int(HEIGHT_SCREEN) * 0.75
+OUTPUT_width = WIDTH_SCREEN 
 
 st.markdown("""
     <style>
@@ -46,10 +49,7 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- COSTANTS ---
 IMAGE = "image/logo.png"
-WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
-HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-OUTPUT_height = int(HEIGHT_SCREEN) * 0.75
-OUTPUT_width = WIDTH_SCREEN 
+
 
 # --- DATASET ---
 deta = Deta(st.secrets[f"deta_key_other"])
