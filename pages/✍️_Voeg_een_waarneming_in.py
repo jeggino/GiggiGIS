@@ -95,7 +95,9 @@ def map():
     
 
     
-    output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
+    output = st_folium(m, returned_objects=["all_drawings"]
+                       # ,width=OUTPUT_width, height=OUTPUT_height
+                      )
     output["features"] = output.pop("all_drawings")
     
     return  output
