@@ -34,7 +34,7 @@ OUTPUT_height = HEIGHT_SCREEN * 0.75
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
-y = streamlit_js_eval(js_expressions='window.height', key='y',  want_output = True,) 
+y = streamlit_js_eval(js_expressions='window.innerHeight', key='y',  want_output = True,) 
 st.write(f"Height is {y}")
 # st.write(f"Height is {int(WIDTH_SCREEN) }")
 
@@ -47,7 +47,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0.5rem; padding-right: 0rem;}  header { visibility: hidden}
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;}  header { visibility: hidden}
 </style>
 """
 
