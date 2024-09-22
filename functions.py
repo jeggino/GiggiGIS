@@ -136,7 +136,6 @@ def input_data(output):
                 
 
         except:
-            st.warning("HERE")
             st.stop()
 
         st.switch_page("🗺️_Home.py")
