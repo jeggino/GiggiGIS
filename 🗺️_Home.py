@@ -219,7 +219,7 @@ def update_item():
             "aantal":aantal, "gedrag":gedrag, "functie":functie, 
             "verblijf":verblijf,"opmerking":opmerking}
     
-  if st.button("Update",use_container_width=True): 
+  if st.button("**Update**",use_container_width=True): 
     db.update(update,id)
     st.rerun()
 
@@ -382,7 +382,7 @@ try:
                     update_item()
                     
                 with st.form("entry_form", clear_on_submit=True,border=False):
-                    submitted = st.form_submit_button(":red[Verwijder waarneming]",use_container_width=True)
+                    submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
                     if submitted:
                         # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
                         db.delete(id)
@@ -399,7 +399,7 @@ try:
                     update_item()
                 
                 with st.form("entry_form", clear_on_submit=True,border=False):
-                    submitted = st.form_submit_button(":red[Verwijder waarneming]",use_container_width=True)
+                    submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
                     if submitted:
                     # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
                         db.delete(id)
