@@ -1,5 +1,5 @@
 import streamlit as st
-import streamlit_js_eval
+from streamlit_js_eval import streamlit_js_eval
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
