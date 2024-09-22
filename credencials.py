@@ -9,12 +9,11 @@ db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures") 
 
 # --- COSTANTS ---
-WIDTH_SCREEN = int(streamlit_js_eval(js_expressions='screen.width', key = 'SCR'))
+WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-OUTPUT_height = HEIGHT_SCREEN * 0.75
-OUTPUT_width = WIDTH_SCREEN
+OUTPUT_WIDTH = WIDTH_SCREEN 
+OUTPUT_HEIGHT = HEIGHT_SCREEN * 0.75
 
-HELP_FUNCTIE = "Zomer- of kraamverblijfplaats: De vrouwtjes wonen in de zomer in kraamverblijfplaatsen. Hier brengt ze hun jongen groot. voorkomende leven ze gecombineerd in groepen (kolonies). \nZomer- of mannenverblijfplaats: De mannetjes wonen in de zomer soms solitair, soms in groepen, maar altijd op een andere plaats dan de vrouwtjes van hun soort. \nTijdelijke of paarverblijfplaats: Vaak kennen vleermuizen ook tussenkwartieren, waar ze slechts kort verblijven tijdens de reis van hun winter- naar zomerkolonie. Zo trekken zowel de mannetjes als de vrouwtjes aan het einde van de zomer naar speciale paarkwartieren, waar ze slechts kort verblijven. Winterverblijfplaats: Vleermuizen overwinteren in gebouwen, bunkers, ijskelders, groeven en boomholtes."
 
 GROUP = ["🦇 Vleermuizen","🪶 Vogels",  "🏠 Vleermuiskast",
          "📷 Camera", "🐀 Rat val"]
