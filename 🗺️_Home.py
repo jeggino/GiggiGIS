@@ -45,7 +45,7 @@ reduce_header_height_style = """
     div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;} header { visibility: hidden}
 </style>
 """
-#
+
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
@@ -66,8 +66,7 @@ df_references = pd.DataFrame(db_content_2)
 
 
 # --- FUNCTIONS ---    
-def load_dataset():
-    return db.fetch().items
+
 
 
 
@@ -260,11 +259,7 @@ IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
 
-try:
-
-    db_content = load_dataset()
-    df_point = pd.DataFrame(db_content)
-    
+try:  
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
