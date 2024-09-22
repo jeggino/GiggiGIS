@@ -2,14 +2,13 @@ import streamlit as st
 from streamlit_js_eval import streamlit_js_eval
 
 import folium
-from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
+from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
 import pandas as pd
-
+import geopandas as gpd
 import datetime
 from datetime import datetime, timedelta, date
-import random
 
 from deta import Deta
 
