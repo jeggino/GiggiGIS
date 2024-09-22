@@ -57,7 +57,7 @@ innerHeight = streamlit_js_eval(js_expressions='windows.height', want_output = T
 # # st.write(type(innerHeight))
 # st.write(int(innerHeight * 0.75))
 OUTPUT_width = innerWidth
-OUTPUT_height = innerHeight * 0.5
+OUTPUT_height = innerHeight
 # CONTAINER_height = 640
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
