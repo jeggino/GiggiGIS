@@ -50,20 +50,12 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
 # --- DATASET ---
-deta = Deta(st.secrets["deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
+
 db_content = db.fetch().items 
 df_point = pd.DataFrame(db_content)
 
-
-db_2 = deta.Base("df_authentication")
 db_content_2 = db_2.fetch().items 
 df_references = pd.DataFrame(db_content_2)
-
-
-
-
 
 # --- FUNCTIONS ---    
 
@@ -255,7 +247,7 @@ with st.sidebar:
     logOut()
     st.divider()
 
-IMAGE = "image/logo.png"
+
 st.logo(IMAGE,  link=None, icon_image=None)
 
 
