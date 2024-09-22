@@ -71,8 +71,8 @@ drive = deta.Drive("df_pictures")
 # st.write(f"Screen width is {streamlit_js_eval(js_expressions='screen.width',  key = 'width')}")
 # st.write(f"Screen height is {streamlit_js_eval(js_expressions='screen.height', key = 'height')}")
 OUTPUT_height = streamlit_js_eval(js_expressions='screen.height', key = 'height')
-OUTPUT_width = streamlit_js_eval(js_expressions='screen.width',  key = 'width')
-CONTAINER_height = 640
+OUTPUT_width = streamlit_js_eval(js_expressions='screen.width',  key = 'width') / 2
+# CONTAINER_height = 640
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
