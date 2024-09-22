@@ -228,6 +228,7 @@ def project():
     if st.button("begin"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht}
          st.rerun()
+        
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
@@ -240,7 +241,7 @@ def logOut_project():
         st.rerun()
         
 
-
+#--- APP ---
 if "login" not in st.session_state:
     logIn()
     st.stop()
@@ -251,8 +252,6 @@ if 'project' not in st.session_state:
     st.stop()
 
 
-
-#--- APP ---
 with st.sidebar:
     logOut_project()
     logOut()
