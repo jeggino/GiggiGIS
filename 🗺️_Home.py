@@ -400,7 +400,7 @@ try:
                     update_item()
                 
                 # with st.form("entry_form", clear_on_submit=True,border=False):
-                submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
+                # submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
                 submitted = st.button(":red[**Verwijder waarneming**]",use_container_width=True)
                 if submitted:
                 # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
