@@ -9,6 +9,8 @@ db = deta.Base("df_observations")
 drive = deta.Drive("df_pictures") 
 
 # --- COSTANTS ---
+IMAGE = "image/logo.png"
+
 WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
 HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
 OUTPUT_WIDTH = WIDTH_SCREEN 
