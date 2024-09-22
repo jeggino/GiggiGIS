@@ -82,7 +82,7 @@ def map():
 @st.dialog(" ")
 def input_data(output):
 
-    waarnemer = st.session_state.login['name']
+    
     project = st.session_state.project['project_name']
     soortgroup = st.session_state.project['opdracht']
     
@@ -95,7 +95,6 @@ def input_data(output):
     
     if soortgroup == 'Vleermuizen':
     
-        sp = st.selectbox("Soort", BIRD_NAMES)
         sp = st.selectbox("Soort", BAT_NAMES)
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
         functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
@@ -191,6 +190,8 @@ def input_data(output):
 # --- APP ---  
 try:
     st.logo(IMAGE,  link=None, icon_image=None)    
+
+    waarnemer = st.session_state.login['name']
      
     output_map = map()
     
