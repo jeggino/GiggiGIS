@@ -199,9 +199,8 @@ try:
     db = deta.Base("df_observations")
     drive = deta.Drive("df_pictures")    
 
-    with st.container(height=CONTAINER_height, border=True):
         
-        output_map = map()
+    output_map = map()
     
     try:
         if len(output_map["features"]) != 0:
