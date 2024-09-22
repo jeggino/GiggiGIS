@@ -96,20 +96,17 @@ def input_data(output):
     submitted = st.button("Gegevens opslaan",use_container_width=True)
     
     if submitted:           
-
+        
         try:
-
             geometry_type = output["features"][0]["geometry"]["type"]
             coordinates = output["features"][0]["geometry"]["coordinates"] 
             
-            if geometry_type == "LineString":
-                
+            if geometry_type == "LineString":                
                 lng = None
                 lat = None
                 key = None
             
-            else: 
-                
+            else:                 
                 lng = coordinates[0]
                 lat = coordinates[1]
                 coordinates = None
@@ -121,7 +118,7 @@ def input_data(output):
                 st.stop()
 
             else:
-
+                
                 if uploaded_file is not None:
                     bytes_data = uploaded_file.getvalue()
                     drive.put(f"{key}.jpeg", data=bytes_data)            
@@ -130,10 +127,7 @@ def input_data(output):
                 else:
                     insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
-                st.success('Gegevens opgeslagen!', icon="✅")
-                
-                
-                
+                st.success('Gegevens opgeslagen!', icon="✅")                
 
         except:
             st.stop()
