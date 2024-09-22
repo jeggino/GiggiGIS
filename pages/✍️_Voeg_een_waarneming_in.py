@@ -45,7 +45,7 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
 # --- COSTANTS ---
-IMAGE = "image/logo.png"
+
 
 
 # # --- DATASET ---
