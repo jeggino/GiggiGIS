@@ -388,6 +388,7 @@ try:
                         db.delete(id)
                         drive.delete(name)
                         st.success('Waarneming verwijderd', icon="✅")
+                        st.switch_page("🗺️_Home.py")
                         st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
                             # else:
                             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
@@ -398,13 +399,15 @@ try:
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                 
-                with st.form("entry_form", clear_on_submit=True,border=False):
-                    submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
+                # with st.form("entry_form", clear_on_submit=True,border=False):
+                submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
+                submitted = st.button(":red[**Verwijder waarneming**]",use_container_width=True)
                     if submitted:
                     # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
                         db.delete(id)
-                        st.success('Waarneming verwijderd', icon="✅")         
-                        st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
+                        st.success('Waarneming verwijderd', icon="✅")     
+                        st.switch_page("🗺️_Home.py")
+                        # st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
                             # else:
                             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
