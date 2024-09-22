@@ -52,7 +52,7 @@ def input_data(output):
     
         sp = st.selectbox("Soort", BAT_NAMES)
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
+        functie = st.selectbox("Functie", BAT_FUNCTIE) 
         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
         aantal = st.number_input("Aantal", min_value=1)
     
