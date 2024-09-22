@@ -76,7 +76,7 @@ st.write(f"Screen height is _{innerHeight}_")
 # st.write(type(innerHeight))
 st.write(int(innerHeight / 2))
 OUTPUT_width = innerWidth
-OUTPUT_height = innerHeight
+OUTPUT_height = int(innerHeight / 2)
 # CONTAINER_height = 640
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
