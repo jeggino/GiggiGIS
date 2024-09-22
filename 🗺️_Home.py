@@ -34,19 +34,19 @@ OUTPUT_height = int(HEIGHT_SCREEN * 0.75)
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
-st.markdown("""
-    <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_ } 
-    </style>
-    """,
-    unsafe_allow_html=True)
+# st.markdown("""
+#     <style>
+#     .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_ } 
+#     </style>
+#     """,
+#     unsafe_allow_html=True)
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;} 
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;} header { visibility: hidden}
 </style>
 """
-#header { visibility: hidden}
+#
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
