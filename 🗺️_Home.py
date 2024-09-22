@@ -74,7 +74,7 @@ innerHeight = streamlit_js_eval(js_expressions='screen.height', want_output = Tr
 st.write(f"Screen width is _{innerWidth}_")
 st.write(f"Screen height is _{innerHeight}_")
 # st.write(type(innerHeight))
-st.write(3 + 4)
+st.write(innerHeight + 400)
 OUTPUT_width = innerWidth
 OUTPUT_height = innerHeight
 # CONTAINER_height = 640
