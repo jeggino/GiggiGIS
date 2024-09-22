@@ -152,7 +152,7 @@ def input_data(output):
     
     st.divider()
         
-    submitted = st.button("Gegevens opslaan")
+    submitted = st.button("**Gegevens opslaan**",use_container_width=True)
     
     if submitted:           
 
