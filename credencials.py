@@ -1,4 +1,6 @@
 from streamlit_js_eval import streamlit_js_eval
+import streamlit as st
+
 from deta import Deta
 
 # --- DATASET ---
