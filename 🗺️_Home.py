@@ -43,10 +43,10 @@ ICON_SIZE_huismus = (28,28)
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;} header { visibility: hidden}
+    header { visibility: hidden}
 </style>
 """
-#
+#div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;} 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
