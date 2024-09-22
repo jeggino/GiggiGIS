@@ -69,10 +69,10 @@ drive = deta.Drive("df_pictures")
 
 
 # --- DIMENSIONS ---
-innerWidth = streamlit_js_eval(js_expressions='window.innerWidth',  key = 'width')
-innerHeight = int(streamlit_js_eval(js_expressions='window.innerHeight', key = 'height') / 2)
-st.write(f"Screen width is {innerWidth}")
-st.write(f"Screen height is {innerHeight}")
+innerWidth = streamlit_js_eval(js_expressions='window.innerWidth',  want_output = True, key = 'width')
+innerHeight = int(streamlit_js_eval(js_expressions='window.innerHeight', want_output = True, key = 'height') / 2)
+st.write(f"Screen width is _{innerWidth}_")
+st.write(f"Screen height is _{innerHeight}_")
 OUTPUT_width = innerWidth
 OUTPUT_height = innerHeight
 # CONTAINER_height = 640
