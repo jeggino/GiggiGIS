@@ -1,27 +1,3 @@
-from streamlit_js_eval import streamlit_js_eval
-import streamlit as st
-
-from deta import Deta
-
-# --- DATASET ---
-deta = Deta(st.secrets[f"deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures") 
-
-db_2 = deta.Base("df_authentication")
-
-# --- COSTANTS ---
-IMAGE = "image/logo.png"
-
-WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
-HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-OUTPUT_WIDTH = WIDTH_SCREEN 
-OUTPUT_HEIGHT = HEIGHT_SCREEN
-
-ICON_SIZE = (20,20)
-ICON_SIZE_huismus = (28,28)
-
-# int(float(HEIGHT_SCREEN) * 0.75)
 
 GROUP = ["🦇 Vleermuizen","🪶 Vogels",  "🏠 Vleermuiskast",
          "📷 Camera", "🐀 Rat val"]
