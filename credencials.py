@@ -1,4 +1,10 @@
 from streamlit_js_eval import streamlit_js_eval
+from deta import Deta
+
+# --- DATASET ---
+deta = Deta(st.secrets[f"deta_key_other"])
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures") 
 
 # --- COSTANTS ---
 WIDTH_SCREEN = int(streamlit_js_eval(js_expressions='screen.width', key = 'SCR'))
