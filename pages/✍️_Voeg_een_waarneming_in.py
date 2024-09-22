@@ -48,10 +48,10 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
 
-# # --- DATASET ---
-# deta = Deta(st.secrets[f"deta_key_other"])
-# db = deta.Base("df_observations")
-# drive = deta.Drive("df_pictures") 
+# --- DATASET ---
+deta = Deta(st.secrets[f"deta_key_other"])
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures") 
     
 
 
