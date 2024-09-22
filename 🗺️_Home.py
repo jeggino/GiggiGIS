@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit_js_eval
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
@@ -20,7 +21,7 @@ st.set_page_config(
     page_title="GigGIS",
     initial_sidebar_state="collapsed",
     page_icon="📝",
-    layout="centered",
+    layout="wide",
     
 )
 
@@ -67,6 +68,8 @@ drive = deta.Drive("df_pictures")
 
 
 # --- DIMENSIONS ---
+st.write(f"Screen width is _{streamlit_js_eval(js_expressions='screen.width', want_output = True, key = 'width')}_")
+st.write(f"Screen height is _{streamlit_js_eval(js_expressions='screen.height', want_output = True, key = 'height')}_")
 OUTPUT_height = 610
 OUTPUT_width = 350
 CONTAINER_height = 640
