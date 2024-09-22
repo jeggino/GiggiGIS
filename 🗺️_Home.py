@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_js_eval import streamlit_js_eval
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
@@ -21,44 +20,64 @@ st.set_page_config(
     page_title="GigGIS",
     initial_sidebar_state="collapsed",
     page_icon="📝",
-    layout="wide",
+    layout="centered",
     
 )
 
-
-# WIDTH_SCREEN = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
-# HEIGHT_SCREEN = streamlit_js_eval(js_expressions='screen.height', key = 'SCR1')
-# OUTPUT_width = WIDTH_SCREEN
-# OUTPUT_height = int(HEIGHT_SCREEN * 0.75)
-
-
+st.markdown(
+    """
+<style>
+    [data-testid="collapsedControl"] {
+        display: none
+    }
+</style>
+""",
+    unsafe_allow_html=True,
+)
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_ } 
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
     </style>
     """,
     unsafe_allow_html=True)
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem;} header { visibility: hidden}
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 1em; margin-bottom: 2em;}
 </style>
 """
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
+st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
 
-# --- DATASET ---
+st.markdown("""
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #FFFFFF;">
+  <a class="navbar-brand" target="_blank">   </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+""", unsafe_allow_html=True)
 
-db_content = db.fetch().items 
-df_point = pd.DataFrame(db_content)
+deta = Deta(st.secrets["deta_key_other"])
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures")
 
-db_content_2 = db_2.fetch().items 
-df_references = pd.DataFrame(db_content_2)
 
-# --- FUNCTIONS ---    
+# --- DIMENSIONS ---
+OUTPUT_height = 610
+OUTPUT_width = 350
+CONTAINER_height = 640
+ICON_SIZE = (20,20)
+ICON_SIZE_huismus = (28,28)
 
+# --- FUNCTIONS ---
+
+    
+def load_dataset():
+    return db.fetch().items
 
 
 
@@ -134,6 +153,17 @@ def popup_html(row):
     """
     return html
 
+#______________NEW___________________
+deta = Deta(st.secrets["deta_key_other"])
+db = deta.Base("df_observations")
+drive = deta.Drive("df_pictures")
+db_content = db.fetch().items 
+df_point = pd.DataFrame(db_content)
+
+db_2 = deta.Base("df_authentication")
+db_content_2 = db_2.fetch().items 
+df_references = pd.DataFrame(db_content_2)
+
 @st.dialog(" ")
 def update_item():
 
@@ -145,7 +175,7 @@ def update_item():
 
     sp = st.selectbox("Soort", BAT_NAMES)
     gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-    functie = st.selectbox("Functie", BAT_FUNCTIE, help=HELP_FUNCTIE ) 
+    functie = st.selectbox("Functie", BAT_FUNCTIE) 
     verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
     aantal = st.number_input("Aantal", min_value=1)
 
@@ -193,6 +223,9 @@ def update_item():
     db.update(update,id)
     st.rerun()
 
+
+
+
 def logIn():
     name = st.selectbox("Wie ben je?",df_references["username"].tolist(),index=None)  
     password = st.text_input("Vul het wachtwoord in, alstublieft")
@@ -218,7 +251,6 @@ def project():
     if st.button("begin"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht}
          st.rerun()
-        
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
@@ -231,7 +263,7 @@ def logOut_project():
         st.rerun()
         
 
-#--- APP ---
+
 if "login" not in st.session_state:
     logIn()
     st.stop()
@@ -241,17 +273,27 @@ if 'project' not in st.session_state:
     project()
     st.stop()
 
+#______________NEW___________________
+
+
 
 with st.sidebar:
+    # st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** project, met de **{st.session_state.project['opdracht']}** opdracht. :rainbow[VEEL SUCCES!!!]")
     logOut_project()
     logOut()
     st.divider()
 
+    
+    
 
+IMAGE = "image/logo.png"
 st.logo(IMAGE,  link=None, icon_image=None)
 
+try:
 
-try:  
+    db_content = load_dataset()
+    df_point = pd.DataFrame(db_content)
+    
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
@@ -316,15 +358,15 @@ try:
                           popup=popup,
                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
                          ).add_to(fouctie_loop)
-        
                 
 
         elif df_2.iloc[i]['geometry_type'] == "LineString":
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-    output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
-                         feature_group_to_add=list(functie_dictionary.values()))
+    with st.container(height=CONTAINER_height, border=True):
+        output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
+                             feature_group_to_add=list(functie_dictionary.values()))
         
     try:
         
@@ -332,43 +374,39 @@ try:
         name = f"{id}.jpeg"
 
         with st.sidebar:
-
-            
             try:
-
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
                     st.image(res)
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                     
-                with st.form("entry_form", clear_on_submit=True):
-                    submitted = st.form_submit_button(":red[**Verwijder data**]",use_container_width=True)
+                with st.form("entry_form", clear_on_submit=True,border=False):
+                    submitted = st.form_submit_button("Verwijder waarneming",use_container_width=True)
                     if submitted:
                         # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
-                            db.delete(id)
-                            drive.delete(name)
-                            st.success('Gegevens verwijderd!', icon="✅")
-                            st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
-                        # else:
-                        #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
+                        db.delete(id)
+                        drive.delete(name)
+                        st.success('Waarneming verwijderd', icon="✅")
+                        st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
+                            # else:
+                            #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
                             
-
             except:
-                st.info('Geen foto opgeslagen voor deze waarneming!')
+                st.info('Geen foto opgeslagen voor deze waarneming')
 
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                 
-                with st.form("entry_form", clear_on_submit=True):
-                    submitted = st.form_submit_button(":red[**Verwijder data**]",use_container_width=True)
+                with st.form("entry_form", clear_on_submit=True,border=False):
+                    submitted = st.form_submit_button("Verwijder waarneming",use_container_width=True)
                     if submitted:
-                        # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
-                            db.delete(id)
-                            st.success('Gegevens verwijderd!', icon="✅")
-                            st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
-                        # else:
-                        #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
+                    # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
+                        db.delete(id)
+                        st.success('Waarneming verwijderd', icon="✅")         
+                        st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
+                            # else:
+                            #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
     except:
         st.stop()
