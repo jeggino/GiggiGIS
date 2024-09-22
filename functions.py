@@ -9,6 +9,7 @@ from datetime import datetime, timedelta, date
 
 from deta import Deta
 
+from credencials import *
 
 # --- FUNCTIONS ---
 def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
