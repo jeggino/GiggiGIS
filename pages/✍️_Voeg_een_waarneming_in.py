@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_js_eval import streamlit_js_eval
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
@@ -19,52 +20,35 @@ st.set_page_config(
     page_title="GigGIS",
     initial_sidebar_state="collapsed",
     page_icon="📝",
-    layout="centered",
+    layout="wide",
     
 )
 
-st.markdown(
-    """
-<style>
-    [data-testid="collapsedControl"] {
-        display: none
-    }
-</style>
-""",
-    unsafe_allow_html=True,
-)
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: True; }
     </style>
     """,
     unsafe_allow_html=True)
 
+
+
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 1em; margin-bottom: 2em;}
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -3rem; margin-bottom: 0rem;}
 </style>
-"""
+""" 
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-st.markdown('<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">', unsafe_allow_html=True)
-
-st.markdown("""
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #FFFFFF;">
-  <a class="navbar-brand" target="_blank">   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
-""", unsafe_allow_html=True)
-
-
 # --- DIMENSIONS ---
-OUTPUT_height = 610
-OUTPUT_width = 350
-CONTAINER_height = 640
+innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
+innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
+OUTPUT_width = innerWidth
+OUTPUT_height = innerHeight
+ICON_SIZE = (20,20)
+ICON_SIZE_huismus = (28,28)
     
 # --- FUNCTIONS ---
 
