@@ -42,9 +42,9 @@ st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -3rem; margin-bottom: 0rem;}
+    div.block-container {margin-top: -3rem; margin-bottom: 0rem; margin-left: 1rem; margin-right: 1rem;}
 </style>
-"""
+""" 
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
