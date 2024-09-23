@@ -37,7 +37,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -2rem; margin-bottom: 0rem;}
+    div.block-container {padding-top: 1rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -2rem; margin-bottom: 0rem;}
 </style>
 """ 
 
