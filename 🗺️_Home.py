@@ -248,7 +248,7 @@ try:
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-    with st.container(height=1000, border=False):
+    with st.container(width=1000, border=True):
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
                              width=900, 
                              # height=OUTPUT_height,
