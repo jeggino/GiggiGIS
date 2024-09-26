@@ -186,7 +186,7 @@ try:
     df_point = pd.DataFrame(db_content)
     
     df_2 = df_point[df_point['project']=="A-001"]
-    soortgroup = st.selectbox("",("Camera", "Rat val"))
+    soortgroup = st.sidebar.selectbox("",("Camera", "Rat val"))
     df_2 = df_point[df_point['soortgroup']==soortgroup]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
     st.sidebar.subheader("Filter op",divider=False)
