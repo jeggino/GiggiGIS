@@ -103,40 +103,16 @@ def popup_html(row):
     <table style="height: 126px; width: 300;">
     <tbody>
     <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(project) + """
-    </tr>
-    <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Tijd</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(time) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
     </tr>
     <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gedrag) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Verblijf</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(verblijf) + """
-    </tr>
-    <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
@@ -209,7 +185,6 @@ try:
     db_content = load_dataset()
     df_point = pd.DataFrame(db_content)
     
-    df_point  
     df_2 = df_point[df_point['project']=="A-001"]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
     st.sidebar.subheader("Filter op",divider=False)
