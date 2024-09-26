@@ -250,7 +250,7 @@ try:
 
     row1 = st.columns(len(df_2["functie"].unique()),vertical_alignment="center",gap = "large")
     for col,metric in zip(row1,df_2["functie"].unique()):
-        col.metric(f"{metric}", f"{len(df_2[df_2.gedrag==metric])}")     
+        col.metric(f"{metric}", f"{len(df_2[df_2["functie"]==metric])}")     
     
         
     col_1,col_2,col_3 = st.columns([2,11,1],vertical_alignment="center")        
