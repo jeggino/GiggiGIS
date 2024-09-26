@@ -248,12 +248,8 @@ try:
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-    # row1 = st.columns(len(df_2["functie"].unique()),vertical_alignment="center",gap = "large")
-    # for col,metric in zip(row1,df_2["functie"].unique()):
-    #     col.metric(f"{metric}", f"{len(df_2[df_2["functie"]==metric])}")     
-    
         
-    col_1,col_2 = st.columns([4,11],gap = "medium") 
+    col_1,col_2 = st.columns([11,4],gap = "medium") 
     for metric in df_2["functie"].unique():
         col_2.metric(f"{metric}", f"{len(df_2[df_2["functie"]==metric])}")
     with col_1:
