@@ -249,27 +249,26 @@ try:
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
     col_1,col_2,col_3 = st.columns([1,11,1])
     with col_2:
-        # output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-        #                      width=950, 
-        #                      feature_group_to_add=list(functie_dictionary.values()))
-        output_2 = folium_static(map,width=950,)
+        output_2 = st_folium(map,returned_objects=["last_active_drawing"],
+                             width=950, 
+                             feature_group_to_add=list(functie_dictionary.values()))
         
-    # try:
+    try:
         
-    #     id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
-    #     name = f"{id}.jpeg"
+        id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
+        name = f"{id}.jpeg"
 
-    #     with st.sidebar:
-    #         try:
-    #             res = drive.get(name).read()
-    #             with st.expander("Zie foto"):
-    #                 st.image(res)
+        with st.sidebar:
+            try:
+                res = drive.get(name).read()
+                with st.expander("Zie foto"):
+                    st.image(res)
                             
-    #         except:
-    #             st.info('Geen foto opgeslagen voor deze waarneming')
+            except:
+                st.info('Geen foto opgeslagen voor deze waarneming')
 
-    # except:
-    #     st.stop()
+    except:
+        st.stop()
 
 except:
     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
