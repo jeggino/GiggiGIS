@@ -207,7 +207,7 @@ try:
                                    axis=1
                      )
     
-    map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=10,)
+    map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=11,)
     LocateControl(auto_start=False).add_to(map)
     Fullscreen().add_to(map)
     
@@ -250,7 +250,7 @@ try:
     col_1,col_2,col_3 = st.columns([1,11,1])
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                             width=950, 
+                             width=1000, 
                              feature_group_to_add=list(functie_dictionary.values()))
         
     try:
