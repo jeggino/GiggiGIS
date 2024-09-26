@@ -249,8 +249,8 @@ try:
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
     row1 = st.columns(len(df_2["functie"].unique()))
-    for col,metric in zip(row1,df_2["functie"].unique()):
-        st.metric(f"{metric}", "70 °F", "1.2 °F")     
+    for col,metric in zip(col,df_2["functie"].unique()):
+        col.metric(f"{metric}", "70 °F", "1.2 °F")     
     
         
     col_1,col_2,col_3 = st.columns([2,11,1])        
