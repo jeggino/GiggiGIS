@@ -253,7 +253,7 @@ try:
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                         width=OUTPUT_width, 
+                         width=725, 
                          # height=OUTPUT_height,
                          feature_group_to_add=list(functie_dictionary.values()))
         
