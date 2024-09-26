@@ -18,9 +18,9 @@ from credencials import *
 
 # ---LAYOUT---
 st.set_page_config(
-    page_title="GigGIS",
+    page_title="Rats",
     initial_sidebar_state="collapsed",
-    page_icon="📝",
+    page_icon="🐀",
     layout="wide",
     
 )
@@ -39,7 +39,7 @@ st.markdown(
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: True; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
     </style>
     """,
     unsafe_allow_html=True)
@@ -61,10 +61,6 @@ drive = deta.Drive("df_pictures")
 
 
 # --- DIMENSIONS ---
-innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
-innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-OUTPUT_width = innerWidth
-OUTPUT_height = innerHeight
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
@@ -103,45 +99,22 @@ def popup_html(row):
     <table style="height: 126px; width: 300;">
     <tbody>
     <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(project) + """
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
     </tr>
     <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Tijd</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(time) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
-    </tr>
-    <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gedrag) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Verblijf</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(verblijf) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
     </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
-    </tr>
+
     </tbody>
     </table>
     </html>
@@ -159,71 +132,12 @@ db_2 = deta.Base("df_authentication")
 db_content_2 = db_2.fetch().items 
 df_references = pd.DataFrame(db_content_2)
 
-@st.dialog(" ")
-def update_item():
-
-  datum = st.date_input("Datum","today")
-  nine_hours_from_now = datetime.now() + timedelta(hours=2)
-  time = st.time_input("Tijd", nine_hours_from_now)
-  
-  if st.session_state.project['opdracht'] == 'Vleermuizen':
-
-    sp = st.selectbox("Soort", BAT_NAMES)
-    gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-    functie = st.selectbox("Functie", BAT_FUNCTIE) 
-    verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-    aantal = st.number_input("Aantal", min_value=1)
-
-  elif st.session_state.project['opdracht'] == 'Vogels':
-  
-    sp = st.selectbox("Soort", BIRD_NAMES)
-    gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
-    functie = st.selectbox("Functie", BIRD_FUNCTIE) 
-    verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-    aantal = st.number_input("Aantal", min_value=1)
-  
-  elif st.session_state.project['opdracht'] == 'Vleermuiskast':
-    
-    functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
-    bat_names = ["onbekend"] + BAT_NAMES
-    sp = st.selectbox("Soort", bat_names) 
-    gedrag = None
-    verblijf = None
-    aantal = st.number_input("Aantal", min_value=1)
-  
-  elif st.session_state.project['opdracht'] == 'Camera':
-    
-    functie = st.selectbox("Camera", CAMERA_OPTIONS)
-    sp = None 
-    gedrag = None
-    verblijf = None
-    aantal = st.number_input("Aantal", min_value=1)
-  
-  elif st.session_state.project['opdracht'] == 'Rat val':
-    
-    functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
-    sp = None 
-    gedrag = None
-    verblijf = None
-    aantal = st.number_input("Aantal", min_value=1)
-  
-  opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-
-
-  update = {"datum":str(datum),"time":str(time),"sp":sp,
-            "aantal":aantal, "gedrag":gedrag, "functie":functie, 
-            "verblijf":verblijf,"opmerking":opmerking}
-    
-  if st.button("**Update**",use_container_width=True): 
-    db.update(update,id)
-    st.rerun()
-
 
 
 
 def logIn():
-    name = st.selectbox("Wie ben je?",df_references["username"].tolist(),index=None)  
-    password = st.text_input("Vul het wachtwoord in, alstublieft")
+    name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
+    password = st.text_input("Vul uw wachtwoord in, alstublieft")
     if name == None:
         st.stop()
     index = df_references[df_references['username']==name].index[0]
@@ -237,60 +151,41 @@ def logIn():
         else:
             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
-def project():
-    st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
-    index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
-    project_list = df_references.loc[index_project,"project"]
-    project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
-    opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    if st.button("begin"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht}
-         st.rerun()
+
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
-        del st.session_state.project     
+        # del st.session_state.project     
         st.rerun()
 
-def logOut_project():
-    if st.button("Opdracht wijzigen",use_container_width=True):
-        del st.session_state.project
-        st.rerun()
         
-
-
 if "login" not in st.session_state:
     logIn()
     st.stop()
 
 
-if 'project' not in st.session_state:  
-    project()
-    st.stop()
 
-#______________NEW___________________
 
 
 
 with st.sidebar:
-    # st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** project, met de **{st.session_state.project['opdracht']}** opdracht. :rainbow[VEEL SUCCES!!!]")
-    logOut_project()
     logOut()
     st.divider()
 
     
     
 
-# IMAGE = "image/logo.png"
-# st.logo(IMAGE,  link=None, icon_image=None)
+IMAGE = "image/logo.png"
+st.logo(IMAGE,  link=None, icon_image=None)
 
 try:
-
     db_content = load_dataset()
     df_point = pd.DataFrame(db_content)
     
-       
-    df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+    df_2 = df_point[df_point['project']=="A-001"]
+    soortgroup = st.sidebar.selectbox("",("📷 Camera", "🪤 Rat val"))
+    DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val"}
+    df_2 = df_point[df_point['soortgroup']==DICT_SORTGROUP[soortgroup]]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
@@ -303,11 +198,6 @@ try:
     )
     
     df_2 = df_2[(df_2['datum_2']>=d[0]) & (df_2['datum_2']<=d[1])]
-    
-    if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
-        species_filter_option = df_2["sp"].unique()
-        species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
-        df_2 = df_2[df_2['sp'].isin(species_filter)]
 
     st.sidebar.divider()
 
@@ -359,8 +249,9 @@ try:
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-    # with st.container(height=CONTAINER_height, border=True):
-    output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
+    output_2 = st_folium(map,returned_objects=["last_active_drawing"],
+                         width=1000, 
+                         # height=OUTPUT_height,
                          feature_group_to_add=list(functie_dictionary.values()))
         
     try:
@@ -373,36 +264,9 @@ try:
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
                     st.image(res)
-                if st.button("Waarneming bijwerken",use_container_width=True):
-                    update_item()
-                    
-                with st.form("entry_form", clear_on_submit=True,border=False):
-                    submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-                    if submitted:
-                        # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
-                        db.delete(id)
-                        drive.delete(name)
-                        st.success('Waarneming verwijderd', icon="✅")
-                        st.switch_page("🗺️_Home.py")
-                        st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
-                            # else:
-                            #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
                             
             except:
                 st.info('Geen foto opgeslagen voor deze waarneming')
-
-                if st.button("Waarneming bijwerken",use_container_width=True):
-                    update_item()
-                
-                with st.form("entry_form", clear_on_submit=True,border=False):
-                    submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-                    if submitted:
-                    # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
-                        db.delete(id)
-                        st.success('Waarneming verwijderd', icon="✅")     
-                        st.page_link("🗺️_Home.py", label="Vernieuwen", icon="🔄",use_container_width=True)
-                            # else:
-                            #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
     except:
         st.stop()
