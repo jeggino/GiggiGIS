@@ -175,7 +175,7 @@ with st.sidebar:
     
 
 IMAGE = "image/logo.png"
-st.logo(IMAGE,  link=None, icon_image=None)
+st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=None)
 
 try:
     db_content = load_dataset()
