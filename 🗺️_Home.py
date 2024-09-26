@@ -103,6 +103,10 @@ def popup_html(row):
     <table style="height: 126px; width: 300;">
     <tbody>
     <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
+    </tr>
+    <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
     </tr>
@@ -114,10 +118,7 @@ def popup_html(row):
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
     </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
-    </tr>
+
     </tbody>
     </table>
     </html>
