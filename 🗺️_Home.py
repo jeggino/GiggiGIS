@@ -248,12 +248,12 @@ try:
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-    row1 = st.columns(len(df_2["functie"].unique()))
+    row1 = st.columns(len(df_2["functie"].unique()),vertical_alignment="centered",gap = large)
     for col,metric in zip(row1,df_2["functie"].unique()):
         col.metric(f"{metric}", "70 °F", "1.2 °F")     
     
         
-    col_1,col_2,col_3 = st.columns([2,11,1])        
+    col_1,col_2,col_3 = st.columns([2,11,1],vertical_alignment="centered")        
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
                              width=1000, 
