@@ -52,9 +52,8 @@ drive = deta.Drive("df_pictures")
 # --- DIMENSIONS ---
 innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-CONTAINER_height = innerHeight
 OUTPUT_width = innerWidth
-OUTPUT_height = CONTAINER_height
+OUTPUT_height = innerHeight
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
@@ -349,9 +348,9 @@ try:
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-    with st.container(height=CONTAINER_height, border=False):
-        output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
-                             feature_group_to_add=list(functie_dictionary.values()))
+    # with st.container(height=CONTAINER_height, border=False):
+    output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
+                         feature_group_to_add=list(functie_dictionary.values()))
         
     try:
         
