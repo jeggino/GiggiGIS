@@ -76,7 +76,10 @@ def map():
     
     return  output
 
-        
+@st.dialog(" ")
+def too_many_points():
+    st.warning("too many points, please drop them!!")
+    
 @st.dialog(" ")
 def input_data(output):
 
@@ -203,8 +206,10 @@ try:
     output_map = map()
     
     try:
-        if len(output_map["features"]) != 0:
+        if len(output_map["features"]) == 1:
             input_data(output_map)
+        elif len(output_map["features"]) > 1:
+            too_many_points()
     except:
         st.stop()
     
