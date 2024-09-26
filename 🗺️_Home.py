@@ -207,7 +207,7 @@ try:
                                    axis=1
                      )
     
-    map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=12,)
+    map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=11,)
     LocateControl(auto_start=False).add_to(map)
     Fullscreen().add_to(map)
     
