@@ -253,7 +253,7 @@ try:
         col.metric(f"{metric}", "70 °F", "1.2 °F")     
     
         
-    col_1,col_2,col_3 = st.columns([2,11,1],vertical_alignment="centered")        
+    col_1,col_2,col_3 = st.columns([2,11,1],vertical_alignment="center")        
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
                              width=1000, 
