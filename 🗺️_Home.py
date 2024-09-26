@@ -208,7 +208,7 @@ try:
                      )
     
     map = folium.Map()
-    LocateControl(auto_start=True).add_to(map)
+    LocateControl(auto_start=False).add_to(map)
     Fullscreen().add_to(map)
     
     functie_dictionary = {}
