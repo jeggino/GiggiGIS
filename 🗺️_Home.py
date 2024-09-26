@@ -256,7 +256,7 @@ try:
     col_1,col_2,col_3 = st.columns([2,11,1],vertical_alignment="center")        
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                             width=1000, 
+                             width=900, 
                              feature_group_to_add=list(functie_dictionary.values()))
         
     try:
