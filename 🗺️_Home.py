@@ -253,12 +253,12 @@ try:
     #     col.metric(f"{metric}", f"{len(df_2[df_2["functie"]==metric])}")     
     
         
-    col_1,col_2,col_3 = st.columns([3,11,1]) 
+    col_1,col_2,col_3 = st.columns([4,11,1]) 
     for metric in df_2["functie"].unique():
         col_1.metric(f"{metric}", f"{len(df_2[df_2["functie"]==metric])}")
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                             width=900, 
+                             width=750, 
                              feature_group_to_add=list(functie_dictionary.values()))
         
     try:
