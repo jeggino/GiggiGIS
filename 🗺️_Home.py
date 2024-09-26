@@ -253,7 +253,7 @@ try:
     #     col.metric(f"{metric}", f"{len(df_2[df_2["functie"]==metric])}")     
     
         
-    col_1,col_2,col_3 = st.columns([4,11,1]) 
+    col_1,col_2 = st.columns([4,11]) 
     for metric in df_2["functie"].unique():
         col_1.metric(f"{metric}", f"{len(df_2[df_2["functie"]==metric])}")
     with col_2:
