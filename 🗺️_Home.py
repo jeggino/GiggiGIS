@@ -252,7 +252,7 @@ try:
         # output_2 = st_folium(map,returned_objects=["last_active_drawing"],
         #                      width=950, 
         #                      feature_group_to_add=list(functie_dictionary.values()))
-        output_2 = folium_static(map)
+        output_2 = folium_static(map,width=950,)
         
     # try:
         
