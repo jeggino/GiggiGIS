@@ -139,7 +139,7 @@ df_references = pd.DataFrame(db_content_2)
 
 
 def logIn():
-    name = st.text_input("Vul uw gebruikersnaam in, alstublieft")  
+    name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
     password = st.text_input("Vul uw wachtwoord in, alstublieft")
     if name == None:
         st.stop()
