@@ -254,7 +254,7 @@ try:
         col_3.metric(f"{metric}", f"{len(df_2[df_2["functie"]==metric])}")
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                             width=850, 
+                             width=750, 
                              feature_group_to_add=list(functie_dictionary.values()))
         
     try:
