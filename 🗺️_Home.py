@@ -61,10 +61,10 @@ drive = deta.Drive("df_pictures")
 
 
 # --- DIMENSIONS ---
-innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
-innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-OUTPUT_width = innerWidth
-OUTPUT_height = innerHeight
+# innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
+# innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
+# OUTPUT_width = innerWidth
+# OUTPUT_height = innerHeight
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
@@ -223,11 +223,6 @@ try:
     )
     
     df_2 = df_2[(df_2['datum_2']>=d[0]) & (df_2['datum_2']<=d[1])]
-    
-    # if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
-    #     species_filter_option = df_2["sp"].unique()
-    #     species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
-    #     df_2 = df_2[df_2['sp'].isin(species_filter)]
 
     st.sidebar.divider()
 
@@ -279,8 +274,8 @@ try:
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-    # with st.container(height=CONTAINER_height, border=True):
-    output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
+    output_2 = st_folium(map,returned_objects=["last_active_drawing"],
+                         # width=OUTPUT_width, height=OUTPUT_height,
                          feature_group_to_add=list(functie_dictionary.values()))
         
     try:
@@ -293,36 +288,9 @@ try:
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
                     st.image(res)
-                # if st.button("Waarneming bijwerken",use_container_width=True):
-                #     update_item()
-                    
-                # with st.form("entry_form", clear_on_submit=True,border=False):
-                #     submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-                #     if submitted:
-                #         # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
-                #         db.delete(id)
-                #         drive.delete(name)
-                #         st.success('Waarneming verwijderd', icon="✅")
-                #         st.switch_page("🗺️_Home.py")
-                #         st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
-                #             # else:
-                #             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
                             
             except:
                 st.info('Geen foto opgeslagen voor deze waarneming')
-
-                # if st.button("Waarneming bijwerken",use_container_width=True):
-                #     update_item()
-                
-                # with st.form("entry_form", clear_on_submit=True,border=False):
-                #     submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-                #     if submitted:
-                #     # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
-                #         db.delete(id)
-                #         st.success('Waarneming verwijderd', icon="✅")     
-                #         st.page_link("🗺️_Home.py", label="Vernieuwen", icon="🔄",use_container_width=True)
-                #             # else:
-                #             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
     except:
         st.stop()
