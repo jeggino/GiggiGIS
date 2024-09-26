@@ -39,7 +39,7 @@ st.markdown(
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: True; }
     </style>
     """,
     unsafe_allow_html=True)
@@ -61,9 +61,9 @@ drive = deta.Drive("df_pictures")
 
 
 # --- DIMENSIONS ---
-# innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
+innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 # innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-# OUTPUT_width = innerWidth
+OUTPUT_width = innerWidth
 # OUTPUT_height = innerHeight
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
@@ -186,6 +186,8 @@ try:
     df_point = pd.DataFrame(db_content)
     
     df_2 = df_point[df_point['project']=="A-001"]
+    soortgroup = st.selectbox("",("Camera", "Rat val"))
+    df_2 = df_point[df_point['soortgroup']=="soortgroup"]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
