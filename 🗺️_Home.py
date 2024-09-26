@@ -30,7 +30,7 @@ st.markdown(
     <style>
     [data-testid="collapsedControl"] svg {
         height: 8rem;
-        width: 3rem;
+        width: 10rem;
     }
     </style>
     """,
