@@ -247,10 +247,10 @@ try:
         elif df_2.iloc[i]['geometry_type'] == "LineString":
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
-    col_1,col_2,col_3 = st.columns([1,9,1])
+    col_1,col_2,col_3 = st.columns([1,11,1])
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                             width=1000, 
+                             width=950, 
                              feature_group_to_add=list(functie_dictionary.values()))
         
     try:
