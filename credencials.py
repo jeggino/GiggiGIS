@@ -17,8 +17,8 @@ VLEERMUISKAST_OPTIONS = ["Bewoond","Onbewoond"]
 CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd",
                   "Waarneming rat doorgegeven, geen actie op ondernomen"]
 
-RAT_VAL_OPTIONS = ["a","b","c","d"]
-# 'Schietval in veld', 'Schietval in veld rat gedood','Schietval verwijderd, geen rat gedood','Schietval verwijderd, rat gedood'
+RAT_VAL_OPTIONS = ['Schietval in veld', 'Schietval in veld rat gedood','Schietval verwijderd, geen rat gedood','Schietval verwijderd, rat gedood']
+
 RAT_VANGKOOI_OPTIONS = ['vangkooi in veld','vangkooi in veld, rat gevangen','vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']
 
 
@@ -77,18 +77,15 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
                               'Verwijderd, ratten gedetecteerd': 'icons/camera-icon-red.png',
                               'Camera verwijderd, geen ratten gedetecteerd': 'icons/camera-icon-green.png',
                               'Waarneming rat doorgegeven, geen actie op ondernomen': 'icons/camera-icon-purple.png'},
-                   'Rat val': {'a': 'icons/rat_cage_veld_Nogevangen.png',
-                               'b': 'icons/rat_trap_green.png',
-                               'c': 'icons/rat_trap_red.png',
-                               'd': 'icons/rat_trap_purple.png'},
+                   'Rat val': {'Schietval in veld': 'icons/rat_trap_orange.png',
+                               'Schietval in veld rat gedood': 'icons/rat_trap_green.png',
+                               'Schietval verwijderd, geen rat gedood': 'icons/rat_trap_red.png',
+                               'Schietval verwijderd, rat gedood': 'icons/rat_trap_purple.png'},
                    'Vangkooi': {'vangkooi in veld':'icons/rat_cage_veld_Nogevangen.png',
                                 'vangkooi in veld, rat gevangen':'icons/rat_cage_veld_gevangen.png',
                                 'vangkooi verwijderd, rat gevangen':'icons/rat_cage_noveld_gevangen.png',
                                 'vangkooi verwijderd, geen rat gevangen':'icons/rat_cage_noveld_Nogevangen.png'}}
- # 'Rat val': {'Schietval in veld': 'icons/rat_trap_orange.png',
- #             'Schietval in veld rat gedood': 'icons/rat_trap_green.png',
- #             'Schietval verwijderd, geen rat gedood': 'icons/rat_trap_red.png',
- #             'Schietval verwijderd, rat gedood': 'icons/rat_trap_purple.png'},
+
 DICTIONARY_USERS = {"Luigi": ["Niet gespecificeerd"],
                    "Daan": ["Niet gespecificeerd","Ratten Terschelling"]
                    }
