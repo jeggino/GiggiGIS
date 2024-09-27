@@ -131,8 +131,8 @@ def input_data(output):
         verblijf = None
         aantal = st.number_input("Aantal", min_value=1)
     
-      elif st.session_state.project['opdracht'] == 'Vangkooi':
-        
+    elif st.session_state.project['opdracht'] == 'Vangkooi':
+    
         functie = st.selectbox("Rat vangkooi", RAT_VANGKOOI_OPTIONS)
     
         if functie in ['vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']:
