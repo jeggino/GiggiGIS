@@ -122,7 +122,7 @@ def popup_html(row):
 
 @st.dialog(" ")
 def report(a,b,c):
-    st.title(f"""
+    st.header(f"""
     Er staan ​​nog **{a}** camera's in het veld. Er zijn **{b}** camera's verwijderd en er zijn geen ratten gedetecteerd. Het aantal camera's dat is verwijderd en waar wel wat ratten zijn gespot is **{c}**.
     """)
 
@@ -277,7 +277,7 @@ try:
 
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                             width=900, 
+                             width=950, 
                              feature_group_to_add=list(functie_dictionary.values()))
         
     try:
