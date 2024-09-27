@@ -322,6 +322,8 @@ try:
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_2
     df_2["datum_3"] = pd.to_datetime(df_2["datum"]).dt.date
+
+    df_2
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
         "Datum",
@@ -333,7 +335,7 @@ try:
     )
     df_2 = df_2[(df_2['datum_3']>=d[0]) & (df_2['datum_3']<=d[1])]
     st.warning("HIER!!!")
-    
+    df_2
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
         species_filter_option = df_2["sp"].unique()
         species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
