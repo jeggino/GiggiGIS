@@ -152,6 +152,7 @@ def logIn():
 
     except:
         st.warning("De gebruikersnaam is niet correct.")
+        st.stop()
                              
     if st.button("logIn"):
         if password == true_password:
