@@ -3,19 +3,25 @@ WAARNEMERS = ["Luigi","Daan"]
 HELP_FUNCTIE = "Zomer- of kraamverblijfplaats: De vrouwtjes wonen in de zomer in kraamverblijfplaatsen. Hier brengt ze hun jongen groot. voorkomende leven ze gecombineerd in groepen (kolonies). \nZomer- of mannenverblijfplaats: De mannetjes wonen in de zomer soms solitair, soms in groepen, maar altijd op een andere plaats dan de vrouwtjes van hun soort. \nTijdelijke of paarverblijfplaats: Vaak kennen vleermuizen ook tussenkwartieren, waar ze slechts kort verblijven tijdens de reis van hun winter- naar zomerkolonie. Zo trekken zowel de mannetjes als de vrouwtjes aan het einde van de zomer naar speciale paarkwartieren, waar ze slechts kort verblijven. Winterverblijfplaats: Vleermuizen overwinteren in gebouwen, bunkers, ijskelders, groeven en boomholtes."
 
 GROUP = ["🦇 Vleermuizen","🪶 Vogels",  "🏠 Vleermuiskast",
-         "📷 Camera", "🐀 Rat val"]
+         "📷 Camera", "🐀 Rat val", '𐂺 Vangkooi']
 
 GROUP_DICT = {"🪶 Vogels":"Vogels",
               "🦇 Vleermuizen":"Vleermuizen", 
               "🏠 Vleermuiskast":"Vleermuiskast",
               "📷 Camera":"Camera",
-             "🐀 Rat val":"Rat val"}
+             "🐀 Rat val":"Rat val",
+              '𐂺 Vangkooi':'Vangkooi'}
 
 VLEERMUISKAST_OPTIONS = ["Bewoond","Onbewoond"]
 
-CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]
+CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd",
+                  "Waarneming rat doorgegeven, geen actie op ondernomen"]
 
 RAT_VAL_OPTIONS = ["Val nog in het veld","Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]
+
+RAT_VANGKOOI_OPTIONS = ['vangkooi in veld','vangkooi in veld, rat gevangen','vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']
+
+
 
 BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger']
 
@@ -69,16 +75,22 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
                    "Onbewoond":"icons/bat_box_empty.jpg"},
  'Camera': {'Camera in het veld': 'icons/camera-icon-orange.png',
   'Verwijderd, ratten gedetecteerd': 'icons/camera-icon-red.png',
-  'Camera verwijderd, geen ratten gedetecteerd': 'icons/camera-icon-green.png'},
- 'Rat val': {'Val nog in het veld': 'icons/rat_trap_orange.png',
-  'Val verwijderd. Ratten gedood': 'icons/rat_trap_green.png',
-  'Val verwijderd. Geen ratten gedood': 'icons/rat_trap_red.png'}}
+  'Camera verwijderd, geen ratten gedetecteerd': 'icons/camera-icon-green.png',
+           'Waarneming rat doorgegeven, geen actie op ondernomen': 'icons/camera-icon-purple.png'},
+ 'Rat val': {'Schietval in veld': 'icons/rat_trap_orange.png',
+  'Schietval in veld rat gedood': 'icons/rat_trap_green.png',
+  'Schietval verwijderd, geen rat gedood': 'icons/rat_trap_red.png',
+            'Schietval verwijderd, rat gedood': 'icons/rat_trap_purple.png'},
+                  'Vangkooi':{'vangkooi in veld':'icons/rat_cage_veld_Nogevangen.png',
+                             'vangkooi in veld, rat gevangen':'icons/rat_cage_veld_gevangen.png',
+                              'vangkooi verwijderd, rat gevangen':'icons/rat_cage_noveld_gevangen.png',
+                              'vangkooi verwijderd, geen rat gevangen':'icons/rat_cage_veld_Nogevangen.png'}}
 
 DICTIONARY_USERS = {"Luigi": ["Niet gespecificeerd"],
-                   "Daan": ["Niet gespecificeerd","A-001"]
+                   "Daan": ["Niet gespecificeerd","Ratten Terschelling"]
                    }
 
-DICTIONARY_PROJECTS = {"Overing":["Vogels","Vleermuizen","Vleermuiskast"],
-                      "A-001":["Camera","Rat val"],
-                      "Admin":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val"]}
+DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen","Vleermuiskast"],
+                      "Ratten Terschelling":["Camera","Rat val",'Vangkooi'],
+                      "Admin":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val",'Vangkooi']}
 
