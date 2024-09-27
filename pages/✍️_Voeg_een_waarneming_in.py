@@ -55,9 +55,9 @@ ICON_SIZE_huismus = (28,28)
 def load_dataset():
     return db.fetch().items
 
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
+def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
 
-    return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
+    return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"datum_2":datum_2,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project})
         
@@ -98,6 +98,7 @@ def input_data(output):
         functie = st.selectbox("Functie", BAT_FUNCTIE) 
         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
         aantal = st.number_input("Aantal", min_value=1)
+        datum_2 = None
     
     elif soortgroup == 'Vogels':
     
@@ -106,6 +107,7 @@ def input_data(output):
         functie = st.selectbox("Functie", BIRD_FUNCTIE) 
         verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
         aantal = st.number_input("Aantal", min_value=1)
+        datum_2 = None
     
     elif soortgroup == 'Vleermuiskast':
         functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
@@ -114,16 +116,30 @@ def input_data(output):
         gedrag = None
         verblijf = None
         aantal = st.number_input("Aantal", min_value=1)
+        datum_2 = None
     
     elif soortgroup == 'Camera':
         functie = st.selectbox("Camera", CAMERA_OPTIONS)
+        
+        if functie in ["Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]:
+          datum_2 = st.date_input("Datum camera verwijderd","today",key="datum_2")
+        else:
+          datum_2 = None
+            
         sp = None 
         gedrag = None
         verblijf = None
         aantal = st.number_input("Aantal", min_value=1)
     
-    elif soortgroup == 'Rat val':
-        functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
+      elif st.session_state.project['opdracht'] == 'Vangkooi':
+        
+        functie = st.selectbox("Rat vangkooi", RAT_VANGKOOI_OPTIONS)
+    
+        if functie in ['vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']:
+          datum_2 = st.date_input("Datum vangkooi verwijderd","today",key="datum_3")
+        else:
+          datum_2 = None
+          
         sp = None 
         gedrag = None
         verblijf = None
@@ -172,7 +188,7 @@ def input_data(output):
                     insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
                 
                 else:
-                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
+                    insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
                 st.success('Gegevens opgeslagen!', icon="✅")
                 
