@@ -334,6 +334,8 @@ try:
     )
     
     df_2 = df_2[(df_2['datum_3']>=d[0]) & (df_2['datum_3']<=d[1])]
+
+    st.warning("HIER!!!")
     
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
         species_filter_option = df_2["sp"].unique()
