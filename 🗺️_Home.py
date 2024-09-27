@@ -320,18 +320,18 @@ try:
     
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
-    df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
+    df_2["datum_3"] = pd.to_datetime(df_2["datum"]).dt.date
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
         "Datum",
-        min_value = df_2.datum_2.min(),
-        max_value = df_2.datum_2.max(),
+        min_value = df_2.datum_3.min(),
+        max_value = df_2.datum_3.max(),
         value=(df_2.datum_2.min(),
          df_2.datum_2.max()),
         format="YYYY.MM.DD",
     )
     
-    df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
+    df_2 = df_2[(df_2['datum_3']>=d[0]) & (df_2['datum_3']<=d[1])]
     
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
         species_filter_option = df_2["sp"].unique()
