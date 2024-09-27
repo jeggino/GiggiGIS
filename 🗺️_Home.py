@@ -77,17 +77,10 @@ def popup_html(row):
     
     i = row
 
-    project=df_2['project'].iloc[i]
     datum=df_2['datum'].iloc[i] 
     datum_2=df_2['datum_2'].iloc[i] 
-    time=df_2['time'].iloc[i]
-    verblijf=df_2['verblijf'].iloc[i]
-    sp = df_2['sp'].iloc[i] 
     functie=df_2['functie'].iloc[i]
-    gedrag=df_2['gedrag'].iloc[i]
-    verblijf=df_2['verblijf'].iloc[i]
     opmerking=df_2['opmerking'].iloc[i]
-    aantal=df_2['aantal'].iloc[i]
     waarnemer=df_2['waarnemer'].iloc[i] 
        
 
