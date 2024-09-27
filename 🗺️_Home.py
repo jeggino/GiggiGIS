@@ -194,8 +194,8 @@ try:
     df_point = pd.DataFrame(db_content)
     
     df_2 = df_point[df_point['project']=="Ratten Terschelling"]
-    soortgroup = st.sidebar.selectbox("",("📷 Camera", "🪤 Rat val"))
-    DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val"}
+    soortgroup = st.sidebar.selectbox("",("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'))
+    DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val",'𐂺 Vangkooi':'Vangkooi'}
     df_2 = df_2[df_2['soortgroup']==DICT_SORTGROUP[soortgroup]]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
 
