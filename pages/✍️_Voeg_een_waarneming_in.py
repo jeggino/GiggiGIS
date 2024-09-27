@@ -122,7 +122,7 @@ def input_data(output):
         functie = st.selectbox("Camera", CAMERA_OPTIONS)
         
         if functie in ["Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]:
-          datum_2 = st.date_input("Datum camera verwijderd","today",key="datum_2")
+          datum_2 = st.date_input("Datum camera verwijderd","today")
         else:
           datum_2 = None
             
@@ -136,7 +136,7 @@ def input_data(output):
         functie = st.selectbox("Rat vangkooi", RAT_VANGKOOI_OPTIONS)
     
         if functie in ['vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']:
-          datum_2 = st.date_input("Datum vangkooi verwijderd","today",key="datum_3")
+          datum_2 = st.date_input("Datum vangkooi verwijderd","today")
         else:
           datum_2 = None
           
@@ -150,7 +150,7 @@ def input_data(output):
         functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
     
         if functie in ["Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]:
-          datum_2 = st.date_input("Datum rat val verwijderd","today",key="datum_3")
+          datum_2 = st.date_input("Datum rat val verwijderd","today")
         else:
           datum_2 = None
           
