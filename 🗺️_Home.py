@@ -323,6 +323,7 @@ try:
     df_2 
     df_2["datum_3"] = pd.to_datetime(df_2["datum"]).dt.date
     st.warning("HIER!!!")
+    df_2
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
         "Datum",
