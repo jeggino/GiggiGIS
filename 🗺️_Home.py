@@ -151,7 +151,7 @@ def logIn():
         true_password = df_references.loc[index,"password"]
 
     except:
-        st.werning("De gebruikersnaam is niet correct.")
+        st.warning("De gebruikersnaam is niet correct.")
                              
     if st.button("logIn"):
         if password == true_password:
