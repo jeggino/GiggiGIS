@@ -25,10 +25,21 @@ st.set_page_config(
     
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="collapsedControl"] svg {
+        height: 3rem;
+        width: 3rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: True; }
     </style>
     """,
     unsafe_allow_html=True)
@@ -37,7 +48,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: -2rem; margin-bottom: 0rem;}
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0rem; margin-bottom: 0rem;}
 </style>
 """ 
 
@@ -162,6 +173,7 @@ def update_item():
     functie = st.selectbox("Functie", BAT_FUNCTIE) 
     verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
     aantal = st.number_input("Aantal", min_value=1)
+    datum_2 = None
 
   elif st.session_state.project['opdracht'] == 'Vogels':
   
@@ -170,6 +182,7 @@ def update_item():
     functie = st.selectbox("Functie", BIRD_FUNCTIE) 
     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
     aantal = st.number_input("Aantal", min_value=1)
+    datum_2 = None
   
   elif st.session_state.project['opdracht'] == 'Vleermuiskast':
     
@@ -179,10 +192,17 @@ def update_item():
     gedrag = None
     verblijf = None
     aantal = st.number_input("Aantal", min_value=1)
+    datum_2 = None
   
   elif st.session_state.project['opdracht'] == 'Camera':
     
     functie = st.selectbox("Camera", CAMERA_OPTIONS)
+    
+    if functie in ["Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]:
+      datum_2 = st.date_input("Datum camera verwijderd","today",key="datum_2")
+    else:
+      datum_2 = None
+      
     sp = None 
     gedrag = None
     verblijf = None
@@ -191,6 +211,26 @@ def update_item():
   elif st.session_state.project['opdracht'] == 'Rat val':
     
     functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
+
+    if functie in ["Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]:
+      datum_2 = st.date_input("Datum Val verwijderd","today",key="datum_2")
+    else:
+      datum_2 = None
+      
+    sp = None 
+    gedrag = None
+    verblijf = None
+    aantal = st.number_input("Aantal", min_value=1)
+
+  elif st.session_state.project['opdracht'] == 'Vangkooi':
+    
+    functie = st.selectbox("Rat vangkooi", RAT_VANGKOOI_OPTIONS)
+
+    if functie in ['vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']:
+      datum_2 = st.date_input("Datum vangkooi verwijderd","today",key="datum_3")
+    else:
+      datum_2 = None
+      
     sp = None 
     gedrag = None
     verblijf = None
@@ -199,7 +239,7 @@ def update_item():
   opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
 
-  update = {"datum":str(datum),"time":str(time),"sp":sp,
+  update = {"datum":str(datum),"datum_2":str(datum_2),"time":str(time),"sp":sp,
             "aantal":aantal, "gedrag":gedrag, "functie":functie, 
             "verblijf":verblijf,"opmerking":opmerking}
     
@@ -270,8 +310,8 @@ with st.sidebar:
     
     
 
-IMAGE = "image/logo.png"
-st.logo(IMAGE,  link=None, icon_image=None)
+# IMAGE = "image/logo.png"
+# st.logo(IMAGE,  link=None, icon_image=None)
 
 try:
 
@@ -348,7 +388,7 @@ try:
 
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
-    # with st.container(height=CONTAINER_height, border=False):
+    # with st.container(height=CONTAINER_height, border=True):
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                          feature_group_to_add=list(functie_dictionary.values()))
         
