@@ -320,10 +320,7 @@ try:
     
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
-    df_2 
     df_2["datum_3"] = pd.to_datetime(df_2["datum"]).dt.date
-    st.warning("HIER!!!")
-    df_2
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
         "Datum",
@@ -333,9 +330,7 @@ try:
          df_2.datum_3.max()),
         format="YYYY.MM.DD",
     )
-    st.warning("HIER!!!")
     df_2 = df_2[(df_2['datum_3']>=d[0]) & (df_2['datum_3']<=d[1])]
-
     st.warning("HIER!!!")
     
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
@@ -352,7 +347,6 @@ try:
                                    axis=1
                      )
 
-    df_2
     
     map = folium.Map()
     LocateControl(auto_start=True).add_to(map)
