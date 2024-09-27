@@ -199,7 +199,7 @@ def update_item():
     functie = st.selectbox("Camera", CAMERA_OPTIONS)
     
     if functie in ["Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]:
-      datum_2 = st.date_input("Datum camera verwijderd")
+      datum_2 = st.date_input("Datum camera verwijderd","today")
     else:
       datum_2 = None
       
@@ -212,7 +212,7 @@ def update_item():
     
     functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
 
-    if functie in ["Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]:
+    if functie in ['Schietval verwijderd, geen rat gedood','Schietval verwijderd, rat gedood']:
       datum_2 = st.date_input("Datum Val verwijderd","today")
     else:
       datum_2 = None
