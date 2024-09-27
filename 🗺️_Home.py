@@ -122,7 +122,7 @@ def popup_html(row):
 
 @st.dialog(" ")
 def report(a,b,c):
-    st.write(f"""
+    st.subheader(f"""
     Er staan ​​nog {a} camera's in het veld. Er zijn {b} camera's verwijderd en er zijn geen ratten gedetecteerd. 
     Het aantal camera's dat is verwijderd en waar wel wat ratten zijn gespot is {c}.
     """)
