@@ -346,6 +346,8 @@ try:
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
                                    axis=1
                      )
+
+    df_2
     
     map = folium.Map()
     LocateControl(auto_start=True).add_to(map)
