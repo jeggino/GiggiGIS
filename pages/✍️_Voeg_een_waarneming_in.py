@@ -149,7 +149,7 @@ def input_data(output):
     
         functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
     
-        if functie in ["Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]:
+        if functie in ['Schietval verwijderd, geen rat gedood','Schietval verwijderd, rat gedood']:
           datum_2 = st.date_input("Datum rat val verwijderd","today")
         else:
           datum_2 = None
