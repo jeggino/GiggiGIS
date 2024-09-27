@@ -143,10 +143,15 @@ df_references = pd.DataFrame(db_content_2)
 def logIn():
     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
     password = st.text_input("Vul uw wachtwoord in, alstublieft")
-    if name == None:
-        st.stop()
-    index = df_references[df_references['username']==name].index[0]
-    true_password = df_references.loc[index,"password"]
+    try:
+        if name == None:
+            st.stop()
+        
+        index = df_references[df_references['username']==name].index[0]
+        true_password = df_references.loc[index,"password"]
+
+    except:
+        st.werning("De gebruikersnaam is niet correct.")
                              
     if st.button("logIn"):
         if password == true_password:
