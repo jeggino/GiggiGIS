@@ -196,7 +196,7 @@ try:
     soortgroup = st.sidebar.selectbox("",("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'))
     DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val",'𐂺 Vangkooi':'Vangkooi'}
     df_2 = df_2[df_2['soortgroup']==DICT_SORTGROUP[soortgroup]]
-    df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
+    df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
     if soortgroup == "📷 Camera":
         dict_functies_report = {}
