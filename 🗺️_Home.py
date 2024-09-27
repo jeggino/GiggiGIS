@@ -322,6 +322,7 @@ try:
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
     df_2 
     df_2["datum_3"] = pd.to_datetime(df_2["datum"]).dt.date
+    st.warning("HIER!!!")
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
         "Datum",
