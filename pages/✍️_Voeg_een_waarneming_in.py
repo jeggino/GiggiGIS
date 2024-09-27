@@ -43,10 +43,10 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- DIMENSIONS ---
-# innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
-# innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-OUTPUT_width = 300
-OUTPUT_height = 500
+innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
+innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
+OUTPUT_width = innerWidth
+OUTPUT_height = innerHeight
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
     
