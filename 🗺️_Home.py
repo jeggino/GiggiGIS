@@ -329,8 +329,8 @@ try:
         "Datum",
         min_value = df_2.datum_3.min(),
         max_value = df_2.datum_3.max(),
-        value=(df_2.datum_2.min(),
-         df_2.datum_2.max()),
+        value=(df_2.datum_3.min(),
+         df_2.datum_3.max()),
         format="YYYY.MM.DD",
     )
     st.warning("HIER!!!")
