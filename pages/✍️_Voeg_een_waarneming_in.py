@@ -144,6 +144,20 @@ def input_data(output):
         gedrag = None
         verblijf = None
         aantal = st.number_input("Aantal", min_value=1)
+
+    elif st.session_state.project['opdracht'] == 'Rat val':
+    
+        functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
+    
+        if functie in ["Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]:
+          datum_2 = st.date_input("Datum rat val verwijderd","today",key="datum_3")
+        else:
+          datum_2 = None
+          
+        sp = None 
+        gedrag = None
+        verblijf = None
+        aantal = st.number_input("Aantal", min_value=1)
     
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
     
