@@ -122,9 +122,8 @@ def popup_html(row):
 
 @st.dialog(" ")
 def report(a,b,c):
-    st.subheader(f"""
-    Er staan ​​nog {a} camera's in het veld. Er zijn {b} camera's verwijderd en er zijn geen ratten gedetecteerd. 
-    Het aantal camera's dat is verwijderd en waar wel wat ratten zijn gespot is {c}.
+    st.title(f"""
+    Er staan ​​nog **{a}** camera's in het veld. Er zijn **{b}** camera's verwijderd en er zijn geen ratten gedetecteerd. Het aantal camera's dat is verwijderd en waar wel wat ratten zijn gespot is **{c}**.
     """)
 
 #______________NEW___________________
@@ -198,7 +197,7 @@ try:
     for metric in df_2["functie"].unique():
         dict_functies_report[metric] = len(df_2[df_2["functie"]==metric])
     
-    if st.sidebar.button("see report",use_container_width=True):
+    if st.sidebar.button("**Zie het tijdelijke rapport.**",use_container_width=True):
         report(dict_functies_report['Camera in het veld'],
                dict_functies_report['Camera verwijderd, geen ratten gedetecteerd'],
                dict_functies_report['Verwijderd, ratten gedetecteerd'], )
