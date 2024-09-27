@@ -193,14 +193,15 @@ try:
     df_2 = df_point[df_point['soortgroup']==DICT_SORTGROUP[soortgroup]]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
 
-    dict_functies_report = {}
-    for metric in df_2["functie"].unique():
-        dict_functies_report[metric] = len(df_2[df_2["functie"]==metric])
-    
-    if st.sidebar.button("**Zie het tijdelijke rapport.**",use_container_width=True):
-        report(dict_functies_report['Camera in het veld'],
-               dict_functies_report['Camera verwijderd, geen ratten gedetecteerd'],
-               dict_functies_report['Verwijderd, ratten gedetecteerd'], )
+    if soortgroup == "📷 Camera":
+        dict_functies_report = {}
+        for metric in df_2["functie"].unique():
+            dict_functies_report[metric] = len(df_2[df_2["functie"]==metric])
+        
+        if st.sidebar.button("**Zie het tijdelijke rapport.**",use_container_width=True):
+            report(dict_functies_report['Camera in het veld'],
+                   dict_functies_report['Camera verwijderd, geen ratten gedetecteerd'],
+                   dict_functies_report['Verwijderd, ratten gedetecteerd'], )
 
         
     st.sidebar.subheader("Filter op",divider=False)
