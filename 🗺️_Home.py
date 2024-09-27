@@ -235,6 +235,8 @@ def update_item():
     gedrag = None
     verblijf = None
     aantal = st.number_input("Aantal", min_value=1)
+
+
   
   opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
