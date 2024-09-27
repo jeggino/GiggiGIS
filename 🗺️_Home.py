@@ -320,10 +320,8 @@ try:
     
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
-    df_2
     df_2["datum_3"] = pd.to_datetime(df_2["datum"]).dt.date
 
-    df_2
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
         "Datum",
@@ -334,8 +332,6 @@ try:
         format="YYYY.MM.DD",
     )
     df_2 = df_2[(df_2['datum_3']>=d[0]) & (df_2['datum_3']<=d[1])]
-    st.warning("HIER!!!")
-    df_2
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
         species_filter_option = df_2["sp"].unique()
         species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
@@ -343,15 +339,13 @@ try:
 
     st.sidebar.divider()
 
-    
-    
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
                                    axis=1
                      )
-    st.warning("hier!!!@")
 
-    
+    st.warning("HIER!!!!!!!!!!!!")
+
     map = folium.Map()
     LocateControl(auto_start=True).add_to(map)
     Fullscreen().add_to(map)
