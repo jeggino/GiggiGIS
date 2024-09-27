@@ -212,14 +212,14 @@ try:
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
         "Datum",
-        min_value = df_2.datum_2.min(),
-        max_value = df_2.datum_2.max(),
-        value=(df_2.datum_2.min(),
-         df_2.datum_2.max()),
+        min_value = df_2.datum.min(),
+        max_value = df_2.datum.max(),
+        value=(df_2.datum.min(),
+         df_2.datum.max()),
         format="YYYY.MM.DD",
     )
     
-    df_2 = df_2[(df_2['datum_2']>=d[0]) & (df_2['datum_2']<=d[1])]
+    df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
 
     st.sidebar.divider()
 
