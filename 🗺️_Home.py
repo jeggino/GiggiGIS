@@ -173,6 +173,7 @@ def update_item():
     functie = st.selectbox("Functie", BAT_FUNCTIE) 
     verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
     aantal = st.number_input("Aantal", min_value=1)
+    datum_2 = None
 
   elif st.session_state.project['opdracht'] == 'Vogels':
   
@@ -181,6 +182,7 @@ def update_item():
     functie = st.selectbox("Functie", BIRD_FUNCTIE) 
     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
     aantal = st.number_input("Aantal", min_value=1)
+    datum_2 = None
   
   elif st.session_state.project['opdracht'] == 'Vleermuiskast':
     
@@ -190,10 +192,17 @@ def update_item():
     gedrag = None
     verblijf = None
     aantal = st.number_input("Aantal", min_value=1)
+    datum_2 = None
   
   elif st.session_state.project['opdracht'] == 'Camera':
     
     functie = st.selectbox("Camera", CAMERA_OPTIONS)
+    
+    if functie in ["Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]:
+      datum_2 = st.date_input("Datum camera verwijderd","today",key="datum_2")
+    else:
+      datum_2 = None
+      
     sp = None 
     gedrag = None
     verblijf = None
@@ -202,6 +211,26 @@ def update_item():
   elif st.session_state.project['opdracht'] == 'Rat val':
     
     functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
+
+    if functie in ["Val verwijderd. Ratten gedood","Val verwijderd. Geen ratten gedood"]:
+      datum_2 = st.date_input("Datum Val verwijderd","today",key="datum_2")
+    else:
+      datum_2 = None
+      
+    sp = None 
+    gedrag = None
+    verblijf = None
+    aantal = st.number_input("Aantal", min_value=1)
+
+  elif st.session_state.project['opdracht'] == 'Vangkooi':
+    
+    functie = st.selectbox("Rat vangkooi", RAT_VANGKOOI_OPTIONS)
+
+    if functie in ['vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']:
+      datum_2 = st.date_input("Datum vangkooi verwijderd","today",key="datum_3")
+    else:
+      datum_2 = None
+      
     sp = None 
     gedrag = None
     verblijf = None
@@ -210,7 +239,7 @@ def update_item():
   opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
 
-  update = {"datum":str(datum),"time":str(time),"sp":sp,
+  update = {"datum":str(datum),"datum_2":str(datum_2),"time":str(time),"sp":sp,
             "aantal":aantal, "gedrag":gedrag, "functie":functie, 
             "verblijf":verblijf,"opmerking":opmerking}
     
