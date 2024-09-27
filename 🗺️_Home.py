@@ -21,7 +21,7 @@ st.set_page_config(
     page_title="Rats",
     initial_sidebar_state="collapsed",
     page_icon="🐀",
-    layout="wide",
+    layout="centered",
     
 )
 
