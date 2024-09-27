@@ -120,6 +120,10 @@ def popup_html(row):
     """
     return html
 
+@st.dialog(" ")
+def report():
+    st.write("ciao")
+
 #______________NEW___________________
 deta = Deta(st.secrets["deta_key_other"])
 db = deta.Base("df_observations")
@@ -186,6 +190,11 @@ try:
     DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val"}
     df_2 = df_point[df_point['soortgroup']==DICT_SORTGROUP[soortgroup]]
     df_2["datum_2"] = pd.to_datetime(df_2["datum"]).dt.date
+
+    if st.sidebar.button("see report",use_container_width=True):
+        report()
+
+        
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
         "Datum",
