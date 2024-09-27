@@ -277,7 +277,7 @@ try:
 
     with col_2:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                             width=750, 
+                             width=900, 
                              feature_group_to_add=list(functie_dictionary.values()))
         
     try:
