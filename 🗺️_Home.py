@@ -320,7 +320,6 @@ try:
     
        
     df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
-    df_2 = df_point[df_point['project']=="Ratten Terschelling"]
     df_2["datum_3"] = pd.to_datetime(df_2["datum"]).dt.date
 
     st.sidebar.subheader("Filter op",divider=False)
@@ -339,13 +338,13 @@ try:
         df_2 = df_2[df_2['sp'].isin(species_filter)]
 
     st.sidebar.divider()
-    df_2
+    
+    
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
                                    axis=1
                      )
 
-    st.warning("HIER!!!!!!!!!!!!")
 
     map = folium.Map()
     LocateControl(auto_start=True).add_to(map)
