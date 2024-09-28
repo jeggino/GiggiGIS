@@ -29,8 +29,8 @@ st.markdown(
     """
     <style>
     [data-testid="collapsedControl"] svg {
-        height: 3rem;
-        width: 3rem;
+        height: 0rem;
+        width: 0rem;
     }
     </style>
     """,
