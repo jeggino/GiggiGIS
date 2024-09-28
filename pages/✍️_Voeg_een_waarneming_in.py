@@ -220,7 +220,8 @@ def input_data(output):
 # --- APP ---  
 try:
     IMAGE = "image/logo.png"
-    st.logo(image=IMAGE,  link=None, icon_image=IMAGE)
+    IMAGE_2 ="image/menu.jpg"
+    st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
 
     waarnemer = st.session_state.login['name']
     
