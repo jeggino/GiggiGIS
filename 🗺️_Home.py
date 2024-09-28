@@ -39,7 +39,7 @@ st.markdown(
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: True; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
     </style>
     """,
     unsafe_allow_html=True)
@@ -351,8 +351,8 @@ try:
 
 
     map = folium.Map()
-    LocateControl(auto_start=True).add_to(map)
-    Fullscreen().add_to(map)
+    LocateControl(auto_start=True,position="topright").add_to(map)
+    Fullscreen(position="topright").add_to(map)
     
     functie_dictionary = {}
     functie_len = df_2['functie'].unique()
