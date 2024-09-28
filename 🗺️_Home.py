@@ -39,7 +39,7 @@ st.markdown(
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: True; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
     </style>
     """,
     unsafe_allow_html=True)
@@ -48,7 +48,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0rem; margin-bottom: 0rem;}
+    div.block-container {padding-top: 2rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0rem; margin-bottom: 0rem;}
 </style>
 """ 
 
@@ -63,8 +63,17 @@ drive = deta.Drive("df_pictures")
 # --- DIMENSIONS ---
 innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-OUTPUT_width = innerWidth
-OUTPUT_height = innerHeight
+
+if innerWidth > innerHeight:
+    OUTPUT_width = 900
+    OUTPUT_height = 400
+
+else:
+    OUTPUT_width = 300
+    OUTPUT_height = 400
+    
+# OUTPUT_width = innerWidth
+# OUTPUT_height = innerHeight
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 
