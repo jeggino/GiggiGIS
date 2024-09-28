@@ -254,12 +254,18 @@ def update_item():
 
 
 def logIn():
-    name = st.selectbox("Wie ben je?",df_references["username"].tolist(),index=None)  
-    password = st.text_input("Vul het wachtwoord in, alstublieft")
-    if name == None:
+    name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
+    password = st.text_input("Vul uw wachtwoord in, alstublieft")
+    try:
+        if name == None:
+            st.stop()
+        
+        index = df_references[df_references['username']==name].index[0]
+        true_password = df_references.loc[index,"password"]
+
+    except:
+        st.warning("De gebruikersnaam is niet correct.")
         st.stop()
-    index = df_references[df_references['username']==name].index[0]
-    true_password = df_references.loc[index,"password"]
                              
     if st.button("logIn"):
         if password == true_password:
@@ -278,6 +284,7 @@ def project():
     if st.button("begin"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht}
          st.rerun()
+        
 def logOut():
     if st.button("logOut",use_container_width=True):
         del st.session_state.login
