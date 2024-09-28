@@ -27,7 +27,7 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: True; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
     </style>
     """,
     unsafe_allow_html=True)
@@ -66,8 +66,8 @@ def map():
     
     m = folium.Map()
     Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False,},
-        position="bottomleft",).add_to(m)
-    Fullscreen().add_to(m)
+        position="topright",).add_to(m)
+    Fullscreen(position="topright").add_to(m)
     LocateControl(auto_start=True).add_to(m)
     
 
