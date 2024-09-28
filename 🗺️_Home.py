@@ -321,7 +321,8 @@ with st.sidebar:
     
 
 IMAGE = "image/logo.png"
-st.logo(IMAGE,  link=None, icon_image=None)
+IMAGE_2 ="image/menu.jpg"
+st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
 
 try:
 
