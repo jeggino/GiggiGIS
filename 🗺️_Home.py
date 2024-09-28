@@ -352,7 +352,7 @@ try:
 
     map = folium.Map()
     LocateControl(auto_start=True,position="topright").add_to(map)
-    Fullscreen(position="topright",force_separate_button = True).add_to(map)
+    Fullscreen(position="topright",force_separate_button = True,{"zoom buttons"=False}).add_to(map)
     
     functie_dictionary = {}
     functie_len = df_2['functie'].unique()
