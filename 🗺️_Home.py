@@ -48,7 +48,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 2rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0rem; margin-bottom: 0rem;}
+    div.block-container {padding-top: 1rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0rem; margin-bottom: 0rem;}
 </style>
 """ 
 
@@ -69,8 +69,8 @@ if innerWidth > innerHeight:
     OUTPUT_height = 400
 
 else:
-    OUTPUT_width = 300
-    OUTPUT_height = 400
+    OUTPUT_width = 350
+    OUTPUT_height = 700
     
 # OUTPUT_width = innerWidth
 # OUTPUT_height = innerHeight
