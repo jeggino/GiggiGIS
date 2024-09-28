@@ -65,7 +65,8 @@ def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,fun
 def map():
     
     m = folium.Map()
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False,}).add_to(m)
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False,},
+        position="bottomleft",).add_to(m)
     Fullscreen().add_to(m)
     LocateControl(auto_start=True).add_to(m)
     
