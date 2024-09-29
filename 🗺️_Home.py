@@ -248,6 +248,25 @@ try:
     folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
     folium.LayerControl().add_to(map)    
 
+    groups={}
+
+    for group in choice_opdracht:
+        groups[group] = list(df_2[df_2.soortgroup==group]["functie"].unique())
+        feature = [functie_dictionary[i] for i in groups[group]]
+    
+        key_list = list(DICT_SORTGROUP.keys())
+        val_list = list(DICT_SORTGROUP.values())
+        position = val_list.index(group)
+        
+        groups[group] = feature
+    
+    groups = dict(zip(soortgroup, list(groups.values())))
+    GroupedLayerControl(
+        groups=groups,
+        exclusive_groups=False,
+        collapsed=True,
+    ).add_to(map)
+
     for i in range(len(df_2)):
 
         if df_2.iloc[i]['geometry_type'] == "Point":
