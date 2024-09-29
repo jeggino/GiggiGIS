@@ -415,8 +415,8 @@ try:
         with st.sidebar:
             try:
                 st.warning("UNTILL HERE GOOD")
-                sw.write(name + ".jpeg")
-                sw.write(name + ".jpeg")
+                sw.write(str(name) + ".jpeg")
+                sw.write(str(name) + ".jpeg")
                 res_pic = drive.get(name).read()
                 res_mov = drive.get(name).read()
                 
