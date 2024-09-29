@@ -416,6 +416,7 @@ try:
             try:
                 res_pic = drive.get(name + ".jpeg").read()
                 res_mov = drive.get(name + ".mp4").read()
+                st.warning("problem")
                 with st.expander("Zie foto"):
                     try:
                         st.image(res_pic)
