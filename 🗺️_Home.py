@@ -415,7 +415,7 @@ try:
         with st.sidebar:
             try:
                 res = drive.get(name).read()                
-                with st.expander("Zie foto"):
+                with st.expander("Zie media"):
                     try:
                         st.image(res)
                     except:
