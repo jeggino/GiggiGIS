@@ -415,7 +415,10 @@ try:
             try:
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
-                    st.image(res)
+                    try:
+                        st.image(res)
+                    except:
+                        st.video(res)
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                     
