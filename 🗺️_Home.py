@@ -306,14 +306,16 @@ try:
     try:
         
         id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
-        name = f"{id}.jpeg"
+        name = f"{id}"
 
         with st.sidebar:
             try:
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
-                    st.image(res)
-                            
+                    try:
+                        st.image(res)
+                    except:
+                        st.video(res)                            
             except:
                 st.info('Geen foto opgeslagen voor deze waarneming')
 
