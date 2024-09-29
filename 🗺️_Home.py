@@ -68,7 +68,7 @@ OUTPUT_width = 300
 OUTPUT_height = 500
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
-ICON_SIZE_rat_maybe = (34,34)
+ICON_SIZE_rat_maybe = (44,34)
 
 # --- FUNCTIONS ---
 
