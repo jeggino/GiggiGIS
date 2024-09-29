@@ -62,7 +62,7 @@ drive = deta.Drive("df_pictures")
 # --- DIMENSIONS ---
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
-ICON_SIZE_rat_maybe = (115,85)
+ICON_SIZE_rat_maybe = (105,85)
 
 # --- FUNCTIONS ---
 
