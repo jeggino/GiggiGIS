@@ -18,7 +18,7 @@ from credencials import *
 
 # ---LAYOUT---
 st.set_page_config(
-    page_title="Rats",
+    page_title="Ratten Terschelling",
     initial_sidebar_state="collapsed",
     page_icon="🐀",
     layout="wide",
@@ -193,9 +193,10 @@ try:
     df_point = pd.DataFrame(db_content)
     
     df_2 = df_point[df_point['project']=="Ratten Terschelling"]
-    soortgroup = st.sidebar.selectbox("",("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'))
+    soortgroup = st.sidebar.multiselect("",("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'))
     DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val",'𐂺 Vangkooi':'Vangkooi'}
-    df_2 = df_2[df_2['soortgroup']==DICT_SORTGROUP[soortgroup]]
+    choice_opdracht = [DICT_SORTGROUP[item] for item in soortgroup]
+    df_2 = df_2[df_2['soortgroup'].isin(choice_opdracht)]
     df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
     if soortgroup == "📷 Camera":
