@@ -414,12 +414,13 @@ try:
 
         with st.sidebar:
             try:
-                res = drive.get(name).read()
+                res_pic = drive.get(name + ".jpeg").read()
+                res_mov = drive.get(name + ".mp4").read()
                 with st.expander("Zie foto"):
                     try:
-                        st.image(res+".jpeg")
+                        st.image(res_pic)
                     except:
-                        st.video(res+".mp4")
+                        st.video(res_mov)
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                     
