@@ -62,6 +62,7 @@ drive = deta.Drive("df_pictures")
 # --- DIMENSIONS ---
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
+ICON_SIZE_rat_maybe = (115,85)
 
 # --- FUNCTIONS ---
 
@@ -253,6 +254,9 @@ try:
 
             if (df_2.iloc[i]['sp']=="Huismus") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
                 ICON_SIZE_2 = ICON_SIZE_huismus
+
+            elif df_2.iloc[i]['functie'] == "Waarneming rat doorgegeven, geen actie op ondernomen":
+                ICON_SIZE_2 = ICON_SIZE_rat_maybe
 
             else:
                 ICON_SIZE_2 = ICON_SIZE
