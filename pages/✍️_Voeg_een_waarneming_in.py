@@ -36,7 +36,7 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0rem; margin-bottom: 0rem;}
+    div.block-container {padding-top: 0rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 1rem; margin-bottom: 0rem;}
 </style>
 """ 
 
@@ -46,7 +46,7 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 #innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 #innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
 OUTPUT_width = 300
-OUTPUT_height = 600
+OUTPUT_height = 500
 
     
 # --- FUNCTIONS ---
