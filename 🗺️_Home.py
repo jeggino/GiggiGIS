@@ -415,8 +415,10 @@ try:
         with st.sidebar:
             try:
                 st.warning("UNTILL HERE GOOD")
-                res_pic = drive.get(name + ".jpeg").read()
-                res_mov = drive.get(name + ".mp4").read()
+                sw.write(name + ".jpeg")
+                sw.write(name + ".jpeg")
+                res_pic = drive.get(name).read()
+                res_mov = drive.get(name).read()
                 
                 with st.expander("Zie foto"):
                     try:
