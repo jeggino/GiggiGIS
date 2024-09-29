@@ -313,7 +313,6 @@ if 'project' not in st.session_state:
 
 
 with st.sidebar:
-    # st.markdown(f"Hallo **{st.session_state.login['name']}**, je gaat werken aan de **{st.session_state.project['project_name']}** project, met de **{st.session_state.project['opdracht']}** opdracht. :rainbow[VEEL SUCCES!!!]")
     logOut_project()
     logOut()
     st.divider()
@@ -427,8 +426,7 @@ try:
                         db.delete(id)
                         drive.delete(name)
                         st.success('Waarneming verwijderd', icon="✅")
-                        st.switch_page("🗺️_Home.py")
-                        st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄")
+                        st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄",use_container_width=True)
                             # else:
                             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
                             
