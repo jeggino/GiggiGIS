@@ -409,16 +409,17 @@ try:
     try:
         
         id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
-        name = f"{id}.jpeg"
+        # name = f"{id}.jpeg"
+        name = f"{id}"
 
         with st.sidebar:
             try:
                 res = drive.get(name).read()
                 with st.expander("Zie foto"):
                     try:
-                        st.image(res)
+                        st.image(res+".jpeg")
                     except:
-                        st.video(res)
+                        st.video(res+".mp4")
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                     
