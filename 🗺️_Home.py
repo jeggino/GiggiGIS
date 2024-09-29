@@ -414,17 +414,12 @@ try:
 
         with st.sidebar:
             try:
-                st.warning("UNTILL HERE GOOD")
-                st.write(str(name) + ".jpeg")
-                st.write(str(name) + ".jpeg")
-                res_pic = drive.get(name).read()
-                res_mov = drive.get(name).read()
-                
+                res = drive.get(name).read()                
                 with st.expander("Zie foto"):
                     try:
-                        st.image(res_pic)
+                        st.image(res)
                     except:
-                        st.video(res_mov)
+                        st.video(res)
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
                     
