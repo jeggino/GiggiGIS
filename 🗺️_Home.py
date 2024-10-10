@@ -360,8 +360,8 @@ try:
 
 
     map = folium.Map()
-    LocateControl(auto_start=False,position="topright").add_to(map)
-    Fullscreen(position="topright").add_to(map)
+    LocateControl(auto_start=False,position="topleft").add_to(map)
+    Fullscreen(position="topleft").add_to(map)
     
     functie_dictionary = {}
     functie_len = df_2['functie'].unique()
@@ -372,7 +372,7 @@ try:
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
 
-    folium.TileLayer(tiles="cartodbdark_matter",overlay=False,show=False).add_to(map)
+    folium.TileLayer(tiles="mapquestopen",overlay=False,show=False).add_to(map)
     # folium.TileLayer('mapquestopen',overlay=False,show=False).add_to(map)
     # folium.TileLayer(tiles='stamentoner').add_to(map)
     # folium.TileLayer(tiles='cartodbpositron',overlay=False,show=False).add_to(map)
