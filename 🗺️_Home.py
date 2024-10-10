@@ -373,6 +373,10 @@ try:
         map.add_child(functie_dictionary[feature_group])
 
     folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
+    folium.TileLayer('mapquestopen',overlay=False,show=False).add_to(map)
+    folium.TileLayer('stamentoner',overlay=False,show=False).add_to(map)
+    folium.TileLayer('cartodbpositron',overlay=False,show=False).add_to(map)
+    
     folium.LayerControl().add_to(map)    
 
     for i in range(len(df_2)):
