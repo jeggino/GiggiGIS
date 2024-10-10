@@ -209,9 +209,10 @@ def input_data(output):
 
         except:
             st.stop()
-
+        
         st.rerun()
-        st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
+        map()
+        # st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
 
 
     
