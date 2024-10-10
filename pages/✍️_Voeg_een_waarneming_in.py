@@ -93,8 +93,15 @@ def input_data(output):
     
         sp = st.selectbox("Soort", BAT_NAMES)
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+        
+        if geometry_type == 'Polygon':
+            functie = st.selectbox("Functie", ["mangiare","chiavare"])
+            verblijf = st.selectbox("Verblijf", ["scapocchiare"])
+
+        else:            
+            functie = st.selectbox("Functie", BAT_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+            
         aantal = st.number_input("Aantal", min_value=1)
         datum_2 = None
     
