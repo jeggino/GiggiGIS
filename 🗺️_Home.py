@@ -408,12 +408,12 @@ try:
                 
 
         elif df_2.iloc[i]['geometry_type'] == "LineString":
-            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-            folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fouctie_loop)
+            # fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+            folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
         elif df_2.iloc[i]['geometry_type'] == "Polygon":
-            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-            folium.Polygon()(df_2.iloc[i]['coordinates']).add_to(fouctie_loop)
+            # fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+            folium.Polygon()(df_2.iloc[i]['coordinates']).add_to(map)
 
     # with st.container(height=CONTAINER_height, border=True):
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
