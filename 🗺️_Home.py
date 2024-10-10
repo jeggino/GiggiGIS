@@ -386,11 +386,10 @@ try:
             elif df_2.iloc[i]['functie'] == "Waarneming rat doorgegeven, geen actie op ondernomen":
                 ICON_SIZE_2 = ICON_SIZE_rat_maybe
 
-            elif df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']:
+            elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
                 ICON_SIZE_2 = ICON_SIZE_BAX_EXTRA
 
-            else:
-                
+            else:                
                 ICON_SIZE_2 = ICON_SIZE
                 
 
