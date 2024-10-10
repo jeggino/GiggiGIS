@@ -45,8 +45,8 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 # --- DIMENSIONS ---
 #innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 #innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-OUTPUT_width = 350
-OUTPUT_height = 550
+OUTPUT_width = 850
+OUTPUT_height = 250
 
     
 # --- FUNCTIONS ---
