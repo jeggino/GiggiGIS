@@ -408,9 +408,11 @@ try:
                 
 
         elif df_2.iloc[i]['geometry_type'] == "LineString":
+            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fouctie_loop)
 
         elif df_2.iloc[i]['geometry_type'] == "Polygon":
+            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
             folium.Polygon()(df_2.iloc[i]['coordinates']).add_to(fouctie_loop)
 
     # with st.container(height=CONTAINER_height, border=True):
