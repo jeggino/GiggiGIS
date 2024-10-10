@@ -372,11 +372,10 @@ try:
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
 
-    folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False).add_to(map)
-    folium.TileLayer('CartoDB Voyager',overlay=False,show=False).add_to(map)
-    folium.TileLayer('Cartodb dark_matter',overlay=False,show=False).add_to(map)
-    # folium.TileLayer(tiles='stamentoner').add_to(map)
-    # folium.TileLayer(tiles='cartodbpositron',overlay=False,show=False).add_to(map)
+    folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="White").add_to(map)
+    folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
+    folium.TileLayer('CartoDB Voyager',overlay=False,show=False,name="Voyager").add_to(map)
+
     
     folium.LayerControl().add_to(map)    
 
