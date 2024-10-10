@@ -170,11 +170,10 @@ def input_data(output):
 
         try:
 
-            # output["features"] = output.pop("all_drawings")
             geometry_type = output["features"][0]["geometry"]["type"]
             coordinates = output["features"][0]["geometry"]["coordinates"] 
             
-            if geometry_type == "LineString":
+            if geometry_type in ["LineString",'Polygon']:
                 
                 lng = None
                 lat = None
