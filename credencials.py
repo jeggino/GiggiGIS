@@ -28,7 +28,7 @@ BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Ross
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 
          'zwermend', 'sporen', 'balts', 'verkeersslachtoffer']
 
-BAT_FUNCTIE = ['geen / onbekend','zomerverblijfplaats','kraamverblijfplaats','paraverblijfplaats', 'winterverblijfplaats']
+BAT_FUNCTIE = ['geen / onbekend','zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats']
 
 BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
