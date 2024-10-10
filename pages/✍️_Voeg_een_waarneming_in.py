@@ -94,13 +94,15 @@ def input_data(output):
     if soortgroup == 'Vleermuizen':
     
         sp = st.selectbox("Soort", BAT_NAMES)
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+         
         
         if geometry_type == 'Polygon':
-            functie = st.selectbox("Functie", ["mangiare","chiavare"])
-            verblijf = st.selectbox("Verblijf", ["scapocchiare"])
+            gedrag = None
+            functie = st.selectbox("Functie", ["Foerageergebied","Paringsgebied"])
+            verblijf = None
 
-        else:            
+        else:
+            gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS)
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
             verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
             
