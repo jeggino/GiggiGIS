@@ -359,7 +359,7 @@ try:
                      )
 
 
-    map = folium.Map()
+    map = folium.Map(name="Open streetMap")
     LocateControl(auto_start=False,position="topleft").add_to(map)
     Fullscreen(position="topleft").add_to(map)
     
