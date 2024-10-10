@@ -45,7 +45,7 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 # --- DIMENSIONS ---
 #innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 #innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-OUTPUT_width = 1200
+OUTPUT_width = 1190
 OUTPUT_height = 450
 
     
@@ -205,13 +205,13 @@ def input_data(output):
                 else:
                     insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
-                st.success('Gegevens opgeslagen!', icon="✅")             
+                st.success('Gegevens opgeslagen!', icon="✅")       
+                st.rerun()
 
         except:
             st.stop()
 
-        output_map["features"] = None
-        st.rerun()
+        
         # st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
 
 
