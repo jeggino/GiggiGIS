@@ -342,16 +342,8 @@ try:
     df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
     st.sidebar.subheader("Filter op",divider=False)
-    # d = st.sidebar.date_input(
-    #     "Datum",
-    #     min_value = df_2.datum.min(),
-    #     max_value = df_2.datum.max(),
-    #     value=(df_2.datum.min(),
-    #      df_2.datum.max()),
-    #     format="YYYY.MM.DD",
-    # )
 
-    d = st.slider("Datum", value=(df_2.datum.min(), df_2.datum.max()),format="YYYY.MM.DD")
+    d = st.sidebar.slider("Datum", value=(df_2.datum.min(), df_2.datum.max()),format="YYYY.MM.DD")
     
     df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
