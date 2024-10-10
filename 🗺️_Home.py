@@ -372,7 +372,7 @@ try:
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
 
-    folium.TileLayer(tiles="mapquestopen",overlay=False,show=False).add_to(map)
+    folium.TileLayer(tiles="stamentoner",overlay=False,show=False).add_to(map)
     # folium.TileLayer('mapquestopen',overlay=False,show=False).add_to(map)
     # folium.TileLayer(tiles='stamentoner').add_to(map)
     # folium.TileLayer(tiles='cartodbpositron',overlay=False,show=False).add_to(map)
