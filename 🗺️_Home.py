@@ -18,7 +18,7 @@ from credencials import *
 
 # ---LAYOUT---
 st.set_page_config(
-    page_title="GigGIS",
+    page_title="GiggiGIS Desktop",
     initial_sidebar_state="collapsed",
     page_icon="📝",
     layout="wide",
@@ -64,8 +64,8 @@ drive = deta.Drive("df_pictures")
 #innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 #innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
 
-OUTPUT_width = 350
-OUTPUT_height = 550
+OUTPUT_width = 1190
+OUTPUT_height = 450
 ICON_SIZE = (20,20)
 
 ICON_SIZE_huismus = (28,28)
@@ -332,19 +332,17 @@ try:
     db_content = load_dataset()
     df_point = pd.DataFrame(db_content)
     
-       
-    df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+    if st.session_state.project['project_name'] != 'Admin':
+        df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
+        df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
+
+    else:
+        df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+        
     df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
     st.sidebar.subheader("Filter op",divider=False)
-    d = st.sidebar.date_input(
-        "Datum",
-        min_value = df_2.datum.min(),
-        max_value = df_2.datum.max(),
-        value=(df_2.datum.min(),
-         df_2.datum.max()),
-        format="YYYY.MM.DD",
-    )
+    d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
     
     df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
@@ -361,9 +359,9 @@ try:
                      )
 
 
-    map = folium.Map()
-    LocateControl(auto_start=True,position="topright").add_to(map)
-    Fullscreen(position="topright").add_to(map)
+    map = folium.Map(tiles=None)
+    LocateControl(auto_start=False,position="topleft").add_to(map)
+    Fullscreen(position="topleft").add_to(map)
     
     functie_dictionary = {}
     functie_len = df_2['functie'].unique()
@@ -374,7 +372,12 @@ try:
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
 
-    folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
+    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="OpenStreetMap").add_to(map)
+    folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="White").add_to(map)
+    folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
+    folium.TileLayer('CartoDB Voyager',overlay=False,show=False,name="Voyager").add_to(map)
+
+    
     folium.LayerControl().add_to(map)    
 
     for i in range(len(df_2)):
