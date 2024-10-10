@@ -408,7 +408,9 @@ try:
                 
 
         elif df_2.iloc[i]['geometry_type'] == "LineString":
+            folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
+        elif df_2.iloc[i]['geometry_type'] == "Polygon":
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
     # with st.container(height=CONTAINER_height, border=True):
