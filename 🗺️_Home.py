@@ -1,4 +1,4 @@
-import streamlit as st
+8import streamlit as st
 from streamlit_js_eval import streamlit_js_eval
 
 import folium
@@ -70,7 +70,7 @@ ICON_SIZE = (20,20)
 
 ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (245,150)
-ICON_SIZE_BAX_EXTRA = (145,50)
+ICON_SIZE_BAX_EXTRA = (45,32)
 
 
 # --- FUNCTIONS ---
