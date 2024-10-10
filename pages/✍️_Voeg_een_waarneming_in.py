@@ -101,6 +101,11 @@ def input_data(output):
             functie = st.selectbox("Functie", ["Foerageergebied","Paringsgebied"])
             verblijf = None
 
+        elif geometry_type == 'LineString':
+            gedrag = None
+            functie = st.selectbox("Functie", ["linea della minchia","linea de lo strafogo"])
+            verblijf = None
+
         else:
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS)
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
