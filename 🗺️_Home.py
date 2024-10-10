@@ -359,7 +359,7 @@ try:
                      )
 
 
-    map = folium.Map(name="Open streetMap")
+    map = folium.Map(tiles=None)
     LocateControl(auto_start=False,position="topleft").add_to(map)
     Fullscreen(position="topleft").add_to(map)
     
@@ -372,6 +372,7 @@ try:
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
 
+    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="OpenStreetMap").add_to(map)
     folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="White").add_to(map)
     folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
     folium.TileLayer('CartoDB Voyager',overlay=False,show=False,name="Voyager").add_to(map)
