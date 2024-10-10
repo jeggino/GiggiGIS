@@ -209,7 +209,8 @@ def input_data(output):
 
         except:
             st.stop()
-        
+
+        len(output_map["features"]) = 0
         st.rerun()
         # st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
 
