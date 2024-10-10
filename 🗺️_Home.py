@@ -374,7 +374,7 @@ try:
 
     folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False).add_to(map)
     folium.TileLayer('CartoDB Voyager',overlay=False,show=False).add_to(map)
-    # folium.TileLayer('mapquestopen',overlay=False,show=False).add_to(map)
+    folium.TileLayer('Cartodb dark_matter',overlay=False,show=False).add_to(map)
     # folium.TileLayer(tiles='stamentoner').add_to(map)
     # folium.TileLayer(tiles='cartodbpositron',overlay=False,show=False).add_to(map)
     
