@@ -43,8 +43,6 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- DIMENSIONS ---
-#innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
-#innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
 OUTPUT_width = 1190
 OUTPUT_height = 450
 
@@ -64,7 +62,7 @@ def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,fun
 def map():
     
     m = folium.Map()
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False,},
+    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True,},
         position="topright",).add_to(m)
     Fullscreen(position="topleft").add_to(m)
     LocateControl(auto_start=False,position="topleft").add_to(m)
@@ -233,7 +231,7 @@ try:
 
         
     output_map = map()
-    
+    st.write(output_map)
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map)
