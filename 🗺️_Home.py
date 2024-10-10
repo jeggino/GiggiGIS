@@ -411,7 +411,7 @@ try:
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
 
         elif df_2.iloc[i]['geometry_type'] == "Polygon":
-            folium.Polygon()(df_2.iloc[i]['coordinates']).add_to(fg)
+            folium.Polygon()(df_2.iloc[i]['coordinates'][0]).add_to(fg)
 
     # with st.container(height=CONTAINER_height, border=True):
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
