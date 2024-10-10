@@ -17,7 +17,7 @@ from credencials import *
 
 # ---LAYOUT---
 st.set_page_config(
-    page_title="GigGIS",
+    page_title="GiggiGIS Desktop",
     initial_sidebar_state="collapsed",
     page_icon="📝",
     layout="wide",
