@@ -211,7 +211,6 @@ def input_data(output):
             st.stop()
         
         st.rerun()
-        map()
         # st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
 
 
