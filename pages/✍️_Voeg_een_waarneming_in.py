@@ -86,6 +86,8 @@ def input_data(output):
     datum = st.date_input("Datum","today")       
     nine_hours_from_now = datetime.now() + timedelta(hours=2)
     time = st.time_input("Tijd", nine_hours_from_now)
+
+    geometry_type = output["features"][0]["geometry"]["type"]
     
     st.divider()
     
@@ -177,7 +179,7 @@ def input_data(output):
 
         try:
 
-            geometry_type = output["features"][0]["geometry"]["type"]
+            # geometry_type = output["features"][0]["geometry"]["type"]
             coordinates = output["features"][0]["geometry"]["coordinates"] 
             
             if geometry_type in ["LineString",'Polygon']:
