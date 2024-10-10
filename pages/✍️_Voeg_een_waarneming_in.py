@@ -246,7 +246,7 @@ try:
 
         
     output_map = map()
-    st.write(output_map)
+    
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map)
