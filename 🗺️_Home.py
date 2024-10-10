@@ -69,6 +69,8 @@ OUTPUT_height = 550
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (245,150)
+ICON_SIZE_BAX_EXTRA = (45,30)
+
 
 # --- FUNCTIONS ---
 
@@ -384,7 +386,11 @@ try:
             elif df_2.iloc[i]['functie'] == "Waarneming rat doorgegeven, geen actie op ondernomen":
                 ICON_SIZE_2 = ICON_SIZE_rat_maybe
 
+            elif df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']:
+                ICON_SIZE_2 = ICON_SIZE_BAX_EXTRA
+
             else:
+                
                 ICON_SIZE_2 = ICON_SIZE
                 
 
