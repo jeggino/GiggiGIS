@@ -23,8 +23,9 @@ RAT_VANGKOOI_OPTIONS = ['vangkooi in veld','vangkooi in veld, rat gevangen','van
 
 
 
-BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis',
-             'Tweekleurige vleermuis','Gewone grootoorvleermuis','Kleine dwergvleermuis']
+BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']
+             
+BAT_NAMES_extra = ['Tweekleurige vleermuis','Gewone grootoorvleermuis','Kleine dwergvleermuis']
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 
          'zwermend', 'sporen', 'balts', 'verkeersslachtoffer']
