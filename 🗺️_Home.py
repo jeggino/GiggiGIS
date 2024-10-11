@@ -420,11 +420,16 @@ try:
                          feature_group_to_add=list(functie_dictionary.values()))
         
     try:
-        
-        id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
-        # name = f"{id}.jpeg"
-        name = f"{id}"
-        st.write(name)
+
+        try:
+            id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
+            # name = f"{id}.jpeg"
+            name = f"{id}"
+        except:
+            # id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
+            id = output_2["last_active_drawing"]['geometry']['coordinates']
+            name = f"{id}"
+            st.write(name)
 
         with st.sidebar:
             try:
