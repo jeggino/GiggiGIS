@@ -64,8 +64,8 @@ drive = deta.Drive("df_pictures")
 #innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 #innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
 
-OUTPUT_width = 1190
-OUTPUT_height = 450
+OUTPUT_width = 350
+OUTPUT_height = 550
 ICON_SIZE = (20,20)
 
 ICON_SIZE_huismus = (28,28)
@@ -420,8 +420,8 @@ try:
                                    axis=1)
 
     map = folium.Map(tiles=None)
-    LocateControl(auto_start=False,position="topleft").add_to(map)
-    Fullscreen(position="topleft").add_to(map)
+    LocateControl(auto_start=True,position="topright").add_to(map)
+    Fullscreen(position="topright").add_to(map)
     
     functie_dictionary = {}
     functie_len = df_2['functie'].unique()
