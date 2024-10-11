@@ -426,8 +426,8 @@ try:
             # name = f"{id}.jpeg"
             name = f"{id}"
         except:
-            # id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
-            id = output_2["last_active_drawing"]['geometry']['coordinates']
+            id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+            # id = output_2["last_active_drawing"]['geometry']['coordinates']
             name = f"{id}"
             st.write(name)
 
