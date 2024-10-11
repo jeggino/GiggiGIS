@@ -191,9 +191,9 @@ def input_data(output):
             
             if geometry_type in ["LineString",'Polygon']:
                 
-                lng = None
-                lat = None
-                key = None
+                lng = coordinates[0][0]
+                lat = coordinates[0][1]
+                key = str(lng)+str(lat)
             
             else: 
                 
