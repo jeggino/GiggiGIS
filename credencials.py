@@ -101,7 +101,7 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
                    'Rat val': {'Schietval in veld': 'icons/rat_trap_orange.png',
                                'Schietval in veld rat gedood': 'icons/rat_trap_green.png',
                                'Schietval verwijderd, geen rat gedood': 'icons/rat_trap_red.png',
-                               'Schietval verwijderd, rat gedood': 'rat_trap_purple.png'},
+                               'Schietval verwijderd, rat gedood': 'icons/rat_trap_purple.png'},
                    'Vangkooi': {'vangkooi in veld':'icons/rat_cage_veld_Nogevangen.png',
                                 'vangkooi in veld, rat gevangen':'icons/rat_cage_veld_gevangen.png',
                                 'vangkooi verwijderd, rat gevangen':'icons/rat_cage_noveld_gevangen.png',
