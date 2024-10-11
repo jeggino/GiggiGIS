@@ -485,7 +485,7 @@ try:
             else:
                 fill_color="green"
                 
-            folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
+            folium.Polygon(location,fill_color=fill_color,weight=0.1,fill_opacity=0.5,
                           popup=popup).add_to(fouctie_loop)
 
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
