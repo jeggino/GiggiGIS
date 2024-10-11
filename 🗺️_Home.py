@@ -479,13 +479,13 @@ try:
             location = df_2.iloc[i]['coordinates'][0]
             location = [i[::-1] for i in location]
             
-            if df_2.iloc[i]['geometry_type']=="Paringsgebied":
+            if df_2.iloc[i]['Functie']=="Paringsgebied":
                 fill_color="red"
 
             else:
                 fill_color="green"
                 
-            folium.Polygon(location,fill_color=fill_color,weight=0.3,fill_opacity=0.6,
+            folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
                           popup=popup).add_to(fouctie_loop)
 
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
