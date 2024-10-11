@@ -180,9 +180,8 @@ def input_data(output):
     
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
-    if geometry_type != 'Polygon':
-        with st.expander("Upload een foto"):
-            uploaded_file = st.file_uploader("")
+    with st.expander("Upload een foto"):
+        uploaded_file = st.file_uploader("")
     
     st.divider()
         
