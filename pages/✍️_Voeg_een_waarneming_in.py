@@ -229,7 +229,7 @@ def input_data(output):
             st.stop()
 
         
-        st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
+        st.switch_page("🗺️_Home.py")
 
 
     
