@@ -352,11 +352,6 @@ try:
 
     st.sidebar.divider()
     
-    
-    # df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
-    #                                else icon_dictionary[x["soortgroup"]][x["functie"]], 
-    #                                axis=1
-    #                  )
     df_2["icon_data"] = df_2.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
                                    else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
@@ -376,9 +371,10 @@ try:
         map.add_child(functie_dictionary[feature_group])
 
     folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="OpenStreetMap").add_to(map)
+    folium.TileLayer('CartoDB Voyager',overlay=False,show=False,name="Voyager").add_to(map)
     folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="White").add_to(map)
     folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
-    folium.TileLayer('CartoDB Voyager',overlay=False,show=False,name="Voyager").add_to(map)
+    
 
     
     folium.LayerControl().add_to(map)    
