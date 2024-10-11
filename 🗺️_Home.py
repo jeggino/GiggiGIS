@@ -433,7 +433,6 @@ try:
         map.add_child(functie_dictionary[feature_group])
 
     folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="OpenStreetMap").add_to(map)
-    folium.TileLayer('CartoDB Voyager',overlay=False,show=False,name="Voyager").add_to(map)
     folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="White").add_to(map)
     folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
     
