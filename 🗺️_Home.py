@@ -18,7 +18,7 @@ from credencials import *
 
 # ---LAYOUT---
 st.set_page_config(
-    page_title="GigGIS",
+    page_title="GiggiGIS Desktop",
     initial_sidebar_state="collapsed",
     page_icon="📝",
     layout="wide",
@@ -64,8 +64,8 @@ drive = deta.Drive("df_pictures")
 #innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
 #innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
 
-OUTPUT_width = 350
-OUTPUT_height = 550
+OUTPUT_width = 1190
+OUTPUT_height = 450
 ICON_SIZE = (20,20)
 
 ICON_SIZE_huismus = (28,28)
@@ -80,7 +80,69 @@ def load_dataset():
     return db.fetch().items
 
 
+def popup_polygons(row):
+    
+    i = row
 
+    project=df_2['project'].iloc[i]
+    datum=df_2['datum'].iloc[i] 
+    time=df_2['time'].iloc[i]
+    sp = df_2['sp'].iloc[i] 
+    functie=df_2['functie'].iloc[i]
+    gedrag=df_2['gedrag'].iloc[i]
+    opmerking=df_2['opmerking'].iloc[i]
+    aantal=df_2['aantal'].iloc[i]
+    waarnemer=df_2['waarnemer'].iloc[i] 
+       
+
+    left_col_color = "#19a7bd"
+    right_col_color = "#f2f0d3"
+    
+    html = """<!DOCTYPE html>
+    <html>
+    <table style="height: 126px; width: 300;">
+    <tbody>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(project) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Tijd</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(time) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gedrag) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
+    </tr>
+    </tbody>
+    </table>
+    </html>
+    """
+    return html
 
 
 def popup_html(row):
@@ -331,25 +393,18 @@ try:
 
     db_content = load_dataset()
     df_point = pd.DataFrame(db_content)
-
+    
     if st.session_state.project['project_name'] != 'Admin':
         df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
         df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
 
     else:
         df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
-    
+        
     df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
     st.sidebar.subheader("Filter op",divider=False)
-    d = st.sidebar.date_input(
-        "Datum",
-        min_value = df_2.datum.min(),
-        max_value = df_2.datum.max(),
-        value=(df_2.datum.min(),
-         df_2.datum.max()),
-        format="YYYY.MM.DD",
-    )
+    d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
     
     df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
@@ -359,16 +414,14 @@ try:
 
     st.sidebar.divider()
     
-    
-    df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
-                                   else icon_dictionary[x["soortgroup"]][x["functie"]], 
-                                   axis=1
-                     )
+    df_2["icon_data"] = df_2.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
+                                   else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
+                                         else icon_dictionary[x["soortgroup"]][x["functie"]]), 
+                                   axis=1)
 
-
-    map = folium.Map()
-    LocateControl(auto_start=True,position="topright").add_to(map)
-    Fullscreen(position="topright").add_to(map)
+    map = folium.Map(tiles=None)
+    LocateControl(auto_start=False,position="topleft").add_to(map)
+    Fullscreen(position="topleft").add_to(map)
     
     functie_dictionary = {}
     functie_len = df_2['functie'].unique()
@@ -379,7 +432,12 @@ try:
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
 
-    folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False).add_to(map)
+    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="OpenStreetMap").add_to(map)
+    folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="White").add_to(map)
+    folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
+    
+
+    
     folium.LayerControl().add_to(map)    
 
     for i in range(len(df_2)):
@@ -410,18 +468,36 @@ try:
                 
 
         elif df_2.iloc[i]['geometry_type'] == "LineString":
+            # fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+            folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
-            folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
+        elif df_2.iloc[i]['geometry_type'] == "Polygon":
+            html = popup_polygons(i)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+            location = df_2.iloc[i]['coordinates'][0]
+            location = [i[::-1] for i in location]
+            
+            if df_2.iloc[i]['functie']=="Paringsgebied":
+                fill_color="red"
 
-    # with st.container(height=CONTAINER_height, border=True):
+            else:
+                fill_color="green"
+                
+            folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
+                          popup=popup).add_to(fouctie_loop)
+
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                          feature_group_to_add=list(functie_dictionary.values()))
         
     try:
-        
-        id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
-        # name = f"{id}.jpeg"
-        name = f"{id}"
+
+        try:
+            id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
+            name = f"{id}"
+        except:
+            id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+            name = f"{id}"
 
         with st.sidebar:
             try:
