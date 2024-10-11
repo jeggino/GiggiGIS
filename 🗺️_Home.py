@@ -80,7 +80,69 @@ def load_dataset():
     return db.fetch().items
 
 
+def popup_polygons(row):
+    
+    i = row
 
+    project=df_2['project'].iloc[i]
+    datum=df_2['datum'].iloc[i] 
+    time=df_2['time'].iloc[i]
+    sp = df_2['sp'].iloc[i] 
+    functie=df_2['functie'].iloc[i]
+    gedrag=df_2['gedrag'].iloc[i]
+    opmerking=df_2['opmerking'].iloc[i]
+    aantal=df_2['aantal'].iloc[i]
+    waarnemer=df_2['waarnemer'].iloc[i] 
+       
+
+    left_col_color = "#19a7bd"
+    right_col_color = "#f2f0d3"
+    
+    html = """<!DOCTYPE html>
+    <html>
+    <table style="height: 126px; width: 300;">
+    <tbody>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(project) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Tijd</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(time) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Soort</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(sp) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gedrag) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(opmerking) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(int(aantal)) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Waarnemer</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
+    </tr>
+    </tbody>
+    </table>
+    </html>
+    """
+    return html
 
 
 def popup_html(row):
@@ -411,10 +473,13 @@ try:
             folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
         elif df_2.iloc[i]['geometry_type'] == "Polygon":
+            html = popup_polygons(i)
+            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
             location = df_2.iloc[i]['coordinates'][0]
             location = [i[::-1] for i in location]
-            folium.Polygon(location,fill_color="red",weight=0,fill_opacity=0.2).add_to(fouctie_loop)
+            folium.Polygon(location,fill_color="red",weight=0.3,fill_opacity=0.5,
+                          popup=popup).add_to(fouctie_loop)
 
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                          feature_group_to_add=list(functie_dictionary.values()))
