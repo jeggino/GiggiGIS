@@ -179,9 +179,10 @@ def input_data(output):
         aantal = st.number_input("Aantal", min_value=1)
     
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-    
-    with st.expander("Upload een foto"):
-        uploaded_file = st.file_uploader("")
+
+    if geometry_type != 'Polygon':
+        with st.expander("Upload een foto"):
+            uploaded_file = st.file_uploader("")
     
     st.divider()
         
