@@ -17,7 +17,7 @@ from credencials import *
 
 # ---LAYOUT---
 st.set_page_config(
-    page_title="GigGIS",
+    page_title="GiggiGIS Desktop",
     initial_sidebar_state="collapsed",
     page_icon="📝",
     layout="wide",
@@ -43,8 +43,6 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- DIMENSIONS ---
-#innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
-#innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
 OUTPUT_width = 350
 OUTPUT_height = 550
 
@@ -64,10 +62,15 @@ def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,fun
 def map():
     
     m = folium.Map()
-    Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False,},
-        position="topright",).add_to(m)
+    if st.session_state.project['opdracht'] == 'Vleermuizen':
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': True},
+            position="topright",).add_to(m)
+
+    else:
+        Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
+            position="topright",).add_to(m)
     Fullscreen(position="topright").add_to(m)
-    LocateControl(auto_start=True,position="topright").add_to(m)
+    LocateControl(auto_start=False,position="topright").add_to(m)
     
 
     
@@ -88,15 +91,31 @@ def input_data(output):
     datum = st.date_input("Datum","today")       
     nine_hours_from_now = datetime.now() + timedelta(hours=2)
     time = st.time_input("Tijd", nine_hours_from_now)
+
+    geometry_type = output["features"][0]["geometry"]["type"]
     
     st.divider()
     
     if soortgroup == 'Vleermuizen':
     
         sp = st.selectbox("Soort", BAT_NAMES)
-        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-        functie = st.selectbox("Functie", BAT_FUNCTIE) 
-        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+         
+        
+        if geometry_type == 'Polygon':
+            gedrag = None
+            functie = st.selectbox("Functie", ["Foerageergebied","Paringsgebied"])
+            verblijf = None
+
+        elif geometry_type == 'LineString':
+            gedrag = None
+            functie = st.selectbox("Functie", ["linea della minchia","linea de lo strafogo"])
+            verblijf = None
+
+        else:
+            gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS)
+            functie = st.selectbox("Functie", BAT_FUNCTIE) 
+            verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+            
         aantal = st.number_input("Aantal", min_value=1)
         datum_2 = None
     
@@ -160,7 +179,7 @@ def input_data(output):
         aantal = st.number_input("Aantal", min_value=1)
     
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-    
+
     with st.expander("Upload een foto"):
         uploaded_file = st.file_uploader("")
     
@@ -172,15 +191,14 @@ def input_data(output):
 
         try:
 
-            # output["features"] = output.pop("all_drawings")
-            geometry_type = output["features"][0]["geometry"]["type"]
+            # geometry_type = output["features"][0]["geometry"]["type"]
             coordinates = output["features"][0]["geometry"]["coordinates"] 
             
-            if geometry_type == "LineString":
+            if geometry_type in ["LineString",'Polygon']:
                 
-                lng = None
-                lat = None
-                key = None
+                lng = coordinates[0][0][0]
+                lat = coordinates[0][0][1]
+                key = str(lng)+str(lat)
             
             else: 
                 
@@ -205,12 +223,14 @@ def input_data(output):
                 else:
                     insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
-                st.success('Gegevens opgeslagen!', icon="✅")             
+                st.success('Gegevens opgeslagen!', icon="✅")       
 
         except:
             st.stop()
 
-        st.switch_page("🗺️_Home.py")
+        
+        st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
+
 
     
 
