@@ -23,7 +23,8 @@ RAT_VANGKOOI_OPTIONS = ['vangkooi in veld','vangkooi in veld, rat gevangen','van
 
 
 
-BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']
+BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis',
+             'Tweekleurige vleermuis','Gewone grootoorvleermuis','Kleine dwergvleermuis']
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 
          'zwermend', 'sporen', 'balts', 'verkeersslachtoffer']
@@ -90,7 +91,12 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
                                                              'zomerverblijfplaats': 'icons/water_zommer.png',
                                                              'kraamverblijfplaats': 'icons/water_kraam.png',
                                                             'paarverblijfplaats': 'icons/water_paar.png',
-                                                            'winterverblijfplaats': 'icons/water_winter.png'}},
+                                                            'winterverblijfplaats': 'icons/water_winter.png'},
+                                   'General': {'geen / onbekend': 'icons/bat_geen.png.png',
+                                                             'zomerverblijfplaats': 'icons/bat_zommer.png',
+                                                             'kraamverblijfplaats': 'icons/bat_kraam.png',
+                                                            'paarverblijfplaats': 'icons/bat_paar.png',
+                                                            'winterverblijfplaats': 'icons/bat_winter.png'}},
                    'Vleermuiskast': {"Bewoond":"icons/bat_bow_full.jpg",
                                      "Onbewoond":"icons/bat_box_empty.jpg"},
                    'Camera': {'Camera in het veld': 'icons/camera-icon-orange.png',
