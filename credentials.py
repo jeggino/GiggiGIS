@@ -37,6 +37,8 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
 
 BIRD_NAMES = ['Gierzwaluw','Huismus']
 
+BIRD_NAMES_ANDER = ['..ander']
+
 BIRD_BEHAVIOURS = ['overvliegend',  'nest-indicerend gedrag', 'foeragerend', 'invliegend', 'uitvliegend',
        'roepend vanuit gebouw', 'baltsend / zingend op gebouw',
        'baltsend / zingend in vegetatie, struik of boom', 'sporen',
