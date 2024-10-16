@@ -1,18 +1,18 @@
 import streamlit as st
-from streamlit_js_eval import streamlit_js_eval
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl
 from streamlit_folium import st_folium
 
 import pandas as pd
+from streamlit_gsheets import GSheetsConnection
+
 import geopandas as gpd
 import datetime
 from datetime import datetime, timedelta, date
 
-from deta import Deta
+from credentials import *
 
-from credencials import *
 
 
 # ---LAYOUT---
@@ -46,19 +46,19 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 OUTPUT_width = 1190
 OUTPUT_height = 450
 
+
     
 # --- FUNCTIONS ---
-
-def load_dataset():
-    return db.fetch().items
-
 def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
-
-    return db.put({"key":key, "waarnemer":waarnemer,"datum":datum,"datum_2":datum_2,"time":time,"soortgroup":soortgroup, "aantal":aantal,
+    
+    data = [{"key":key, "waarnemer":waarnemer,"datum":datum,"datum_2":datum_2,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project})
-        
-
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}]
+    df_new = pd.DataFrame(data)
+    df_updated = pd.concat([df_old,df_new],ignore_index=True)
+    
+    return conn.update(worksheet="df_observations",data=df_updated)      
+  
 def map():
     
     m = folium.Map()
@@ -180,8 +180,8 @@ def input_data(output):
     
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
-    with st.expander("Upload een foto"):
-        uploaded_file = st.file_uploader("")
+    # with st.expander("Upload een foto"):
+    #     uploaded_file = st.file_uploader("")
     
     st.divider()
         
@@ -195,7 +195,7 @@ def input_data(output):
             coordinates = output["features"][0]["geometry"]["coordinates"] 
             
             if geometry_type in ["LineString",'Polygon']:
-                
+
                 lng = coordinates[0][0][0]
                 lat = coordinates[0][0][1]
                 key = str(lng)+str(lat)
@@ -244,10 +244,8 @@ try:
     waarnemer = st.session_state.login['name']
     
     
-    
-    deta = Deta(st.secrets[f"deta_key_other"])
-    db = deta.Base("df_observations")
-    drive = deta.Drive("df_pictures")    
+    conn = st.connection("gsheets", type=GSheetsConnection)
+    df_old = conn.read(ttl=0,worksheet="df_observations")
 
         
     output_map = map()
