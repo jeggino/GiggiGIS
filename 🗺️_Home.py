@@ -244,7 +244,7 @@ def update_item():
     aantal = st.number_input("Aantal", min_value=1)
     datum_2 = None
 
-elif st.session_state.project['opdracht'] == 'Vogels-Overig':
+  elif st.session_state.project['opdracht'] == 'Vogels-Overig':
   
     sp = st.selectbox("Soort", BIRD_NAMES_ANDER)
     gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
