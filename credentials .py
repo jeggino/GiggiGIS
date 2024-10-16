@@ -23,9 +23,7 @@ RAT_VANGKOOI_OPTIONS = ['vangkooi in veld','vangkooi in veld, rat gevangen','van
 
 
 
-BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']
-             
-BAT_NAMES_extra = ['Tweekleurige vleermuis','Gewone grootoorvleermuis','Kleine dwergvleermuis']
+BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis','...Andere(n)']
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 
          'zwermend', 'sporen', 'balts', 'verkeersslachtoffer']
@@ -35,7 +33,7 @@ BAT_FUNCTIE = ['geen / onbekend','zomerverblijfplaats','kraamverblijfplaats','pa
 BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
        'schoorsteen', 'gevelbetimmering', 'nokpan', 'dakpan',
-       'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors']
+       'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors','..ander']
 
 BIRD_NAMES = ['Gierzwaluw','Huismus']
 
@@ -56,6 +54,7 @@ BIRD_VERBLIJF = ['geen / onbekend', 'dakgoot', 'kantpan', 'zonnepaneel', 'nokpan
        'scheur', 'vleermuiskast']
 
 VLEERMUISKAST_VERBLIJF = ["Op boom", "Op gebouw"]
+
 
 icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png',
                                              'nestlocatie': 'icons/swift_nest.png',
@@ -93,7 +92,7 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
                                                              'kraamverblijfplaats': 'icons/water_kraam.png',
                                                             'paarverblijfplaats': 'icons/water_paar.png',
                                                             'winterverblijfplaats': 'icons/water_winter.png'},
-                                   'General': {'geen / onbekend': 'icons/bat_geen.png.png',
+                                    '...Andere(n)': {'geen / onbekend': 'icons/bat_geen.png',
                                                              'zomerverblijfplaats': 'icons/bat_zommer.png',
                                                              'kraamverblijfplaats': 'icons/bat_kraam.png',
                                                             'paarverblijfplaats': 'icons/bat_paar.png',
@@ -119,4 +118,5 @@ DICTIONARY_USERS = {"Luigi": ["Niet gespecificeerd"],
 
 DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen","Vleermuiskast"],
                       "Ratten Terschelling":["Camera","Rat val",'Vangkooi'],
-                      "Admin":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val",'Vangkooi']}
+                      "Admin":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val",'Vangkooi'],
+                       "Bats-balkans":["Vleermuizen"]}
