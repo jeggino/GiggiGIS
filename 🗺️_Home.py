@@ -427,7 +427,7 @@ try:
                                    axis=1)
     
     df_2 = df_2.reset_index(drop=True)
-    
+    df_2
     map = folium.Map(tiles=None)
     LocateControl(auto_start=False,position="topleft").add_to(map)
     Fullscreen(position="topleft").add_to(map)
