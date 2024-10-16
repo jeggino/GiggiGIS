@@ -73,7 +73,7 @@ ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (245,150)
 ICON_SIZE_BAX_EXTRA = (50,65)
 ICON_SIZE_ANDER = (18,22)
-ICON_SIZE_BIRD = (28,28)
+ICON_SIZE_BIRD = (40,28)
 
 
 # --- FUNCTIONS ---
@@ -428,7 +428,6 @@ try:
                                    axis=1)
     
     df_2 = df_2.reset_index(drop=True)
-    df_2
     map = folium.Map(tiles=None)
     LocateControl(auto_start=False,position="topleft").add_to(map)
     Fullscreen(position="topleft").add_to(map)
