@@ -214,14 +214,7 @@ def input_data(output):
 
             else:
 
-                if uploaded_file is not None:
-                    # bytes_data = uploaded_file.getvalue()
-                    # # drive.put(f"{key}.jpeg", data=bytes_data)      
-                    # drive.put(f"{key}", data=bytes_data)            
-                    # insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
-                
-                else:
-                    insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
+                insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
                 st.success('Gegevens opgeslagen!', icon="✅")       
                 st.rerun()
