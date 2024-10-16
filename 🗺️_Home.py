@@ -1,19 +1,19 @@
 import streamlit as st
-from streamlit_js_eval import streamlit_js_eval
+from streamlit_gsheets import GSheetsConnection
+import pandas as pd
+import random
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
 from streamlit_folium import st_folium
-
-import pandas as pd
-
 import datetime
 from datetime import datetime, timedelta, date
 import random
 
-from deta import Deta
+import ast
 
-from credencials import *
+from credentials import *
+
 
 
 # ---LAYOUT---
@@ -24,6 +24,14 @@ st.set_page_config(
     layout="wide",
     
 )
+
+#---DATASET---
+ttl = 0
+ttl_references = '10m'
+conn = st.connection("gsheets", type=GSheetsConnection)
+df_point = conn.read(ttl=ttl,worksheet="df_observations")
+df_references = conn.read(ttl=ttl_references,worksheet="df_users")
+
 
 st.markdown(
     """
@@ -55,31 +63,19 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
-deta = Deta(st.secrets["deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
-
 
 # --- DIMENSIONS ---
-#innerWidth = streamlit_js_eval(js_expressions='screen.width',  want_output = True, key = 'width')
-#innerHeight = streamlit_js_eval(js_expressions='window.screen.height', want_output = True, key = 'height')
-
 OUTPUT_width = 1190
 OUTPUT_height = 450
 ICON_SIZE = (20,20)
 
 ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (245,150)
-ICON_SIZE_BAX_EXTRA = (60,28)
+ICON_SIZE_BAX_EXTRA = (50,65)
+ICON_SIZE_ANDER = (18,22)
 
 
 # --- FUNCTIONS ---
-
-    
-def load_dataset():
-    return db.fetch().items
-
-
 def popup_polygons(row):
     
     i = row
@@ -215,16 +211,6 @@ def popup_html(row):
     """
     return html
 
-#______________NEW___________________
-deta = Deta(st.secrets["deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
-db_content = db.fetch().items 
-df_point = pd.DataFrame(db_content)
-
-db_2 = deta.Base("df_authentication")
-db_content_2 = db_2.fetch().items 
-df_references = pd.DataFrame(db_content_2)
 
 @st.dialog(" ")
 def update_item():
@@ -236,9 +222,15 @@ def update_item():
   if st.session_state.project['opdracht'] == 'Vleermuizen':
 
     sp = st.selectbox("Soort", BAT_NAMES)
-    gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
-    functie = st.selectbox("Functie", BAT_FUNCTIE) 
-    verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
+ 
+    if output_2["last_active_drawing"]["geometry"]["type"] == 'Polygon':
+        gedrag = None
+        functie = st.selectbox("Functie", ["Foerageergebied","Paringsgebied"])
+        verblijf = None
+    else:
+        gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
+        functie = st.selectbox("Functie", BAT_FUNCTIE)
+        verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
     aantal = st.number_input("Aantal", min_value=1)
     datum_2 = None
 
@@ -303,17 +295,33 @@ def update_item():
     verblijf = None
     aantal = st.number_input("Aantal", min_value=1)
 
-
-  
   opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
+  if st.button("**Update**",use_container_width=True):
+    df = conn.read(ttl=0,worksheet="df_observations")
+    df_filter = df[df["key"]==id].reset_index(drop=True)
+      
+    id_lat = df_filter['lat'][0]
+    id_lng = df_filter['lng'][0]
+    id_waarnemer = df_filter['waarnemer'][0]
+    id_key = df_filter['key'][0]
+    id_soortgroup = df_filter['soortgroup'][0]
+    id_geometry_type = df_filter['geometry_type'][0]
+    id_coordinates = df_filter['coordinates'][0]
+    id_project = df_filter['project'][0]
+      
+    df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+    conn.update(worksheet='df_observations',data=df_drop)
+    df = conn.read(ttl=0,worksheet="df_observations")
+      
+    data = [{"key":id_key, "waarnemer":id_waarnemer,"datum":str(datum),"datum_2":str(datum_2),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
+                   "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
+                   "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}]
+      
+    df_new = pd.DataFrame(data)
+    df_updated = pd.concat([df,df_new],ignore_index=True)
+    conn.update(worksheet='df_observations',data=df_updated)
 
-  update = {"datum":str(datum),"datum_2":str(datum_2),"time":str(time),"sp":sp,
-            "aantal":aantal, "gedrag":gedrag, "functie":functie, 
-            "verblijf":verblijf,"opmerking":opmerking}
-    
-  if st.button("**Update**",use_container_width=True): 
-    db.update(update,id)
     st.rerun()
 
 
@@ -344,7 +352,7 @@ def logIn():
 def project():
     st.subheader(f"Welkom {st.session_state.login['name'].split()[0]}!!",divider='grey')
     index_project = df_references[df_references['username']==st.session_state.login["name"]].index[0]
-    project_list = df_references.loc[index_project,"project"]
+    project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
     if st.button("begin"):
@@ -363,6 +371,11 @@ def logOut_project():
         st.rerun()
         
 
+#---APP---
+IMAGE = "image/logo.png"
+IMAGE_2 ="image/menu.jpg"
+st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
+
 
 if "login" not in st.session_state:
     logIn()
@@ -373,7 +386,6 @@ if 'project' not in st.session_state:
     project()
     st.stop()
 
-#______________NEW___________________
 
 
 
@@ -382,31 +394,26 @@ with st.sidebar:
     logOut()
     st.divider()
 
-    
-    
-
-IMAGE = "image/logo.png"
-IMAGE_2 ="image/menu.jpg"
-st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
-
 try:
-
-    db_content = load_dataset()
-    df_point = pd.DataFrame(db_content)
+    try:
+        if st.session_state.project['project_name'] != 'Admin':
+            df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
+            df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
     
-    if st.session_state.project['project_name'] != 'Admin':
-        df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
-        df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
-
-    else:
-        df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+        else:
+            df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
+    
         
-    df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
-
-    st.sidebar.subheader("Filter op",divider=False)
-    d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
+        df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
     
-    df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
+    
+        st.sidebar.subheader("Filter op",divider=False)
+        d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
+        
+        df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
+    except:
+        pass
+        
     if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels"]:
         species_filter_option = df_2["sp"].unique()
         species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
@@ -418,7 +425,9 @@ try:
                                    else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                          else icon_dictionary[x["soortgroup"]][x["functie"]]), 
                                    axis=1)
-
+    
+    df_2 = df_2.reset_index(drop=True)
+    
     map = folium.Map(tiles=None)
     LocateControl(auto_start=False,position="topleft").add_to(map)
     Fullscreen(position="topleft").add_to(map)
@@ -427,18 +436,29 @@ try:
     functie_len = df_2['functie'].unique()
     
     for functie in functie_len:
-        functie_dictionary[functie] = folium.FeatureGroup(name=functie)     
+        functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
+
+    # functie_dictionary["geometry"] = folium.FeatureGroup(name="geometry")
     
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
 
-    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="OpenStreetMap").add_to(map)
-    folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="White").add_to(map)
+    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Streets").add_to(map)
+    folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="Light").add_to(map)
     folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
     
-
+    
     
     folium.LayerControl().add_to(map)    
+
+    
+
+    # folium.GeoJson('geometries/map (6).geojson',
+    #               tooltip=folium.features.GeoJsonTooltip(
+    #      fields=['name'],
+    #      labels=False,
+    #      style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;") 
+    #  )).add_to(functie_dictionary["geometry"])
 
     for i in range(len(df_2)):
 
@@ -452,6 +472,9 @@ try:
 
             elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
                 ICON_SIZE_2 = ICON_SIZE_BAX_EXTRA
+
+            elif (df_2.iloc[i]['sp'] in ['...Andere(n)']):
+                ICON_SIZE_2 = ICON_SIZE_ANDER
 
             else:                
                 ICON_SIZE_2 = ICON_SIZE
@@ -467,17 +490,18 @@ try:
                          ).add_to(fouctie_loop)
                 
 
-        elif df_2.iloc[i]['geometry_type'] == "LineString":
-            # fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-            folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
+        # elif df_2.iloc[i]['geometry_type'] == "LineString":
+        #     # fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+        #     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
         elif df_2.iloc[i]['geometry_type'] == "Polygon":
             html = popup_polygons(i)
             popup = folium.Popup(folium.Html(html, script=True), max_width=300)
             fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-            location = df_2.iloc[i]['coordinates'][0]
-            location = [i[::-1] for i in location]
-            
+            location = df_2.iloc[i]['coordinates']
+            location = ast.literal_eval(location)
+            location = [i[::-1] for i in location[0]]
+                        
             if df_2.iloc[i]['functie']=="Paringsgebied":
                 fill_color="red"
 
@@ -485,13 +509,15 @@ try:
                 fill_color="green"
                 
             folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
-                          popup=popup).add_to(fouctie_loop)
+                          popup=popup
+                          ).add_to(fouctie_loop)
+
+    
 
     output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                          feature_group_to_add=list(functie_dictionary.values()))
         
     try:
-
         try:
             id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
             name = f"{id}"
@@ -500,6 +526,7 @@ try:
             name = f"{id}"
 
         with st.sidebar:
+            #---FOR THE PICTURE---
             try:
                 res = drive.get(name).read()                
                 with st.expander("Zie media"):
@@ -509,7 +536,7 @@ try:
                         st.video(res)
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
-                    
+
                 with st.form("entry_form", clear_on_submit=True,border=False):
                     submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
                     if submitted:
@@ -520,22 +547,23 @@ try:
                         st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄",use_container_width=True)
                             # else:
                             #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
-                            
+             #---FOR THE PICTURE---               
             except:
-                st.info('Geen foto opgeslagen voor deze waarneming')
+                # st.info('Geen foto opgeslagen voor deze waarneming')
 
                 if st.button("Waarneming bijwerken",use_container_width=True):
                     update_item()
+
                 
                 with st.form("entry_form", clear_on_submit=True,border=False):
                     submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
                     if submitted:
-                    # if waarnemer == df_point.set_index("key").loc[id,"waarnemer"]:
-                        db.delete(id)
-                        st.success('Waarneming verwijderd', icon="✅")     
+                        df = conn.read(ttl=0,worksheet="df_observations")
+                        df_filter = df[df["key"]==id]
+                        df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+                        conn.update(worksheet='df_observations',data=df_drop)
+                        st.success('Waarneming verwijderd', icon="✅") 
                         st.page_link("🗺️_Home.py", label="Vernieuwen", icon="🔄",use_container_width=True)
-                            # else:
-                            #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
 
     except:
         st.stop()
