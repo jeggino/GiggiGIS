@@ -127,6 +127,15 @@ def input_data(output):
         verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
         aantal = st.number_input("Aantal", min_value=1)
         datum_2 = None
+
+    elif soortgroup == 'Vogels-Overig':
+    
+        sp = st.selectbox("Soort", BIRD_NAMES_ANDER)
+        gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
+        functie = st.selectbox("Functie", BIRD_FUNCTIE) 
+        verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
+        aantal = st.number_input("Aantal", min_value=1)
+        datum_2 = None
     
     elif soortgroup == 'Vleermuiskast':
         functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
