@@ -113,7 +113,7 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
                                 'vangkooi verwijderd, geen rat gevangen':'icons/rat_cage_noveld_Nogevangen.png'},
                   "Vogels-Overig": {'...Andere(n)': {'geen / onbekend': 'icons/geen_nest.png',
                                              'nestlocatie': 'icons/bird_nest.png',
-                                             'mogelijke nestlocatie': 'icons/mogelijk_nest.png'}}
+                                             'mogelijke nestlocatie': 'icons/mogelijk_nest.png'}}}
 
 DICTIONARY_USERS = {"Luigi": ["Niet gespecificeerd"],
                    "Daan": ["Niet gespecificeerd","Ratten Terschelling"]
