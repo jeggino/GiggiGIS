@@ -73,6 +73,7 @@ ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (245,150)
 ICON_SIZE_BAX_EXTRA = (50,65)
 ICON_SIZE_ANDER = (18,22)
+ICON_SIZE_BIRD = (28,28)
 
 
 # --- FUNCTIONS ---
@@ -472,6 +473,9 @@ try:
 
             elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
                 ICON_SIZE_2 = ICON_SIZE_BAX_EXTRA
+
+            if (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
+                ICON_SIZE_2 = ICON_SIZE_BIRD
 
             elif (df_2.iloc[i]['sp'] in ['...Andere(n)']):
                 ICON_SIZE_2 = ICON_SIZE_ANDER
