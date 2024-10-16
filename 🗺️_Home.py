@@ -473,7 +473,7 @@ try:
             elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
                 ICON_SIZE_2 = ICON_SIZE_BAX_EXTRA
 
-            if (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
+            if (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie",'geen / onbekend']):
                 ICON_SIZE_2 = ICON_SIZE_BIRD
 
             elif (df_2.iloc[i]['sp'] in ['...Andere(n)']):
