@@ -70,7 +70,7 @@ def map(toggle):
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
             position="topright",).add_to(m)
     Fullscreen(position="topleft").add_to(m)
-    if toggle = True:
+    if toggle == True:
         toggle = toggle
         
     LocateControl(auto_start=toggle,position="topleft").add_to(m)
