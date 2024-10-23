@@ -233,9 +233,11 @@ def input_data(output,toggle):
 
                 st.success('Gegevens opgeslagen!', icon="✅")       
                 if toggle == False:
+                    st.write('mobile')
                     st.switch_page("🗺️_Home.py")
                 else:
-                    st.rerun()
+                    st.write('desktop')
+                    # st.rerun()
 
         except:
             st.stop()
