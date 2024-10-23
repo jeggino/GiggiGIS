@@ -22,8 +22,6 @@ st.set_page_config(
     
 )
 
-OUTPUT_width = '95%'
-OUTPUT_height = 550
 
 st.markdown(
     """
@@ -53,6 +51,9 @@ reduce_header_height_style = """
 """ 
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+
+OUTPUT_width = '95%'
+OUTPUT_height = 550
 
 #---DATASET---
 ttl = '10m'
