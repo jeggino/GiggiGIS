@@ -69,10 +69,10 @@ def map():
     else:
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
             position="topright",).add_to(m)
-    Fullscreen(position="topleft").add_to(m)
+    Fullscreen(position="topright").add_to(m)
       
         
-    LocateControl(auto_start=False,position="topleft").add_to(m)
+    LocateControl(auto_start=False,position="topright").add_to(m)
     
 
     
