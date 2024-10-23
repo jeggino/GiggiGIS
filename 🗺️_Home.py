@@ -142,6 +142,10 @@ def logOut():
         st.rerun()
 
 # --- OPTIONS ---
+soortgroup =["📷 Camera", "🪤 Rat val", '𐂺 Vangkooi']
+DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val",'𐂺 Vangkooi':'Vangkooi'}
+choice_opdracht = [DICT_SORTGROUP[item] for item in soortgroup]
+
 VLEERMUISKAST_OPTIONS = ["Bewoond","Onbewoond"]
 
 CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd",
@@ -235,10 +239,6 @@ st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%2
 try:
     
     df_2 = df_point[df_point['project']=="Ratten Terschelling"]
-    soortgroup =["📷 Camera", "🪤 Rat val", '𐂺 Vangkooi']
-    DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val",'𐂺 Vangkooi':'Vangkooi'}
-    choice_opdracht = [DICT_SORTGROUP[item] for item in soortgroup]
-    # df_2 = df_2[df_2['soortgroup'].isin(choice_opdracht)]
     df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
         
     st.sidebar.subheader("Filter op",divider=False)
