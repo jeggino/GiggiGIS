@@ -240,17 +240,6 @@ try:
     choice_opdracht = [DICT_SORTGROUP[item] for item in soortgroup]
     # df_2 = df_2[df_2['soortgroup'].isin(choice_opdracht)]
     df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
-
-    # if soortgroup == "📷 Camera":
-    #     dict_functies_report = {}
-    #     for metric in df_2["functie"].unique():
-    #         dict_functies_report[metric] = len(df_2[df_2["functie"]==metric])
-        
-    #     if st.sidebar.button("**Zie het tijdelijke rapport.**",use_container_width=True):
-    #         report(dict_functies_report['Camera in het veld'],
-    #                dict_functies_report['Camera verwijderd, geen ratten gedetecteerd'],
-    #                dict_functies_report['Verwijderd, ratten gedetecteerd'], )
-
         
     st.sidebar.subheader("Filter op",divider=False)
     d = st.sidebar.date_input(
@@ -266,8 +255,6 @@ try:
 
     st.sidebar.divider()
 
-    
-    
     df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                    else icon_dictionary[x["soortgroup"]][x["functie"]], 
                                    axis=1
@@ -343,25 +330,6 @@ try:
         output_2 = st_folium(map,returned_objects=["last_active_drawing"],
                              width=950, 
                              feature_group_to_add=list(functie_dictionary.values()))
-        
-    # try:
-        
-    #     id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
-    #     name = f"{id}"
-
-    #     with st.sidebar:
-    #         try:
-    #             res = drive.get(name).read()
-    #             with st.expander("📷/📹"):
-    #                 try:
-    #                     st.image(res)
-    #                 except:
-    #                     st.video(res)                            
-    #         except:
-    #             st.info('Geen foto opgeslagen voor deze waarneming')
-
-    # except:
-    #     st.stop()
 
 except:
     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
