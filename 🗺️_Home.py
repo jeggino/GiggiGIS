@@ -22,6 +22,9 @@ st.set_page_config(
     
 )
 
+OUTPUT_width = '95%'
+OUTPUT_height = 600
+
 st.markdown(
     """
     <style>
@@ -329,9 +332,7 @@ try:
     col_1,col_2,col_3 = st.columns([1,11,1],gap="small") 
 
     with col_2:
-        output_2 = st_folium(map,returned_objects=["last_active_drawing"],
-                             width=950, 
-                             feature_group_to_add=list(functie_dictionary.values()))
+        output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=list(functie_dictionary.values()))
 
 except:
     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
