@@ -14,6 +14,14 @@ import ast
 
 
 # ---LAYOUT---
+st.set_page_config(
+    page_title="Ratten Terschelling",
+    initial_sidebar_state="collapsed",
+    page_icon="🐀",
+    layout="wide",
+    
+)
+
 st.markdown(
     """
     <style>
