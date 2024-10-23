@@ -43,8 +43,8 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- DIMENSIONS ---
-OUTPUT_width = 1190
-OUTPUT_height = 450
+OUTPUT_width = '95%'
+OUTPUT_height = '95%'
 
 
     
