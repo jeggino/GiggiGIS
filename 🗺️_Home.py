@@ -386,14 +386,14 @@ IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
 
-#--- NEW ---
-index_project = df_references[df_references['username']==st.session_state.login["name"]]['allow'].values
-if index_project == "No":
-    disable = True
-else:
-    disable = False
-st.sidebar.page_link("✍️_Voeg_een_waarneming_in.py", label="Voeg een waarneming in", icon="✍️", disabled=disable)
-#--- NEW ---
+# #--- NEW ---
+# index_project = df_references[df_references['username']==st.session_state.login["name"]]['allow'].values
+# if index_project == "No":
+#     disable = True
+# else:
+#     disable = False
+# st.sidebar.page_link("✍️_Voeg_een_waarneming_in.py", label="Voeg een waarneming in", icon="✍️", disabled=disable)
+# #--- NEW ---
 
 if "login" not in st.session_state:
     logIn()
