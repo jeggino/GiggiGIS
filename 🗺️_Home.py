@@ -14,20 +14,12 @@ import ast
 
 
 # ---LAYOUT---
-st.set_page_config(
-    page_title="Ratten Terschelling",
-    initial_sidebar_state="collapsed",
-    page_icon="🐀",
-    layout="wide",
-    
-)
-
 st.markdown(
     """
     <style>
     [data-testid="collapsedControl"] svg {
-        height: 8rem;
-        width: 10rem;
+        height: 0rem;
+        width: 0rem;
     }
     </style>
     """,
@@ -36,7 +28,8 @@ st.markdown(
 
 st.markdown("""
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; }
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    </style>
     """,
     unsafe_allow_html=True)
 
@@ -44,12 +37,11 @@ st.markdown("""
 
 reduce_header_height_style = """
 <style>
-    div.block-container {padding-top: 2rem; padding-bottom: 0rem; padding-left: 0rem; padding-right: 0rem; margin-top: 0rem; margin-bottom: 0rem;}
+    div.block-container {padding-top: 1rem; padding-bottom: 0rem; padding-left: 1rem; padding-right: 1rem; margin-top: 0rem; margin-bottom: 0rem;}
 </style>
 """ 
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
-
 
 #---DATASET---
 ttl = '10m'
