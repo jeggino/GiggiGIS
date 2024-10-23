@@ -404,6 +404,15 @@ with st.sidebar:
     logOut()
     st.divider()
 
+#--- NEW ---
+index_project = df_references[df_references['username']==st.session_state.login["name"]]['allow'].values
+if index_project == "No":
+    disable = True
+else:
+    disable = False
+st.sidebar.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="Voeg een waarneming in", icon="✍️", disabled=disable)
+#--- NEW ---
+
 try:
     try:
         if st.session_state.project['project_name'] != 'Admin':
