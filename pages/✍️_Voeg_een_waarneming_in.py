@@ -72,8 +72,11 @@ def map(toggle):
     Fullscreen(position="topleft").add_to(m)
     if toggle == False:
         auto_start = True
+    else:
+        auto_start = False
         
-    LocateControl(auto_start=True,position="topleft").add_to(m)
+        
+    LocateControl(auto_start=auto_start,position="topleft").add_to(m)
     
 
     
