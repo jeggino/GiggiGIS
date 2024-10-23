@@ -232,13 +232,15 @@ def input_data(output,toggle):
                 insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
                 st.success('Gegevens opgeslagen!', icon="✅")       
-                st.rerun()
+                if toggle == False:
+                    st.switch_page("🗺️_Home.py")
+                else:
+                    st.rerun()
 
         except:
             st.stop()
 
-        if toggle == False:
-            st.switch_page("🗺️_Home.py")
+
 
 
     
