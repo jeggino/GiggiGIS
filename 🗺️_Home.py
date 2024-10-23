@@ -23,7 +23,7 @@ st.set_page_config(
 )
 
 OUTPUT_width = '95%'
-OUTPUT_height = 580
+OUTPUT_height = 550
 
 st.markdown(
     """
