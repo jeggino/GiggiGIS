@@ -1,19 +1,18 @@
 import streamlit as st
-from streamlit_js_eval import streamlit_js_eval
+from streamlit_gsheets import GSheetsConnection
+import pandas as pd
+import random
 
 import folium
 from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
-from streamlit_folium import st_folium,folium_static
-
-import pandas as pd
-
+from streamlit_folium import st_folium
 import datetime
 from datetime import datetime, timedelta, date
 import random
 
-from deta import Deta
+import ast
 
-from credencials import *
+from credentials import *
 
 
 # ---LAYOUT---
@@ -54,9 +53,12 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
-deta = Deta(st.secrets["deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
+#---DATASET---
+ttl = '10m'
+ttl_references = '10m'
+conn = st.connection("gsheets", type=GSheetsConnection)
+df_point = conn.read(ttl=ttl,worksheet="df_observations")
+df_references = conn.read(ttl=ttl_references,worksheet="df_users")
 
 
 # --- DIMENSIONS ---
@@ -65,15 +67,6 @@ ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (255,150)
 
 # --- FUNCTIONS ---
-
-    
-def load_dataset():
-    return db.fetch().items
-
-
-
-
-
 def popup_html(row):
     
     i = row
@@ -120,25 +113,6 @@ def popup_html(row):
     """
     return html
 
-@st.dialog(" ")
-def report(a,b,c):
-    st.header(f"""
-    Er staan ​​nog **{a}** camera's in het veld. Er zijn **{b}** camera's verwijderd en er zijn geen ratten gedetecteerd. Het aantal camera's dat is verwijderd en waar wel wat ratten zijn gespot is **{c}**.
-    """)
-
-#______________NEW___________________
-deta = Deta(st.secrets["deta_key_other"])
-db = deta.Base("df_observations")
-drive = deta.Drive("df_pictures")
-db_content = db.fetch().items 
-df_point = pd.DataFrame(db_content)
-
-db_2 = deta.Base("df_authentication")
-db_content_2 = db_2.fetch().items 
-df_references = pd.DataFrame(db_content_2)
-
-
-
 
 def logIn():
     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
@@ -169,13 +143,11 @@ def logOut():
         # del st.session_state.project     
         st.rerun()
 
-        
+
+# --- APP ---
 if "login" not in st.session_state:
     logIn()
     st.stop()
-
-
-
 
 
 
@@ -184,14 +156,11 @@ with st.sidebar:
     st.divider()
 
     
-    
 
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=None)
 
 try:
-    db_content = load_dataset()
-    df_point = pd.DataFrame(db_content)
     
     df_2 = df_point[df_point['project']=="Ratten Terschelling"]
     soortgroup = st.sidebar.multiselect("",("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'),("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'))
