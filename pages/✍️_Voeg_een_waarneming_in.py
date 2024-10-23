@@ -239,9 +239,7 @@ def input_data(output):
     
 
 # --- APP ---  
-try:
-    toggle = st.sidebar.toggle("Desktop version")
-        
+try:        
     IMAGE = "image/logo.png"
     IMAGE_2 ="image/menu.jpg"
     st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
