@@ -235,7 +235,7 @@ st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%2
 try:
     
     df_2 = df_point[df_point['project']=="Ratten Terschelling"]
-    soortgroup = st.sidebar.multiselect("",("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'),("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'))
+    # soortgroup = st.sidebar.multiselect("",("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'),("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'))
     DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val",'𐂺 Vangkooi':'Vangkooi'}
     choice_opdracht = [DICT_SORTGROUP[item] for item in soortgroup]
     # df_2 = df_2[df_2['soortgroup'].isin(choice_opdracht)]
