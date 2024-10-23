@@ -70,10 +70,10 @@ def map(toggle):
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
             position="topright",).add_to(m)
     Fullscreen(position="topleft").add_to(m)
-    if toggle == True:
-        toggle = toggle
+    if toggle == False:
+        auto_start = True
         
-    LocateControl(auto_start=toggle,position="topleft").add_to(m)
+    LocateControl(auto_start=True,position="topleft").add_to(m)
     
 
     
@@ -234,8 +234,8 @@ def input_data(output,toggle):
         except:
             st.stop()
 
-        if toggle == True:
-            st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
+        if toggle == False:
+            st.switch_page("🗺️_Home.py")
 
 
     
