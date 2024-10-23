@@ -234,7 +234,7 @@ def input_data(output,toggle):
         except:
             st.stop()
 
-        if toggle = True:
+        if toggle == True:
             st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
 
 
