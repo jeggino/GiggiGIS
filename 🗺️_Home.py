@@ -166,18 +166,18 @@ try:
     soortgroup = st.sidebar.multiselect("",("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'),("📷 Camera", "🪤 Rat val", '𐂺 Vangkooi'))
     DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val",'𐂺 Vangkooi':'Vangkooi'}
     choice_opdracht = [DICT_SORTGROUP[item] for item in soortgroup]
-    df_2 = df_2[df_2['soortgroup'].isin(choice_opdracht)]
+    # df_2 = df_2[df_2['soortgroup'].isin(choice_opdracht)]
     df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
-    if soortgroup == "📷 Camera":
-        dict_functies_report = {}
-        for metric in df_2["functie"].unique():
-            dict_functies_report[metric] = len(df_2[df_2["functie"]==metric])
+    # if soortgroup == "📷 Camera":
+    #     dict_functies_report = {}
+    #     for metric in df_2["functie"].unique():
+    #         dict_functies_report[metric] = len(df_2[df_2["functie"]==metric])
         
-        if st.sidebar.button("**Zie het tijdelijke rapport.**",use_container_width=True):
-            report(dict_functies_report['Camera in het veld'],
-                   dict_functies_report['Camera verwijderd, geen ratten gedetecteerd'],
-                   dict_functies_report['Verwijderd, ratten gedetecteerd'], )
+    #     if st.sidebar.button("**Zie het tijdelijke rapport.**",use_container_width=True):
+    #         report(dict_functies_report['Camera in het veld'],
+    #                dict_functies_report['Camera verwijderd, geen ratten gedetecteerd'],
+    #                dict_functies_report['Verwijderd, ratten gedetecteerd'], )
 
         
     st.sidebar.subheader("Filter op",divider=False)
@@ -201,8 +201,8 @@ try:
                                    axis=1
                      )
     
-    map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=11,)
-    LocateControl(auto_start=False).add_to(map)
+    map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=11)
+    LocateControl(auto_start=True).add_to(map)
     Fullscreen().add_to(map)
     
     functie_dictionary = {}
@@ -272,24 +272,24 @@ try:
                              width=950, 
                              feature_group_to_add=list(functie_dictionary.values()))
         
-    try:
+    # try:
         
-        id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
-        name = f"{id}"
+    #     id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
+    #     name = f"{id}"
 
-        with st.sidebar:
-            try:
-                res = drive.get(name).read()
-                with st.expander("📷/📹"):
-                    try:
-                        st.image(res)
-                    except:
-                        st.video(res)                            
-            except:
-                st.info('Geen foto opgeslagen voor deze waarneming')
+    #     with st.sidebar:
+    #         try:
+    #             res = drive.get(name).read()
+    #             with st.expander("📷/📹"):
+    #                 try:
+    #                     st.image(res)
+    #                 except:
+    #                     st.video(res)                            
+    #         except:
+    #             st.info('Geen foto opgeslagen voor deze waarneming')
 
-    except:
-        st.stop()
+    # except:
+    #     st.stop()
 
 except:
     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
