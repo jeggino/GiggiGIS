@@ -1,15 +1,4 @@
-# --- COSTANTS ---
-
-GROUP = ["🦇 Vleermuizen","🪶 Vogels",  "🏠 Vleermuiskast",
-         "📷 Camera", "🐀 Rat val", '𐂺 Vangkooi']
-
-GROUP_DICT = {"🪶 Vogels":"Vogels",
-              "🦇 Vleermuizen":"Vleermuizen", 
-              "🏠 Vleermuiskast":"Vleermuiskast",
-              "📷 Camera":"Camera",
-             "🐀 Rat val":"Rat val",
-              '𐂺 Vangkooi':'Vangkooi'}
-
+# --- OPTIONS ---
 VLEERMUISKAST_OPTIONS = ["Bewoond","Onbewoond"]
 
 CAMERA_OPTIONS = ["Camera in het veld","Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd",
@@ -53,7 +42,7 @@ BIRD_VERBLIJF = ['geen / onbekend', 'dakgoot', 'kantpan', 'zonnepaneel', 'nokpan
 
 VLEERMUISKAST_VERBLIJF = ["Op boom", "Op gebouw"]
 
-
+# --- ICONS DICTIONARY ---
 icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png',
                                              'nestlocatie': 'icons/swift_nest.png',
                                              'mogelijke nestlocatie': 'icons/swift_mogelijk_nest.png'},
@@ -84,10 +73,3 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
                                 'vangkooi verwijderd, rat gevangen':'icons/rat_cage_noveld_gevangen.png',
                                 'vangkooi verwijderd, geen rat gevangen':'icons/rat_cage_noveld_Nogevangen.png'}}
 
-DICTIONARY_USERS = {"Luigi": ["Niet gespecificeerd"],
-                   "Daan": ["Niet gespecificeerd","Ratten Terschelling"]
-                   }
-
-DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen","Vleermuiskast"],
-                      "Ratten Terschelling":["Camera","Rat val",'Vangkooi'],
-                      "Admin":["Vogels","Vleermuizen","Vleermuiskast","Camera","Rat val",'Vangkooi']}
