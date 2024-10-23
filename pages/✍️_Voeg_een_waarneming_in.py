@@ -59,7 +59,7 @@ def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,fun
     
     return conn.update(worksheet="df_observations",data=df_updated)      
   
-def map(toggle):
+def map():
     
     m = folium.Map()
     if st.session_state.project['opdracht'] == 'Vleermuizen':
@@ -70,13 +70,9 @@ def map(toggle):
         Draw(draw_options={'circle': False,'rectangle': False,'circlemarker': False, 'polyline': False, 'polygon': False},
             position="topright",).add_to(m)
     Fullscreen(position="topleft").add_to(m)
-    if toggle == False:
-        auto_start = True
-    else:
-        auto_start = False
+      
         
-        
-    LocateControl(auto_start=auto_start,position="topleft").add_to(m)
+    LocateControl(auto_start=False,position="topleft").add_to(m)
     
 
     
@@ -87,7 +83,7 @@ def map(toggle):
 
         
 @st.dialog(" ")
-def input_data(output,toggle):
+def input_data(output):
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
@@ -232,8 +228,6 @@ def input_data(output,toggle):
                 insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
 
                 st.success('Gegevens opgeslagen!', icon="✅")       
-                if toggle == False:
-                    st.rerun()
                 st.switch_page("🗺️_Home.py")
                 
         except:
@@ -259,11 +253,11 @@ try:
     df_old = conn.read(ttl=0,worksheet="df_observations")
 
         
-    output_map = map(toggle)
+    output_map = map()
     
     try:
         if len(output_map["features"]) != 0:
-            input_data(output_map,toggle)
+            input_data(output_map,)
     except:
         st.stop()
     
