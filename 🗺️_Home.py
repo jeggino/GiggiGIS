@@ -59,8 +59,8 @@ OUTPUT_height = 550
 ttl = '10m'
 ttl_references = '10m'
 conn = st.connection("gsheets", type=GSheetsConnection)
-df_point = conn.read(ttl=ttl,worksheet="df_observations")
-df_references = conn.read(ttl=ttl_references,worksheet="df_users")
+df_point = conn.read(ttl=ttl,worksheet="ratten-terschelling")
+df_references = conn.read(ttl=ttl_references,worksheet="users-ratten_terschelling")
 
 
 # --- DIMENSIONS ---
