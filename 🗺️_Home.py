@@ -317,7 +317,7 @@ def project():
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
     on = st.toggle("Mobile version")
     if st.button("begin"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':auto_start}
+         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on}
          st.rerun()
         
 def logOut():
