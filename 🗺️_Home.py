@@ -394,7 +394,7 @@ try:
     
     df_2 = df_2.reset_index(drop=True)
     map = folium.Map(tiles=None)
-    LocateControl(auto_start=st.session_state.project['project_name'],position="topright").add_to(map)
+    LocateControl(auto_start=st.session_state.project['auto_start'],position="topright").add_to(map)
     Fullscreen(position="topright").add_to(map)
     
     functie_dictionary = {}
