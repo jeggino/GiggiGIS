@@ -15,7 +15,7 @@ import ast
 
 # ---LAYOUT---
 st.set_page_config(
-    page_title="Ratten Terschelling",
+    page_title="Ratten Terschelling - Dashboard",
     initial_sidebar_state="collapsed",
     page_icon="🐀",
     layout="wide",
