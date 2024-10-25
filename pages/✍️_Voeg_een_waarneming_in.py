@@ -217,13 +217,13 @@ def input_data(output):
                     st.stop()
     
                 else:
-                    placeholder = st.empty()
-                    placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
+                    # placeholder = st.empty()
+                    # placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
                     if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1"):
                         insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
                         st.success('Gegevens opgeslagen!', icon="✅") 
-                        # if st.session_state.project['auto_start']:
-                        #     st.switch_page("🗺️_Home.py")                  
+                        if st.session_state.project['auto_start']:
+                            st.switch_page("🗺️_Home.py")                  
             except:
                 st.stop()
 
