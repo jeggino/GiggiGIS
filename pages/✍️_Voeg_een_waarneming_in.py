@@ -224,8 +224,8 @@ def input_data(output):
                     st.success('Gegevens opgeslagen!', icon="✅") 
                     if st.session_state.project['auto_start']:
                         st.switch_page("🗺️_Home.py")                  
-            except:
-                st.stop()
+        except:
+            st.stop()
 
 
 
