@@ -70,10 +70,8 @@ OUTPUT_height = 550
 ICON_SIZE = (20,20)
 
 ICON_SIZE_huismus = (28,28)
-ICON_SIZE_rat_maybe = (245,150)
-# ICON_SIZE_BAX_EXTRA = (50,65)
-ICON_SIZE_BAX_EXTRA = (60,20)
-ICON_SIZE_ANDER = (18,22)
+ICON_SIZE_BAt_EXTRA = (60,25)
+ICON_SIZE_RUIGE = (18,22)
 ICON_SIZE_BIRD = (155,60)
 
 
@@ -418,16 +416,19 @@ try:
                 ICON_SIZE_2 = ICON_SIZE_huismus
 
 
-            elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
+            elif (df_2.iloc[i]['sp'] in ['Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
                 ICON_SIZE_2 = ICON_SIZE_BAX_EXTRA
 
-            elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie",'geen / onbekend']):
+            elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis']):
+                ICON_SIZE_2 = ICON_SIZE_RUIGE
+
+            elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] in BIRD_FUNCTIE):
                 ICON_SIZE_2 = ICON_SIZE_BIRD
 
-            elif (df_2.iloc[i]['sp'] in ['...Andere(n)']) & (df_2.iloc[i]['functie'] not in ["mogelijke nestlocatie","nestlocatie",'geen / onbekend']):
+            elif (df_2.iloc[i]['sp'] in ['...Andere(n)']) & (df_2.iloc[i]['functie'] in BAT_FUNCTIE):
                 ICON_SIZE_2 = ICON_SIZE_ANDER
 
-            else:                
+            else:             
                 ICON_SIZE_2 = ICON_SIZE
                 
 
