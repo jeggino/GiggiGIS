@@ -425,7 +425,7 @@ try:
             elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] in BIRD_FUNCTIE):
                 ICON_SIZE_2 = ICON_SIZE_BIRD
 
-            elif (df_2.iloc[i]['sp'] in ['...Andere(n)']) & (df_2.iloc[i]['functie'] in BAT_FUNCTIE):
+            elif (df_2.iloc[i]['sp'] == '...Andere(n)') & (df_2.iloc[i]['functie'] in BAT_FUNCTIE):
                 ICON_SIZE_2 = ICON_SIZE_ANDER
 
             else:             
