@@ -402,9 +402,10 @@ try:
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
 
-    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Streets").add_to(map)
-    folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="Light").add_to(map)
-    folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
+    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(map)
+    folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
+    folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
+    folium.LayerControl().add_to(map)
       
     folium.LayerControl().add_to(map)    
 
