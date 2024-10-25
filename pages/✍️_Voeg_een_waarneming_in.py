@@ -222,7 +222,12 @@ def input_data(output):
                 else:
     
                     insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
-                    st.success('Gegevens opgeslagen!', icon="✅")  
+                    st.success('Gegevens opgeslagen!', icon="✅") 
+                    if st.session_state.project['auto_start']:
+                        st.write('mobile')
+
+                    else:
+                        st.write('piscione')
                     
                     st.switch_page("🗺️_Home.py")
                     
