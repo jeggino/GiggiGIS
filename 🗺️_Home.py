@@ -69,7 +69,7 @@ ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (255,150)
 
 # --- FUNCTIONS ---
-def popup_html(row):
+def popup_html(row,df_2):
     
     i = row
 
