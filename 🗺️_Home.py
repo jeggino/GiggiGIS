@@ -242,7 +242,7 @@ st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%2
 
 try:
     
-    df_2 = df_point[df_point['project']=="Ratten Terschelling"]
+    df_2 = df_point
     df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
         
     st.sidebar.subheader("Filter op",divider=False)
