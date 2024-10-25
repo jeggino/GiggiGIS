@@ -224,6 +224,7 @@ def input_data(output):
                     if st.session_state.project['auto_start']:
                         st.switch_page("🗺️_Home.py")                  
         except:
+            st.error('error')
             st.stop()
 
 
