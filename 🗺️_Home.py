@@ -26,7 +26,7 @@ st.set_page_config(
 )
 
 #---DATASET---
-ttl = '10m'
+ttl = 0
 ttl_references = '10m'
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_point = conn.read(ttl=ttl,worksheet="df_observations")
@@ -233,8 +233,6 @@ def update_item():
         gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS) 
         functie = st.selectbox("Functie", BAT_FUNCTIE)
         verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-    aantal = st.number_input("Aantal", min_value=1)
-    datum_2 = None
 
   elif st.session_state.project['opdracht'] == 'Vogels':
   
@@ -242,8 +240,6 @@ def update_item():
     gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
     functie = st.selectbox("Functie", BIRD_FUNCTIE) 
     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-    aantal = st.number_input("Aantal", min_value=1)
-    datum_2 = None
 
   elif st.session_state.project['opdracht'] == 'Vogels-Overig':
   
@@ -251,8 +247,6 @@ def update_item():
     gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
     functie = st.selectbox("Functie", BIRD_FUNCTIE) 
     verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-    aantal = st.number_input("Aantal", min_value=1)
-    datum_2 = None
   
   elif st.session_state.project['opdracht'] == 'Vleermuiskast':
     
@@ -261,51 +255,8 @@ def update_item():
     sp = st.selectbox("Soort", bat_names) 
     gedrag = None
     verblijf = None
-    aantal = st.number_input("Aantal", min_value=1)
-    datum_2 = None
-  
-  elif st.session_state.project['opdracht'] == 'Camera':
     
-    functie = st.selectbox("Camera", CAMERA_OPTIONS)
-    
-    if functie in ["Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]:
-      datum_2 = st.date_input("Datum camera verwijderd","today")
-    else:
-      datum_2 = None
-      
-    sp = None 
-    gedrag = None
-    verblijf = None
-    aantal = st.number_input("Aantal", min_value=1)
-  
-  elif st.session_state.project['opdracht'] == 'Rat val':
-    
-    functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
-
-    if functie in ['Schietval verwijderd, geen rat gedood','Schietval verwijderd, rat gedood']:
-      datum_2 = st.date_input("Datum Val verwijderd","today")
-    else:
-      datum_2 = None
-      
-    sp = None 
-    gedrag = None
-    verblijf = None
-    aantal = st.number_input("Aantal", min_value=1)
-
-  elif st.session_state.project['opdracht'] == 'Vangkooi':
-    
-    functie = st.selectbox("Rat vangkooi", RAT_VANGKOOI_OPTIONS)
-
-    if functie in ['vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']:
-      datum_2 = st.date_input("Datum vangkooi verwijderd","today")
-    else:
-      datum_2 = None
-      
-    sp = None 
-    gedrag = None
-    verblijf = None
-    aantal = st.number_input("Aantal", min_value=1)
-
+  aantal = st.number_input("Aantal", min_value=0)    
   opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
   if st.button("**Update**",use_container_width=True):
@@ -325,7 +276,7 @@ def update_item():
     conn.update(worksheet='df_observations',data=df_drop)
     df = conn.read(ttl=0,worksheet="df_observations")
       
-    data = [{"key":id_key, "waarnemer":id_waarnemer,"datum":str(datum),"datum_2":str(datum_2),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
+    data = [{"key":id_key, "waarnemer":id_waarnemer,"datum":str(datum),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}]
       
@@ -466,13 +417,11 @@ try:
             if (df_2.iloc[i]['sp']=="Huismus") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
                 ICON_SIZE_2 = ICON_SIZE_huismus
 
-            elif df_2.iloc[i]['functie'] == "Waarneming rat doorgegeven, geen actie op ondernomen":
-                ICON_SIZE_2 = ICON_SIZE_rat_maybe
 
             elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
                 ICON_SIZE_2 = ICON_SIZE_BAX_EXTRA
 
-            if (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie",'geen / onbekend']):
+            elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie",'geen / onbekend']):
                 ICON_SIZE_2 = ICON_SIZE_BIRD
 
             elif (df_2.iloc[i]['sp'] in ['...Andere(n)']):
@@ -511,57 +460,29 @@ try:
 
     
 
-    output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
+    output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                          feature_group_to_add=list(functie_dictionary.values()))
         
     try:
         try:
-            id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][1])
+            id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
             name = f"{id}"
         except:
-            id = str(output_2["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output_2["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+            id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
             name = f"{id}"
 
         with st.sidebar:
-            #---FOR THE PICTURE---
-            try:
-                res = drive.get(name).read()                
-                with st.expander("Zie media"):
-                    try:
-                        st.image(res)
-                    except:
-                        st.video(res)
-                if st.button("Waarneming bijwerken",use_container_width=True):
-                    update_item()
-
-                with st.form("entry_form", clear_on_submit=True,border=False):
-                    submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-                    if submitted:
-                        # if waarnemer ==  df_point.set_index("key").loc[id,"waarnemer"]:
-                        db.delete(id)
-                        drive.delete(name)
-                        st.success('Waarneming verwijderd', icon="✅")
-                        st.page_link("🗺️_Home.py", label="vernieuwen", icon="🔄",use_container_width=True)
-                            # else:
-                            #     st.warning('Je kunt deze observatie niet uitwissen. Een andere gebruiker heeft het gemarkeerd.', icon="⚠️")
-             #---FOR THE PICTURE---               
-            except:
-                # st.info('Geen foto opgeslagen voor deze waarneming')
-
-                if st.button("Waarneming bijwerken",use_container_width=True):
-                    update_item()
-
-                
-                with st.form("entry_form", clear_on_submit=True,border=False):
-                    submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-                    if submitted:
-                        df = conn.read(ttl=0,worksheet="df_observations")
-                        df_filter = df[df["key"]==id]
-                        df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
-                        conn.update(worksheet='df_observations',data=df_drop)
-                        st.success('Waarneming verwijderd', icon="✅") 
-                        st.page_link("🗺️_Home.py", label="Vernieuwen", icon="🔄",use_container_width=True)
-
+            if st.button("Waarneming bijwerken",use_container_width=True):
+                update_item()
+            with st.form("entry_form", clear_on_submit=True,border=False):
+                submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
+                if submitted:
+                    df = conn.read(ttl=0,worksheet="df_observations")
+                    df_filter = df[df["key"]==id]
+                    df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+                    conn.update(worksheet='df_observations',data=df_drop)
+                    st.success('Waarneming verwijderd', icon="✅") 
+                    st.page_link("🗺️_Home.py", label="Vernieuwen", icon="🔄",use_container_width=True)
     except:
         st.stop()
 
