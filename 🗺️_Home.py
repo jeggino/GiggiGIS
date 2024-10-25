@@ -336,6 +336,7 @@ IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
 
+on = st.toggle("Desktop version")
 
 if "login" not in st.session_state:
     logIn()
@@ -394,7 +395,11 @@ try:
     
     df_2 = df_2.reset_index(drop=True)
     map = folium.Map(tiles=None)
-    LocateControl(auto_start=False,position="topright").add_to(map)
+    if on:
+        auto_start = False
+    else:
+        auto_start = True
+    LocateControl(auto_start=auto_start,position="topright").add_to(map)
     Fullscreen(position="topright").add_to(map)
     
     functie_dictionary = {}
