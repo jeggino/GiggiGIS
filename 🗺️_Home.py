@@ -315,8 +315,9 @@ def project():
     project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
+    on = st.toggle("Mobile version")
     if st.button("begin"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht}
+         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':auto_start}
          st.rerun()
         
 def logOut():
@@ -335,8 +336,6 @@ def logOut_project():
 IMAGE = "image/logo.png"
 IMAGE_2 ="image/menu.jpg"
 st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
-
-on = st.toggle("Desktop version")
 
 if "login" not in st.session_state:
     logIn()
@@ -395,11 +394,7 @@ try:
     
     df_2 = df_2.reset_index(drop=True)
     map = folium.Map(tiles=None)
-    if on:
-        auto_start = False
-    else:
-        auto_start = True
-    LocateControl(auto_start=auto_start,position="topright").add_to(map)
+    LocateControl(auto_start=st.session_state.project['project_name'],position="topright").add_to(map)
     Fullscreen(position="topright").add_to(map)
     
     functie_dictionary = {}
