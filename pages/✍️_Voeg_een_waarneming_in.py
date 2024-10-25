@@ -49,7 +49,7 @@ OUTPUT_height = 550
 
     
 # --- FUNCTIONS ---
-def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project):
+def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old):
     
     data = [{"key":key, "waarnemer":waarnemer,"datum":datum,"datum_2":datum_2,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
@@ -219,7 +219,7 @@ def input_data(output):
                 # placeholder = st.empty()
                 # placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
                 if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
-                    insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
+                    insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
                     st.success('Gegevens opgeslagen!', icon="✅") 
                     if st.session_state.project['auto_start']:
                         st.switch_page("🗺️_Home.py")                  
