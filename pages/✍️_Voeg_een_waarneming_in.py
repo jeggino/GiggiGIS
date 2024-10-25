@@ -249,8 +249,7 @@ try:
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map,df_old)
-            if st.session_state.project['auto_start']:
-                st.switch_page("🗺️_Home.py")
+            st.switch_page("🗺️_Home.py")
     except:
         st.stop()
     
