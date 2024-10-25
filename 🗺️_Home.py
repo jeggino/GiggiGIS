@@ -65,7 +65,7 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 
 # --- DIMENSIONS ---
-OUTPUT_width = '95%'
+OUTPUT_width = '85%'
 OUTPUT_height = 550
 ICON_SIZE = (20,20)
 
