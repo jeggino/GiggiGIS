@@ -224,7 +224,7 @@ def input_data(output):
                     insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
                     st.success('Gegevens opgeslagen!', icon="✅")  
                     
-                st.switch_page("🗺️_Home.py")
+                    st.switch_page("🗺️_Home.py")
                     
             except:
                 st.stop()
@@ -248,6 +248,7 @@ try:
 
         
     output_map = map()
+    output_map
     
     try:
         if len(output_map["features"]) != 0:
