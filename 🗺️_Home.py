@@ -357,9 +357,12 @@ with st.sidebar:
 try:
     
     try:
-        if st.session_state.project['project_name'] != 'Admin':
+        if st.session_state.project['project_name'] not in ['Admin','Overig']:
             df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
             df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
+
+        if st.session_state.project['project_name'] =='Overig':
+            df_2 = df_point[df_point['project']!='Admin']
     
         else:
             df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
