@@ -80,7 +80,7 @@ def map(auto_start):
 
         
 @st.dialog(" ")
-def input_data(output):
+def input_data(output,df_old):
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
@@ -249,7 +249,7 @@ try:
     
     try:
         if len(output_map["features"]) != 0:
-            input_data(output_map,)
+            input_data(output_map,df_old)
     except:
         st.stop()
     
