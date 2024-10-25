@@ -313,7 +313,7 @@ for i in range(len(df_2)):
             
 
 output = st_folium(map,
-                   returned_objects=None,
+                   returned_objects=["all_drawings"],
                    width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=list(functie_dictionary.values()))
 
 # except:
