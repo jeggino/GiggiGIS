@@ -70,7 +70,7 @@ OUTPUT_height = 550
 ICON_SIZE = (20,20)
 
 ICON_SIZE_huismus = (28,28)
-ICON_SIZE_BAt_EXTRA = (60,25)
+ICON_SIZE_BAT_EXTRA = (60,25)
 ICON_SIZE_RUIGE = (18,22)
 ICON_SIZE_BIRD = (155,60)
 
@@ -417,7 +417,7 @@ try:
 
 
             elif (df_2.iloc[i]['sp'] in ['Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
-                ICON_SIZE_2 = ICON_SIZE_BAX_EXTRA
+                ICON_SIZE_2 = ICON_SIZE_BAT_EXTRA
 
             elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis']):
                 ICON_SIZE_2 = ICON_SIZE_RUIGE
