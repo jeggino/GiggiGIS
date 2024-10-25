@@ -192,7 +192,7 @@ def input_data(output):
 
     with st.form("my_form"):
         # submitted = st.button("**Gegevens opslaan**",use_container_width=True)
-        submitted = st.form_submit_button("**Gegevens opslaan**",use_container_width=True,key='but_2')
+        submitted = st.form_submit_button("**Gegevens opslaan**",use_container_width=True)
         if submitted:           
     
             try:
