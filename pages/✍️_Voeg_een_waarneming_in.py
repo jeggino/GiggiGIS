@@ -200,7 +200,7 @@ try:
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map,df_old)
-            # st.switch_page("🗺️_Home.py")
+            st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
     except:
         st.stop()
     
