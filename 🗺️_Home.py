@@ -256,9 +256,8 @@ df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"
                                else icon_dictionary[x["soortgroup"]][x["functie"]], 
                                axis=1
                  )
-
 map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=11,tiles=None)
-LocateControl(auto_start=True).add_to(map)
+LocateControl(auto_start=False).add_to(map)
 Fullscreen().add_to(map)
 
 functie_dictionary = {}
@@ -296,37 +295,26 @@ GroupedLayerControl(
 
 for i in range(len(df_2)):
 
-    if df_2.iloc[i]['geometry_type'] == "Point":
+    if df_2.iloc[i]['functie'] == "Waarneming rat doorgegeven, geen actie op ondernomen":
+        ICON_SIZE_2 = ICON_SIZE_rat_maybe
 
-        if (df_2.iloc[i]['sp']=="Huismus") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
-            ICON_SIZE_2 = ICON_SIZE_huismus
+    else:
+        ICON_SIZE_2 = ICON_SIZE
+        
 
-        elif df_2.iloc[i]['functie'] == "Waarneming rat doorgegeven, geen actie op ondernomen":
-            ICON_SIZE_2 = ICON_SIZE_rat_maybe
+    html = popup_html(i,df_2)
+    popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+    fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
 
-        else:
-            ICON_SIZE_2 = ICON_SIZE
+    folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                  popup=popup,
+                  icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
+                 ).add_to(fouctie_loop)
             
 
-        html = popup_html(i)
-        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-        fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-
-        folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                      popup=popup,
-                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
-                     ).add_to(fouctie_loop)
-            
-
-    elif df_2.iloc[i]['geometry_type'] == "LineString":
-
-        folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(fg)
-
-    
-col_1,col_2,col_3 = st.columns([1,11,1],gap="small") 
-
-with col_2:
-    output_2 = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=list(functie_dictionary.values()))
+output = st_folium(map,
+                   returned_objects=["last_object_clicked"],
+                   width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=list(functie_dictionary.values()))
 
 # except:
 #     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
