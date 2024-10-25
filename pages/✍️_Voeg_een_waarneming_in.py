@@ -190,48 +190,44 @@ def input_data(output):
         aantal = st.number_input("Aantal", min_value=1)
     
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-
-    # with st.expander("Upload een foto"):
-    #     uploaded_file = st.file_uploader("")
     
     st.divider()
-        
-    submitted = st.button("**Gegevens opslaan**",use_container_width=True)
+
+    with st.form("my_form"):
+        # submitted = st.button("**Gegevens opslaan**",use_container_width=True)
+        submitted = st.form_submit_button("**Gegevens opslaan**",use_container_width=True)
+        if submitted:           
     
-    if submitted:           
-
-        try:
-
-            # geometry_type = output["features"][0]["geometry"]["type"]
-            coordinates = output["features"][0]["geometry"]["coordinates"] 
-            
-            if geometry_type in ["LineString",'Polygon']:
-
-                lng = coordinates[0][0][0]
-                lat = coordinates[0][0][1]
-                key = str(lng)+str(lat)
-            
-            else: 
+            try:
+                coordinates = output["features"][0]["geometry"]["coordinates"] 
                 
-                lng = coordinates[0]
-                lat = coordinates[1]
-                coordinates = None
+                if geometry_type in ["LineString",'Polygon']:
+    
+                    lng = coordinates[0][0][0]
+                    lat = coordinates[0][0][1]
+                    key = str(lng)+str(lat)
                 
-                key = str(lng)+str(lat)
-
-            if len(output["features"]) > 1:
-                st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
+                else: 
+                    
+                    lng = coordinates[0]
+                    lat = coordinates[1]
+                    coordinates = None
+                    
+                    key = str(lng)+str(lat)
+    
+                if len(output["features"]) > 1:
+                    st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
+                    st.stop()
+    
+                else:
+    
+                    insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
+    
+                    # st.success('Gegevens opgeslagen!', icon="✅")       
+                st.switch_page("🗺️_Home.py")
+                    
+            except:
                 st.stop()
-
-            else:
-
-                insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project)
-
-                # st.success('Gegevens opgeslagen!', icon="✅")       
-            st.switch_page("🗺️_Home.py")
-                
-        except:
-            st.stop()
 
 
 
