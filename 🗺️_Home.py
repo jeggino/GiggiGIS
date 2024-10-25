@@ -72,7 +72,7 @@ ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (245,150)
 # ICON_SIZE_BAX_EXTRA = (50,65)
-ICON_SIZE_BAX_EXTRA = (60,60)
+ICON_SIZE_BAX_EXTRA = (160,160)
 ICON_SIZE_ANDER = (18,22)
 ICON_SIZE_BIRD = (155,60)
 
@@ -406,6 +406,7 @@ with st.sidebar:
     st.divider()
 
 try:
+    
     try:
         if st.session_state.project['project_name'] != 'Admin':
             df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
@@ -422,6 +423,7 @@ try:
         d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
         
         df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
+        
     except:
         pass
         
@@ -447,8 +449,6 @@ try:
     
     for functie in functie_len:
         functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
-
-    # functie_dictionary["geometry"] = folium.FeatureGroup(name="geometry")
     
     for feature_group in functie_dictionary.keys():
         map.add_child(functie_dictionary[feature_group])
@@ -456,19 +456,8 @@ try:
     folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Streets").add_to(map)
     folium.TileLayer(tiles="Cartodb Positron",overlay=False,show=False,name="Light").add_to(map)
     folium.TileLayer('Cartodb dark_matter',overlay=False,show=False,name="Dark").add_to(map)
-    
-    
-    
+      
     folium.LayerControl().add_to(map)    
-
-    
-
-    # folium.GeoJson('geometries/map (6).geojson',
-    #               tooltip=folium.features.GeoJsonTooltip(
-    #      fields=['name'],
-    #      labels=False,
-    #      style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;") 
-    #  )).add_to(functie_dictionary["geometry"])
 
     for i in range(len(df_2)):
 
@@ -501,11 +490,6 @@ try:
                           popup=popup,
                           icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
                          ).add_to(fouctie_loop)
-                
-
-        # elif df_2.iloc[i]['geometry_type'] == "LineString":
-        #     # fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-        #     folium.PolyLine(df_2.iloc[i]['coordinates']).add_to(map)
 
         elif df_2.iloc[i]['geometry_type'] == "Polygon":
             html = popup_polygons(i)
