@@ -423,7 +423,7 @@ try:
             elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis']):
                 ICON_SIZE_2 = ICON_SIZE_RUIGE
 
-            elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['functie'] == 'Vogels-Overig'):
+            elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['soortgroup'] == 'Vogels-Overig'):
                 ICON_SIZE_2 = ICON_SIZE_BIRD
 
             elif (df_2.iloc[i]['sp'] == '...Andere(n)') & (df_2.iloc[i]['soortgroup'] == 'Vleermuizen'):
