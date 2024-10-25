@@ -49,9 +49,9 @@ OUTPUT_height = 550
 
     
 # --- FUNCTIONS ---
-def insert_json(key,waarnemer,datum,datum_2,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old):
     
-    data = [{"key":key, "waarnemer":waarnemer,"datum":datum,"datum_2":datum_2,"time":time,"soortgroup":soortgroup, "aantal":aantal,
+    data = [{"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}]
     df_new = pd.DataFrame(data)
@@ -114,18 +114,13 @@ def input_data(output,df_old):
             gedrag = st.selectbox("Gedrag", BAT_BEHAVIOURS)
             functie = st.selectbox("Functie", BAT_FUNCTIE) 
             verblijf = st.selectbox("Verblijf", BAT_VERBLIJF) 
-            
-        aantal = st.number_input("Aantal", min_value=1)
-        datum_2 = None
-    
+                
     elif soortgroup == 'Vogels':
     
         sp = st.selectbox("Soort", BIRD_NAMES)
         gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
         functie = st.selectbox("Functie", BIRD_FUNCTIE) 
         verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-        aantal = st.number_input("Aantal", min_value=1)
-        datum_2 = None
 
     elif soortgroup == 'Vogels-Overig':
     
@@ -133,59 +128,15 @@ def input_data(output,df_old):
         gedrag = st.selectbox("Gedrag", BIRD_BEHAVIOURS) 
         functie = st.selectbox("Functie", BIRD_FUNCTIE) 
         verblijf = st.selectbox("Verblijf", BIRD_VERBLIJF) 
-        aantal = st.number_input("Aantal", min_value=1)
-        datum_2 = None
     
     elif soortgroup == 'Vleermuiskast':
         functie = st.selectbox("Voorwaarde", VLEERMUISKAST_OPTIONS)
         bat_names = ["onbekend"] + BAT_NAMES
         sp = st.selectbox("Soort", bat_names) 
         gedrag = None
-        verblijf = None
-        aantal = st.number_input("Aantal", min_value=1)
-        datum_2 = None
-    
-    elif soortgroup == 'Camera':
-        functie = st.selectbox("Camera", CAMERA_OPTIONS)
-        
-        if functie in ["Verwijderd, ratten gedetecteerd","Camera verwijderd, geen ratten gedetecteerd"]:
-          datum_2 = st.date_input("Datum camera verwijderd","today")
-        else:
-          datum_2 = None
-            
-        sp = None 
-        gedrag = None
-        verblijf = None
-        aantal = st.number_input("Aantal", min_value=1)
-    
-    elif st.session_state.project['opdracht'] == 'Vangkooi':
-    
-        functie = st.selectbox("Rat vangkooi", RAT_VANGKOOI_OPTIONS)
-    
-        if functie in ['vangkooi verwijderd, rat gevangen','vangkooi verwijderd, geen rat gevangen']:
-          datum_2 = st.date_input("Datum vangkooi verwijderd","today")
-        else:
-          datum_2 = None
-          
-        sp = None 
-        gedrag = None
-        verblijf = None
-        aantal = st.number_input("Aantal", min_value=1)
+        verblijf = None     
 
-    elif st.session_state.project['opdracht'] == 'Rat val':
-    
-        functie = st.selectbox("Rat val", RAT_VAL_OPTIONS)
-    
-        if functie in ['Schietval verwijderd, geen rat gedood','Schietval verwijderd, rat gedood']:
-          datum_2 = st.date_input("Datum rat val verwijderd","today")
-        else:
-          datum_2 = None
-          
-        sp = None 
-        gedrag = None
-        verblijf = None
-        aantal = st.number_input("Aantal", min_value=1)
-    
+    aantal = st.number_input("Aantal", min_value=1)
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
     
     st.divider()
@@ -193,7 +144,6 @@ def input_data(output,df_old):
     # with st.form("my_form"):
     placeholder = st.empty()
     submitted = placeholder.button("**Gegevens opslaan**",use_container_width=True)
-    # submitted = st.form_submit_button("**Gegevens opslaan**",use_container_width=True)
     if submitted:           
         try:
             coordinates = output["features"][0]["geometry"]["coordinates"] 
@@ -220,10 +170,11 @@ def input_data(output,df_old):
                 placeholder.empty()
                 st.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
                 if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
-                    insert_json(key,waarnemer,str(datum),str(datum_2),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
                     st.success('Gegevens opgeslagen!', icon="✅") 
                   
         except:
+            st.error("!!!!!!!!!!!!!!!!!!!!")
             st.stop()
 
 
@@ -249,7 +200,7 @@ try:
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map,df_old)
-            st.switch_page("🗺️_Home.py")
+            # st.switch_page("🗺️_Home.py")
     except:
         st.stop()
     
