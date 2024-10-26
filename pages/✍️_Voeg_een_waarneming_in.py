@@ -167,13 +167,13 @@ def input_data(output,df_old):
             st.stop()
 
         else:
-            # placeholder.empty()
-            # placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
+            placeholder.empty()
+            placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
             # # if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
-            # if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶"):
-            #     placeholder.empty()
-            st.success('Gegevens opgeslagen!', icon="✅",key="but_1",)
-            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+            if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1"):
+                placeholder.empty()
+                st.success('Gegevens opgeslagen!', icon="✅",)
+                insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
 
                      
                   
