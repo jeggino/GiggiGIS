@@ -211,6 +211,7 @@ try:
     try:
         if len(output_map["features"]) >= 1:
             input_data(output_map,df_old)
+            st.rerun()
             st.switch_page("🗺️_Home.py")
         else:
             st.stop()
