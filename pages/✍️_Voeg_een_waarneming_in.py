@@ -167,19 +167,13 @@ def input_data(output,df_old):
             st.stop()
 
         else:
-            placeholder.empty()
-            placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
-            # # if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
-            if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1"):
-                placeholder.empty()
-                st.success('Gegevens opgeslagen!', icon="✅",)
-                data = [{"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
-               "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-               "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}]
-                df_new = pd.DataFrame(data)
-                df_updated = pd.concat([df_old,df_new],ignore_index=True)
-                conn.update(worksheet="df_observations",data=df_updated) 
-                # insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+            # placeholder.empty()
+            # placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
+            # # # if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
+            # if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1"):
+            #     placeholder.empty()
+            st.success('Gegevens opgeslagen!', icon="✅",)
+            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
 
                      
                   
