@@ -175,8 +175,8 @@ def input_data(output,df_old):
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
             output_map["features"][:] = []
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
-            output_map["features"]
-            # st.rerun()
+            # output_map["features"]
+            st.rerun()
             # placeholder.empty()
             # st.page_link("🗺️_Home.py", label="Click here if you want to go to the navigation", icon="🗺️",use_container_width=True)
             # output_map["features"].clear()
