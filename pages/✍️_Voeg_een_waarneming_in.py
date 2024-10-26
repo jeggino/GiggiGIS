@@ -173,6 +173,7 @@ def input_data(output,df_old):
             # if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1"):
             #     placeholder.empty()
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
+            output_map["features"] = []
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
             output_map["features"]
             # st.rerun()
