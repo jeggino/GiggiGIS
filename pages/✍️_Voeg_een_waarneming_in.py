@@ -57,7 +57,7 @@ def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,ver
     df_new = pd.DataFrame(data)
     df_updated = pd.concat([df_old,df_new],ignore_index=True)
     
-    return conn.update(worksheet="df_observations",data=df_updated),output_map["features"][0].clear()
+    return conn.update(worksheet="df_observations",data=df_updated)
   
 def map(auto_start):
     
@@ -173,6 +173,7 @@ def input_data(output,df_old):
             # if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1"):
             #     placeholder.empty()
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
+            output_map["features"][0].clear()
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
             st.rerun()
             # placeholder.empty()
@@ -207,7 +208,7 @@ try:
     output_map = map(st.session_state.project['auto_start'])
     
     try:
-        if len(output_map["features"]) >1:
+        if len(output_map["features"]) >= 1:
             input_data(output_map,df_old)
             st.write(len(output_map["features"]))
             output_map["features"]
