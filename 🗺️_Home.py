@@ -315,7 +315,7 @@ def project():
     project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    on = st.toggle("**Mobiele versie** 📲")
+    on = st.toggle("**Mobiel apparaat** 📲")
     if st.button(":rainbow[**Begin**]"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on}
          st.rerun()
