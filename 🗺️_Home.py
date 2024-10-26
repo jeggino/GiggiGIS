@@ -18,9 +18,9 @@ from credentials import *
 
 # ---LAYOUT---
 st.set_page_config(
-    page_title="🦇🪶",
+    page_title="🦇🪶 SMPs",
     initial_sidebar_state="collapsed",
-    page_icon="🦇🪶",
+    page_icon="",
     layout="wide",
     
 )
