@@ -80,7 +80,7 @@ def map(auto_start):
 
         
 @st.dialog(" ")
-def input_data(output,df_old):
+def input_data(output,df_old,auto_start):
 
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
@@ -171,7 +171,7 @@ def input_data(output,df_old):
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
             # st.rerun()
         
-        if st.session_state.project['auto_start']:
+        if not auto_start:
             st.switch_page("🗺️_Home.py")
                      
                   
@@ -196,7 +196,7 @@ output_map = map(st.session_state.project['auto_start'])
 
 try:
     if len(output_map["features"]) >= 1:
-        input_data(output_map,df_old)
+        input_data(output_map,df_old,st.session_state.project['auto_start'])
         
     else:
         st.stop()      
