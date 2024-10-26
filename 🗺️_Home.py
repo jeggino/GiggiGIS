@@ -26,7 +26,7 @@ st.set_page_config(
 )
 
 #---DATASET---
-ttl = '10m'
+ttl = 0
 ttl_references = '10m'
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_point = conn.read(ttl=ttl,worksheet="df_observations")
