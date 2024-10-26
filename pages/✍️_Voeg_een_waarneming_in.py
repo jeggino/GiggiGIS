@@ -205,8 +205,9 @@ try:
     conn = st.connection("gsheets", type=GSheetsConnection)
     df_old = conn.read(ttl=0,worksheet="df_observations")
 
-        
+    output_map["features"].clear()
     output_map = map(st.session_state.project['auto_start'])
+    
     
     try:
         if len(output_map["features"]) >= 1:
