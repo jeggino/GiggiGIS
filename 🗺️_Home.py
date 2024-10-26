@@ -316,7 +316,7 @@ def project():
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
     on = st.toggle("**Mobiele versie** 📲")
-    if st.button("begin"):
+    if st.button(":rainbow[**Begin**]"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on}
          st.rerun()
         
