@@ -174,6 +174,8 @@ def input_data(output,df_old):
                     placeholder.empty()
                     st.success('Gegevens opgeslagen!', icon="✅",key="but_1",)
                     insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+                else:
+                    st.stop()
                      
                   
         except:
