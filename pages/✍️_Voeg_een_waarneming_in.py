@@ -168,10 +168,12 @@ def input_data(output,df_old):
 
             else:
                 placeholder.empty()
-                st.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
+                placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
                 # if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
-                st.success('Gegevens opgeslagen!', icon="✅")
-                insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+                if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶"):
+                    placeholder.empty()
+                    st.success('Gegevens opgeslagen!', icon="✅",key="but_1",)
+                    insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
                      
                   
         except:
