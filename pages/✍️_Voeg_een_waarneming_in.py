@@ -190,7 +190,6 @@ waarnemer = st.session_state.login['name']
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_old = conn.read(ttl=0,worksheet="df_observations")
 
-output_map["features"].clear()
 output_map = map(st.session_state.project['auto_start'])
 
 
