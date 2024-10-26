@@ -210,7 +210,7 @@ try:
         if len(output_map["features"]) != 0:
             input_data(output_map,df_old)
             st.write(len(output_map["features"]))
-            
+            output_map["features"]
             
     except:
         st.stop()
