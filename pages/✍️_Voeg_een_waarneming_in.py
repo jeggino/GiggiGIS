@@ -145,41 +145,41 @@ def input_data(output,df_old):
     placeholder = st.empty()
     submitted = placeholder.button("**Gegevens opslaan**",use_container_width=True)
     if submitted:           
-        try:
-            coordinates = output["features"][0]["geometry"]["coordinates"] 
+        # try:
+        coordinates = output["features"][0]["geometry"]["coordinates"] 
+        
+        if geometry_type in ["LineString",'Polygon']:
+
+            lng = coordinates[0][0][0]
+            lat = coordinates[0][0][1]
+            key = str(lng)+str(lat)
+        
+        else: 
             
-            if geometry_type in ["LineString",'Polygon']:
-
-                lng = coordinates[0][0][0]
-                lat = coordinates[0][0][1]
-                key = str(lng)+str(lat)
+            lng = coordinates[0]
+            lat = coordinates[1]
+            coordinates = None
             
-            else: 
-                
-                lng = coordinates[0]
-                lat = coordinates[1]
-                coordinates = None
-                
-                key = str(lng)+str(lat)
+            key = str(lng)+str(lat)
 
-            if len(output["features"]) > 1:
-                st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
-                st.stop()
+        if len(output["features"]) > 1:
+            st.error("U kunt niet meer dan één waarneming tegelijk uploaden!")
+            st.stop()
 
-            else:
-                # placeholder.empty()
-                # placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
-                # # if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
-                # if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶"):
-                #     placeholder.empty()
-                st.success('Gegevens opgeslagen!', icon="✅",key="but_1",)
-                insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+        else:
+            # placeholder.empty()
+            # placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
+            # # if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
+            # if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶"):
+            #     placeholder.empty()
+            st.success('Gegevens opgeslagen!', icon="✅",key="but_1",)
+            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
 
                      
                   
-        except:
-            st.error("!!!!!!!!!!!!!!!!!!!!")
-            st.stop()
+        # except:
+        #     st.error("!!!!!!!!!!!!!!!!!!!!")
+        #     st.stop()
 
 
 
