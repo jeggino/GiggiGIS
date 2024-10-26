@@ -171,7 +171,7 @@ def input_data(output,df_old,auto_start):
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
             # st.rerun()
         
-        if not auto_start:
+        if auto_start == True:
             st.switch_page("🗺️_Home.py")
                      
                   
