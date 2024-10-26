@@ -174,10 +174,10 @@ def input_data(output,df_old):
             #     placeholder.empty()
             st.success('Gegevens opgeslagen!', icon="✅",)
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
-            left,right = st.columns(2)
-            left.page_link("🗺️_Home.py", label="Click here if you want to go to the navigation", icon="🗺️",use_container_width=True)
             output_map["features"].clear()
-            right.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="Click here if you want to continue marking points", icon="✍️",use_container_width=True)
+            # left.page_link("🗺️_Home.py", label="Click here if you want to go to the navigation", icon="🗺️",use_container_width=True)
+            # output_map["features"].clear()
+            # right.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="Click here if you want to continue marking points", icon="✍️",use_container_width=True)
 
                      
                   
@@ -208,7 +208,7 @@ try:
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map,df_old)
-            output_map["features"].clear()
+            
             st.switch_page("pages/✍️_Voeg_een_waarneming_in.py")
     except:
         st.stop()
