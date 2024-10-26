@@ -209,7 +209,7 @@ try:
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map,df_old)
-            output_map["features"]
+            output_map["features"][0].clear()
             
             
     except:
