@@ -174,6 +174,7 @@ def input_data(output,df_old):
             #     placeholder.empty()
             st.success('Gegevens opgeslagen!', icon="✅",)
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+            st.page_link("🗺️_Home.py", label="Weet u zeker dat u alle gegevens correct hebt ingevuld?", icon="🔄",use_container_width=True)
 
                      
                   
