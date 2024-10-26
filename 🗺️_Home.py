@@ -411,8 +411,6 @@ try:
     folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
     folium.LayerControl().add_to(map)
       
-    folium.LayerControl().add_to(map)    
-
     for i in range(len(df_2)):
 
         if df_2.iloc[i]['geometry_type'] == "Point":
