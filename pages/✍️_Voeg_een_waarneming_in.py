@@ -167,31 +167,17 @@ def input_data(output,df_old):
             st.stop()
 
         else:
-            # placeholder.empty()
-            # placeholder.warning("Weet u zeker dat u alle gegevens correct hebt ingevuld?")
-            # # # if st.button("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1",use_container_width=True):
-            # if st.toggle("🦇🪶🦇🪶 **Yeah!!** 🦇🪶🦇🪶",key="but_1"):
-            #     placeholder.empty()
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
             output_map["features"][:] = []
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
-            # output_map["features"]
-            st.rerun()
-            # placeholder.empty()
-            # st.page_link("🗺️_Home.py", label="Click here if you want to go to the navigation", icon="🗺️",use_container_width=True)
-            # output_map["features"].clear()
-            # right.page_link("pages/✍️_Voeg_een_waarneming_in.py", label="Click here if you want to continue marking points", icon="✍️",use_container_width=True)
+            # st.rerun()
 
+        st.switch_page("🗺️_Home.py")
                      
                   
         # except:
         #     st.error("!!!!!!!!!!!!!!!!!!!!")
         #     st.stop()
-
-
-
-
-    
 
 # --- APP ---  
 try:        
@@ -212,12 +198,9 @@ try:
     try:
         if len(output_map["features"]) >= 1:
             input_data(output_map,df_old)
-            st.rerun()
-            st.switch_page("🗺️_Home.py")
-        else:
-            st.stop()
-
             
+        else:
+            st.stop()      
             
     except:
         st.stop()
