@@ -20,7 +20,7 @@ from credentials import *
 st.set_page_config(
     page_title="🦇🪶",
     initial_sidebar_state="collapsed",
-    page_icon=" ",
+    page_icon="🦇🪶",
     layout="wide",
     
 )
