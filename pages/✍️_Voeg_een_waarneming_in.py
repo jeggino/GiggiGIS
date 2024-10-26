@@ -57,7 +57,7 @@ def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,ver
     df_new = pd.DataFrame(data)
     df_updated = pd.concat([df_old,df_new],ignore_index=True)
     
-    return conn.update(worksheet="df_observations",data=df_updated)
+    return conn.update(worksheet="df_observations",data=df_updated),output_map["features"][0].clear()
   
 def map(auto_start):
     
@@ -209,7 +209,7 @@ try:
     try:
         if len(output_map["features"]) != 0:
             input_data(output_map,df_old)
-            output_map["features"][0].clear()
+            
             
             
     except:
