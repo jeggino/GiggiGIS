@@ -170,8 +170,9 @@ def input_data(output,df_old):
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
             # st.rerun()
-
-        st.switch_page("🗺️_Home.py")
+        
+        if st.session_state.project['auto_start']:
+            st.switch_page("🗺️_Home.py")
                      
                   
         # except:
