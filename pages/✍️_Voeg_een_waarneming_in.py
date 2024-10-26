@@ -211,8 +211,10 @@ try:
     try:
         if len(output_map["features"]) >= 1:
             input_data(output_map,df_old)
-            st.write(len(output_map["features"]))
-            output_map["features"]
+        else:
+            st.stop()
+        st.write(len(output_map["features"]))
+        output_map["features"].clear()
             
             
     except:
