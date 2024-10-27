@@ -426,21 +426,19 @@ folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").ad
 folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
 folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
-# try:
-
-
-folium.GeoJson(
-    st.session_state.project['gdf'],
-    name=f"Gebied: {st.session_state.project['area']}",
-    style_function=lambda feature: {
-        "fillColor": 'Red',
-        "color": "black",
-        "weight": 0.8,
-        "fillOpacity": 0,
-    },
-).add_to(map)
-# except:
-#     pass
+try:
+    folium.GeoJson(
+        st.session_state.project['gdf'],
+        name=f"Gebied: {st.session_state.project['area']}",
+        style_function=lambda feature: {
+            "fillColor": 'Red',
+            "color": "black",
+            "weight": 0.8,
+            "fillOpacity": 0,
+        },
+    ).add_to(map)
+except:
+    pass
 for i in range(len(df_2)):
 
     if df_2.iloc[i]['geometry_type'] == "Point":
