@@ -417,20 +417,21 @@ folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").ad
 folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
 folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
-geometry_file = f"geometries/{st.session_state.project['project_name']}.geojson"
-geometry_file
-for row,column in geometry_file.iterrows():
-    folium.GeoJson(
-        column['geometry'],
-        name=column['Wijk'],
-        style_function=lambda feature: {
-            "fillColor": 'Red',
-            "color": "black",
-            "weight": 0.8,
-            "fillOpacity": 0,
-        },
-    ).add_to(map)
-
+geometry_file = f"geometries/SMPs-Amsterdam (Noord).geojson"
+try:
+    for row,column in geometry_file.iterrows():
+        folium.GeoJson(
+            column['geometry'],
+            name=column['Wijk'],
+            style_function=lambda feature: {
+                "fillColor": 'Red',
+                "color": "black",
+                "weight": 0.8,
+                "fillOpacity": 0,
+            },
+        ).add_to(map)
+except:
+    pass
 for i in range(len(df_2)):
 
     if df_2.iloc[i]['geometry_type'] == "Point":
