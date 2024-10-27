@@ -78,10 +78,8 @@ def map(auto_start):
             st.session_state.project['gdf'],
             name=f"Gebied: {st.session_state.project['area']}",
             style_function=lambda feature: {
-                "fillColor": 'Red',
                 "color": "black",
-                "weight": 0.8,
-                "fillOpacity": 0,
+                "weight": 1,
             },
         ).add_to(m)
     except:
