@@ -49,11 +49,11 @@ OUTPUT_height = 550
 
     
 # --- FUNCTIONS ---
-def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old):
+def insert_json(key,waarnemer,datum,time,soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,gebied,df_old):
     
     data = [{"key":key, "waarnemer":waarnemer,"datum":datum,"time":time,"soortgroup":soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
-                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project}]
+                   "geometry_type":geometry_type,"lat":lat,"lng":lng,"opmerking":opmerking,"coordinates":coordinates,"project":project,'gebied':gebied}]
     df_new = pd.DataFrame(data)
     df_updated = pd.concat([df_old,df_new],ignore_index=True)
     
@@ -98,7 +98,11 @@ def input_data(output,df_old,auto_start):
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
     soortgroup = st.session_state.project['opdracht']
-    
+
+    try:
+        gebied = st.session_state.project['area']
+    except:
+        gebied = None
     
     datum = st.date_input("Datum","today")       
     nine_hours_from_now = datetime.now() + timedelta(hours=2)
@@ -181,7 +185,7 @@ def input_data(output,df_old,auto_start):
 
         else:
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
-            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,df_old)
+            insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,gebied,df_old)
             # st.rerun()
         
         if auto_start == True:
