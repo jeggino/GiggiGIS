@@ -407,7 +407,6 @@ try:
         map.add_child(functie_dictionary[feature_group])
 
     functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
-    functie_dictionary
     
     folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(map)
     folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
@@ -416,8 +415,7 @@ try:
 
     # try:
     folium.GeoJson(
-        "geometries/SMPs-Amsterdam (Noord).geojson",
-        # f"geometries/{st.session_state.project['project_name']}.geojson",
+        f"geometries/{st.session_state.project['project_name']}.geojson",
         style_function=lambda feature: {
             "fillColor": "#ffff00",
             "color": "black",
