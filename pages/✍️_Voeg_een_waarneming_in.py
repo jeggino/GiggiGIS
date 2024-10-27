@@ -73,6 +73,22 @@ def map(auto_start):
     Fullscreen(position="topright").add_to(m)
     LocateControl(auto_start=auto_start,position="topright").add_to(m)
     
+    try:
+        folium.GeoJson(
+            st.session_state.project['gdf'],
+            name=f"Gebied: {st.session_state.project['area']}",
+            style_function=lambda feature: {
+                "fillColor": 'Red',
+                "color": "black",
+                "weight": 0.8,
+                "fillOpacity": 0,
+            },
+        ).add_to(m)
+    except:
+        pass
+
+    folium.LayerControl().add_to(m)
+    
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     output["features"] = output.pop("all_drawings")
     
