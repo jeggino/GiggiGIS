@@ -87,7 +87,6 @@ def map(auto_start):
     except:
         pass
 
-    folium.LayerControl().add_to(m)
     
     output = st_folium(m, returned_objects=["all_drawings"],width=OUTPUT_width, height=OUTPUT_height)
     output["features"] = output.pop("all_drawings")
