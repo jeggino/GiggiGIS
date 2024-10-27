@@ -321,7 +321,7 @@ def project():
         gdf_areas = gpd.read_file(geometry_file)
         area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
     except:
-        pass
+        area = None
     on = st.toggle("**Mobiel apparaat** 📲")
     if st.button(":rainbow[**Begin**]"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area}
@@ -425,19 +425,18 @@ folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte k
 folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
 # try:
-geometry_file = f"geometries/SMPs-Amsterdam (Noord).geojson"
-gdf_areas = gpd.read_file(geometry_file)
-for row,column in gdf_areas.iterrows():
-    folium.GeoJson(
-        column['geometry'],
-        name=column['Wijk'],
-        style_function=lambda feature: {
-            "fillColor": 'Red',
-            "color": "black",
-            "weight": 0.8,
-            "fillOpacity": 0,
-        },
-    ).add_to(map)
+
+gdf_areas = gdf_areas[gdf_areas['Wijk']==st.session_state.project['area']]
+folium.GeoJson(
+    gdf_areas,
+    name=f"Gebied: {st.session_state.project['area']}",
+    style_function=lambda feature: {
+        "fillColor": 'Red',
+        "color": "black",
+        "weight": 0.8,
+        "fillOpacity": 0,
+    },
+).add_to(map)
 # except:
 #     pass
 for i in range(len(df_2)):
