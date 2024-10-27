@@ -420,7 +420,7 @@ folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr
 
 # try:
 geometry_file = f"geometries/SMPs-Amsterdam (Noord).geojson"
-gdf_areas = geopandas.read_file(geometry_file)
+gdf_areas = gpd.read_file(geometry_file)
 for row,column in gdf_areas.iterrows():
     folium.GeoJson(
         column['geometry'],
