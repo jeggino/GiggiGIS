@@ -431,6 +431,7 @@ try:
                 "fillOpacity": 0,
             },
         ).add_to(map)
+    st.write('poco loco')
 except:
     pass
 for i in range(len(df_2)):
