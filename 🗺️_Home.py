@@ -401,14 +401,19 @@ map = folium.Map(tiles=None)
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topright").add_to(map)
 Fullscreen(position="topright").add_to(map)
 
+
 functie_dictionary = {}
-functie_len = df_2['functie'].unique()
 
-for functie in functie_len:
-    functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
-
-for feature_group in functie_dictionary.keys():
-    map.add_child(functie_dictionary[feature_group])
+try:
+    functie_len = df_2['functie'].unique()
+    
+    for functie in functie_len:
+        functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
+    
+    for feature_group in functie_dictionary.keys():
+        map.add_child(functie_dictionary[feature_group])
+except:
+    pass
 
 functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
 
@@ -420,17 +425,17 @@ folium.LayerControl().add_to(map)
 try:
     folium.GeoJson(
         f"geometries/{st.session_state.project['project_name']}.geojson",
+        name="Geometry",
         style_function=lambda feature: {
             "fillColor": "#ffff00",
             "color": "black",
-            "weight": 1,
+            "weight": 0.5,
+            "fillOpacity": 0.2,
         },
     ).add_to(functie_dictionary['geometry'])
 except:
     pass
 
-
-  
 for i in range(len(df_2)):
 
     if df_2.iloc[i]['geometry_type'] == "Point":
@@ -481,8 +486,6 @@ for i in range(len(df_2)):
         folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
                       popup=popup
                       ).add_to(fouctie_loop)
-
-
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                      feature_group_to_add=list(functie_dictionary.values()))
