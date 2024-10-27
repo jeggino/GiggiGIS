@@ -420,7 +420,7 @@ try:
                 "color": "black",
                 "weight": 0.3,
             },
-        ).add_to(map)
+        ).add_to(functie_dictionary['geometry'])
     except:
         pass
 
