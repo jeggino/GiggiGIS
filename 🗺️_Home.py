@@ -411,17 +411,18 @@ try:
     folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
     folium.LayerControl().add_to(map)
 
-    # try:
-    #     folium.GeoJson(
-    #         f"geometries/{st.session_state.project['project_name']}.geojson",
-    #         style_function=lambda feature: {
-    #             "fillColor": "#ffff00",
-    #             "color": "black",
-    #             "weight": 0.3,
-    #         },
-    #     ).add_to(map)
-    # except:
-    #     pass
+    try:
+        folium.GeoJson(
+            "geometries/SMPs-Amsterdam (Noord).geojson",
+            # f"geometries/{st.session_state.project['project_name']}.geojson",
+            style_function=lambda feature: {
+                "fillColor": "#ffff00",
+                "color": "black",
+                "weight": 0.3,
+            },
+        ).add_to(map)
+    except:
+        pass
 
     
       
