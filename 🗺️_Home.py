@@ -356,35 +356,34 @@ with st.sidebar:
 
 # try:
 
-try:
-    if st.session_state.project['project_name'] not in ['Admin','Overig']:
-        df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
-        df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
+if st.session_state.project['project_name'] not in ['Admin','Overig']:
+    df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
+    df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
 
-    elif st.session_state.project['project_name'] == 'Overig':
-        df_2 = df_point[df_point['project']!='Admin']
-        df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
+elif st.session_state.project['project_name'] == 'Overig':
+    df_2 = df_point[df_point['project']!='Admin']
+    df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
 
-    else:
-        df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
-
-    
-    df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
+else:
+    df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
 
-    st.sidebar.subheader("Filter op",divider=False)
-    d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
-    
-    df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
-    
+df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
-    
-    if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overig']:
-        species_filter_option = df_2["sp"].unique()
-        species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
-        df_2 = df_2[df_2['sp'].isin(species_filter)]
-    
-    st.sidebar.divider()
+
+st.sidebar.subheader("Filter op",divider=False)
+d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
+
+df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
+
+
+
+if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overig']:
+    species_filter_option = df_2["sp"].unique()
+    species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
+    df_2 = df_2[df_2['sp'].isin(species_filter)]
+
+st.sidebar.divider()
 
 
     df_2["icon_data"] = df_2.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
@@ -393,8 +392,7 @@ try:
                                    axis=1)
     
     df_2 = df_2.reset_index(drop=True)
-except:
-    pass
+
     
 map = folium.Map(tiles=None)
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topright").add_to(map)
