@@ -407,6 +407,7 @@ try:
         map.add_child(functie_dictionary[feature_group])
 
     functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
+    functie_dictionary
     
     folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(map)
     folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
