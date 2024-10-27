@@ -430,7 +430,7 @@ folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr
 
 
 folium.GeoJson(
-    gdf_areas,
+    st.session_state.project['gdf'],
     name=f"Gebied: {st.session_state.project['area']}",
     style_function=lambda feature: {
         "fillColor": 'Red',
