@@ -320,11 +320,13 @@ def project():
         geometry_file = f"geometries/{project}.geojson" 
         gdf_areas = gpd.read_file(geometry_file)
         area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
+        gdf_areas = gdf_areas[gdf_areas['Wijk']==area]
     except:
         area = None
+        gdf_areas = None
     on = st.toggle("**Mobiel apparaat** 📲")
     if st.button(":rainbow[**Begin**]"):
-         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area}
+         st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area, 'gdf':gdf_areas}
          st.rerun()
         
 def logOut():
@@ -426,7 +428,7 @@ folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr
 
 # try:
 
-gdf_areas = gdf_areas[gdf_areas['Wijk']==st.session_state.project['area']]
+
 folium.GeoJson(
     gdf_areas,
     name=f"Gebied: {st.session_state.project['area']}",
