@@ -370,11 +370,13 @@ else:
 
 df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
-
-st.sidebar.subheader("Filter op",divider=False)
-d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
-
-df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
+try:
+    st.sidebar.subheader("Filter op",divider=False)
+    d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
+    
+    df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
+except:
+    pass
 
 
 
