@@ -416,21 +416,19 @@ functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
 folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(map)
 folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
 folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
-folium.LayerControl().add_to(map)
 
-try:
+geometry_file = f"geometries/{st.session_state.project['project_name']}.geojson"
+for row,column in geometry_file.iterrows():
     folium.GeoJson(
-        f"geometries/{st.session_state.project['project_name']}.geojson",
-        # name="Geometry",
+        column['geometry'],
+        name=column['Wijk'],
         style_function=lambda feature: {
-            "fillColor": "#ffff00",
+            "fillColor": 'Red',
             "color": "black",
-            "weight": 1,
-            "fillOpacity": 0.9,
+            "weight": 0.8,
+            "fillOpacity": 0,
         },
-    ).add_to(functie_dictionary['geometry'])
-except:
-    pass
+    ).add_to(map)
 
 for i in range(len(df_2)):
 
@@ -482,7 +480,8 @@ for i in range(len(df_2)):
         folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
                       popup=popup
                       ).add_to(fouctie_loop)
-
+        
+folium.LayerControl().add_to(map)
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                      feature_group_to_add=list(functie_dictionary.values()))
     
