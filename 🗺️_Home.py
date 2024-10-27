@@ -354,66 +354,66 @@ with st.sidebar:
     logOut()
     st.divider()
 
+# try:
+
 try:
-    
-    try:
-        if st.session_state.project['project_name'] not in ['Admin','Overig']:
-            df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
-            df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
+    if st.session_state.project['project_name'] not in ['Admin','Overig']:
+        df_2 = df_point[df_point['project']==st.session_state.project['project_name']]
+        df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
 
-        elif st.session_state.project['project_name'] == 'Overig':
-            df_2 = df_point[df_point['project']!='Admin']
-            df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
-    
-        else:
-            df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
-    
-        
-        df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
-    
-    
-        st.sidebar.subheader("Filter op",divider=False)
-        d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
-        
-        df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
-        
-    except:
-        pass
-        
-    if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overig']:
-        species_filter_option = df_2["sp"].unique()
-        species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
-        df_2 = df_2[df_2['sp'].isin(species_filter)]
+    elif st.session_state.project['project_name'] == 'Overig':
+        df_2 = df_point[df_point['project']!='Admin']
+        df_2 = df_2[df_2['soortgroup']==st.session_state.project['opdracht']]
 
-    st.sidebar.divider()
-    
-    df_2["icon_data"] = df_2.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
-                                   else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen',"Vogels-Overig"] 
-                                         else icon_dictionary[x["soortgroup"]][x["functie"]]), 
-                                   axis=1)
-    
-    df_2 = df_2.reset_index(drop=True)
-    map = folium.Map(tiles=None)
-    LocateControl(auto_start=st.session_state.project['auto_start'],position="topright").add_to(map)
-    Fullscreen(position="topright").add_to(map)
-    
-    functie_dictionary = {}
-    functie_len = df_2['functie'].unique()
-    
-    for functie in functie_len:
-        functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
-    
-    for feature_group in functie_dictionary.keys():
-        map.add_child(functie_dictionary[feature_group])
+    else:
+        df_2 = df_point[df_point['soortgroup']==st.session_state.project['opdracht']]
 
-    functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
     
-    folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(map)
-    folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
-    folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
-    folium.LayerControl().add_to(map)
+    df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
 
-    # try:
+
+    st.sidebar.subheader("Filter op",divider=False)
+    d = st.sidebar.slider("Datum", min_value=df_2.datum.min(),max_value=df_2.datum.max(),value=(df_2.datum.min(), df_2.datum.max()),format="DD-MM-YYYY")
+    
+    df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
+    
+except:
+    pass
+    
+if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overig']:
+    species_filter_option = df_2["sp"].unique()
+    species_filter = st.sidebar.multiselect("Sorten",species_filter_option,species_filter_option)
+    df_2 = df_2[df_2['sp'].isin(species_filter)]
+
+st.sidebar.divider()
+
+df_2["icon_data"] = df_2.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
+                               else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen',"Vogels-Overig"] 
+                                     else icon_dictionary[x["soortgroup"]][x["functie"]]), 
+                               axis=1)
+
+df_2 = df_2.reset_index(drop=True)
+map = folium.Map(tiles=None)
+LocateControl(auto_start=st.session_state.project['auto_start'],position="topright").add_to(map)
+Fullscreen(position="topright").add_to(map)
+
+functie_dictionary = {}
+functie_len = df_2['functie'].unique()
+
+for functie in functie_len:
+    functie_dictionary[functie] = folium.FeatureGroup(name=functie)    
+
+for feature_group in functie_dictionary.keys():
+    map.add_child(functie_dictionary[feature_group])
+
+functie_dictionary['geometry'] = folium.FeatureGroup(name='Geometries')
+
+folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").add_to(map)
+folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
+folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
+folium.LayerControl().add_to(map)
+
+try:
     folium.GeoJson(
         f"geometries/{st.session_state.project['project_name']}.geojson",
         style_function=lambda feature: {
@@ -422,90 +422,90 @@ try:
             "weight": 1,
         },
     ).add_to(functie_dictionary['geometry'])
-    # except:
-    #     pass
-
-    
-      
-    for i in range(len(df_2)):
-
-        if df_2.iloc[i]['geometry_type'] == "Point":
-
-            if (df_2.iloc[i]['sp']=="Huismus") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
-                ICON_SIZE_2 = ICON_SIZE_huismus
-
-
-            elif (df_2.iloc[i]['sp'] in ['Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
-                ICON_SIZE_2 = ICON_SIZE_BAT_EXTRA
-
-            elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis']):
-                ICON_SIZE_2 = ICON_SIZE_RUIGE
-
-            elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['soortgroup'] == 'Vogels-Overig'):
-                ICON_SIZE_2 = ICON_SIZE_BIRD
-
-            elif (df_2.iloc[i]['sp'] == '...Andere(n)') & (df_2.iloc[i]['soortgroup'] == 'Vleermuizen'):
-                ICON_SIZE_2 = ICON_SIZE
-
-            else:             
-                ICON_SIZE_2 = ICON_SIZE
-                
-
-            html = popup_html(i)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-    
-            folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
-                          popup=popup,
-                          icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
-                         ).add_to(fouctie_loop)
-
-        elif df_2.iloc[i]['geometry_type'] == "Polygon":
-            html = popup_polygons(i)
-            popup = folium.Popup(folium.Html(html, script=True), max_width=300)
-            fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
-            location = df_2.iloc[i]['coordinates']
-            location = ast.literal_eval(location)
-            location = [i[::-1] for i in location[0]]
-                        
-            if df_2.iloc[i]['functie']=="Paringsgebied":
-                fill_color="red"
-
-            else:
-                fill_color="green"
-                
-            folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
-                          popup=popup
-                          ).add_to(fouctie_loop)
-
-    
-
-    output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
-                         feature_group_to_add=list(functie_dictionary.values()))
-        
-    try:
-        try:
-            id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
-            name = f"{id}"
-        except:
-            id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
-            name = f"{id}"
-
-        with st.sidebar:
-            if st.button("Waarneming bijwerken",use_container_width=True):
-                update_item()
-            with st.form("entry_form", clear_on_submit=True,border=False):
-                submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-                if submitted:
-                    df = conn.read(ttl=0,worksheet="df_observations")
-                    df_filter = df[df["key"]==id]
-                    df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
-                    conn.update(worksheet='df_observations',data=df_drop)
-                    st.success('Waarneming verwijderd', icon="✅") 
-                    st.page_link("🗺️_Home.py", label="Vernieuwen", icon="🔄",use_container_width=True)
-    except:
-        st.stop()
-
 except:
-    st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
+    pass
+
+
+  
+for i in range(len(df_2)):
+
+    if df_2.iloc[i]['geometry_type'] == "Point":
+
+        if (df_2.iloc[i]['sp']=="Huismus") & (df_2.iloc[i]['functie'] in ["mogelijke nestlocatie","nestlocatie"]):
+            ICON_SIZE_2 = ICON_SIZE_huismus
+
+
+        elif (df_2.iloc[i]['sp'] in ['Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis']):
+            ICON_SIZE_2 = ICON_SIZE_BAT_EXTRA
+
+        elif (df_2.iloc[i]['sp'] in ['Ruige dwergvleermuis']):
+            ICON_SIZE_2 = ICON_SIZE_RUIGE
+
+        elif (df_2.iloc[i]['sp']=="...Andere(n)") & (df_2.iloc[i]['soortgroup'] == 'Vogels-Overig'):
+            ICON_SIZE_2 = ICON_SIZE_BIRD
+
+        elif (df_2.iloc[i]['sp'] == '...Andere(n)') & (df_2.iloc[i]['soortgroup'] == 'Vleermuizen'):
+            ICON_SIZE_2 = ICON_SIZE
+
+        else:             
+            ICON_SIZE_2 = ICON_SIZE
+            
+
+        html = popup_html(i)
+        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+        fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+
+        folium.Marker([df_2.iloc[i]['lat'], df_2.iloc[i]['lng']],
+                      popup=popup,
+                      icon=folium.features.CustomIcon(df_2.iloc[i]["icon_data"], icon_size=ICON_SIZE_2)
+                     ).add_to(fouctie_loop)
+
+    elif df_2.iloc[i]['geometry_type'] == "Polygon":
+        html = popup_polygons(i)
+        popup = folium.Popup(folium.Html(html, script=True), max_width=300)
+        fouctie_loop = functie_dictionary[df_2.iloc[i]['functie']]
+        location = df_2.iloc[i]['coordinates']
+        location = ast.literal_eval(location)
+        location = [i[::-1] for i in location[0]]
+                    
+        if df_2.iloc[i]['functie']=="Paringsgebied":
+            fill_color="red"
+
+        else:
+            fill_color="green"
+            
+        folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
+                      popup=popup
+                      ).add_to(fouctie_loop)
+
+
+
+output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
+                     feature_group_to_add=list(functie_dictionary.values()))
+    
+try:
+    try:
+        id = str(output["last_active_drawing"]['geometry']['coordinates'][0])+str(output["last_active_drawing"]['geometry']['coordinates'][1])
+        name = f"{id}"
+    except:
+        id = str(output["last_active_drawing"]['geometry']['coordinates'][0][0][0])+str(output["last_active_drawing"]['geometry']['coordinates'][0][0][1])
+        name = f"{id}"
+
+    with st.sidebar:
+        if st.button("Waarneming bijwerken",use_container_width=True):
+            update_item()
+        with st.form("entry_form", clear_on_submit=True,border=False):
+            submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
+            if submitted:
+                df = conn.read(ttl=0,worksheet="df_observations")
+                df_filter = df[df["key"]==id]
+                df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
+                conn.update(worksheet='df_observations',data=df_drop)
+                st.success('Waarneming verwijderd', icon="✅") 
+                st.page_link("🗺️_Home.py", label="Vernieuwen", icon="🔄",use_container_width=True)
+except:
     st.stop()
+
+# except:
+#     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
+#     st.stop()
