@@ -426,7 +426,7 @@ try:
             "fillColor": "#ffff00",
             "color": "black",
             "weight": 1,
-            "fillOpacity": 0.2,
+            "fillOpacity": 0.9,
         },
     ).add_to(functie_dictionary['geometry'])
 except:
