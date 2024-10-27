@@ -317,7 +317,7 @@ def project():
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
     try:
-        st.write(geometry_file)
+        geometry_file = f"geometries/{project}.geojson" 
         gdf_areas = gpd.read_file(geometry_file)
         area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
     except:
