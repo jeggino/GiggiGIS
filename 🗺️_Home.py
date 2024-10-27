@@ -316,13 +316,13 @@ def project():
     project_list = df_references.loc[index_project,"project"].split(',')
     project = st.selectbox("Aan welke project ga je werken?",project_list,label_visibility="visible")
     opdracht = st.selectbox("Aan welke opdracht ga je werken?",DICTIONARY_PROJECTS[project],label_visibility="visible")
-    # try:
-    geometry_file = f"geometries/{project}.geojson"
-    st.write(geometry_file)
-    gdf_areas = gpd.read_file(geometry_file)
-    area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijken'].unique(),label_visibility="visible")
-    # except:
-    #     pass
+    try:
+        geometry_file = f"geometries/{project}.geojson"
+        st.write(geometry_file)
+        gdf_areas = gpd.read_file(geometry_file)
+        area = st.selectbox("Aan welke gebied ga je werken?",gdf_areas['Wijk'].unique(),label_visibility="visible")
+    except:
+        pass
     on = st.toggle("**Mobiel apparaat** 📲")
     if st.button(":rainbow[**Begin**]"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area}
