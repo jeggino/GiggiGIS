@@ -31,7 +31,7 @@ reduce_header_height_style = """
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-
+st.write('NOT YET!!')
 # # --- FUNCTIONS ---
 # def insert_dagverslag(key,waarnemer,opdracht,gebied_id,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old):
     
