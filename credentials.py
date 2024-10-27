@@ -101,5 +101,5 @@ DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen","Vleermuiskast","Vogels-
                       "Admin":["Vogels","Vleermuizen","Vleermuiskast","Vogels-Overig"],
                        "Bats-balkans":["Vleermuizen"],
                        "SMPs-Amsterdam (Niewe West)":["Vleermuizen"],
-                       "SMPs-Amsterdam (Niewe noord)":["Vleermuizen"]
+                       "SMPs-Amsterdam (Noord)":["Vleermuizen"]
                       }
