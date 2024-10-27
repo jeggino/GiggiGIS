@@ -3,4 +3,70 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 from credentials import *
 
-st.write("NOT YET!!")
+
+
+# ---LAYOUT---
+st.set_page_config(
+    page_title="🦇🪶 SMPs",
+    initial_sidebar_state="collapsed",
+    page_icon="🦇🪶",
+    layout="wide",
+)
+
+
+st.markdown("""
+    <style>
+    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
+    </style>
+    """,
+    unsafe_allow_html=True)
+
+
+
+reduce_header_height_style = """
+<style>
+    div.block-container {padding-top: 1rem; padding-bottom: 0rem; padding-left: 1rem; padding-right: 1rem; margin-top: 1rem; margin-bottom: 0rem;}
+</style>
+""" 
+
+st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+
+
+# # --- FUNCTIONS ---
+# def insert_dagverslag(key,waarnemer,opdracht,gebied_id,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old):
+    
+#     data = [{"key":key, "waarnemer":waarnemer,"project":project,"gebied_id":gebied_id,"datum":datum,
+#              "start_time":start_time,"eind_time":eind_time, "extra_velfwerker":extra_velfwerker, "temperatuur":temperatuur, "bewolking":bewolking,
+#              "neerslag":neerslag,"windkrcht":windkrcht,"windrichting":windrichting,"opmerking":opmerking}]
+#     df_new = pd.DataFrame(data)
+#     df_updated = pd.concat([df_old,df_new],ignore_index=True)
+    
+#     return conn.update(worksheet="df_ekomaps_dagverslagen",data=df_updated)
+
+
+# # --- APP ---
+# # try:
+# key = None
+# waarnemer = st.session_state.login['name']
+# project = st.session_state.project['project_name']
+# opdracht = st.session_state.project['opdracht']
+# if project in ['Overig','Admin']:
+#   gebied_id = None
+# else:  
+#   gebied_id = st.multiselect("Gebied id", options, default=None)
+# datum = st.date_input("Datum","today")       
+# two_hours_from_now = datetime.now() + timedelta(hours=2)
+# four_hours_from_now = datetime.now() + timedelta(hours=4)
+# start_time = st.time_input("Start tijd", two_hours_from_now)
+# eind_time = st.time_input("Eind tijd", four_hours_from_now)
+# extra_velfwerker = 
+# temperatuur = 
+# bewolking = 
+# neerslag = 
+# windkrcht = 
+# windrichting = 
+# opmerking = 
+
+
+
+
