@@ -387,19 +387,16 @@ if st.session_state.project['opdracht'] in ["Vleermuizen","Vogels",'Vogels-Overi
 
 st.sidebar.divider()
 
-
 df_2["icon_data"] = df_2.apply(lambda x: None if x["geometry_type"] in ["LineString","Polygon"] 
                                else (icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen',"Vogels-Overig"] 
                                      else icon_dictionary[x["soortgroup"]][x["functie"]]), 
                                axis=1)
 
 df_2 = df_2.reset_index(drop=True)
-
-    
+ 
 map = folium.Map(tiles=None)
 LocateControl(auto_start=st.session_state.project['auto_start'],position="topright").add_to(map)
 Fullscreen(position="topright").add_to(map)
-
 
 functie_dictionary = {}
 
@@ -424,7 +421,7 @@ folium.LayerControl().add_to(map)
 try:
     folium.GeoJson(
         f"geometries/{st.session_state.project['project_name']}.geojson",
-        name="Geometry",
+        # name="Geometry",
         style_function=lambda feature: {
             "fillColor": "#ffff00",
             "color": "black",
