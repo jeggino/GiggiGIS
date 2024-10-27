@@ -100,5 +100,6 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
 DICTIONARY_PROJECTS = {"Overig":["Vogels","Vleermuizen","Vleermuiskast","Vogels-Overig"],
                       "Admin":["Vogels","Vleermuizen","Vleermuiskast","Vogels-Overig"],
                        "Bats-balkans":["Vleermuizen"],
-                       "SMPs-Amsterdam":["Vleermuizen"]
+                       "SMPs-Amsterdam (Niewe West)":["Vleermuizen"],
+                       "SMPs-Amsterdam (Niewe West)":["Vleermuizen"]
                       }
