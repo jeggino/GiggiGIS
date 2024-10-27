@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
+import geopandas as gpd
 import random
 
 import folium
@@ -417,10 +418,10 @@ folium.TileLayer('OpenStreetMap',overlay=False,show=True,name="Stratenkaart").ad
 folium.TileLayer(tiles="CartoDB Positron",overlay=False,show=False,name="Witte kaart").add_to(map)
 folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr='Google_map',overlay=False,show=False,name="Satellietkaart").add_to(map)
 
-geometry_file = f"geometries/SMPs-Amsterdam (Noord).geojson"
 # try:
-geometry_file
-for row,column in geometry_file.iterrows():
+geometry_file = f"geometries/SMPs-Amsterdam (Noord).geojson"
+gdf_areas = geopandas.read_file(geometry_file)
+for row,column in gdf_areas.iterrows():
     folium.GeoJson(
         column['geometry'],
         name=column['Wijk'],
@@ -431,7 +432,6 @@ for row,column in geometry_file.iterrows():
             "fillOpacity": 0,
         },
     ).add_to(map)
-st.write('poco loco')
 # except:
 #     pass
 for i in range(len(df_2)):
