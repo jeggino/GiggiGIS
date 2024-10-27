@@ -428,7 +428,7 @@ try:
         style_function=lambda feature: {
             "fillColor": "#ffff00",
             "color": "black",
-            "weight": 0.5,
+            "weight": 1,
             "fillOpacity": 0.2,
         },
     ).add_to(functie_dictionary['geometry'])
