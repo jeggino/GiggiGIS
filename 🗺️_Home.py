@@ -152,6 +152,7 @@ def popup_html(row):
     i = row
 
     project=df_2['project'].iloc[i]
+    gebied=df_2['gebied'].iloc[i]
     datum=df_2['datum'].iloc[i] 
     time=df_2['time'].iloc[i]
     verblijf=df_2['verblijf'].iloc[i]
@@ -174,6 +175,10 @@ def popup_html(row):
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Project</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(project) + """
+    </tr>
+    <tr>
+    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gebied</span></td>
+    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gebied) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
