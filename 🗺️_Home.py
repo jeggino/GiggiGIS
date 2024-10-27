@@ -419,6 +419,7 @@ folium.TileLayer(tiles='https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',attr
 
 geometry_file = f"geometries/SMPs-Amsterdam (Noord).geojson"
 try:
+    geometry_file
     for row,column in geometry_file.iterrows():
         folium.GeoJson(
             column['geometry'],
