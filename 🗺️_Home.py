@@ -87,7 +87,6 @@ def popup_polygons(row):
     time=df_2['time'].iloc[i]
     sp = df_2['sp'].iloc[i] 
     functie=df_2['functie'].iloc[i]
-    gedrag=df_2['gedrag'].iloc[i]
     opmerking=df_2['opmerking'].iloc[i]
     aantal=df_2['aantal'].iloc[i]
     waarnemer=df_2['waarnemer'].iloc[i] 
@@ -123,10 +122,6 @@ def popup_polygons(row):
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
     <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
-    </tr>
-    <tr>
-    <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Gedrag</span></td>
-    <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(gedrag) + """
     </tr>
     <tr>
     <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Opmerking</span></td>
