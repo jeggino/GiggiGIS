@@ -52,7 +52,9 @@ opdracht = st.session_state["project"]['opdracht']
 gdf_areas = gpd.read_file(f"geometries/{project}.geojson")
 gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords)) 
 df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)&(df_point['geometry_type']=="Point")].reset_index(drop=True)
-option_1 = st.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'))
+
+col_1,col_2 = st.columns([1,5])
+option_1 = col_1.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'))
 df_point_option_1 = df_point[df_point['functie']==option_1]
 df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
 df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
@@ -75,4 +77,4 @@ geojson = pdk.Layer(
 
 r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE)
 
-st.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=None, selection_mode="single-object", on_select="ignore", key=None)
+col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
