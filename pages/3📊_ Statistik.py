@@ -72,7 +72,14 @@ chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(x=alt.X('size:Q',axis=a
                                                                axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
                                                                sort=alt.EncodingSortField(field="size",  order='descending'),
                                                                title="")
-                                                        )
+                                                        ).properties(
+    height=400,
+    title=alt.Title(
+        text="",
+        subtitle="",
+        anchor='start'
+    )
+).configure_view(stroke=None)
 
 col_1.altair_chart(chart_1, theme=None, use_container_width=True)
 
