@@ -83,7 +83,12 @@ geojson = pdk.Layer(
     get_line_color=[255, 255, 255],
 )
 
-r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE)
+tooltip = {
+    "html": "<b>{gebied}</b> <br /><b>Aantal: {size}</b>",
+    "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+}
+
+r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip)
 
 col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
 
