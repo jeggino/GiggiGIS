@@ -36,9 +36,9 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 st.write('NOT YET!!')
 # --- FUNCTIONS ---
-def insert_dagverslag(key,waarnemer,opdracht,gebied_id,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old):
+def insert_dagverslag(key,waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old):
     
-    data = [{"key":key, "waarnemer":waarnemer,"project":project,"gebied_id":gebied_id,"datum":datum,
+    data = [{"key":key, "waarnemer":waarnemer,"project":project,"gebied_id":gebied_id,'bemonsteringsmoment':bemonsteringsmoment,"datum":datum,
              "start_time":start_time,"eind_time":eind_time, "extra_velfwerker":extra_velfwerker, "temperatuur":temperatuur, "bewolking":bewolking,
              "neerslag":neerslag,"windkrcht":windkrcht,"windrichting":windrichting,"opmerking":opmerking}]
     df_new = pd.DataFrame(data)
@@ -69,6 +69,7 @@ try:
 except:
     pass
 
+bemonsteringsmoment = st.selectbox('Bemonsteringsmoment',('Kraamverblijf','Winterverblijf','Paarverblijf'))
 datum = st.date_input("Datum","today")       
 two_hours_from_now = datetime.now() + timedelta(hours=1)
 four_hours_from_now = datetime.now() + timedelta(hours=3)
@@ -90,9 +91,10 @@ if gebied_id == None:
     
 opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
-if st.button("**Gegevens opslaan**",use_container_width=True):
-    insert_dagverslag(key,waarnemer,opdracht,gebied_id,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
-
+with st.form("my_form", clear_on_submit=True,border=False):
+    if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
+        insert_dagverslag(key,waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
+    
 
 
 
