@@ -11,10 +11,7 @@ from datetime import datetime, timedelta, date
 import random
 
 
-#---DATASET---
-ttl = 0
-conn = st.connection("gsheets", type=GSheetsConnection)
-df_point = conn.read(ttl=ttl,worksheet="df_observations")
+
 
 # ---LAYOUT---
 st.set_page_config(
@@ -41,6 +38,12 @@ reduce_header_height_style = """
 """ 
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
+
+
+#---DATASET---
+ttl = 0
+conn = st.connection("gsheets", type=GSheetsConnection)
+df_point = conn.read(ttl=ttl,worksheet="df_observations")
 
 
 # --- APP ---
