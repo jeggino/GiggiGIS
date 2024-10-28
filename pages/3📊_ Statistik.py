@@ -114,7 +114,7 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
              # alt.Tooltip("waarnemer:N",title ="Waarnemer(s)")
             ],
 ).properties(
-    width=450,
+    # width=450,
     height=300,
     title=alt.Title(
         text="",
@@ -123,5 +123,5 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     )
 ).configure_view(stroke=None)
 
-chart_1 = st.altair_chart(chart, theme=None, use_container_width=True,)
+chart_1 = st.altair_chart(chart, theme=None, use_container_width=True)
 chart_1
