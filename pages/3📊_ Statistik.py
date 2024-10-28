@@ -37,7 +37,7 @@ geojson = pdk.Layer(
     pickable=True,
     extruded=True,
     wireframe=True,
-    get_elevation="size * 20",
+    get_elevation="size * 200",
     get_fill_color="[255, 255, size * 255]",
     get_line_color=[255, 255, 255],
 )
