@@ -103,12 +103,12 @@ df_dagverslag_option_2['datum'] = pd.to_datetime(df_dagverslag_option_2['datum']
 df_dagverslag_option_2['year'] = df_dagverslag_option_2['datum'].dt.year
 
 year_min = df_dagverslag_option_2['year'].min()
-year_max = df_dagverslag_option_2['year'].max()
+year_max = df_dagverslag_option_2['year'].max() + 1
 st.write(year_min,year_max)
 
 chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None, 
-          scale=alt.Scale(domain=['2025','2026'])),
+          scale=alt.Scale(domain=[str(year_min),str(year_max)])),
     alt.Y('gebied_id:N',
           axis=alt.Axis(grid=False,domain=False,ticks=True,),
           sort=alt.EncodingSortField(field="gebied",  order='ascending'),
