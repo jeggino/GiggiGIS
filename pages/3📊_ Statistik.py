@@ -93,5 +93,5 @@ r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=too
 col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
 
 "---"
-
-option_2 = col_1.selectbox("Option 2",gdf_areas['Wijk'].unique())
+col_3,col_4 = st.columns([1,5])
+option_2 = col_3.selectbox("Option 2",gdf_areas['Wijk'].unique())
