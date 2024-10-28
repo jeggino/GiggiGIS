@@ -11,8 +11,13 @@ from datetime import datetime, timedelta, date
 import random
 
 
-st.session_state["project"]['gdf']
-geometry_file = f"geometries/{st.session_state["project"]['project_name']}.geojson" 
+#---DATASET---
+ttl = 0
+conn = st.connection("gsheets", type=GSheetsConnection)
+df_point = conn.read(ttl=ttl,worksheet="df_observations")
+
+# --- APP ---
 gdf_areas = gpd.read_file(geometry_file)
 gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords)) 
 gdf_areas
+df_point[df_point['project']==st.session_state["project"]['project_name']]
