@@ -61,12 +61,11 @@ opdracht = st.session_state.project['opdracht']
 gebied_id = st.session_state.project['area']
 key = None
 
-st.title('DAGVERSLAG')
-st.header(f'Project: **{project}**',divider=True)
-st.subheader(f'Opdracht: **{opdracht}**',divider=True)
+st.title('project')
+st.header(f'Opdracht: **{opdracht}**',divider=True)
 
 try:
-    st.markdown(f'Gebied: **{gebied_id}**',divider=True)
+    st.subheader(f'Opdracht: **{opdracht}**',divider=True)
 except:
     pass
 
