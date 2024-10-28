@@ -132,8 +132,8 @@ with tab2:
         get_position=['lng','lat'],
     )
 
-    r = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE)
-    st.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
+    r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE)
+    st.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
     
 "---"
 option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique())
