@@ -73,9 +73,8 @@ chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(
     x="size",
     alt.Y('gebied:N',
           axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
-          # sort=alt.EncodingSortField(field="gebied",  order='ascending'),
-          title=""),
-)
+          sort=alt.EncodingSortField(field="size",  order='ascending'),
+          title=""))
 
 col_1.altair_chart(chart_1, theme=None, use_container_width=True)
 
