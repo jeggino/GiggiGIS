@@ -35,9 +35,10 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- FUNCTIONS ---
-def insert_dagverslag(key,waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old):
+def insert_dagverslag(waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,
+                      temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old):
     
-    data = [{"key":key, "waarnemer":waarnemer,"project":project,"gebied_id":gebied_id,'bemonsteringsmoment':bemonsteringsmoment,"datum":datum,
+    data = [{"waarnemer":waarnemer,"project":project,"gebied_id":gebied_id,'bemonsteringsmoment':bemonsteringsmoment,"datum":datum,
              "start_time":start_time,"eind_time":eind_time, "extra_velfwerker":extra_velfwerker, "temperatuur":temperatuur, "bewolking":bewolking,
              "neerslag":neerslag,"windkrcht":windkrcht,"windrichting":windrichting,"opmerking":opmerking}]
     df_new = pd.DataFrame(data)
@@ -58,7 +59,6 @@ waarnemer = st.session_state.login['name']
 project = st.session_state.project['project_name']
 opdracht = st.session_state.project['opdracht']
 gebied_id = st.session_state.project['area']
-key = None
 
 st.title(f'{project}')
 st.header(f'Opdracht: **{opdracht}**',divider=True)
@@ -91,9 +91,8 @@ with st.form("my_form", clear_on_submit=True,border=False):
         
     opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
     
-    
     if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-        insert_dagverslag(key,waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
+        insert_dagverslag(waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
     
 
 
