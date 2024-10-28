@@ -61,7 +61,7 @@ gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords))
 df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)&(df_point['geometry_type']=="Point")].reset_index(drop=True)
 
 col_1,col_2 = st.columns([1,2])
-option_1 = col_1.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'))
+option_1 = st.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'))
 df_point_option_1 = df_point[df_point['functie']==option_1]
 df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
 df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
