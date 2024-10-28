@@ -52,22 +52,22 @@ df_references = conn.read(ttl=ttl_references,worksheet="df_users")
 
 # --- APP ---
 # try:
-    waarnemer = st.session_state.login['name']
-    project = st.session_state.project['project_name']
-    opdracht = st.session_state.project['opdracht']
-    gebied = st.session_state.project['area']
-    key = None
-    datum = st.date_input("Datum","today")       
-    two_hours_from_now = datetime.now() + timedelta(hours=2)
-    four_hours_from_now = datetime.now() + timedelta(hours=4)
-    start_time = st.time_input("Start tijd", two_hours_from_now)
-    eind_time = st.time_input("Eind tijd", four_hours_from_now)
-    extra_velfwerker = None
-    temperatuur = st.number_input("Temperatuur")
-    bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
-    neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
-    windkrcht = st.number_input("Temperatuur")
-    windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
+waarnemer = st.session_state.login['name']
+project = st.session_state.project['project_name']
+opdracht = st.session_state.project['opdracht']
+gebied = st.session_state.project['area']
+key = None
+datum = st.date_input("Datum","today")       
+two_hours_from_now = datetime.now() + timedelta(hours=2)
+four_hours_from_now = datetime.now() + timedelta(hours=4)
+start_time = st.time_input("Start tijd", two_hours_from_now)
+eind_time = st.time_input("Eind tijd", four_hours_from_now)
+extra_velfwerker = None
+temperatuur = st.number_input("Temperatuur")
+bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
+neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
+windkrcht = st.number_input("Temperatuur")
+windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
 
 if gebied == None
     st.markdown("Vergeet a.u.b. niet in de opmerking te schrijven welke soort je hebt gevonden, de dichtstbijzijnde locaties en het doel van het onderzoek.")
