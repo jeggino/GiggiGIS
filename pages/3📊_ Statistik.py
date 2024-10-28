@@ -103,10 +103,10 @@ df_dagverslag_option_2 = df_dagverslag[df_dagverslag['gebied_id']==option_2]
 chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None, 
           scale=alt.Scale(domain=['2025','2026'])),
-    alt.Y('gebied:N',
+    alt.Y('gebied_id:N',
           axis=alt.Axis(grid=False,domain=False,ticks=True,),
           sort=alt.EncodingSortField(field="gebied",  order='ascending'),
-          title="Gebied"),
+          title=""),
     stroke=alt.Color('doel'),
     fill=alt.Color('doel',legend=alt.Legend(orient="bottom",direction='vertical',titleAnchor='middle')).title("Doel"),
     tooltip=[alt.Tooltip("datum:T",title = "Datum"),
