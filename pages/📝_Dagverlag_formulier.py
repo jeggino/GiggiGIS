@@ -58,8 +58,14 @@ df_references = conn.read(ttl=ttl_references,worksheet="df_users")
 waarnemer = st.session_state.login['name']
 project = st.session_state.project['project_name']
 opdracht = st.session_state.project['opdracht']
-gebied = st.session_state.project['area']
+gebied_id = st.session_state.project['area']
 key = None
+
+st.title('DAGVERSLAG')
+st.header(f'Project: **{project}**',divider=True)
+st.subheader(f'Opdracht: **{opdracht}**',divider=True)
+st.markdown(f'Gebied: **{gebied_id}**',divider=True)
+
 datum = st.date_input("Datum","today")       
 two_hours_from_now = datetime.now() + timedelta(hours=2)
 four_hours_from_now = datetime.now() + timedelta(hours=4)
