@@ -71,8 +71,8 @@ except:
     pass
 
 datum = st.date_input("Datum","today")       
-two_hours_from_now = datetime.now() + timedelta(hours=2)
-four_hours_from_now = datetime.now() + timedelta(hours=4)
+two_hours_from_now = datetime.now() + timedelta(hours=1)
+four_hours_from_now = datetime.now() + timedelta(hours=3)
 start_time = st.time_input("Start tijd", two_hours_from_now)
 eind_time = st.time_input("Eind tijd", four_hours_from_now)
 extra_velfwerker = None
