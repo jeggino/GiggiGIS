@@ -44,6 +44,7 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 ttl = 0
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_point = conn.read(ttl=ttl,worksheet="df_observations")
+df_dagverslag = conn.read(ttl=ttl,worksheet="df_ekomaps_dagverslagen")
 
 
 # --- APP ---
@@ -95,3 +96,29 @@ col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400
 "---"
 col_3,col_4 = st.columns([1,5])
 option_2 = col_3.selectbox("Option 2",gdf_areas['Wijk'].unique())
+df_dagverslag_option_2 = df_dagverslag[df_dagverslag['Wijk']==option_2]
+
+chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
+    alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None, 
+          scale=alt.Scale(domain=['2025','2026'])),
+    alt.Y('gebied:N',
+          axis=alt.Axis(grid=False,domain=False,ticks=True,),
+          sort=alt.EncodingSortField(field="gebied",  order='ascending'),
+          title="Gebied"),
+    stroke=alt.Color('doel'),
+    fill=alt.Color('doel',legend=alt.Legend(orient="bottom",direction='vertical',titleAnchor='middle')).title("Doel"),
+    tooltip=[alt.Tooltip("datum:T",title = "Datum"),
+             # alt.Tooltip("gebied:N",title ="Gebied"),
+             alt.Tooltip("doel:N",title ="Doel"),
+             # alt.Tooltip("waarnemer:N",title ="Waarnemer(s)")
+            ],
+).properties(
+    width=450,
+    height=300,
+    title=alt.Title(
+        text="",
+        subtitle="",
+        anchor='start'
+    )
+).configure_view(stroke=None)
+
