@@ -72,7 +72,7 @@ df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_o
 chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(x="size",
                                                          y=alt.Y('gebied:N',
                                                                axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
-                                                               sort=alt.EncodingSortField(field="size",  order='ascending'),
+                                                               sort=alt.EncodingSortField(field="size",  order='descending'),
                                                                title="")
                                                         )
 
@@ -117,7 +117,6 @@ chart_2 = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
           scale=alt.Scale(domain=[str(year_min),str(year_max)])),
     alt.Y('gebied_id:N',
           axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
-          # sort=alt.EncodingSortField(field="gebied",  order='ascending'),
           title=""),
     stroke=alt.Color('doel'),
     fill=alt.Color('doel',legend=alt.Legend(orient="bottom",direction='vertical',titleAnchor='middle')).title("Doel"),
