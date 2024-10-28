@@ -18,7 +18,7 @@ st.set_page_config(
     page_title="🦇🪶 SMPs",
     initial_sidebar_state="collapsed",
     page_icon="🦇🪶",
-    layout="centered",
+    layout="wide",
 )
 
 
