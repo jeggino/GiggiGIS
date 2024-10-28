@@ -108,7 +108,7 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None, 
           scale=alt.Scale(domain=[str(year_min),str(year_max)])),
     alt.Y('gebied_id:N',
-          axis=alt.Axis(grid=False,domain=False,ticks=True,,title=None),
+          axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
           sort=alt.EncodingSortField(field="gebied",  order='ascending'),
           title=""),
     stroke=alt.Color('doel'),
