@@ -62,53 +62,58 @@ df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdr
 
 
 option_1 = st.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'))
-col_1,col_2 = st.columns([1,2])
-df_point_option_1 = df_point[df_point['functie']==option_1]
-df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
-df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
 
-chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(x=alt.X('size:Q',axis=alt.Axis(grid=False,domain=True,ticks=False),title=None, 
-                                                                 scale=alt.Scale(domain=[0,df_merge_option_1['size'].max()+2])),
-                                                         y=alt.Y('gebied:N',
-                                                               axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
-                                                               sort=alt.EncodingSortField(field="size",  order='descending'),
-                                                               title="")
-                                                        ).properties(
-    height=400,
-    title=alt.Title(
-        text="",
-        subtitle="",
-        anchor='start'
+tab1, tab2 = st.tabs(["Cat", "Dog"])
+with tab1:
+    col_1,col_2 = st.columns([1,2])
+    df_point_option_1 = df_point[df_point['functie']==option_1]
+    df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
+    df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
+    
+    chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(x=alt.X('size:Q',axis=alt.Axis(grid=False,domain=True,ticks=False),title=None, 
+                                                                     scale=alt.Scale(domain=[0,df_merge_option_1['size'].max()+2])),
+                                                             y=alt.Y('gebied:N',
+                                                                   axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
+                                                                   sort=alt.EncodingSortField(field="size",  order='descending'),
+                                                                   title="")
+                                                            ).properties(
+        height=400,
+        title=alt.Title(
+            text="",
+            subtitle="",
+            anchor='start'
+        )
+    ).configure_view(stroke=None)
+    
+    col_1.altair_chart(chart_1, theme=None, use_container_width=True)
+    
+    INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
+    
+    geojson = pdk.Layer(
+        "GeoJsonLayer",
+        df_merge_option_1,
+        opacity=0.8,
+        stroked=False,
+        filled=True,
+        pickable=True,
+        extruded=True,
+        wireframe=True,
+        get_elevation="size * 200",
+        get_fill_color="[255, 255, size * 100]",
+        get_line_color=[255, 255, 255],
     )
-).configure_view(stroke=None)
+    
+    tooltip = {
+        "html": "<b>{gebied}</b> <br /><b>Aantal: {size}</b>",
+        "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
+    }
+    
+    r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip)
+    
+    col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
 
-col_1.altair_chart(chart_1, theme=None, use_container_width=True)
-
-INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
-
-geojson = pdk.Layer(
-    "GeoJsonLayer",
-    df_merge_option_1,
-    opacity=0.8,
-    stroked=False,
-    filled=True,
-    pickable=True,
-    extruded=True,
-    wireframe=True,
-    get_elevation="size * 200",
-    get_fill_color="[255, 255, size * 100]",
-    get_line_color=[255, 255, 255],
-)
-
-tooltip = {
-    "html": "<b>{gebied}</b> <br /><b>Aantal: {size}</b>",
-    "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
-}
-
-r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip)
-
-col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
-
+with tab1:
+    st.write('jj')
 "---"
 option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique())
 df_dagverslag_option_2 = df_dagverslag[df_dagverslag['gebied_id']==option_2]
