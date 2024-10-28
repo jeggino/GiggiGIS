@@ -95,7 +95,7 @@ col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400
 
 "---"
 col_3,col_4 = st.columns([1,5])
-option_2 = col_3.selectbox("Option 2",gdf_areas['Wijk'].unique())
+option_2 = col_3.selectbox("Option 2",gdf_areas['gebied'].unique())
 df_dagverslag_option_2 = df_dagverslag[df_dagverslag['Wijk']==option_2]
 
 chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
