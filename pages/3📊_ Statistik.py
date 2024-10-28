@@ -34,6 +34,7 @@ geojson = pdk.Layer(
     opacity=0.8,
     stroked=False,
     filled=True,
+    pickable=True,
     extruded=True,
     wireframe=True,
     get_elevation="size / 20",
