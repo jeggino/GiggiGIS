@@ -22,4 +22,4 @@ opdracht = st.session_state["project"]['opdracht']
 gdf_areas = gpd.read_file(f"geometries/{project}.geojson")
 gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords)) 
 gdf_areas
-df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)]
+df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)&(df_point['geometry_tipe']=="Point")]
