@@ -67,8 +67,13 @@ df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
 df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
 
 # st.bar_chart(df_merge_option_1, x="size", y="gebied", horizontal=False)
-col_1.bar_chart(data=df_merge_option_1, x="size", y="gebied", x_label='aantal', y_label='Gebied', color=None, 
-horizontal=False, stack=False, width=None, height=400, use_container_width=True)
+# col_1.bar_chart(data=df_merge_option_1, x="size", y="gebied", x_label='aantal', y_label='Gebied', color=None, 
+# horizontal=False, stack=False, width=None, height=400, use_container_width=True)
+chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(
+    x="size",
+    y="gebied",
+)
+col_1.altair_chart(chart_1, theme=None, use_container_width=True)
 
 INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
 
@@ -104,7 +109,7 @@ df_dagverslag_option_2['year'] = df_dagverslag_option_2['datum'].dt.year
 year_min = df_dagverslag_option_2['year'].min()
 year_max = df_dagverslag_option_2['year'].max() + 1
 
-chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
+chart_2 = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None, 
           scale=alt.Scale(domain=[str(year_min),str(year_max)])),
     alt.Y('gebied_id:N',
@@ -135,4 +140,4 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     )
 ).configure_view(stroke=None)
 
-st.altair_chart(chart, theme=None, use_container_width=True)
+st.altair_chart(chart_2, theme=None, use_container_width=True)
