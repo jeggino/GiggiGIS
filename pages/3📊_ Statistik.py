@@ -42,3 +42,5 @@ geojson = pdk.Layer(
 )
 
 r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE)
+
+st.pydeck(r)
