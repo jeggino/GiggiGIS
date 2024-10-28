@@ -61,7 +61,7 @@ opdracht = st.session_state.project['opdracht']
 gebied_id = st.session_state.project['area']
 key = None
 
-st.title('project')
+st.title(f'{project}')
 st.header(f'Opdracht: **{opdracht}**',divider=True)
 
 try:
