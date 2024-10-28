@@ -6,6 +6,8 @@ import geopandas as gpd
 from shapely.geometry import Polygon
 
 import pydeck as pdk
+import altair as alt
+
 import datetime
 from datetime import datetime, timedelta, date
 import random
