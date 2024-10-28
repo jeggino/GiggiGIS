@@ -17,7 +17,8 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 df_point = conn.read(ttl=ttl,worksheet="df_observations")
 
 # --- APP ---
-gdf_areas = gpd.read_file(geometry_file)
+project = st.session_state["project"]['project_name']
+gdf_areas = gpd.read_file(f"geometries/{project}.geojson")
 gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords)) 
 gdf_areas
-df_point[df_point['project']==st.session_state["project"]['project_name']]
+df_point[df_point['project']==project]
