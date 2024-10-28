@@ -113,7 +113,25 @@ with tab1:
     col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
 
 with tab2:
-    st.write('jj')
+    layer = pdk.Layer(
+        "ScreenGridLayer",
+        df_merge_option_1,
+        pickable=False,
+        opacity=0.8,
+        cell_size_pixels=50,
+        color_range=[
+            [0, 25, 0, 25],
+            [0, 85, 0, 85],
+            [0, 127, 0, 127],
+            [0, 170, 0, 170],
+            [0, 190, 0, 190],
+            [0, 255, 0, 255],
+        ],
+        get_position=['lat','lng'],
+    )
+
+
+    
 "---"
 option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique())
 df_dagverslag_option_2 = df_dagverslag[df_dagverslag['gebied_id']==option_2]
