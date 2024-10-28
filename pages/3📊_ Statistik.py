@@ -10,4 +10,5 @@ import random
 
 
 st.session_state["project"]['gdf']
-st.write("Not yet")
+geometry_file = f"geometries/{project}.geojson" 
+gdf_areas = gpd.read_file(geometry_file)
