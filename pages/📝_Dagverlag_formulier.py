@@ -64,11 +64,10 @@ st.title(f'{project}')
 st.header(f'Opdracht: **{opdracht}**',divider=True)
 
 if gebied_id == None:
-    text = "Vergeet a.u.b. niet in de opmerking te schrijven welke soort je hebt gevonden, de dichtstbijzijnde locaties en het doel van het onderzoek."
+    pass
 else:
     text = f'Gebied: **{gebied_id }**'
-
-st.subheader(text,divider=True)
+    st.subheader(text,divider=True)
 
 with st.form("my_form", clear_on_submit=True,border=False):
     bemonsteringsmoment = st.selectbox('Bemonsteringsmoment',('Kraamverblijf','Winterverblijf','Paarverblijf'))
