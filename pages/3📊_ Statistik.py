@@ -118,9 +118,9 @@ with tab2:
     layer = pdk.Layer(
         "ScreenGridLayer",
         df_merge_option_1,
-        pickable=False,
+        pickable=True,
         opacity=0.8,
-        cell_size_pixels=50,
+        cell_size_pixels=15,
         color_range=[
             [0, 25, 0, 25],
             [0, 85, 0, 85],
@@ -129,7 +129,7 @@ with tab2:
             [0, 190, 0, 190],
             [0, 255, 0, 255],
         ],
-        get_position=['lng','lat'],
+        get_position=['lat','lng'],
     )
 
     r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE)
