@@ -127,8 +127,7 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
              alt.Tooltip("opmerking:N",title ="Opmerking"),
             ],
 ).properties(
-    # width=450,
-    height=300,
+    height=230,
     title=alt.Title(
         text="",
         subtitle="",
