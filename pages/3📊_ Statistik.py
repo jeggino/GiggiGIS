@@ -128,7 +128,7 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
             ],
 ).properties(
     # width=450,
-    height=150,
+    height=300,
     title=alt.Title(
         text="",
         subtitle="",
