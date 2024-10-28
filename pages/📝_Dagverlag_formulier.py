@@ -74,7 +74,11 @@ two_hours_from_now = datetime.now() + timedelta(hours=1)
 four_hours_from_now = datetime.now() + timedelta(hours=3)
 start_time = st.time_input("Start tijd", two_hours_from_now)
 eind_time = st.time_input("Eind tijd", four_hours_from_now)
-extra_velfwerker = None
+
+extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
+extra_velfwerker_list.remove(waarnemer)
+extra_velfwerker = st.multiselect("Extra velfwerker",extra_velfwerker_list)
+
 temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
 bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
 neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
@@ -85,11 +89,6 @@ if gebied_id == None:
     st.markdown("Vergeet a.u.b. niet in de opmerking te schrijven welke soort je hebt gevonden, de dichtstbijzijnde locaties en het doel van het onderzoek.")
     
 opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
-
-df_projects
-project_list = df_projects.set_index('project').loc[project,"user"].split(',')
-project_list.remove(waarnemer)
-project_list
 
 if st.button("**Gegevens opslaan**",use_container_width=True):
     insert_dagverslag(key,waarnemer,opdracht,gebied_id,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
