@@ -94,4 +94,4 @@ col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400
 
 "---"
 
-option_2 = col_1.selectbox("Option 1",gdf_areas['gebied'].unique())
+option_2 = col_1.selectbox("Option 2",gdf_areas['Wijk'].unique())
