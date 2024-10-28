@@ -71,8 +71,12 @@ df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_o
 # horizontal=False, stack=False, width=None, height=400, use_container_width=True)
 chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(
     x="size",
-    y="gebied",
+    alt.Y('gebied:N',
+          axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
+          # sort=alt.EncodingSortField(field="gebied",  order='ascending'),
+          title=""),
 )
+
 col_1.altair_chart(chart_1, theme=None, use_container_width=True)
 
 INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
