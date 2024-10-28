@@ -64,7 +64,11 @@ key = None
 st.title('DAGVERSLAG')
 st.header(f'Project: **{project}**',divider=True)
 st.subheader(f'Opdracht: **{opdracht}**',divider=True)
-st.markdown(f'Gebied: **{gebied_id}**',divider=True)
+
+try:
+    st.markdown(f'Gebied: **{gebied_id}**',divider=True)
+except:
+    pass
 
 datum = st.date_input("Datum","today")       
 two_hours_from_now = datetime.now() + timedelta(hours=2)
@@ -78,7 +82,7 @@ neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","
 windkrcht = st.number_input("windkrcht",key='windkrcht', min_value=1)
 windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
 
-if gebied == None:
+if gebied_id == None:
     st.markdown("Vergeet a.u.b. niet in de opmerking te schrijven welke soort je hebt gevonden, de dichtstbijzijnde locaties en het doel van het onderzoek.")
     
 opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
