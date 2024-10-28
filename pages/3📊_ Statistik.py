@@ -23,3 +23,19 @@ gdf_areas = gpd.read_file(f"geometries/{project}.geojson")
 gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords)) 
 gdf_areas
 df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)&(df_point['geometry_type']=="Point")]
+
+import streamlit as st
+
+tab1 = st.tabs(["Cat"])
+tab2 = st.tabs(["Dog"]) 
+tab3 = st.tabs(["Owl"])
+
+with tab1:
+    st.header("A cat")
+    st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+with tab2:
+    st.header("A dog")
+    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+with tab3:
+    st.header("An owl")
+    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
