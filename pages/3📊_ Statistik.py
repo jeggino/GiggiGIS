@@ -25,5 +25,5 @@ gdf_areas
 df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)&(df_point['geometry_type']=="Point")]
 df_point
 option_1 = st.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'))
-df_point_option_1 = df_point.groupby(['gebied',option_1],as_index=False).size()
+df_point_option_1 = df_point.groupby(['gebied',option_1]).size()
 df_point_option_1
