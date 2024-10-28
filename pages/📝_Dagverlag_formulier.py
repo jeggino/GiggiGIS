@@ -64,7 +64,7 @@ st.title(f'{project}')
 st.header(f'Opdracht: **{opdracht}**',divider=True)
 
 try:
-    st.subheader(f'Opdracht: **{opdracht}**',divider=True)
+    st.subheader(f'Gebied: **{gebied_id }**',divider=True)
 except:
     pass
 
