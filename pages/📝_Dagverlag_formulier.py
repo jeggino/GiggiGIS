@@ -51,7 +51,7 @@ ttl = '10m'
 ttl_references = '10m'
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_old = conn.read(ttl=ttl,worksheet="df_ekomaps_dagverslagen")
-df_references = conn.read(ttl=ttl_references,worksheet="df_users")
+df_projects = conn.read(ttl=ttl_references,worksheet="df_ekomaps_projects")
 
 # --- APP ---
 # try:
@@ -86,7 +86,9 @@ if gebied_id == None:
     
 opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
-df_references
+df_projects
+project_list = df_references.loc[project,"user"].split(',')
+project_list
 
 if st.button("**Gegevens opslaan**",use_container_width=True):
     insert_dagverslag(key,waarnemer,opdracht,gebied_id,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
