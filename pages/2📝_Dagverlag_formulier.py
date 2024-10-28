@@ -35,10 +35,10 @@ reduce_header_height_style = """
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 # --- FUNCTIONS ---
-def insert_dagverslag(waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,
+def insert_dagverslag(waarnemer,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,
                       temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old):
     
-    data = [{"waarnemer":waarnemer,"project":project,"gebied_id":gebied_id,'bemonsteringsmoment':bemonsteringsmoment,"datum":datum,
+    data = [{"waarnemer":waarnemer,"project":project,"gebied_id":gebied_id,'doel':doel,"datum":datum,
              "start_time":start_time,"eind_time":eind_time, "extra_velfwerker":extra_velfwerker, "temperatuur":temperatuur, "bewolking":bewolking,
              "neerslag":neerslag,"windkrcht":windkrcht,"windrichting":windrichting,"opmerking":opmerking}]
     df_new = pd.DataFrame(data)
@@ -74,7 +74,7 @@ try:
         st.subheader(text,divider=True)
     
     with st.form("my_form", clear_on_submit=True,border=False):
-        bemonsteringsmoment = st.selectbox('Bemonsteringsmoment',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+        doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
         datum = st.date_input("Datum","today")       
         two_hours_from_now = datetime.now() + timedelta(hours=1)
         four_hours_from_now = datetime.now() + timedelta(hours=3)
@@ -97,7 +97,7 @@ try:
         opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
         
         if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
-            insert_dagverslag(waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
+            insert_dagverslag(waarnemer,opdracht,gebied_id,doel,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
         
             st.switch_page("🗺️_Home.py")
 except:
