@@ -129,7 +129,7 @@ with tab2:
             [0, 190, 0, 190],
             [0, 255, 0, 255],
         ],
-        get_position=['lat','lng'],
+        get_position=['lng','lat'],
     )
 
     r = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE)
