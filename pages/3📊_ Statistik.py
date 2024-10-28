@@ -112,7 +112,7 @@ with tab1:
     
     col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
 
-with tab1:
+with tab2:
     st.write('jj')
 "---"
 option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique())
