@@ -63,7 +63,9 @@ df_point_option_1 = df_point[df_point['functie']==option_1]
 df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
 df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
 
-st.bar_chart(df_merge_option_1, x="size", y="gebied", horizontal=False)
+# st.bar_chart(df_merge_option_1, x="size", y="gebied", horizontal=False)
+col_1.bar_chart(data=df_merge_option_1, x="size", y="gebied" x_label='aantal', y_label=False, color=None, 
+horizontal=False, stack=False, width=None, height=400, use_container_width=True)
 
 INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
 
