@@ -88,6 +88,7 @@ opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
 df_projects
 project_list = df_projects.set_index('project').loc[project,"user"].split(',')
+project_list.remove(waarnemer)
 project_list
 
 if st.button("**Gegevens opslaan**",use_container_width=True):
