@@ -124,4 +124,3 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
 ).configure_view(stroke=None)
 
 chart_1 = st.altair_chart(chart, theme=None, use_container_width=True)
-chart_1
