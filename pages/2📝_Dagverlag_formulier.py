@@ -54,6 +54,10 @@ df_old = conn.read(ttl=ttl,worksheet="df_ekomaps_dagverslagen")
 df_projects = conn.read(ttl=ttl_references,worksheet="df_ekomaps_projects")
 
 # --- APP ---
+IMAGE = "image/logo.png"
+IMAGE_2 ="image/menu.jpg"
+st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
+
 try:
     waarnemer = st.session_state.login['name']
     project = st.session_state.project['project_name']
