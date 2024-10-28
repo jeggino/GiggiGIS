@@ -56,7 +56,8 @@ option_1 = st.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats',
 df_point_option_1 = df_point[df_point['functie']==option_1]
 df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
 df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
-INITIAL_VIEW_STATE = pdk.ViewState(latitude=49.254, longitude=-123.13, zoom=11, max_zoom=16, pitch=45, bearing=0)
+
+INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf.dissolve().centroid.x, longitude=gdf.dissolve().centroid.y, zoom=11, max_zoom=16, pitch=45, bearing=0)
 
 geojson = pdk.Layer(
     "GeoJsonLayer",
@@ -74,4 +75,4 @@ geojson = pdk.Layer(
 
 r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE)
 
-st.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=None, selection_mode="single-object", on_select="ignore", key=None)
+st.pydeck_chart(pydeck_obj=r,use_container_width=True, width='95%', height=None, selection_mode="single-object", on_select="ignore", key=None)
