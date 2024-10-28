@@ -95,7 +95,7 @@ try:
         if st.form_submit_button("**Gegevens opslaan**",use_container_width=True):
             insert_dagverslag(waarnemer,opdracht,gebied_id,bemonsteringsmoment,datum,start_time,eind_time,extra_velfwerker,temperatuur,bewolking,neerslag,windkrcht,windrichting,opmerking,df_old)
         
-        st.switch_page("🗺️_Home.py")
+            st.switch_page("🗺️_Home.py")
 except:
     st.switch_page("🗺️_Home.py")
     
