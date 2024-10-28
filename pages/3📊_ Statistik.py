@@ -66,11 +66,8 @@ df_point_option_1 = df_point[df_point['functie']==option_1]
 df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
 df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
 
-# st.bar_chart(df_merge_option_1, x="size", y="gebied", horizontal=False)
-# col_1.bar_chart(data=df_merge_option_1, x="size", y="gebied", x_label='aantal', y_label='Gebied', color=None, 
-# horizontal=False, stack=False, width=None, height=400, use_container_width=True)
 chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(x=alt.X('size:Q',axis=alt.Axis(grid=False,domain=True,ticks=False),title='Aantal', 
-                                                                 scale=alt.Scale(domain=[0,10])),,
+                                                                 scale=alt.Scale(domain=[0,10])),
                                                          y=alt.Y('gebied:N',
                                                                axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
                                                                sort=alt.EncodingSortField(field="size",  order='descending'),
