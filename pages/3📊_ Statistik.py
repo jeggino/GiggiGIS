@@ -75,4 +75,4 @@ geojson = pdk.Layer(
 
 r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE)
 
-st.pydeck_chart(pydeck_obj=r,use_container_width=True, width='95%', height=None, selection_mode="single-object", on_select="ignore", key=None)
+st.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=None, selection_mode="single-object", on_select="ignore", key=None)
