@@ -47,6 +47,10 @@ df_point = conn.read(ttl=ttl,worksheet="df_observations")
 
 
 # --- APP ---
+IMAGE = "image/logo.png"
+IMAGE_2 ="image/menu.jpg"
+st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
+
 project = st.session_state["project"]['project_name']
 opdracht = st.session_state["project"]['opdracht']
 gdf_areas = gpd.read_file(f"geometries/{project}.geojson")
@@ -78,3 +82,5 @@ geojson = pdk.Layer(
 r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE)
 
 col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
+
+"---"
