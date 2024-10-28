@@ -12,5 +12,5 @@ import random
 st.session_state["project"]['gdf']
 geometry_file = f"geometries/{st.session_state["project"]['project_name']}.geojson" 
 gdf_areas = gpd.read_file(geometry_file)
-gdf_areas 
-
+gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords)) 
+gdf_areas
