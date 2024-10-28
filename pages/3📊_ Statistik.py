@@ -41,4 +41,4 @@ geojson = pdk.Layer(
     get_line_color=[255, 255, 255],
 )
 
-r = pdk.Deck(layers=[polygon, geojson], initial_view_state=INITIAL_VIEW_STATE)
+r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE)
