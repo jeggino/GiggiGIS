@@ -26,7 +26,7 @@ df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdr
 df_point
 option_1 = st.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'))
 df_point_option_1 = df_point[df_point['functie']==option_1]
-df_point_option_1 = df_point_option_1.groupby(['gebied']).size()
+df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
 df_point_option_1
 df_merge_option_1 = gdf_areas.merge(df_point_option_1, on='gebied')
 df_merge_option_1
