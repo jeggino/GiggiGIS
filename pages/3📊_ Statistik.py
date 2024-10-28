@@ -96,8 +96,7 @@ r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=too
 col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
 
 "---"
-col_3,col_4 = st.columns([1,5])
-option_2 = col_3.selectbox("Option 2",gdf_areas['Wijk'].unique())
+option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique())
 df_dagverslag_option_2 = df_dagverslag[df_dagverslag['gebied_id']==option_2]
 
 chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
@@ -124,4 +123,5 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     )
 ).configure_view(stroke=None)
 
-col_4.altair_chart(chart, theme=None, use_container_width=True)
+chart_1 = st.altair_chart(chart, theme=None, use_container_width=True,on_select = "rerun")
+chart_1
