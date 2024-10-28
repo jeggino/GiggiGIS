@@ -18,7 +18,8 @@ df_point = conn.read(ttl=ttl,worksheet="df_observations")
 
 # --- APP ---
 project = st.session_state["project"]['project_name']
+opdracht = st.session_state["project"]['opdracht']
 gdf_areas = gpd.read_file(f"geometries/{project}.geojson")
 gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords)) 
 gdf_areas
-df_point[df_point['project']==project]
+df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)]
