@@ -98,13 +98,11 @@ col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400
 "---"
 option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique())
 df_dagverslag_option_2 = df_dagverslag[df_dagverslag['gebied_id']==option_2]
-df_dagverslag_option_2
 df_dagverslag_option_2['datum'] = pd.to_datetime(df_dagverslag_option_2['datum'])
 df_dagverslag_option_2['year'] = df_dagverslag_option_2['datum'].dt.year
 
 year_min = df_dagverslag_option_2['year'].min()
 year_max = df_dagverslag_option_2['year'].max() + 1
-st.write(year_min,year_max)
 
 chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None, 
@@ -115,10 +113,18 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
           title=""),
     stroke=alt.Color('doel'),
     fill=alt.Color('doel',legend=alt.Legend(orient="bottom",direction='vertical',titleAnchor='middle')).title("Doel"),
-    tooltip=[alt.Tooltip("datum:T",title = "Datum"),
-             # alt.Tooltip("gebied:N",title ="Gebied"),
+    tooltip=[alt.Tooltip("waarnemer:N",title = "Waarnemer"),
+             alt.Tooltip("extra_velfwerker:N",title ="Extra veldwerkers"),
              alt.Tooltip("doel:N",title ="Doel"),
-             # alt.Tooltip("waarnemer:N",title ="Waarnemer(s)")
+             alt.Tooltip("datum:T",title ="Datum"),
+             alt.Tooltip("start_time:T",title ="Begin tijd"),
+             alt.Tooltip("eind_time:T",title ="Eind tijd"),
+             alt.Tooltip("temperatuur:N",title ="Temperatuur"),
+             alt.Tooltip("bewolking:N",title ="Bewolking"),
+             alt.Tooltip("neerslag:N",title ="Neerslag"),
+             alt.Tooltip("windkrcht:N",title ="Windkrcht"),
+             alt.Tooltip("windrichting:N",title ="Windrichting"),
+             alt.Tooltip("opmerking:N",title ="Opmerking"),
             ],
 ).properties(
     # width=450,
@@ -130,4 +136,4 @@ chart = alt.Chart(df_dagverslag_option_2).mark_point(size=60).encode(
     )
 ).configure_view(stroke=None)
 
-chart_1 = st.altair_chart(chart, theme=None, use_container_width=True)
+st.altair_chart(chart, theme=None, use_container_width=True)
