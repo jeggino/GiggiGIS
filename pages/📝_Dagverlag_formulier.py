@@ -87,7 +87,7 @@ if gebied_id == None:
 opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
 
 df_projects
-project_list = df_references.loc[project,"user"].split(',')
+project_list = df_projects.loc[project,"user"].split(',')
 project_list
 
 if st.button("**Gegevens opslaan**",use_container_width=True):
