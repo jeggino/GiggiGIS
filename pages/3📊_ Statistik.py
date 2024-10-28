@@ -68,7 +68,7 @@ df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
 df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
 
 chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(x=alt.X('size:Q',axis=alt.Axis(grid=False,domain=True,ticks=False),title=None, 
-                                                                 scale=alt.Scale(domain=[0,df_merge_option_1['size'].max()+2)),
+                                                                 scale=alt.Scale(domain=[0,df_merge_option_1['size'].max()+2]),
                                                          y=alt.Y('gebied:N',
                                                                axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
                                                                sort=alt.EncodingSortField(field="size",  order='descending'),
