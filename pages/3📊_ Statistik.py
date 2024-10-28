@@ -9,5 +9,5 @@ from datetime import datetime, timedelta, date
 import random
 
 
-st.session_state.project.gdf
+st.session_state["project"]['gdf']
 st.write("Not yet")
