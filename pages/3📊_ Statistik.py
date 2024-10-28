@@ -12,3 +12,5 @@ import random
 st.session_state["project"]['gdf']
 geometry_file = f"geometries/{project}.geojson" 
 gdf_areas = gpd.read_file(geometry_file)
+gdf_areas 
+
