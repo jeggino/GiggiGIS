@@ -121,14 +121,6 @@ with tab2:
         pickable=True,
         opacity=0.8,
         cell_size_pixels=50,
-        color_range=[
-            [0, 25, 0, 25],
-            [0, 85, 0, 85],
-            [0, 127, 0, 127],
-            [0, 170, 0, 170],
-            [0, 190, 0, 190],
-            [0, 255, 0, 255],
-        ],
         get_position=['lng','lat'],
     )
 
