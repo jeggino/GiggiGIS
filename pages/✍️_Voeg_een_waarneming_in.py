@@ -191,35 +191,32 @@ def input_data(output,df_old,auto_start):
         if auto_start == True:
             st.switch_page("🗺️_Home.py")
                      
-                  
-        # except:
-        #     st.error("!!!!!!!!!!!!!!!!!!!!")
-        #     st.stop()
+
 
 # --- APP ---  
-# try:        
-IMAGE = "image/logo.png"
-IMAGE_2 ="image/menu.jpg"
-st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
-
-waarnemer = st.session_state.login['name']
-
-
-conn = st.connection("gsheets", type=GSheetsConnection)
-df_old = conn.read(ttl='10m',worksheet="df_observations")
-
-output_map = map(st.session_state.project['auto_start'])
-
-
 try:
-    if len(output_map["features"]) >= 1:
-        input_data(output_map,df_old,st.session_state.project['auto_start'])
-        
-    else:
-        st.stop()      
-        
-except:
-    st.stop()
+    IMAGE = "image/logo.png"
+    IMAGE_2 ="image/menu.jpg"
+    st.logo(IMAGE,  link=None, icon_image=IMAGE_2)
     
-# except:
-#     st.switch_page("🗺️_Home.py")
+    waarnemer = st.session_state.login['name']
+    
+    
+    conn = st.connection("gsheets", type=GSheetsConnection)
+    df_old = conn.read(ttl='10m',worksheet="df_observations")
+    
+    output_map = map(st.session_state.project['auto_start'])
+    
+    
+    try:
+        if len(output_map["features"]) >= 1:
+            input_data(output_map,df_old,st.session_state.project['auto_start'])
+            
+        else:
+            st.stop()      
+            
+    except:
+        st.stop()
+    
+except:
+    st.switch_page("🗺️_Home.py")
