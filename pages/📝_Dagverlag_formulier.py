@@ -69,7 +69,7 @@ neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","
 windkrcht = st.number_input("Temperatuur")
 windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
 
-if gebied == None
+if gebied == None:
     st.markdown("Vergeet a.u.b. niet in de opmerking te schrijven welke soort je hebt gevonden, de dichtstbijzijnde locaties en het doel van het onderzoek.")
     
 opmerking = st.text_input("", placeholder="Vul hier een opmerking in ...")
