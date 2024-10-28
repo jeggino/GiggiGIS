@@ -69,12 +69,12 @@ df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_o
 # st.bar_chart(df_merge_option_1, x="size", y="gebied", horizontal=False)
 # col_1.bar_chart(data=df_merge_option_1, x="size", y="gebied", x_label='aantal', y_label='Gebied', color=None, 
 # horizontal=False, stack=False, width=None, height=400, use_container_width=True)
-chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(
-    x="size",
-    alt.Y('gebied:N',
-          axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
-          sort=alt.EncodingSortField(field="size",  order='ascending'),
-          title=""))
+chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(x="size",
+                                                         y=alt.Y('gebied:N',
+                                                               axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
+                                                               sort=alt.EncodingSortField(field="size",  order='ascending'),
+                                                               title="")
+                                                        )
 
 col_1.altair_chart(chart_1, theme=None, use_container_width=True)
 
