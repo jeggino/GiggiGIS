@@ -190,7 +190,7 @@ def input_data(output,df_old,auto_start):
         
         if auto_start == True:
             # st.switch_page("🗺️_Home.py")
-            st.switch_page("1✍️_Voeg_een_waarneming_in.py")
+            st.switch_page("✍️_Voeg_een_waarneming_in.py")
                      
 
 
