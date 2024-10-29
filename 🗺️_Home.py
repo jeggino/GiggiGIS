@@ -449,7 +449,7 @@ for i in range(len(df_2)):
 
     if df_2.iloc[i]['geometry_type'] == "Point":
 
-        if (df_2.iloc[i]['sp']=="Huismus")):
+        if (df_2.iloc[i]['sp']=="Huismus"):
             ICON_SIZE_2 = ICON_SIZE_huismus
 
 
