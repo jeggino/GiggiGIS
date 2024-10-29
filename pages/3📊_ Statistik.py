@@ -60,8 +60,12 @@ gdf_areas = gpd.read_file(f"geometries/{project}.geojson")
 gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords)) 
 df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)&(df_point['geometry_type']=="Point")].reset_index(drop=True)
 
-
-option_1 = st.selectbox("Selecteer een functie",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'),
+if opdracht == 'Vogels':
+    functie = BIRD_FUNCTIE
+elif opdracht == 'Vleermuizen':
+    functie =BAT_FUNCTIE 
+ 
+option_1 = st.selectbox("Selecteer een functie",functie,
                         label_visibility="visible",help="Selecteer een specifieke functie om de gebieden met de hoogste concentratie te identificeren en hun verspreiding beter te begrijpen.")
 
 tab1, tab2 = st.tabs(["PolygonLayer", "Screengrid"])
