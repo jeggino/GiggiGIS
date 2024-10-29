@@ -113,6 +113,10 @@ with tab1:
     col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
 
 with tab2:
+    col_3,col_4 = st.columns([1,4])
+    
+    col_3.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
+    
     INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
     
     layer = pdk.Layer(
@@ -125,7 +129,9 @@ with tab2:
     )
 
     r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE)
-    st.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
+    col_4.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
+
+    
     
 "---"
 option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique())
