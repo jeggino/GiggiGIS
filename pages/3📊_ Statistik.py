@@ -114,8 +114,8 @@ with tab1:
 
 with tab2:
     col_3,col_4 = st.columns([1,4])
-    df_point_option_1
-    col_3.metric(label="Totaal", value=len(df_point_option_1)})
+    
+    col_3.metric(label="Totaal", value=len(df_point_option_1))
     
     INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
     
@@ -129,10 +129,9 @@ with tab2:
     )
 
     r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE)
+    
     col_4.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
-
-    
-    
+  
 "---"
 option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique())
 df_dagverslag_option_2 = df_dagverslag[df_dagverslag['gebied_id']==option_2]
