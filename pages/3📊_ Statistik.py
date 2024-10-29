@@ -63,7 +63,7 @@ df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdr
 
 option_1 = st.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'))
 
-tab1, tab2 = st.tabs(["Cat", "Dog"])
+tab1, tab2 = st.tabs(["PolygonLayer", "Screengrid"])
 with tab1:
     col_1,col_2 = st.columns([1,2])
     df_point_option_1 = df_point[df_point['functie']==option_1]
