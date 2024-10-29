@@ -67,8 +67,8 @@ tab1, tab2 = st.tabs(["PolygonLayer", "Screengrid"])
 with tab1:
     col_1,col_2 = st.columns([1,2])
     df_point_option_1 = df_point[df_point['functie']==option_1]
-    df_point_option_1 = df_point_option_1.groupby(['gebied'],as_index=False).size()
-    df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_1, on='gebied',how='left').fillna(0)
+    df_point_option_2 = df_point_option_1.groupby(['gebied'],as_index=False).size()
+    df_merge_option_1 = gdf_areas.rename(columns={'Wijk':'gebied'}).merge(df_point_option_2, on='gebied',how='left').fillna(0)
     
     chart_1 = alt.Chart(df_merge_option_1).mark_bar().encode(x=alt.X('size:Q',axis=alt.Axis(grid=False,domain=True,ticks=False),title=None, 
                                                                      scale=alt.Scale(domain=[0,df_merge_option_1['size'].max()+2])),
@@ -114,14 +114,14 @@ with tab1:
 
 with tab2:
     col_3,col_4 = st.columns([1,4])
-    df_point_option_1
+    df_point_option_2
     col_3.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
     
     INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
     
     layer = pdk.Layer(
         "ScreenGridLayer",
-        df_point_option_1,
+        df_point_option_2,
         pickable=True,
         opacity=0.8,
         cell_size_pixels=50,
