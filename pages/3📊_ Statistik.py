@@ -121,7 +121,7 @@ with tab2:
     
     layer = pdk.Layer(
         "ScreenGridLayer",
-        df_point,
+        df_point_option_1,
         pickable=True,
         opacity=0.8,
         cell_size_pixels=50,
