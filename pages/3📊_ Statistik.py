@@ -62,6 +62,8 @@ df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdr
 
 if opdracht == 'Vogels':
     functie = BIRD_FUNCTIE
+    option_3 = st.selectbox("Selecteer een soort",BIRD_NAMES ,label_visibility="visible")
+    df_point = df_point[df_point['sp']==option_3]
 elif opdracht == 'Vleermuizen':
     functie =BAT_FUNCTIE 
  
