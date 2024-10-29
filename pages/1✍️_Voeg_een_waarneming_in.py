@@ -186,11 +186,9 @@ def input_data(output,df_old,auto_start):
         else:
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,gebied,df_old)
-            # st.rerun()
         
         if auto_start == True:
-            # st.switch_page("🗺️_Home.py")
-            st.switch_page("✍️_Voeg_een_waarneming_in.py")
+            st.switch_page("🗺️_Home.py")
                      
 
 
