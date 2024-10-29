@@ -114,7 +114,7 @@ with tab1:
 
 with tab2:
     col_3,col_4 = st.columns([1,4])
-    
+    df_point_option_1
     col_3.metric(label="Gas price", value=4, delta=-0.5, delta_color="inverse")
     
     INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
