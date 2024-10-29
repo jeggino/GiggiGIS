@@ -105,7 +105,7 @@ def input_data(output,df_old,auto_start):
         gebied = None
     
     datum = st.date_input("Datum","today")       
-    nine_hours_from_now = datetime.now() + timedelta(hours=2)
+    nine_hours_from_now = datetime.now() + timedelta(hours=1)
     time = st.time_input("Tijd", nine_hours_from_now)
 
     geometry_type = output["features"][0]["geometry"]["type"]
