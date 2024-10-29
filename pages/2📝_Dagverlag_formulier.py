@@ -74,7 +74,12 @@ try:
         st.subheader(text,divider=True)
     
     with st.form("my_form", clear_on_submit=True,border=False):
-        doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+        
+        if opdracht == 'Vleermuizen':
+            doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
+        elif opdracht == 'Vogels':
+            doel = st.selectbox('Doel',('Gierzwaluwen','Huismussen'))
+            
         datum = st.date_input("Datum","today")       
         two_hours_from_now = datetime.now() + timedelta(hours=1)
         four_hours_from_now = datetime.now() + timedelta(hours=3)
