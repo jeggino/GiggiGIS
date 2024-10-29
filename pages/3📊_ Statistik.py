@@ -61,7 +61,7 @@ gdf_areas.geometry = gdf_areas.geometry.apply(lambda x: Polygon(x.coords))
 df_point = df_point[(df_point['project']==project)&(df_point['soortgroup']==opdracht)&(df_point['geometry_type']=="Point")].reset_index(drop=True)
 
 
-st.header("Selecteer een specifieke functie om de gebieden met de hoogste concentratie te identificeren en hun verspreiding beter te begrijpen.",divider=True)
+st.markdown("Selecteer een specifieke functie om de gebieden met de hoogste concentratie te identificeren en hun verspreiding beter te begrijpen.",divider=True)
 option_1 = st.selectbox("Option 1",('zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats'),label_visibility="hidden")
 
 tab1, tab2 = st.tabs(["PolygonLayer", "Screengrid"])
@@ -134,7 +134,7 @@ with tab2:
     col_4.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
   
 "---"
-st.header("Selecteer een gebied om het bemonsteringsproces te beoordelen. Door op de punten te klikken, kunt u gedetailleerde informatie over de individuele enquête ophalen.",divider=True)
+st.markdown("Selecteer een gebied om het bemonsteringsproces te beoordelen. Door op de punten te klikken, kunt u gedetailleerde informatie over de individuele enquête ophalen.",divider=True)
 option_2 = st.selectbox("Option 2",gdf_areas['Wijk'].unique(),label_visibility="hidden")
 df_dagverslag_option_2 = df_dagverslag[df_dagverslag['gebied_id']==option_2]
 df_dagverslag_option_2['datum'] = pd.to_datetime(df_dagverslag_option_2['datum'])
