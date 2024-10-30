@@ -88,7 +88,7 @@ try:
         
         extra_velfwerker_list = df_projects.set_index('project').loc[project,"user"].split(',')
         extra_velfwerker_list.remove(waarnemer)
-        extra_velfwerker = st.multiselect("Extra velfwerker",extra_velfwerker_list)
+        extra_velfwerker = st.multiselect("Extra veldwerker",extra_velfwerker_list)
         
         temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
         bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
