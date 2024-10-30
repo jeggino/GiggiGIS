@@ -180,7 +180,7 @@ try:
                  alt.Tooltip("opmerking:N",title ="Opmerking"),
                 ],
     ).properties(
-        height=230,
+        height=200,
         title=alt.Title(
             text="",
             subtitle="",
