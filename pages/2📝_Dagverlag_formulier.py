@@ -78,7 +78,7 @@ try:
         if opdracht == 'Vleermuizen':
             doel = st.selectbox('Doel',('Kraamverblijf','Winterverblijf','Paarverblijf'))
         elif opdracht == 'Vogels':
-            doel = None
+            doel = st.selectbox('Doel',('Gierzwaluwen','Huismussen''))
             
         datum = st.date_input("Datum","today")       
         two_hours_from_now = datetime.now() + timedelta(hours=1)
