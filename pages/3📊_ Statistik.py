@@ -136,7 +136,10 @@ try:
             get_position=['lng','lat'],
         )
     
-        r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE)
+        r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE,
+                       api_keys={"mapbox":"pk.eyJ1IjoiamVnZ2lubyIsImEiOiJjbHdscmRkZHAxMTl1MmlyeTJpb3Z2eHdzIn0.N9TRN7xxTikk235dVs1YeQ"},
+                       map_provider='mapbox', 
+                       map_style="mapbox://styles/jeggino/cm2vtvb2l000w01qz9wet0mv9",)
         
         col_4.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
       
@@ -182,6 +185,8 @@ try:
     ).configure_view(stroke=None)
     
     st.altair_chart(chart_2, theme=None, use_container_width=True)
+
+    
 
 except:
     st.switch_page("🗺️_Home.py")
