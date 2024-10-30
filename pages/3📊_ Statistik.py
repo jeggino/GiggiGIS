@@ -129,10 +129,25 @@ try:
         col_3,col_4 = st.columns([1,1])
         
         # col_3.metric(label="Totaal", value=len(df_point_option_1))
-
+        ICON_URL = r"https://th.bing.com/th/id/R.777337676efe7eba1ff59d4cc3cb0925?rik=fYzsmMt8OcULbw&riu=http%3a%2f%2ficons.veryicon.com%2fpng%2fSystem%2fSmall+%26+Flat%2fmap+marker.png&ehk=k0sMbnPz2zaMTgfpmhRFaLz8ozkaIMH1xRTGm3e5XY0%3d&risl=&pid=ImgRaw&r=0"
+        
+        icon_data = {
+            # Icon from Wikimedia, used the Creative Commons Attribution-Share Alike 3.0
+            # Unported, 2.5 Generic, 2.0 Generic and 1.0 Generic licenses
+            "url": ICON_URL,
+            "width": 242,
+            "height": 242,
+            "anchorY": 242,
+        }
+        
+        data = df_point_option_1
+        data["icon_data"] = None
+        for i in data.index:
+            data["icon_data"][i] = icon_data
+            
         icon_layer = pdk.Layer(
             type="IconLayer",
-            data=df_point_option_1,
+            data=data,
             get_icon="icon_data",
             get_size=4,
             size_scale=15,
