@@ -144,7 +144,8 @@ try:
         data["icon_data"] = None
         for i in data.index:
             data["icon_data"][i] = icon_data
-            
+
+        view_state = pdk.data_utils.compute_view(gdf_areas.dissolve().centroid.y[0],gdf_areas.dissolve().centroid.x[0], 0.9)
         icon_layer = pdk.Layer(
             type="IconLayer",
             data=data,
@@ -155,7 +156,7 @@ try:
             pickable=True,
         )
         
-        r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=INITIAL_VIEW_STATE, tooltip={"text": "{tags}"},
+        r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=view_state, tooltip={"text": "{tags}"},
                        map_provider='mapbox', 
                        map_style='road'
                       )
