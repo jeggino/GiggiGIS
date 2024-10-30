@@ -85,7 +85,7 @@ try:
                                                                        sort=alt.EncodingSortField(field="size",  order='descending'),
                                                                        title="")
                                                                 ).properties(
-            height=400,
+            height=300,
             title=alt.Title(
                 text="",
                 subtitle="",
