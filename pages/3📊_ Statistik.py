@@ -145,7 +145,8 @@ try:
                        map_provider='mapbox', 
                        map_style="mapbox://styles/jeggino/cm2vtvb2l000w01qz9wet0mv9",)
         
-        col_4.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=300, selection_mode="single-object", on_select="ignore", key=None)
+        col_4.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=275, 
+                           selection_mode="single-object", on_select="ignore", key=None)
       
     "---"
     
