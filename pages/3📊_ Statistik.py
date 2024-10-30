@@ -197,7 +197,7 @@ try:
     
     # option_2 = st.selectbox("Selecteer een gebied",gdf_areas['Wijk'].unique(),
     #                         label_visibility="visible",help="Selecteer een gebied om het bemonsteringsproces te beoordelen. Door op de punten te klikken, kunt u gedetailleerde informatie over de individuele enquête ophalen.")
-        df_dagverslag_option_2 = df_dagverslag[df_dagverslag['doel']==opdracht]
+        df_dagverslag_option_2 = df_dagverslag[df_dagverslag['opdracht']==opdracht]
         df_dagverslag_option_2['datum'] = pd.to_datetime(df_dagverslag_option_2['datum'])
         df_dagverslag_option_2['year'] = df_dagverslag_option_2['datum'].dt.year
         
