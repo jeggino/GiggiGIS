@@ -74,7 +74,7 @@ ICON_SIZE_huismus = (28,28)
 ICON_SIZE_BAT_EXTRA = (60,25)
 ICON_SIZE_RUIGE = (50,50)
 ICON_SIZE_BIRD = (70,50)
-ICON_SIZE_Huiszwaluw = (80,40)
+ICON_SIZE_Huiszwaluw = (85,45)
 
 
 # --- FUNCTIONS ---
