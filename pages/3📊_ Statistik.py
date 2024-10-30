@@ -68,7 +68,7 @@ try:
     elif opdracht == 'Vleermuizen':
         functie =BAT_FUNCTIE 
 
-    radio = st.radio("", ['Kaarten 🗺️','Dagverslagen 🗒️'], horizontal=True, captions=None, label_visibility="hidden")
+    radio = st.radio("", ['Kaarten 🗺️','Dagverslagen 🗒️'], horizontal=True, captions=None, label_visibility="collapsed")
 
     if radio == 'Kaarten 🗺️':
         option_1 = st.selectbox("Selecteer een functie",functie,
@@ -226,7 +226,7 @@ try:
                      alt.Tooltip("opmerking:N",title ="Opmerking"),
                     ],
         ).properties(
-            height=165,
+            height=300,
             title=alt.Title(
                 text="",
                 subtitle="",
