@@ -24,7 +24,7 @@ BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'vleermuiskast', 'openingen in dak', 'dakkapel', 'schors','..ander']
 
 #---
-BIRD_NAMES = ['Gierzwaluw','Huismus']
+BIRD_NAMES = ['Gierzwaluw','Huiszwaluw','Huismus']
 
 BIRD_NAMES_ANDER = ['...Andere(n)']
 
@@ -54,7 +54,10 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
                                              'mogelijke nestlocatie': 'icons/swift_mogelijk_nest.png'},
                               'Huismus': {'geen / onbekend': 'icons/sparrow.png',
                                           'nestlocatie': 'icons/sparrow_nest.png',
-                                          'mogelijke nestlocatie': 'icons/sparrow_mogelijk_nest.png'}},
+                                          'mogelijke nestlocatie': 'icons/sparrow_mogelijk_nest.png'},
+                              'Huiszwaluw':{'geen / onbekend': 'icons/huis_geen.png',
+                                          'nestlocatie': 'icons/mogelijk.png',
+                                          'mogelijke nestlocatie': 'icons/nest.png'}},
                    'Vleermuizen': {'Gewone dwergvleermuis': {'geen / onbekend': 'icons/pippip_geen.png',
                                                              'zomerverblijfplaats': 'icons/pippip_zommer.png',
                                                              'kraamverblijfplaats': 'icons/pippip_kraam.png',
