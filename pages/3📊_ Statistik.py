@@ -119,7 +119,7 @@ try:
 
         r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip,
                map_provider='mapbox', 
-               map_style="mapbox://styles/jeggino/clid2qkxa001s01r1ek5gdw4h",)
+               map_style="mapbox://styles/jeggino/cm2vtvb2l000w01qz9wet0mv9",)
 
         
         
@@ -143,7 +143,7 @@ try:
     
         r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE,
                        map_provider='mapbox', 
-                       map_style="mapbox://styles/jeggino/clidbo1ju002m01pa9agd14zd",)
+                       map_style="mapbox://styles/jeggino/cm2vtvb2l000w01qz9wet0mv9",)
         
         col_4.pydeck_chart(pydeck_obj=r_2,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
       
