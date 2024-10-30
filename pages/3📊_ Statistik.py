@@ -126,9 +126,27 @@ try:
         col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=275, selection_mode="single-object", on_select="ignore", key=None)
     
     with tab2:
-        col_3,col_4 = st.columns([1,4])
+        col_3,col_4 = st.columns([1,1])
         
-        col_3.metric(label="Totaal", value=len(df_point_option_1))
+        # col_3.metric(label="Totaal", value=len(df_point_option_1))
+
+        icon_layer = pdk.Layer(
+            type="IconLayer",
+            data=df_point_option_1,
+            get_icon="icon_data",
+            get_size=4,
+            size_scale=15,
+            get_position=["lng", "lat"],
+            pickable=True,
+        )
+        
+        r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=INITIAL_VIEW_STATE, tooltip={"text": "{tags}"},
+                       map_provider='mapbox', 
+                       map_style="mapbox://styles/jeggino/cm2vtvb2l000w01qz9wet0mv9"
+                      )
+        
+        col_3.pydeck_chart(pydeck_obj=r_3,use_container_width=True, width=None, height=275, 
+                           selection_mode="single-object", on_select="ignore", key=None)
         
         INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
         
