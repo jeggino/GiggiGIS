@@ -160,7 +160,7 @@ try:
             <b>Aantal: {aantal}</b>  <br />""",
             "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
         }
-        r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=INITIAL_VIEW_STATE, tooltip={"text": "{tags}"},
+        r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=INITIAL_VIEW_STATE, tooltip=tooltip,
                        map_provider='mapbox', 
                        map_style='road'
                       )
