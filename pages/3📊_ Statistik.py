@@ -85,7 +85,7 @@ try:
                                                                        sort=alt.EncodingSortField(field="size",  order='descending'),
                                                                        title="")
                                                                 ).properties(
-            height=300,
+            height=275,
             title=alt.Title(
                 text="",
                 subtitle="",
@@ -123,7 +123,7 @@ try:
 
         
         
-        col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=300, selection_mode="single-object", on_select="ignore", key=None)
+        col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=275, selection_mode="single-object", on_select="ignore", key=None)
     
     with tab2:
         col_3,col_4 = st.columns([1,4])
