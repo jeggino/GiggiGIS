@@ -116,7 +116,10 @@ try:
             "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
         }
         
-        r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip)
+        r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip,
+                    map_provider='mapbox',map_style="mapbox://styles/jeggino/clid2qkxa001s01r1ek5gdw4h")
+
+        
         
         col_2.pydeck_chart(pydeck_obj=r,use_container_width=True, width=None, height=400, selection_mode="single-object", on_select="ignore", key=None)
     
