@@ -95,7 +95,7 @@ try:
         
         col_1.altair_chart(chart_1, theme=None, use_container_width=True)
         
-        INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
+        INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=24, pitch=45, bearing=0)
         
         geojson = pdk.Layer(
             "GeoJsonLayer",
@@ -145,7 +145,6 @@ try:
         for i in data.index:
             data["icon_data"][i] = icon_data
 
-        view_state = pdk.data_utils.compute_view(gdf_areas.dissolve().centroid.y[0],gdf_areas.dissolve().centroid.x[0], 0.9)
         icon_layer = pdk.Layer(
             type="IconLayer",
             data=data,
@@ -156,16 +155,14 @@ try:
             pickable=True,
         )
         
-        r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=view_state, tooltip={"text": "{tags}"},
+        r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=INITIAL_VIEW_STATE, tooltip={"text": "{tags}"},
                        map_provider='mapbox', 
                        map_style='road'
                       )
         
         col_3.pydeck_chart(pydeck_obj=r_3,use_container_width=True, width=None, height=275, 
                            selection_mode="single-object", on_select="ignore", key=None)
-        
-        INITIAL_VIEW_STATE = pdk.ViewState(latitude=gdf_areas.dissolve().centroid.y[0], longitude=gdf_areas.dissolve().centroid.x[0], zoom=11, max_zoom=16, pitch=45, bearing=0)
-        
+                
         layer = pdk.Layer(
             "ScreenGridLayer",
             df_point_option_1,
