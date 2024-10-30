@@ -117,7 +117,7 @@ try:
         }
         
         r = pdk.Deck(layers=[geojson], initial_view_state=INITIAL_VIEW_STATE,tooltip=tooltip,
-                    map_provider='mapbox',map_style="mapbox://styles/jeggino/clid2qkxa001s01r1ek5gdw4h")
+                    map_provider='mapbox',map_style="mapbox://styles/jeggino/cm2vtvb2l000w01qz9wet0mv9")
 
         
         
