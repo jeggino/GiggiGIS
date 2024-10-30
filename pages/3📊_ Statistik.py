@@ -156,8 +156,14 @@ try:
         )
 
         tooltip = {
-            "html": """<b>**Datum**: {datum}</b> <br />
-            <b>Aantal: {aantal}</b>  <br />""",
+            "html": """<b>Datum: {datum}</b> <br />
+            <b>Soort: {sp}</b>  <br />
+            <b>Aantal: {aantal}</b>  <br />
+            <b>Gedrag: {gedrag}</b>  <br />
+            <b>Functie: {functie}</b>  <br />
+            <b>Verblijf: {verblijf}</b>  <br />
+            <b>Aantal: {aantal}</b>  <br />
+            <b>Opmerking: {opmerking}</b>  <br />""",
             "style": {"background": "grey", "color": "white", "font-family": '"Helvetica Neue", Arial', "z-index": "10000"},
         }
         r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=INITIAL_VIEW_STATE, tooltip=tooltip,
