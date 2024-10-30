@@ -74,6 +74,7 @@ ICON_SIZE_huismus = (28,28)
 ICON_SIZE_BAT_EXTRA = (60,25)
 ICON_SIZE_RUIGE = (50,50)
 ICON_SIZE_BIRD = (70,50)
+ICON_SIZE_Huiszwaluw = (80,80)
 
 
 # --- FUNCTIONS ---
@@ -464,6 +465,9 @@ for i in range(len(df_2)):
 
         elif (df_2.iloc[i]['sp'] == '...Andere(n)') & (df_2.iloc[i]['soortgroup'] == 'Vleermuizen'):
             ICON_SIZE_2 = ICON_SIZE
+
+        elif (df_2.iloc[i]['sp'] == 'Huiszwaluw'):
+            ICON_SIZE_2 = ICON_SIZE_Huiszwaluw
 
         else:             
             ICON_SIZE_2 = ICON_SIZE
