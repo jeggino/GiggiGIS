@@ -157,7 +157,7 @@ try:
         
         r_3 = pdk.Deck(layers=[icon_layer], initial_view_state=INITIAL_VIEW_STATE, tooltip={"text": "{tags}"},
                        map_provider='mapbox', 
-                       map_style="mapbox://styles/jeggino/cm2vtvb2l000w01qz9wet0mv9"
+                       map_style="mapbox://styles/jeggino/cm2vz6g7a00gj01pa7if7bbiv"
                       )
         
         col_3.pydeck_chart(pydeck_obj=r_3,use_container_width=True, width=None, height=275, 
