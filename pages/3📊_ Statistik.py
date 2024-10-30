@@ -139,7 +139,7 @@ try:
             "height": 242,
             "anchorY": 242,
         }
-        df_point_option_1
+        
         data = df_point_option_1
         data["icon_data"] = None
         for i in data.index:
