@@ -330,7 +330,7 @@ def project():
     except:
         area = None
         gdf_areas = None
-    on = st.toggle("💻 **apparaat**")
+    on = st.toggle("💻")
     if st.button(":rainbow[**Begin**]"):
          st.session_state.project = {"project_name": project,"opdracht": opdracht,'auto_start':on,'area':area, 'gdf':gdf_areas}
          st.rerun()
