@@ -217,7 +217,7 @@ try:
                                                     symbolSize=100,
                                                     direction='horizontal',
                                                     title='Doel',
-                                                    scale=alt.Scale(domain=['Kraamverblijf', 'Winterverblijf', 'Paarverblijf'], range=['red', 'blue', 'yellow'])),
+                                                    ),
                            scale=alt.Scale(domain=['Kraamverblijf', 'Winterverblijf', 'Paarverblijf'], range=['red', 'blue', 'yellow'])
                           ),
             tooltip=[alt.Tooltip("waarnemer:N",title = "Waarnemer"),
