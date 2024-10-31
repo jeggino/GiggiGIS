@@ -71,7 +71,13 @@ def map(auto_start):
             position="topright",).add_to(m)
         
     Fullscreen(position="topright").add_to(m)
-    LocateControl(auto_start=auto_start,position="topright").add_to(m)
+
+    if auto_start==True:
+        auto_start_2 = False
+    else:
+        auto_start_2 = True
+        
+    LocateControl(auto_start=auto_start_2,position="topright").add_to(m)
     
     try:
         folium.GeoJson(
@@ -158,11 +164,9 @@ def input_data(output,df_old,auto_start):
     
     st.divider()
 
-    # with st.form("my_form"):
     placeholder = st.empty()
     submitted = placeholder.button("**Gegevens opslaan**",use_container_width=True)
     if submitted:           
-        # try:
         coordinates = output["features"][0]["geometry"]["coordinates"] 
         
         if geometry_type in ["LineString",'Polygon']:
@@ -187,8 +191,10 @@ def input_data(output,df_old,auto_start):
             placeholder.success('Gegevens opgeslagen!', icon="✅",)
             insert_json(key,waarnemer,str(datum),str(time),soortgroup,aantal,sp,gedrag,functie,verblijf,geometry_type,lat,lng,opmerking,coordinates,project,gebied,df_old)
         
-        if auto_start == True:
+        if auto_start == False:
             st.switch_page("🗺️_Home.py")
+        else:
+            st.rerun()
                      
 
 
