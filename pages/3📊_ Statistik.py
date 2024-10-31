@@ -205,7 +205,7 @@ try:
         year_min = df_dagverslag_option_2['year'].min()
         year_max = df_dagverslag_option_2['year'].max() + 1
         
-        chart_2 = alt.Chart(df_dagverslag_option_2).mark_circle(size=60).encode(
+        chart_2 = alt.Chart(df_dagverslag_option_2).mark_circle(size=70).encode(
             alt.X('datum:T',axis=alt.Axis(grid=False,domain=True,ticks=False,),title=None, 
                   scale=alt.Scale(domain=[str(year_min),str(year_max)])),
             alt.Y('gebied_id:N',
@@ -217,8 +217,8 @@ try:
                                                     symbolSize=100,
                                                     direction='horizontal',
                                                     title='Doel',
-                                                    ),
-                           scale=alt.Scale( range=['red', 'yellow', 'blue'])
+                                                    scale=alt.Scale(domain=['Kraamverblijf', 'Winterverblijf', 'Paarverblijf'], range=['red', 'blue', 'yellow'])),
+                           scale=alt.Scale(domain=['Kraamverblijf', 'Winterverblijf', 'Paarverblijf'], range=['red', 'blue', 'yellow'])
                           ),
             tooltip=[alt.Tooltip("waarnemer:N",title = "Waarnemer"),
                      alt.Tooltip("extra_velfwerker:N",title ="Extra veldwerkers"),
