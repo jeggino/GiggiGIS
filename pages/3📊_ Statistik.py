@@ -211,13 +211,14 @@ try:
             alt.Y('gebied_id:N',
                   axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
                   title=""),
-            stroke=alt.Color('doel',scale=alt.Scale( range=['red', 'yellow', 'blue'])),
+            # stroke=alt.Color('doel',scale=alt.Scale( range=['red', 'yellow', 'blue'])),
             fill=alt.Color('doel',legend=alt.Legend(orient="bottom",
                                                     titleAnchor='middle',
                                                     symbolSize=100,
                                                     direction='horizontal',
                                                     title='Doel',
-                                                    )
+                                                    ),
+                           scale=alt.Scale( range=['red', 'yellow', 'blue'])
                           ),
             tooltip=[alt.Tooltip("waarnemer:N",title = "Waarnemer"),
                      alt.Tooltip("extra_velfwerker:N",title ="Extra veldwerkers"),
