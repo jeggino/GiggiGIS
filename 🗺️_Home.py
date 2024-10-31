@@ -230,7 +230,7 @@ def update_item():
 
     sp = st.selectbox("Soort", BAT_NAMES)
  
-    if output_2["last_active_drawing"]["geometry"]["type"] == 'Polygon':
+    if output["last_active_drawing"]["geometry"]["type"] == 'Polygon':
         gedrag = None
         functie = st.selectbox("Functie", ["Foerageergebied","Paringsgebied"])
         verblijf = None
@@ -279,9 +279,9 @@ def update_item():
       
     df_drop = df[~df.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
     conn.update(worksheet='df_observations',data=df_drop)
-    df = conn.read(ttl=0,worksheet="df_observations")
+    df_old = conn.read(ttl=0,worksheet="df_observations")
       
-    data = [{"key":id_key, "waarnemer":id_waarnemer,"datum":str(datum),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
+    data = [{"key":id_key,"waarnemer":id_waarnemer,"datum":str(datum),"time":time,"soortgroup":id_soortgroup, "aantal":aantal,
                    "sp":sp, "gedrag":gedrag, "functie":functie, "verblijf":verblijf,
                    "geometry_type":id_geometry_type,"lat":id_lat,"lng":id_lng,"opmerking":opmerking,"coordinates":id_coordinates,"project":id_project}]
       
