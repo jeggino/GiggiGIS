@@ -413,7 +413,12 @@ except:
     pass
  
 map = folium.Map(tiles=None)
-LocateControl(auto_start=st.session_state.project['auto_start'],position="topright").add_to(map)
+
+if st.session_state.project['auto_start']==True:
+    auto_start = False
+else:
+    auto_start = True
+LocateControl(auto_start=auto_start,position="topright").add_to(map)
 Fullscreen(position="topright").add_to(map)
 
 functie_dictionary = {}
