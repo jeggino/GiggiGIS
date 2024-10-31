@@ -217,7 +217,7 @@ try:
                                                     symbolSize=100,
                                                     direction='horizontal',
                                                     title='Doel',
-                                                    labelColor=['red','yellow','blue'])
+                                                    )
                           ),
             tooltip=[alt.Tooltip("waarnemer:N",title = "Waarnemer"),
                      alt.Tooltip("extra_velfwerker:N",title ="Extra veldwerkers"),
