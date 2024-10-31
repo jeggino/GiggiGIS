@@ -192,6 +192,7 @@ try:
                 get_position=["lng", "lat"],
                 threshold=0.75,
                 pickable=True,
+                aggregation=pdk.types.String("MEAN"),
             )
         
             r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE,
