@@ -213,11 +213,9 @@ try:
                   title=""),
             stroke=alt.Color('doel'),
             fill=alt.Color('doel',legend=alt.Legend(orient="bottom",
-                                                    direction='vertical',
                                                     titleAnchor='middle',
                                                     symbolSize=100,
                                                     direction='horizontal',
-                                                    orient='bottom',
                                                     title='Doel')
                           ),
             tooltip=[alt.Tooltip("waarnemer:N",title = "Waarnemer"),
