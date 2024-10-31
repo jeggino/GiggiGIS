@@ -211,7 +211,7 @@ try:
             alt.Y('gebied_id:N',
                   axis=alt.Axis(grid=False,domain=False,ticks=True,title=None),
                   title=""),
-            stroke=alt.Color('doel'),
+            stroke=alt.Color('doel',scale=alt.Scale( range=['red', 'yellow', 'blue'])),
             fill=alt.Color('doel',legend=alt.Legend(orient="bottom",
                                                     titleAnchor='middle',
                                                     symbolSize=100,
