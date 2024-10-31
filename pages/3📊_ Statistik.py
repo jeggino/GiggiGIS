@@ -177,22 +177,14 @@ try:
             col_3.pydeck_chart(pydeck_obj=r_3,use_container_width=True, width=None, height=275, 
                                selection_mode="single-object", on_select="ignore", key=None)
                     
-            # layer = pdk.Layer(
-            #     "ScreenGridLayer",
-            #     df_point_option_1,
-            #     pickable=True,
-            #     opacity=0.8,
-            #     cell_size_pixels=50,
-            #     get_position=['lng','lat'],
-            # )
+
             layer = pdk.Layer(
                 "HeatmapLayer",
                 data=df_point_option_1,
                 opacity=0.9,
                 get_position=["lng", "lat"],
-                threshold=0.75,
+                threshold=0.85,
                 pickable=True,
-                aggregation=pdk.types.String("MEAN"),
             )
         
             r_2 = pdk.Deck(layers=[layer], initial_view_state=INITIAL_VIEW_STATE,
