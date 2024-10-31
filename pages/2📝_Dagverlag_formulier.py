@@ -93,7 +93,7 @@ try:
         temperatuur = st.number_input("Temperatuur",key='temperatuur', min_value=0)
         bewolking = st.selectbox("Bewolking",("Onbewolkt (<10%)", "Halfbewolkt (10-80%)", "Bewolkt (>80%)"))
         neerslag = st.selectbox("Neerslag",("Droog", "Nevel/mist", "Motregen", "Regen","Zware regen","Sneeuw"))
-        windkrcht = st.number_input("windkrcht",key='windkrcht', min_value=1)
+        windkrcht = st.number_input("Windkracht",key='windkrcht', min_value=1)
         windrichting = st.selectbox("Windrichting",("Noord", "Noordoost", "Oost", "Zuidoost","Zuid","Zuidwest","West","Noordwest"))
         
         if gebied_id == None:
