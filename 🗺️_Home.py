@@ -535,7 +535,7 @@ for i in range(len(df_2)):
 # ---NEW---
 # Add the legend to the map
 macro = MacroElement()
-macro._template = Template(template)
+macro._template = Template(legend_template)
 map.get_root().add_child(macro)
 #---NEW---
 
