@@ -506,6 +506,25 @@ for i in range(len(df_2)):
                       ).add_to(fouctie_loop)
         
 folium.LayerControl().add_to(map)
+
+# ---NEW---
+# Define the legend's HTML
+legend_html = '''
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 200px; height: 150px; 
+     border:2px solid grey; z-index:9999; font-size:12px;
+     background-color:white; opacity: 0.85;">
+     &nbsp; <b>Legend</b> <br>
+     &nbsp; Blue Circle &nbsp; <i class="fa fa-circle" style="color:blue"></i><br>
+     &nbsp; Green Circle &nbsp; <i class="fa fa-circle" style="color:green"></i><br>
+     &nbsp; Red Circle &nbsp; <i class="fa fa-circle" style="color:red"></i><br>
+</div>
+'''
+
+# Add the legend to the map
+map.get_root().html.add_child(folium.Element(legend_html))
+#---NEW---
+
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                      feature_group_to_add=list(functie_dictionary.values()))
     
