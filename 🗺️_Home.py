@@ -68,25 +68,97 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
 #---NEW---
 # Create the legend template as an HTML element
-legend_template = """
+template = """
 {% macro html(this, kwargs) %}
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  <script>
+  $( function() {
+    $( "#maplegend" ).draggable({
+                    start: function (event, ui) {
+                        $(this).css({
+                            right: "auto",
+                            top: "auto",
+                            bottom: "auto"
+                        });
+                    }
+                });
+});
+
+  </script>
+</head>
+<body>
+
+ 
 <div id='maplegend' class='maplegend' 
-    style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.8);
-     border-radius: 6px; padding: 10px; font-size: 10.5px; right: 20px; bottom: -20px;'>     
+    style='position: absolute; z-index:9999; border:2px solid grey; background-color:rgba(255, 255, 255, 0.8);
+     border-radius:4px; padding: 4px; font-size:14px; right: 15px; bottom: 10px;'>
+
+<div class='legend-title'>Legend</div>
+
 <div class='legend-scale'>
   <ul class='legend-labels'>
-    <li><span style='background: green; opacity: 0.75;'></span>Wind speed <= 55.21</li>
-    <li><span style='background: purple; opacity: 0.75;'></span>Wind speed >= 91.07</li>
+    <li><span style='background:orange;opacity:1.0;'></span>In Seattle</li>
+    <li><span style='background:cadetblue;opacity:1.0;'></span>Out of Seattle</li>
+    <li><span style='background:black;opacity:1.0;'></span>King County Outline</li>
+
   </ul>
 </div>
-</div> 
+</div>
+ 
+</body>
+</html>
+
 <style type='text/css'>
-  .maplegend .legend-scale ul {margin: 0; padding: 0; color: #0f0f0f;}
-  .maplegend .legend-scale ul li {list-style: none; line-height: 18px; margin-bottom: 1.5px;}
-  .maplegend ul.legend-labels li span {float: left; height: 16px; width: 16px; margin-right: 4.5px;}
+  .maplegend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+    }
+  .maplegend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 2px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+  .maplegend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+    }
+  .maplegend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 14px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+    }
+  .maplegend .legend-source {
+    font-size: 80%;
+    color: #777;
+    clear: both;
+    }
+  .maplegend a {
+    color: #777;
+    }
 </style>
-{% endmacro %}
-"""
+{% endmacro %}"""
 #---NEW---
 
 # --- DIMENSIONS ---
@@ -532,7 +604,7 @@ for i in range(len(df_2)):
 # ---NEW---
 # Add the legend to the map
 macro = MacroElement()
-macro._template = Template(legend_template)
+macro._template = Template(template)
 map.get_root().add_child(macro)
 #---NEW---
 
