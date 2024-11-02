@@ -504,8 +504,6 @@ for i in range(len(df_2)):
         folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
                       popup=popup
                       ).add_to(fouctie_loop)
-        
-folium.LayerControl().add_to(map)
 
 # ---NEW---
 # Define the legend's HTML
@@ -524,6 +522,8 @@ legend_html = '''
 # Add the legend to the map
 map.get_root().html.add_child(folium.Element(legend_html))
 #---NEW---
+
+folium.LayerControl().add_to(map)
 
 output = st_folium(map,returned_objects=["last_active_drawing"],width=OUTPUT_width, height=OUTPUT_height,
                      feature_group_to_add=list(functie_dictionary.values()))
