@@ -79,7 +79,8 @@ legend_template = """
     <li><span style='background: yellow; opacity: 0.75;'></span>Laatvlieger</li>
     <li><span style='background: orange; opacity: 0.75;'></span>Watervleermuis</li>
     <li>Funtie</li>
-    <li><span style='background: purple; opacity: 0.75;'></span>Wind speed >= 91.07</li>
+    <li><span class="fa fa-circle" style="color:grey" opacity: 0.75;'></span>Geen</li>
+    <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Geen</li>
   </ul>
 </div>
 </div> 
