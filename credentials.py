@@ -12,7 +12,8 @@ GROUP_DICT = {"🪶 Vogels":"Vogels",
 
 
 #---
-BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis','...Andere(n)']
+BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Rosse vleermuis','Meervleermuis','Watervleermuis',
+             'Kleine dwergvleermuis', 'Tweekleurige vleermuis', 'Gewone grootoorvleermuis','...Andere(n)']
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 'zwermend', 'sporen', 'balts', 'verkeersslachtoffer','kolonie in bebouwing','kolonie in boom']
 
