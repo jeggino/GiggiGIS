@@ -79,7 +79,7 @@ legend_template = """
     <li><span style='background: green; opacity: 0.75;'></span>Gewone dwergvleermuis</li>
     <li><span style='background: yellow; opacity: 0.75;'></span>Laatvlieger</li>
     <li><span style='background: orange; opacity: 0.75;'></span>Watervleermuis</li>
-    <li></li>
+    <li> </li>
     <li><strong>Funtie</strong></li>
     <li><span class="fa fa-circle" style="color:grey" opacity: 0.75;'></span>Geen</li>
     <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
