@@ -71,14 +71,11 @@ st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 legend_template = """
 {% macro html(this, kwargs) %}
 <div id='maplegend' class='maplegend' 
-    style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.5);
-     border-radius: 6px; padding: 10px; font-size: 10.5px; right: 20px; top: 20px;'>     
+    style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.8);
+     border-radius: 6px; padding: 10px; font-size: 10.5px; right: 20px; bottom: 20px;'>     
 <div class='legend-scale'>
   <ul class='legend-labels'>
     <li><span style='background: green; opacity: 0.75;'></span>Wind speed <= 55.21</li>
-    <li><span style='background: yellow; opacity: 0.75;'></span>55.65 <= Wind speed <= 64.29</li>
-    <li><span style='background: orange; opacity: 0.75;'></span>64.50 <= Wind speed <= 75.76</li>
-    <li><span style='background: red; opacity: 0.75;'></span>75.90 <= Wind speed <= 90.56</li>
     <li><span style='background: purple; opacity: 0.75;'></span>Wind speed >= 91.07</li>
   </ul>
 </div>
