@@ -80,7 +80,10 @@ legend_template = """
     <li><span style='background: orange; opacity: 0.75;'></span>Watervleermuis</li>
     <li>Funtie</li>
     <li><span class="fa fa-circle" style="color:grey" opacity: 0.75;'></span>Geen</li>
-    <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Geen</li>
+    <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
+    <li><span class="fa fa-certificate" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
+    <li><span class="fa fa-square" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
+    <li><span class="fa fa-times" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
   </ul>
 </div>
 </div> 
