@@ -125,7 +125,7 @@ def input_data(output,df_old,auto_start):
         
         if geometry_type == 'Polygon':
             gedrag = None
-            functie = st.selectbox("Functie", ["Foerageergebied","Paringsgebied"])
+            functie = st.selectbox("Functie", GEBIED_OPTIONS)
             verblijf = None
 
         elif geometry_type == 'LineString':
