@@ -72,7 +72,7 @@ legend_template = """
 {% macro html(this, kwargs) %}
 <div id='maplegend' class='maplegend' 
     style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.7);
-     border-radius: 6px; padding: 10px; font-size: 10.5px; right: 20px; bottom: 50px;'>     
+     border-radius: 6px; padding: 10px; font-size: 10.5px; right: 20px; bottom: 35px;'>     
 <div class='legend-scale'>
   <ul class='legend-labels'>
     <li><strong>Sorten</strong></li>
@@ -81,11 +81,6 @@ legend_template = """
     <li><span style='background: orange; opacity: 0.75;'></span>Watervleermuis</li>
     <li></li>
     <li><strong>Funtie</strong></li>
-    <li><span class="fa fa-circle" style="color:grey" opacity: 0.75;'></span>Geen</li>
-    <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
-    <li><span class="fa fa-certificate" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
-    <li><span class="fa fa-square" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
-    <li><span class="fa fa-times" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
     <li><span class="fa fa-circle" style="color:grey" opacity: 0.75;'></span>Geen</li>
     <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
     <li><span class="fa fa-certificate" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
