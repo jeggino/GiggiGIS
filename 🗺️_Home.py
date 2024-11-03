@@ -15,9 +15,6 @@ import ast
 
 from credentials import *
 
-#---NEW---
-from branca.element import Template, MacroElement
-#---NEW---
 
 
 # ---LAYOUT---
