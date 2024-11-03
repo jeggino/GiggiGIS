@@ -66,37 +66,6 @@ reduce_header_height_style = """
 
 st.markdown(reduce_header_height_style, unsafe_allow_html=True)
 
-#---NEW---
-# Create the legend template as an HTML element
-legend_template = """
-{% macro html(this, kwargs) %}
-<div id='maplegend' class='maplegend' 
-    style='position: absolute; z-index: 9999; background-color: rgba(255, 255, 255, 0.7);
-     border-radius: 6px; padding: 10px; font-size: 10.5px; right: 10px; bottom: 45px;'>     
-<div class='legend-scale'>
-  <ul class='legend-labels'>
-    <li><strong>Sorten</strong></li>
-    <li><span style='background: green; opacity: 0.75;'></span>Gewone dwergvleermuis</li>
-    <li><span style='background: yellow; opacity: 0.75;'></span>Laatvlieger</li>
-    <li><span style='background: orange; opacity: 0.75;'></span>Watervleermuis</li>
-    <li></li>
-    <li><strong>Funtie</strong></li>
-    <li><span class="fa fa-circle" style="color:grey" opacity: 0.75;'></span>Geen</li>
-    <li><span class="fa fa-star" style="color:grey" opacity: 0.75;'></span>Zommerverblijf</li>
-    <li><span class="fa fa-certificate" style="color:grey" opacity: 0.75;'></span>Kraamverblif</li>
-    <li><span class="fa fa-square" style="color:grey" opacity: 0.75;'></span>Winterverblijf</li>
-    <li><span class="fa fa-times" style="color:grey" opacity: 0.75;'></span>Paarverblijf</li>
-  </ul>
-</div>
-</div> 
-<style type='text/css'>
-  .maplegend .legend-scale ul {margin: 0; padding: 0; color: #0f0f0f;}
-  .maplegend .legend-scale ul li {list-style: none; line-height: 18px; margin-bottom: 1.5px;}
-  .maplegend ul.legend-labels li span {float: left; height: 16px; width: 16px; margin-right: 4.5px;}
-</style>
-{% endmacro %}
-"""
-#---NEW---
 
 # --- DIMENSIONS ---
 OUTPUT_width = '95%'
@@ -484,6 +453,7 @@ try:
     ).add_to(map)
 except:
     pass
+    
 for i in range(len(df_2)):
 
     if df_2.iloc[i]['geometry_type'] == "Point":
@@ -537,13 +507,6 @@ for i in range(len(df_2)):
         folium.Polygon(location,fill_color=fill_color,weight=0,fill_opacity=0.5,
                       popup=popup
                       ).add_to(fouctie_loop)
-
-# ---NEW---
-# Add the legend to the map
-macro = MacroElement()
-macro._template = Template(legend_template)
-map.get_root().add_child(macro)
-#---NEW---
 
 folium.LayerControl().add_to(map)
 
