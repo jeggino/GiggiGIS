@@ -17,7 +17,7 @@ BAT_NAMES = ['Gewone dwergvleermuis','Ruige dwergvleermuis', 'Laatvlieger','Ross
 
 BAT_BEHAVIOURS = ['foeragerend', 'uitvliegend','invliegend', 'overvliegend', 'zwermend', 'sporen', 'balts', 'verkeersslachtoffer','kolonie in bebouwing','kolonie in boom']
 
-BAT_FUNCTIE = ['geen / onbekend','zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats']
+BAT_FUNCTIE = ['vleermuis waarneming','zomerverblijfplaats','kraamverblijfplaats','paarverblijfplaats', 'winterverblijfplaats']
 
 BAT_VERBLIJF = ['geen / onbekend', 'dakgoot', 'spouwmuur', 'daklijst',
        'kantpan', 'regenpijp', 'holte', 'raamkozijn', 'luik', 'scheur',
@@ -36,7 +36,7 @@ BIRD_BEHAVIOURS = ['overvliegend',  'nest-indicerend gedrag', 'foeragerend', 'in
 
 
 
-BIRD_FUNCTIE = ['geen / onbekend', 'nestlocatie', 'mogelijke nestlocatie']
+BIRD_FUNCTIE = ['vogel waarneming', 'nestlocatie', 'mogelijke nestlocatie']
 
 BIRD_VERBLIJF = ['geen / onbekend', 'dakgoot', 'kantpan', 'zonnepaneel', 'nokpan', 'nestkast',
        'gevelbetimmering', 'openingen in dak', 'regenpijp',
