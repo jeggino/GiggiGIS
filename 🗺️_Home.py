@@ -69,6 +69,35 @@ ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (255,150)
 
 # --- FUNCTIONS ---
+def logIn():
+    name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
+    password = st.text_input("Vul uw wachtwoord in, alstublieft")
+    try:
+        if name == None:
+            st.stop()
+        
+        index = df_references[df_references['username']==name].index[0]
+        true_password = df_references.loc[index,"password"]
+
+    except:
+        st.warning("De gebruikersnaam is niet correct.")
+        st.stop()
+                             
+    if st.button("logIn"):
+        if password == true_password:
+            st.session_state.login = {"name": name, "password": password}
+            st.rerun()
+
+        else:
+            st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
+
+
+def logOut():
+    if st.button("logOut",use_container_width=True):
+        del st.session_state.login
+        # del st.session_state.project     
+        st.rerun()
+        
 def popup_html(row,df_2):
     
     i = row
@@ -198,7 +227,13 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=None)
 
-# try:
+if "login" not in st.session_state:
+    logIn()
+    st.stop()
+
+with st.sidebar:
+    logOut()
+    st.divider()
     
 df_2 = df_point
 df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
