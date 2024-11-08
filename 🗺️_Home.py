@@ -225,18 +225,6 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
 
 
 # --- APP ---
-if "login" not in st.session_state:
-    logIn()
-    st.stop()
-
-
-
-with st.sidebar:
-    logOut()
-    st.divider()
-
-    
-
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=None)
 
