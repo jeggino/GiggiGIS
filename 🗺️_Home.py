@@ -115,36 +115,6 @@ def popup_html(row,df_2):
     """
     return html
 
-
-def logIn():
-    name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
-    password = st.text_input("Vul uw wachtwoord in, alstublieft")
-    try:
-        if name == None:
-            st.stop()
-        
-        index = df_references[df_references['username']==name].index[0]
-        true_password = df_references.loc[index,"password"]
-
-    except:
-        st.warning("De gebruikersnaam is niet correct.")
-        st.stop()
-                             
-    if st.button("logIn"):
-        if password == true_password:
-            st.session_state.login = {"name": name, "password": password}
-            st.rerun()
-
-        else:
-            st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
-
-
-def logOut():
-    if st.button("logOut",use_container_width=True):
-        del st.session_state.login
-        # del st.session_state.project     
-        st.rerun()
-
 # --- OPTIONS ---
 soortgroup =["📷 Camera", "🪤 Rat val", '𐂺 Vangkooi']
 DICT_SORTGROUP = {"📷 Camera":"Camera", "🪤 Rat val":"Rat val",'𐂺 Vangkooi':'Vangkooi'}
@@ -303,7 +273,3 @@ for i in range(len(df_2)):
 output = st_folium(map,
                    returned_objects=["all_drawings"],
                    width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=list(functie_dictionary.values()))
-
-# except:
-#     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
-#     st.stop()
