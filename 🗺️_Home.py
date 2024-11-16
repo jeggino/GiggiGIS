@@ -227,13 +227,13 @@ icon_dictionary = {'Vogels': {'Gierzwaluw': {'geen / onbekend': 'icons/swift.png
 IMAGE = "image/logo.png"
 st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=None)
 
-if "login" not in st.session_state:
-    logIn()
-    st.stop()
+# if "login" not in st.session_state:
+#     logIn()
+#     st.stop()
 
-with st.sidebar:
-    logOut()
-    st.divider()
+# with st.sidebar:
+#     logOut()
+#     st.divider()
     
 df_2 = df_point
 df_2["datum"] = pd.to_datetime(df_2["datum"]).dt.date
