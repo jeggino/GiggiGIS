@@ -250,8 +250,8 @@ df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"
                                axis=1
                  )
 map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=11,tiles=None)
-LocateControl(auto_start=False).add_to(map)
-Fullscreen().add_to(map)
+LocateControl(auto_start=False,position="topright").add_to(map)
+# Fullscreen().add_to(map)
 
 functie_dictionary = {}
 functie_len = df_2['functie'].unique()
