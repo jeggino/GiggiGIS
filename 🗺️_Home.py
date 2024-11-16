@@ -61,7 +61,7 @@ ttl_references = '10m'
 conn = st.connection("gsheets", type=GSheetsConnection)
 df_point = conn.read(ttl=ttl,worksheet="ratten-terschelling")
 df_references = conn.read(ttl=ttl_references,worksheet="users-ratten_terschelling-dashboard")
-df_point 
+df_point = df_point[df_point['functie']!='Camera in het veld']
 
 # --- DIMENSIONS ---
 ICON_SIZE = (20,20)
@@ -69,34 +69,34 @@ ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (255,150)
 
 # --- FUNCTIONS ---
-def logIn():
-    name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
-    password = st.text_input("Vul uw wachtwoord in, alstublieft")
-    try:
-        if name == None:
-            st.stop()
+# def logIn():
+#     name = st.text_input("Vul uw gebruikersnaam in, alstublieft",value=None)  
+#     password = st.text_input("Vul uw wachtwoord in, alstublieft")
+#     try:
+#         if name == None:
+#             st.stop()
         
-        index = df_references[df_references['username']==name].index[0]
-        true_password = df_references.loc[index,"password"]
+#         index = df_references[df_references['username']==name].index[0]
+#         true_password = df_references.loc[index,"password"]
 
-    except:
-        st.warning("De gebruikersnaam is niet correct.")
-        st.stop()
+#     except:
+#         st.warning("De gebruikersnaam is niet correct.")
+#         st.stop()
                              
-    if st.button("logIn"):
-        if password == true_password:
-            st.session_state.login = {"name": name, "password": password}
-            st.rerun()
+#     if st.button("logIn"):
+#         if password == true_password:
+#             st.session_state.login = {"name": name, "password": password}
+#             st.rerun()
 
-        else:
-            st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
+#         else:
+#             st.markdown(f"Sorry {name.split()[0]}, het wachtwoord is niet correct.")
 
 
-def logOut():
-    if st.button("logOut",use_container_width=True):
-        del st.session_state.login
-        # del st.session_state.project     
-        st.rerun()
+# def logOut():
+#     if st.button("logOut",use_container_width=True):
+#         del st.session_state.login
+#         # del st.session_state.project     
+#         st.rerun()
         
 def popup_html(row,df_2):
     
