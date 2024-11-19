@@ -109,7 +109,7 @@ def popup_html(row,df_2):
     return html
 
 # --- APP ---
-IMAGE = "icon/menu.jpg"
+IMAGE = "image/logo.png"
 st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=IMAGE)
 
 # try:
