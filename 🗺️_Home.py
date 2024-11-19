@@ -12,7 +12,7 @@ import random
 
 import ast
 
-from credentials import *
+from credencials import *
 
 
 # ---LAYOUT---
