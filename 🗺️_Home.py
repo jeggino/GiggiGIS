@@ -63,16 +63,6 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 df_point = conn.read(ttl=ttl,worksheet="ratten-terschelling")
 
 # --- APP ---
-if "login" not in st.session_state:
-    logIn()
-    st.stop()
-
-with st.sidebar:
-    logOut()
-    st.divider()
-
-    
-
 IMAGE = "icon/menu.jpg"
 st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=IMAGE)
 
@@ -155,29 +145,3 @@ for i in range(len(df_2)):
 output = st_folium(map,
                    returned_objects=["last_object_clicked"],
                    width=OUTPUT_width, height=OUTPUT_height,feature_group_to_add=list(functie_dictionary.values()))
-try:
-    if len(output["last_object_clicked"]) != 0:
-        coordinates = output["last_object_clicked"]
-               
-        lng = coordinates["lng"]
-        lat = coordinates['lat']
-        
-        id = str(lng)+str(lat)
-        with st.sidebar:
-            if st.button("Waarneming bijwerken",use_container_width=True):
-                update_item(id)
-                st.switch_page("🗺️_Home.py")
-            with st.form("entry_form", clear_on_submit=True,border=False):
-                submitted = st.form_submit_button(":red[**Verwijder waarneming**]",use_container_width=True)
-                if submitted:
-                    df_filter = df_point[df_point["key"]==id]
-                    df_drop = df_point[~df_point.apply(tuple, axis=1).isin(df_filter.apply(tuple, axis=1))]
-                    conn.update(worksheet='ratten-terschelling',data=df_drop)
-                    st.success('Waarneming verwijderd', icon="✅") 
-                    st.page_link("🗺️_Home.py", label="Vernieuwen", icon="🔄",use_container_width=True)
-
-except:
-    pass
-# except:
-#     st.image("https://media.istockphoto.com/photos/open-empty-cardboard-box-on-a-white-background-picture-id172167710?k=6&m=172167710&s=612x612&w=0&h=Z4fueCweh9q-X_VBRAPCYSalyaAnXG3ioErb8oJSVek=")
-#     st.stop()
