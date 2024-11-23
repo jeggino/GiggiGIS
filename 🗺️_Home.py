@@ -64,7 +64,7 @@ df_point = conn.read(ttl=ttl,worksheet="ratten-terschelling")
 
 # --- APP ---
 
-st.logo(LOGO,  size="large", link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=LOGO)
+st.logo(LOGO,  size="large", link=LINK, icon_image=LOGO)
 
 # try:
     
