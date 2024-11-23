@@ -15,6 +15,7 @@ ICON_SIZE = (20,20)
 ICON_SIZE_trap_empty = (60,40)
 ICON_SIZE_trap_noempty = (85,55)
 ICON_SIZE_rat_maybe = (255,150)
+ICON_SIZE_Schietval = (25,25)
 
 # --- OPTIONS ---
 soortgroup =["📷 Camera", "💉 Rat val", '🪤 Vangkooi','🔫 Rat geschoten']
