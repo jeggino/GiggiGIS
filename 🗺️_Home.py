@@ -130,8 +130,11 @@ for i in range(len(df_2)):
     if df_2.iloc[i]['functie'] in ["Waarneming rat doorgegeven, geen actie op ondernomen","Rat geschoten"]:
         ICON_SIZE_2 = ICON_SIZE_rat_maybe
 
-    elif df_2.iloc[i]['functie'] in ['vangkooi in veld','vangkooi in veld, rat gevangen']:
-        ICON_SIZE_2 = ICON_SIZE_trap
+    elif df_2.iloc[i]['functie'] in ['vangkooi in veld, rat gevangen']:
+        ICON_SIZE_2 = ICON_SIZE_trap_noempty 
+
+    elif df_2.iloc[i]['functie'] in ['vangkooi in veld']:
+        ICON_SIZE_2 = ICON_SIZE_trap_empty 
 
     else:
         ICON_SIZE_2 = ICON_SIZE
