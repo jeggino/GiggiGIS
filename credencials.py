@@ -12,7 +12,7 @@ OUTPUT_height = 550
 # --- DIMENSIONS ---
 ICON_SIZE = (20,20)
 ICON_SIZE_huismus = (28,28)
-ICON_SIZE_rat_maybe = (40,40)
+ICON_SIZE_rat_maybe = (255,150)
 
 # --- OPTIONS ---
 soortgroup =["📷 Camera", "💉 Rat val", '🪤 Vangkooi','🔫 Rat geschoten']
