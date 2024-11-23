@@ -1,5 +1,5 @@
 # --- LOGO/MENU' ---
-IMAGE_2 ="image/logo.png"
+IMAGE_2 ="icon/menu.jpg"
 
 
 # --- DIMENSIONS ---
@@ -9,7 +9,6 @@ OUTPUT_height = 550
 
 # --- DIMENSIONS ---
 ICON_SIZE = (20,20)
-ICON_SIZE_huismus = (28,28)
 ICON_SIZE_rat_maybe = (255,150)
 
 # --- OPTIONS ---
