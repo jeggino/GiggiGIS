@@ -11,8 +11,8 @@ OUTPUT_height = 550
 
 # --- DIMENSIONS ---
 ICON_SIZE = (20,20)
-ICON_SIZE_trap_empty = (50,35)
-ICON_SIZE_trap_noempty = (75,45)
+ICON_SIZE_trap_empty = (60,55)
+ICON_SIZE_trap_noempty = (85,55)
 ICON_SIZE_rat_maybe = (255,150)
 
 # --- OPTIONS ---
