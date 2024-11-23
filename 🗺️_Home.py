@@ -127,7 +127,7 @@ for i in range(len(df_2)):
         ICON_SIZE_2 = ICON_SIZE_rat_maybe
 
     elif df_2.iloc[i]['functie'] == "Rat geschoten":
-        ICON_SIZE_2 = ICON_SIZE_rat_maybe
+        ICON_SIZE_2 = ICON_SIZE_huismus
 
     else:
         ICON_SIZE_2 = ICON_SIZE
