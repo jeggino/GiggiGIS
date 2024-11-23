@@ -100,8 +100,7 @@ folium.TileLayer(tiles='https://api.mapbox.com/styles/v1/jeggino/cm2vtvb2l000w01
                  attr='XXX Mapbox Attribution',overlay=False,show=False,name="Satellietkaart").add_to(map)
 folium.LayerControl().add_to(map)    
 
-LocateControl(auto_start=False,position="topright").add_to(map)
-Fullscreen(position="topright").add_to(map)
+
 
 groups={}
 
@@ -122,6 +121,9 @@ GroupedLayerControl(
     exclusive_groups=False,
     collapsed=True,
 ).add_to(map)
+
+LocateControl(auto_start=False,position="topright").add_to(map)
+Fullscreen(position="topright").add_to(map)
 
 for i in range(len(df_2)):
 
