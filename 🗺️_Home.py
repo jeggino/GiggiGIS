@@ -136,6 +136,9 @@ for i in range(len(df_2)):
     elif df_2.iloc[i]['functie'] in ['vangkooi in veld']:
         ICON_SIZE_2 = ICON_SIZE_trap_empty 
 
+    elif df_2.iloc[i]['functie'] in ['Schietval in veld']:
+        ICON_SIZE_2 = ICON_SIZE_Schietval 
+
     else:
         ICON_SIZE_2 = ICON_SIZE
         
