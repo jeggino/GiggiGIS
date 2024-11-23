@@ -12,7 +12,7 @@ import random
 
 import ast
 
-from credentials import *
+from credencials import * 
 
 
 # ---LAYOUT---
@@ -63,8 +63,8 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 df_point = conn.read(ttl=ttl,worksheet="ratten-terschelling")
 
 # --- APP ---
-IMAGE = "icon/menu.jpg"
-st.logo(IMAGE,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=IMAGE)
+
+st.logo(IMAGE_2 ,  link="https://www.elskenecologie.nl/#:~:text=Elsken%20Ecologie%20is%20het%20onafhankelijke%20ecologisch%20advies-%20en", icon_image=IMAGE_2 )
 
 # try:
     
@@ -114,6 +114,7 @@ for group in choice_opdracht:
     groups[group] = feature
 
 groups = dict(zip(soortgroup, list(groups.values())))
+
 GroupedLayerControl(
     groups=groups,
     exclusive_groups=False,
