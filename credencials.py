@@ -39,5 +39,5 @@ icon_dictionary = {
                                 'vangkooi in veld, rat gevangen':'icons/rat_cage_veld_gevangen.png',
                                 'vangkooi verwijderd, rat gevangen':'icons/rat_cage_noveld_gevangen.png',
                                 'vangkooi verwijderd, geen rat gevangen':'icons/rat_cage_noveld_Nogevangen.png'},
-    'Rat geschoten':{'Rat geschoten':'icons/rat_shot.jpg'}
+    'Rat geschoten':{'Rat geschoten':'icons/rat_shot.png'}
 }
