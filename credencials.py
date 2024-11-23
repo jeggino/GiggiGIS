@@ -2,6 +2,7 @@
 LOGO ="image/logo.png"
 # --- LOGO/MENU' ---
 IMAGE_2 ="icon/menu.jpg"
+LINK = 'https://www.elskenecologie.nl/contact-elsken-ecologie-nh-terschelling/'
 
 
 # --- DIMENSIONS ---
@@ -11,7 +12,7 @@ OUTPUT_height = 550
 
 # --- DIMENSIONS ---
 ICON_SIZE = (20,20)
-ICON_SIZE_trap_empty = (55,75)
+ICON_SIZE_trap_empty = (55,35)
 ICON_SIZE_trap_noempty = (85,55)
 ICON_SIZE_rat_maybe = (255,150)
 
