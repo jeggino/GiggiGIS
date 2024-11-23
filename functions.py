@@ -1,22 +1,6 @@
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
 import pandas as pd
-import datetime
-from datetime import datetime, timedelta, date
 
-import folium
-from folium.plugins import Draw, Fullscreen, LocateControl, GroupedLayerControl
-from streamlit_folium import st_folium
-
-from credentials import *
-import ast
-
-#---DATASET---
-ttl = 0
-ttl_references = '10m'
-conn = st.connection("gsheets", type=GSheetsConnection)
-df_point = conn.read(ttl=ttl,worksheet="ratten-terschelling")
-df_references = conn.read(ttl=ttl_references,worksheet="users-ratten_terschelling-input")
 
 
 # --- FUNCTIONS ---
