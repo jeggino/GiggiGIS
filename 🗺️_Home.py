@@ -127,7 +127,8 @@ Fullscreen(position="topright").add_to(map)
 
 for i in range(len(df_2)):
 
-    if df_2.iloc[i]['functie'] == "Waarneming rat doorgegeven, geen actie op ondernomen":
+    if df_2.iloc[i]['functie'] in ["Waarneming rat doorgegeven, geen actie op ondernomen",
+                                   "Rat geschoten",'vangkooi in veld','vangkooi verwijderd, rat gevangen']:
         ICON_SIZE_2 = ICON_SIZE_rat_maybe
 
     elif df_2.iloc[i]['functie'] == "Rat geschoten":
