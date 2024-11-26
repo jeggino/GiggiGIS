@@ -113,5 +113,3 @@ def popup_html(row,df_2):
         </html>
         """
     return html
-
-
