@@ -78,13 +78,14 @@ df_2 = df_2[(df_2['datum']>=d[0]) & (df_2['datum']<=d[1])]
 
 st.sidebar.divider()
 
-rats_killed = df_2['aantal'].sum()
+rats_killed = int(df_2['aantal'].sum())
 st.sidebar.markdown(f'**Ratten gedood:** {rats_killed}')
 
 df_2["icon_data"] = df_2.apply(lambda x: icon_dictionary[x["soortgroup"]][x["sp"]][x["functie"]] if x["soortgroup"] in ['Vogels','Vleermuizen'] 
                                else icon_dictionary[x["soortgroup"]][x["functie"]], 
                                axis=1
                  )
+
 map = folium.Map(location=(df_2["lat"].mean(), df_2["lng"].mean()),zoom_start=14,tiles=None)
 
 
