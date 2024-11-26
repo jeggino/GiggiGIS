@@ -22,7 +22,7 @@ def popup_html(row,df_2):
     left_col_color = "#19a7bd"
     right_col_color = "#f2f0d3"
 
-    if functie = 'Rat geschoten':
+    if functie == 'Rat geschoten':
         html = """<!DOCTYPE html>
         <html>
         <table style="height: 126px; width: 300;">
