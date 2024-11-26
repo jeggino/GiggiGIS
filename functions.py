@@ -13,7 +13,7 @@ def popup_html(row,df_2):
     functie=df_2['functie'].iloc[i]
     opmerking=df_2['opmerking'].iloc[i]
     waarnemer=df_2['waarnemer'].iloc[i] 
-    aantal=int(df_2['aantal'].iloc[i])
+    aantal=df_2['aantal'].iloc[i]
        
 
     left_col_color = "#19a7bd"
