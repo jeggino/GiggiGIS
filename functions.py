@@ -32,14 +32,13 @@ def popup_html(row,df_2):
         <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
         </tr>
         <tr>
+        <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
+        <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
+        </tr>  
+        <tr>
         <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
         <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
         </tr>
-        <tr>
-        <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
-        <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
-        </tr>        
-        <tr>
         <tr>
         <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Aantal geschoten </span></td>
         <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(aantal) + """
@@ -64,12 +63,12 @@ def popup_html(row,df_2):
         <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(waarnemer) + """
         </tr>
         <tr>
-        <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum</span></td>
-        <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
-        </tr>
-        <tr>
         <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Functie</span></td>
         <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(functie) + """
+        </tr>
+        <tr>
+        <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum van plaatsing</span></td>
+        <td style="width: 150px;background-color: """+ right_col_color +""";">{}</td>""".format(datum) + """
         </tr>
         <tr>
         <td style="background-color: """+ left_col_color +""";"><span style="color: #ffffff;">Datum verwijderd</span></td>
